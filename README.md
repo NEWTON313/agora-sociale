@@ -96,19 +96,19 @@ git branch -M main
 # Crée d'abord un dépôt vide sur https://github.com/new (nom suggéré : agora-sociale)
 # Ne coche PAS "Initialize with README" pour éviter un conflit d'historique.
 
-git remote add origin https://github.com/TON-USERNAME/agora-sociale.git
+git remote add origin https://github.com/NEWTON313/agora-sociale.git
 git push -u origin main
 ```
 
-Ensuite, remplace `TON-USERNAME` par ton identifiant réel dans le lien
-« Code source » du menu de chaque page HTML (recherche `TON-USERNAME` dans
+Ensuite, remplace `NEWTON313` par ton identifiant réel dans le lien
+« Code source » du menu de chaque page HTML (recherche `NEWTON313` dans
 le projet) et republie.
 
 ### Activer GitHub Pages (site en ligne gratuit, sans serveur)
 
 1. Sur GitHub, dans le dépôt → **Settings** → **Pages**
 2. Source : **Deploy from a branch**, branche `main`, dossier `/ (root)`
-3. Le site sera disponible sous `https://TON-USERNAME.github.io/agora-sociale/`
+3. Le site sera disponible sous `https://NEWTON313.github.io/agora-sociale/`
    après une à deux minutes.
 
 ## Prochaines étapes suggérées
