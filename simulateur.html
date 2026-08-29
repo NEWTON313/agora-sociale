@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulateur — À quelle catégorie sociale appartenez-vous ? | L'Agora Sociale</title>
+<meta name="description" content="Estimez votre niveau de vie selon la méthode INSEE et découvrez quelle catégorie sociale du comparateur correspond à votre situation.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="brand-spectrum" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container site-header__row">
+    <div class="logo">L'Agora <span>Sociale</span></div>
+    <div class="site-header__meta">Simulateur de classement</div>
+  </div>
+  <div class="container">
+    <nav class="site-nav">
+      <a href="index.html">Comparateur</a>
+      <a href="simulateur.html" class="active">Simulateur</a>
+      <a href="candidat.html">Fiches candidats</a>
+      <a href="methodologie.html">Méthodologie</a>
+      <a href="https://github.com/TON-USERNAME/agora-sociale" target="_blank" rel="noopener">Code source</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__eyebrow">2 minutes, aucune donnée conservée</div>
+    <h1>À quelle catégorie appartenez-vous ?</h1>
+    <p class="lede">
+      Ce simulateur calcule votre <strong>niveau de vie</strong> selon la méthode
+      officielle de l'INSEE (revenu du foyer rapporté au nombre d'unités de
+      consommation) pour vous situer automatiquement dans le comparateur.
+    </p>
+    <div class="hero__disclaimer">
+      Aucune donnée saisie ici n'est envoyée à un serveur : le calcul se fait
+      entièrement dans votre navigateur et n'est jamais enregistré.
+    </div>
+  </div>
+</section>
+
+<div class="container" style="max-width:720px; padding-top:32px; padding-bottom:80px;">
+
+  <form id="form-simulateur" class="form-simulateur">
+
+    <div class="champ">
+      <label for="revenuMensuel">Revenu net mensuel <strong>total du foyer</strong> (tous revenus, avant impôt sur le revenu)</label>
+      <div class="champ__input-euro">
+        <input type="number" id="revenuMensuel" name="revenuMensuel" min="0" step="10" required placeholder="Ex : 2400">
+        <span>€ / mois</span>
+      </div>
+      <p class="champ__aide">Salaires, pensions, revenus indépendants, allocations chômage, prestations sociales — cumulés pour tout le foyer.</p>
+    </div>
+
+    <div class="champ-groupe">
+      <div class="champ">
+        <label for="nbAdultes">Nombre d'adultes dans le foyer</label>
+        <input type="number" id="nbAdultes" name="nbAdultes" min="1" max="6" value="1" required>
+      </div>
+      <div class="champ">
+        <label for="nbEnfants14Plus">Enfants de 14 ans ou plus</label>
+        <input type="number" id="nbEnfants14Plus" name="nbEnfants14Plus" min="0" max="8" value="0">
+      </div>
+      <div class="champ">
+        <label for="nbEnfantsMoins14">Enfants de moins de 14 ans</label>
+        <input type="number" id="nbEnfantsMoins14" name="nbEnfantsMoins14" min="0" max="8" value="0">
+      </div>
+    </div>
+
+    <div class="champ">
+      <label for="anneeNaissance">Votre année de naissance</label>
+      <input type="number" id="anneeNaissance" name="anneeNaissance" min="1940" max="2010" step="1" placeholder="Ex : 1978">
+      <p class="champ__aide">
+        Sert uniquement à indiquer votre âge légal de départ à la retraite
+        applicable aujourd'hui — un paramètre qui a changé plusieurs fois
+        récemment et qui dépend directement de votre génération.
+      </p>
+    </div>
+
+    <div class="champ" id="bloc-trimestre-1965" hidden>
+      <label for="trimestreNaissance">Vous êtes né·e en 1965 — précisez :</label>
+      <select id="trimestreNaissance" name="trimestreNaissance">
+        <option value="q1">Entre janvier et mars 1965</option>
+        <option value="q2_4">Entre avril et décembre 1965</option>
+      </select>
+      <p class="champ__aide">Pour cette seule génération, le mois de naissance change l'âge légal applicable.</p>
+    </div>
+
+    <div class="champ">
+      <label for="statutActivite">Votre situation principale</label>
+      <select id="statutActivite" name="statutActivite" required>
+        <option value="emploi_salarie">Salarié·e en emploi</option>
+        <option value="independant">Indépendant·e / profession libérale / chef·fe d'entreprise</option>
+        <option value="retraite">Retraité·e</option>
+        <option value="chomage">Sans emploi</option>
+        <option value="etudiant">Étudiant·e</option>
+        <option value="autre_inactif">Autre situation d'inactivité</option>
+      </select>
+    </div>
+
+    <div class="champ" id="bloc-patrimoine">
+      <label for="patrimoineNet">Patrimoine net estimé (optionnel)</label>
+      <div class="champ__input-euro">
+        <input type="number" id="patrimoineNet" name="patrimoineNet" min="0" step="1000" placeholder="Ex : 150000">
+        <span>€</span>
+      </div>
+      <p class="champ__aide">
+        Immobilier, épargne, placements financiers, moins les dettes restantes.
+        Utilisé uniquement pour affiner le classement en cas de patrimoine important
+        relativement au revenu courant — laissez vide si vous préférez ne pas répondre.
+      </p>
+    </div>
+
+    <button type="submit" class="bouton-principal">Calculer mon classement</button>
+  </form>
+
+  <div id="resultat-simulateur" hidden></div>
+
+  <p style="margin-top:32px; font-size:0.82rem; color:var(--ink-soft);">
+    Méthode et sources des seuils : voir la
+    <a href="methodologie.html#simulateur" style="text-decoration:underline;">méthodologie du simulateur</a>.
+    Ce résultat est une estimation statistique, pas un jugement sur votre situation
+    personnelle : deux foyers au même niveau de vie peuvent vivre des réalités très
+    différentes selon leur lieu de vie, leur état de santé ou leurs charges spécifiques.
+  </p>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">L'AGORA SOCIALE — outil communautaire et open source.</div>
+</footer>
+
+<script src="data/data.js"></script>
+<script src="js/simulateur.js"></script>
+<script src="js/simulateur-ui.js"></script>
+</body>
+</html>

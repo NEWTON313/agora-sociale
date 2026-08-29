@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche candidat (exemple) — L'Agora Sociale</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="brand-spectrum" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container site-header__row">
+    <div class="logo">L'Agora <span>Sociale</span></div>
+    <div class="site-header__meta">Fiche candidat — exemple pédagogique</div>
+  </div>
+  <div class="container">
+    <nav class="site-nav">
+      <a href="index.html">Comparateur</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="candidat.html" class="active">Fiches candidats</a>
+      <a href="methodologie.html">Méthodologie</a>
+      <a href="https://github.com/TON-USERNAME/agora-sociale" target="_blank" rel="noopener">Code source</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container" style="padding-top:32px; padding-bottom:80px;">
+
+  <div class="hero__disclaimer" style="margin-bottom:24px;">
+    ⚠️ Cette page est un <strong>exemple pédagogique fictif</strong> conservé pour illustrer le gabarit
+    d'une fiche candidat. Pour les vraies fiches candidats (Mélenchon, Attal, Philippe, Retailleau, Le Pen),
+    voir <a href="candidat.html" style="text-decoration:underline;">la liste des candidats</a>.
+  </div>
+
+  <div class="fiche-header">
+    <div>
+      <div class="hero__eyebrow">Candidat B (exemple fictif)</div>
+      <h1 style="font-size:2rem;">Baisse de 2 points des cotisations sociales salariales sur les bas salaires</h1>
+    </div>
+    <span class="badge mono">Thème : Fiscalité</span>
+  </div>
+
+  <p style="max-width:70ch; color:var(--ink-soft);">
+    Résumé officiel : mesure présentée par le candidat comme un soutien direct au
+    pouvoir d'achat des travailleurs modestes.
+    <a href="#" style="text-decoration:underline;">Voir la source primaire (programme officiel)</a>.
+  </p>
+
+  <h2 style="margin-top:36px; margin-bottom:16px; font-size:1.2rem;">Analyse d'impact croisé, par classe sociale</h2>
+
+  <div class="analyse-classes" id="analyse-classes">
+    <!-- Bloc 1 : Classes populaires -->
+    <div class="analyse-classe" style="background:var(--classe-populaire-bg);">
+      <div class="analyse-classe__nom"><span class="dot" style="background:var(--classe-populaire)"></span>Classes populaires</div>
+      <strong class="mono" style="font-size:0.78rem;">Score : +2 / 2</strong>
+      <p style="font-size:0.85rem; margin:6px 0 0; font-weight:600;">Avantages</p>
+      <ul>
+        <li>Hausse mécanique du salaire net pour les bas salaires</li>
+        <li>Effet visible dès le premier mois selon le calendrier annoncé</li>
+      </ul>
+      <p style="font-size:0.85rem; margin:10px 0 0; font-weight:600;">Risques</p>
+      <ul>
+        <li>Financement du manque à gagner pour la Sécurité sociale non détaillé</li>
+      </ul>
+      <div class="angle-mort">Angle mort : le programme ne précise pas si la mesure est pérenne ou compensée par une autre recette.</div>
+    </div>
+
+    <!-- Bloc 2 : Classes moyennes -->
+    <div class="analyse-classe" style="background:var(--classe-moyenne-bg);">
+      <div class="analyse-classe__nom"><span class="dot" style="background:var(--classe-moyenne)"></span>Classes moyennes</div>
+      <strong class="mono" style="font-size:0.78rem;">Score : +1 / 2</strong>
+      <p style="font-size:0.85rem; margin:6px 0 0; font-weight:600;">Avantages</p>
+      <ul>
+        <li>Effet partiel pour les salaires proches du seuil bas</li>
+      </ul>
+      <p style="font-size:0.85rem; margin:10px 0 0; font-weight:600;">Risques</p>
+      <ul>
+        <li>Effet dégressif au-delà d'un certain niveau de salaire, seuil exact non communiqué</li>
+      </ul>
+      <div class="angle-mort">Angle mort : absence de simulation chiffrée pour les tranches intermédiaires du barème.</div>
+    </div>
+
+    <!-- Bloc 3 : Classes aisées -->
+    <div class="analyse-classe" style="background:var(--classe-aisee-bg);">
+      <div class="analyse-classe__nom"><span class="dot" style="background:var(--classe-aisee)"></span>Classes aisées</div>
+      <strong class="mono" style="font-size:0.78rem;">Score : 0 / 2</strong>
+      <p style="font-size:0.85rem; margin:6px 0 0; font-weight:600;">Avantages</p>
+      <ul><li>Aucun bénéfice direct identifié</li></ul>
+      <p style="font-size:0.85rem; margin:10px 0 0; font-weight:600;">Risques</p>
+      <ul><li>Aucun risque direct identifié</li></ul>
+      <div class="angle-mort">Angle mort : mesure non applicable aux hauts salaires, sans effet direct mentionné dans le programme.</div>
+    </div>
+
+    <!-- Bloc 4 : Retraités -->
+    <div class="analyse-classe" style="background:var(--classe-retraites-bg);">
+      <div class="analyse-classe__nom"><span class="dot" style="background:var(--classe-retraites)"></span>Retraités &amp; inactifs</div>
+      <strong class="mono" style="font-size:0.78rem;">Score : 0 / 2</strong>
+      <p style="font-size:0.85rem; margin:6px 0 0; font-weight:600;">Avantages</p>
+      <ul><li>Aucun effet direct identifié</li></ul>
+      <p style="font-size:0.85rem; margin:10px 0 0; font-weight:600;">Risques</p>
+      <ul><li>Absence de mesure miroir pour les retraités mentionnée dans le programme</li></ul>
+      <div class="angle-mort">Angle mort : le programme ne traite pas explicitement du pouvoir d'achat des retraités dans cette mesure.</div>
+    </div>
+  </div>
+
+  <p style="margin-top:28px; font-size:0.82rem; color:var(--ink-soft); max-width:70ch;">
+    Cette fiche est un exemple pédagogique fondé sur des données fictives. Dans une
+    mise en production réelle, chaque score et chaque affirmation doit renvoyer vers
+    une source primaire (texte du programme, déclaration officielle) ou une source
+    secondaire indépendante (institut économique, organisme public). Voir la
+    <a href="methodologie.html" style="text-decoration:underline;">méthodologie</a>.
+  </p>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    L'AGORA SOCIALE — outil communautaire et open source.
+  </div>
+</footer>
+
+</body>
+</html>

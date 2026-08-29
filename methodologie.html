@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Méthodologie — L'Agora Sociale</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="brand-spectrum" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container site-header__row">
+    <div class="logo">L'Agora <span>Sociale</span></div>
+    <div class="site-header__meta">Méthodologie</div>
+  </div>
+  <div class="container">
+    <nav class="site-nav">
+      <a href="index.html">Comparateur</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="candidat.html">Fiches candidats</a>
+      <a href="methodologie.html" class="active">Méthodologie</a>
+      <a href="https://github.com/TON-USERNAME/agora-sociale" target="_blank" rel="noopener">Code source</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container" style="padding-top:32px; padding-bottom:80px; max-width:820px;">
+
+  <h1 style="font-size:2rem; margin-bottom:8px;">Comment nous construisons chaque analyse</h1>
+  <p class="lede" style="color:var(--ink-soft); margin-bottom:0;">
+    La crédibilité de L'Agora Sociale repose entièrement sur la traçabilité de ses
+    sources et sur la séparation stricte entre le fait et l'interprétation.
+  </p>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">1. Collecte des données</h2>
+    <div class="methodo-step">
+      <div class="methodo-step__num">01</div>
+      <div>
+        <strong>Source primaire obligatoire.</strong> Chaque mesure est saisie
+        uniquement à partir du texte du programme officiel du candidat, ou d'une
+        déclaration publique vérifiable (discours, interview, réponse écrite à
+        une organisation professionnelle). Aucune mesure n'est déduite ou
+        extrapolée par l'équipe éditoriale.
+      </div>
+    </div>
+    <div class="methodo-step">
+      <div class="methodo-step__num">02</div>
+      <div>
+        <strong>Citation exacte + lien.</strong> Chaque fiche mesure contient
+        un champ <code class="mono">sourceOfficielle</code> pointant vers le
+        document ou la déclaration d'origine, avec la date de consultation.
+      </div>
+    </div>
+    <div class="methodo-step">
+      <div class="methodo-step__num">03</div>
+      <div>
+        <strong>Double lecture.</strong> Deux contributeurs indépendants relisent
+        chaque saisie avant publication. En cas de désaccord sur l'interprétation
+        d'une mesure, le désaccord est documenté publiquement plutôt que tranché
+        en silence.
+      </div>
+    </div>
+  </div>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">2. Construction du score d'impact par classe</h2>
+    <p>
+      Le score (de -2 à +2) n'est pas un jugement de valeur sur la mesure, mais une
+      estimation de son effet économique direct et immédiat sur le niveau de vie
+      de la catégorie concernée, à partir de critères objectifs et déclarés à
+      l'avance :
+    </p>
+    <table class="source-table">
+      <thead>
+        <tr><th>Score</th><th>Critère</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>+2 / -2</td><td>Effet direct, chiffrable, et confirmé par au moins une source économique indépendante (INSEE, OFCE, France Stratégie, Cour des comptes, etc.)</td></tr>
+        <tr><td>+1 / -1</td><td>Effet probable mais partiel, conditionnel, ou non chiffré précisément par le candidat</td></tr>
+        <tr><td>0</td><td>Catégorie non concernée par la mesure, ou effets contradictoires s'annulant dans la littérature économique</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;">
+      Chaque score est systématiquement accompagné d'un champ
+      <strong>« angle mort »</strong> : ce que le programme ne dit pas, ou ce que
+      l'estimation ne permet pas de conclure. Cette rubrique est aussi importante
+      que le score lui-même — elle protège contre l'illusion de précision.
+    </p>
+  </div>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">3. Garde-fous de neutralité</h2>
+    <ul>
+      <li>Aucune couleur du site ne reprend les couleurs officielles d'un parti.</li>
+      <li>Les candidats sont toujours présentés dans un ordre neutre (alphabétique ou tirage aléatoire affiché), jamais par sondage ou popularité.</li>
+      <li>Le lexique est passé au crible : « réforme », « mesure », « proposition » sont préférés à des termes connotés positivement ou négativement.</li>
+      <li>Toute mesure identique proposée par plusieurs candidats est analysée avec exactement la même grille et le même barème.</li>
+      <li>Le code et le jeu de données sont publiés en open source pour permettre l'audit par n'importe qui.</li>
+    </ul>
+  </div>
+
+  <div class="methodo-section" id="simulateur">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">4. Le simulateur de classement</h2>
+    <p>
+      Le simulateur reproduit la notion de <strong>niveau de vie</strong> telle que
+      définie par l'INSEE : le revenu disponible du foyer, divisé par le nombre
+      d'<strong>unités de consommation</strong> (échelle OCDE modifiée — 1 UC pour le
+      premier adulte, 0,5 par personne supplémentaire de 14 ans ou plus, 0,3 par
+      enfant de moins de 14 ans).
+    </p>
+    <table class="source-table">
+      <thead><tr><th>Catégorie</th><th>Seuil de niveau de vie annuel / UC</th></tr></thead>
+      <tbody>
+        <tr><td>Classes populaires</td><td>inférieur à 20 980 € (sous le 3ᵉ décile)</td></tr>
+        <tr><td>Classes moyennes</td><td>entre 20 980 € et 38 780 € (3ᵉ à 8ᵉ décile)</td></tr>
+        <tr><td>Classes aisées</td><td>supérieur à 38 780 € (au-delà du 8ᵉ décile)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;">
+      Ces seuils reprennent directement les déciles de niveau de vie publiés par
+      l'INSEE (données 2024, publication du 9 juillet 2026,
+      <a href="https://www.insee.fr/fr/statistiques/2416808" style="text-decoration:underline;">« Distribution des niveaux de vie »</a>).
+      <strong>Ce tableau doit être remplacé chaque année</strong> lors de la publication
+      suivante de l'INSEE (généralement en juillet) — voir le fichier
+      <code class="mono">js/simulateur.js</code>, constante
+      <code class="mono">SEUILS_NIVEAU_DE_VIE</code>.
+    </p>
+    <p>
+      <strong>Catégorie « Retraités &amp; inactifs ».</strong> Elle est attribuée en
+      priorité selon le statut déclaré (retraité, sans emploi, étudiant, autre
+      inactivité), et non selon le revenu : les mécanismes déterminants pour ce
+      groupe (indexation des pensions, reste à charge santé, minima sociaux) sont de
+      nature différente de ceux qui structurent la vie active. Le niveau de vie est
+      néanmoins affiché à titre indicatif.
+    </p>
+    <p>
+      <strong>Ajustement patrimoine.</strong> Un foyer dont le revenu courant
+      correspondrait aux classes moyennes mais qui déclare un patrimoine net supérieur
+      à 500 000 € est reclassé en classes aisées, car certaines mesures (IFI, droits de
+      succession, fiscalité du capital) l'affectent davantage que son revenu seul ne
+      le laisserait penser. Ce seuil est un choix éditorial explicite, ajustable dans
+      le code, et non une norme INSEE.
+    </p>
+    <p style="font-size:0.85rem; color:var(--ink-soft);">
+      Limite assumée : la position affichée (« percentile ») est une interpolation
+      linéaire entre déciles officiels, à but pédagogique — ce n'est pas un chiffre
+      officiel de l'INSEE et il ne doit pas être cité comme tel.
+    </p>
+  </div>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">5. Fiscalité du patrimoine (IFI, succession)</h2>
+    <p>
+      Ces mesures étant particulièrement sensibles, elles font l'objet d'une
+      fiche méthodologique dédiée, qui pose le cadre légal actuel et présente,
+      sans les départager, les arguments des deux côtés du débat.
+    </p>
+    <a href="fiscalite-patrimoine.html" class="mono" style="text-decoration:underline; font-size:0.85rem;">
+      Voir la fiche « Fiscalité du patrimoine » →
+    </a>
+  </div>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">6. Réforme des retraites</h2>
+    <p>
+      Le calendrier de l'âge légal a été suspendu fin 2025 et reste incertain
+      au-delà de 2028 : cette fiche dédiée pose le cadre légal actuel (avant
+      2023 / réforme 2023 / suspension 2026) et l'angle mort le plus souvent
+      oublié — l'écart d'espérance de vie et de temps réellement passé à la
+      retraite entre catégories socioprofessionnelles.
+    </p>
+    <a href="retraites.html" class="mono" style="text-decoration:underline; font-size:0.85rem;">
+      Voir la fiche « Réforme des retraites » →
+    </a>
+  </div>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">7. SMIC jeunes et RSA sous 25 ans</h2>
+    <p>
+      Ces deux règles liées à l'âge laissent un « trou » spécifique entre 18 et
+      25 ans dans le filet de sécurité sociale. Cette fiche dédiée pose le
+      cadre légal actuel et présente les arguments pour et contre l'abattement
+      jeunes du Smic et la condition d'âge du RSA.
+    </p>
+    <a href="jeunesse-emploi-solidarite.html" class="mono" style="text-decoration:underline; font-size:0.85rem;">
+      Voir la fiche « Jeunesse, emploi, solidarité » →
+    </a>
+  </div>
+
+  <div class="methodo-section">
+    <h2 style="font-size:1.2rem; margin-bottom:20px;">8. Limites assumées</h2>
+    <p>
+      Ce site ne prédit pas l'avenir. Il ne remplace pas une analyse macro-économique
+      complète, ne modélise pas les effets de second tour (comportements, épargne,
+      anticipations) et dépend de la qualité et de la précision des programmes
+      eux-mêmes. Quand un programme est vague ou change en cours de campagne, la
+      fiche est mise à jour et l'historique des versions reste consultable.
+    </p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    L'AGORA SOCIALE — outil communautaire et open source.
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Système
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+
+# Rien d'autre à ignorer : ce projet est du HTML/CSS/JS statique,
+# sans étape de build ni dépendances installées.
