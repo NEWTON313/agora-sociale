@@ -78,10 +78,19 @@
   <main>
     <div class="comparateur-header">
       <h2>Impact sur : <span id="comparateur-titre-classe" class="mono" style="font-size:1.1rem;"></span></h2>
-      <label class="mono" style="font-size:0.8rem;">
-        Thème :
-        <select id="select-mesure" class="select-mesure" aria-label="Choisir la thématique de la mesure"></select>
-      </label>
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+        <label class="mono" style="font-size:0.8rem;">
+          Thème :
+          <select id="select-mesure" class="select-mesure" aria-label="Choisir la thématique de la mesure"></select>
+        </label>
+        <button type="button" id="btn-mes-priorites" class="mono" style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.03em; padding:8px 12px; border:1px solid var(--line-strong); border-radius:3px; background:var(--paper-raised); cursor:pointer;" aria-pressed="false">
+          Mes priorités
+        </button>
+      </div>
+    </div>
+
+    <div id="priorites-panel" hidden>
+      <!-- injecté par js/app.js -->
     </div>
 
     <div class="cartes-candidats" id="cartes-candidats" aria-live="polite">
@@ -99,6 +108,7 @@
 </footer>
 
 <script src="data/data.js"></script>
+<script src="js/priorites.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

@@ -74,7 +74,17 @@ const CLASSES_SOCIALES = [
   },
 ];
 
-const THEMES = ["Pouvoir d'achat", "Fiscalité", "Travail & emploi", "Services publics"];
+const THEMES = [
+  "Pouvoir d'achat et économie",
+  "Retraites et modèle social",
+  "Immigration et intégration",
+  "Sécurité et justice",
+  "Services publics",
+  "Écologie et énergie",
+  "Souveraineté et industrie",
+  "Institutions et démocratie",
+  "Europe et géopolitique",
+];
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
@@ -83,6 +93,15 @@ const AVIS_DONNEES_REELLES = {
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire du Parti socialiste (11-18/10/2026) n'a pas eu lieu ; les écologistes n'ont pas encore de candidat déclaré. La candidature de Marine Le Pen dépend d'un pourvoi en cassation en cours. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
+// Remapping vers la taxonomie à 9 thèmes (2026-08-29) : les 9 mesures existantes ont été
+// écrites sous l'ancienne taxonomie à 4 thèmes et sont réparties ici sur leur thème le plus
+// proche. Deux choix sont discutables et à revoir lors d'une prochaine relecture éditoriale :
+// `br-rsa` (RSA/emploi) est classée en "Pouvoir d'achat et économie" plutôt que "Retraites et
+// modèle social", et `ep-regle-or` (règle d'or budgétaire, à valeur quasi institutionnelle)
+// y est classée plutôt qu'en "Institutions et démocratie", car leur contenu chiffré reste
+// avant tout économique/budgétaire. Les 6 autres thèmes (immigration, sécurité, écologie,
+// souveraineté, institutions, Europe) n'ont aujourd'hui aucune mesure sourcée : case vide
+// assumée plutôt qu'invention de contenu (voir méthodologie).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -94,7 +113,7 @@ const CANDIDATS = [
     mesures: [
       {
         id: "jlm-retraites",
-        theme: "Pouvoir d'achat",
+        theme: "Retraites et modèle social",
         titre: "Retour de la retraite à 60 ans avec 40 annuités de cotisation",
         resumeOfficiel:
           "Mesure phare reconduite depuis les campagnes 2012, 2017 et 2022 : abroger le report de l'âge légal et revenir à un départ à 60 ans pour une carrière complète de 40 ans, avec alignement des petites pensions sur un Smic revalorisé.",
@@ -130,7 +149,7 @@ const CANDIDATS = [
       },
       {
         id: "jlm-fiscalite",
-        theme: "Fiscalité",
+        theme: "Pouvoir d'achat et économie",
         titre: "Nouvelles tranches d'impôt sur le revenu et alignement de la fiscalité du capital sur celle du travail",
         resumeOfficiel:
           "Création de tranches supplémentaires d'impôt sur le revenu pour les hauts revenus et taxation des revenus du capital (dividendes, plus-values) au même barème que les revenus du travail, dans l'objectif annoncé de financer les services publics et réduire les inégalités.",
@@ -173,7 +192,7 @@ const CANDIDATS = [
       },
       {
         id: "ga-salaires",
-        theme: "Pouvoir d'achat",
+        theme: "Pouvoir d'achat et économie",
         titre: "Réduire l'écart entre salaire brut et salaire net",
         resumeOfficiel:
           "Annoncé comme l'un des quatre « chantiers capitaux » de la campagne (avec l'école, les frontières et l'intelligence artificielle) : le candidat souhaite augmenter le salaire net à coût du travail constant pour l'employeur, sans que le mécanisme précis (baisse de cotisations, autre levier) soit encore détaillé.",
@@ -200,7 +219,7 @@ const CANDIDATS = [
     mesures: [
       {
         id: "ep-chomage",
-        theme: "Travail & emploi",
+        theme: "Pouvoir d'achat et économie",
         titre: "Réduire à 12 mois la durée d'indemnisation chômage pour les moins de 50 ans",
         resumeOfficiel:
           "Présenté par le candidat comme un alignement sur le modèle allemand, dans le cadre plus large d'un programme économique axé sur la maîtrise de la dépense publique.",
@@ -216,7 +235,7 @@ const CANDIDATS = [
       },
       {
         id: "ep-regle-or",
-        theme: "Fiscalité",
+        theme: "Pouvoir d'achat et économie",
         titre: "Constitutionnaliser une règle d'or budgétaire limitant les déficits publics",
         resumeOfficiel:
           "Le candidat propose d'inscrire dans la Constitution une limite aux déficits publics, présentée comme un objectif de retour sous les 3 % de déficit d'ici 2030, sans détail chiffré public sur les mesures fiscales ou d'économies permettant de l'atteindre.",
@@ -243,7 +262,7 @@ const CANDIDATS = [
     mesures: [
       {
         id: "br-rsa",
-        theme: "Travail & emploi",
+        theme: "Pouvoir d'achat et économie",
         titre: "Conditionner plus strictement le RSA à l'acceptation d'offres d'emploi",
         resumeOfficiel:
           "Dans la continuité de la logique d'activité déjà introduite par la loi pour le plein emploi, le candidat souhaite durcir les conditions de maintien du RSA en cas de refus répété d'offres d'emploi jugées raisonnables.",
@@ -270,7 +289,7 @@ const CANDIDATS = [
     mesures: [
       {
         id: "mlp-tva",
-        theme: "Pouvoir d'achat",
+        theme: "Pouvoir d'achat et économie",
         titre: "Suppression ou forte baisse de la TVA sur les produits de première nécessité",
         resumeOfficiel:
           "Proposition récurrente du Rassemblement national sur plusieurs campagnes : réduire ou supprimer la TVA sur l'énergie, l'alimentation et le carburant pour soutenir le pouvoir d'achat, sans calendrier ni chiffrage budgétaire détaillé rendus publics pour 2027 à ce stade.",
@@ -286,7 +305,7 @@ const CANDIDATS = [
       },
       {
         id: "mlp-ifi",
-        theme: "Fiscalité",
+        theme: "Pouvoir d'achat et économie",
         titre: "Suppression de l'IFI et création d'un impôt sur la fortune financière (IFF)",
         resumeOfficiel:
           "Le Rassemblement national propose de remplacer l'impôt sur la fortune immobilière par un impôt ciblant les actifs financiers, présenté par le parti comme visant la « spéculation » plutôt que la détention d'un bien immobilier.",

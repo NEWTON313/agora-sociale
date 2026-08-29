@@ -458,6 +458,129 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   color: var(--ink-faint);
 }
 
+.carte-candidat__mesure-bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+#btn-mes-priorites.active {
+  background: var(--ink);
+  color: var(--paper-raised);
+  border-color: var(--ink);
+}
+
+.priorites-panel__card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper-raised);
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-xs);
+}
+.priorites-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.priorites-panel__header h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.priorites-panel__reset {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.priorites-panel__reset:hover { color: var(--ink); }
+.priorites-panel__intro {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.priorites-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.priorites-panel__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.priorites-panel__row > span { font-size: 0.9rem; }
+.priorites-panel__niveaux {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.priorites-panel__niveau {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 6px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.priorites-panel__niveau:hover { border-color: var(--ink); }
+.priorites-panel__niveau.active {
+  background: var(--ink);
+  color: var(--paper-raised);
+  border-color: var(--ink);
+}
+.priorites-panel__tri {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 18px;
+}
+
+.score-personnalise {
+  border-top: 1px solid var(--line);
+  padding-top: 13px;
+  background: var(--paper);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+}
+.score-personnalise__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-bottom: 7px;
+}
+.score-personnalise--vide {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.score-personnalise__avertissement {
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 6px;
+}
+
 .badge {
   display: inline-block;
   font-family: var(--font-mono);
