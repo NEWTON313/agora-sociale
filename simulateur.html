@@ -115,14 +115,16 @@
       </p>
     </div>
 
-    <button type="submit" class="bouton-principal">Calculer mon classement</button>
+    <div id="priorites-panel-simulateur" style="margin-top:8px;"></div>
+
+    <button type="submit" class="bouton-principal">Mon candidat</button>
   </form>
 
   <div id="resultat-simulateur" hidden></div>
 
   <p style="margin-top:32px; font-size:0.82rem; color:var(--ink-soft);">
     Méthode et sources des seuils : voir la
-    <a href="methodologie.html#simulateur" style="text-decoration:underline;">méthodologie du simulateur</a>.
+    <a href="methodologie.html#score-personnalise" style="text-decoration:underline;">méthodologie du simulateur</a>.
     Ce résultat est une estimation statistique, pas un jugement sur votre situation
     personnelle : deux foyers au même niveau de vie peuvent vivre des réalités très
     différentes selon leur lieu de vie, leur état de santé ou leurs charges spécifiques.
@@ -135,6 +137,7 @@
 </footer>
 
 <script src="data/data.js"></script>
+<script src="js/priorites.js"></script>
 <script src="js/simulateur.js"></script>
 <script src="js/simulateur-ui.js"></script>
 </body>

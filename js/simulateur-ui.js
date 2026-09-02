@@ -3,13 +3,144 @@
  */
 
 (function () {
-  const { CLASSES_SOCIALES } = window.AGORA_DATA;
+  const { CLASSES_SOCIALES, CANDIDATS, THEMES } = window.AGORA_DATA;
   const { classerProfil, SEUILS_NIVEAU_DE_VIE } = window.AGORA_SIMULATEUR;
+  const { NIVEAUX_PRIORITE, LABELS_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise, trierParScorePersonnalise } =
+    window.AGORA_PRIORITES;
 
   const form = document.getElementById("form-simulateur");
   const resultatEl = document.getElementById("resultat-simulateur");
   const enfantsWrap = document.getElementById("bloc-enfants");
   const patrimoineWrap = document.getElementById("bloc-patrimoine");
+  const prioritesPanelEl = document.getElementById("priorites-panel-simulateur");
+
+  let poidsThemes = poidsThemesParDefaut();
+
+  function scoreToWidth(score) {
+    return Math.min(Math.abs(score) / 2, 1) * 50;
+  }
+
+  function renderScorePersonnalise(resultat) {
+    if (resultat.scoreGlobal === null) {
+      return `
+        <div class="score-personnalise score-personnalise--vide mono">
+          Score personnalisé non calculable — aucune mesure recensée sur vos thèmes prioritaires pour ce candidat
+        </div>
+      `;
+    }
+    const { scoreGlobal, themesCouverts, themesPonderes } = resultat;
+    const width = scoreToWidth(scoreGlobal);
+    const side = scoreGlobal >= 0 ? "positif" : "negatif";
+    const avertissement =
+      themesCouverts < themesPonderes
+        ? `<div class="score-personnalise__avertissement mono">Estimation basée sur une partie seulement de vos priorités : à interpréter avec prudence.</div>`
+        : "";
+    return `
+      <div class="score-personnalise">
+        <div class="score-personnalise__label mono">Score personnalisé selon vos priorités</div>
+        <div class="ledger__track" role="img" aria-label="Score personnalisé ${scoreGlobal.toFixed(1)} sur une échelle de -2 à 2, ${themesCouverts} sur ${themesPonderes} thèmes prioritaires couverts">
+          <div class="ledger__axis"></div>
+          <div class="ledger__fill ${side}" style="width:${width}%"></div>
+        </div>
+        <div class="ledger__score mono">${scoreGlobal > 0 ? "+" : ""}${scoreGlobal.toFixed(1)} / 2 · ${themesCouverts}/${themesPonderes} thème${themesPonderes > 1 ? "s" : ""} prioritaire${themesPonderes > 1 ? "s" : ""} couvert${themesCouverts > 1 ? "s" : ""}</div>
+        ${avertissement}
+      </div>
+    `;
+  }
+
+  function initPrioritesPanel() {
+    prioritesPanelEl.innerHTML = `
+      <div class="priorites-panel__card">
+        <div class="priorites-panel__header">
+          <h3>Mes priorités</h3>
+          <button type="button" id="btn-reinitialiser-priorites-sim" class="mono priorites-panel__reset">
+            Réinitialiser mes priorités
+          </button>
+        </div>
+        <p class="priorites-panel__intro">
+          Indiquez l'importance que vous accordez à chaque thème pour que « Mon candidat »
+          calcule un score personnalisé par candidat, une fois votre catégorie sociale déterminée.
+        </p>
+        <ul class="priorites-panel__list">
+          ${THEMES.map((theme) => `
+            <li class="priorites-panel__row">
+              <span>${theme}</span>
+              <div class="priorites-panel__niveaux" role="group" aria-label="Priorité pour ${theme}">
+                ${NIVEAUX_PRIORITE.map((niveau) => `
+                  <button
+                    type="button"
+                    class="priorites-panel__niveau mono ${poidsThemes[theme] === niveau ? "active" : ""}"
+                    data-theme="${theme}"
+                    data-niveau="${niveau}"
+                    aria-pressed="${poidsThemes[theme] === niveau}"
+                  >${LABELS_PRIORITE[niveau]}</button>
+                `).join("")}
+              </div>
+            </li>
+          `).join("")}
+        </ul>
+      </div>
+    `;
+
+    prioritesPanelEl.querySelectorAll(".priorites-panel__niveau").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        poidsThemes[btn.dataset.theme] = Number(btn.dataset.niveau);
+        initPrioritesPanel();
+      });
+    });
+
+    document.getElementById("btn-reinitialiser-priorites-sim").addEventListener("click", () => {
+      poidsThemes = poidsThemesParDefaut();
+      initPrioritesPanel();
+    });
+  }
+
+  function renderMonCandidat(classeActive) {
+    const themesPonderes = Object.values(poidsThemes).some((n) => n > 0);
+    if (!themesPonderes) {
+      return `
+        <div class="resultat" style="border-left:4px solid var(--line-strong); margin-top:24px;">
+          <p style="margin:0;">
+            Indiquez au moins une priorité ci-dessus pour voir quel candidat correspond le mieux à ce que vous
+            jugez important.
+          </p>
+        </div>
+      `;
+    }
+
+    const resultatsParId = {};
+    CANDIDATS.forEach((c) => {
+      resultatsParId[c.id] = calculerScorePersonnalise(c, classeActive, poidsThemes);
+    });
+    const classement = trierParScorePersonnalise(CANDIDATS, resultatsParId);
+    const premier = resultatsParId[classement[0].id];
+    const aUneCorrespondance = premier && premier.scoreGlobal !== null;
+
+    return `
+      <div class="resultat" style="margin-top:24px;">
+        <div class="resultat__eyebrow">Selon vos priorités et votre catégorie sociale</div>
+        <h3>${aUneCorrespondance ? classement[0].nom : "Aucune correspondance calculable"}</h3>
+        ${aUneCorrespondance ? `<p>${classement[0].parti}</p>` : ""}
+        <p style="font-size:0.85rem; font-style:italic; color:var(--ink-soft);">
+          Le candidat dont les mesures recensées obtiennent le score le plus favorable pour vos priorités déclarées.
+          Ce n'est ni un jugement de valeur ni une recommandation de vote — voir la
+          <a href="methodologie.html#score-personnalise" style="text-decoration:underline;">méthodologie</a>.
+          Le classement complet ci-dessous reste toujours visible, dans l'ordre de correspondance.
+        </p>
+        <ol style="list-style:none; padding:0; display:flex; flex-direction:column; gap:16px;">
+          ${classement.map((candidat, i) => `
+            <li style="${i === 0 && aUneCorrespondance ? "" : "opacity:0.8;"}">
+              <div style="margin-bottom:6px;">
+                <span class="font-display">${i + 1}. ${candidat.nom}</span>
+                <span class="mono" style="font-size:0.7rem; text-transform:uppercase; color:var(--ink-faint);">${candidat.parti}</span>
+              </div>
+              ${renderScorePersonnalise(resultatsParId[candidat.id])}
+            </li>
+          `).join("")}
+        </ol>
+      </div>
+    `;
+  }
 
   function euros(n) {
     return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n) + " €";
@@ -127,6 +258,8 @@
           Voir l'impact des programmes sur cette catégorie →
         </a>
       </div>
+
+      ${renderMonCandidat(r.classePrincipale)}
     `;
     resultatEl.hidden = false;
     resultatEl.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -164,4 +297,5 @@
   });
 
   toggleBlocsConditionnels();
+  initPrioritesPanel();
 })();
