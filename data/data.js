@@ -88,7 +88,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-08-28",
+  dateMaj: "2026-09-02",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire du Parti socialiste (11-18/10/2026) n'a pas eu lieu ; les écologistes n'ont pas encore de candidat déclaré. La candidature de Marine Le Pen dépend d'un pourvoi en cassation en cours. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -163,6 +163,38 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: ["Neutre pour la quasi-totalité des pensions"], risques: [], angleMort: "Effet possible pour une minorité de retraités disposant de revenus du capital importants, non quantifié." },
         },
       },
+      {
+        id: "jlm-nucleaire",
+        theme: "Écologie et énergie",
+        titre: "Sortie progressive du nucléaire au profit d'un mix 100 % renouvelable, avec un référendum proposé sur la question",
+        resumeOfficiel:
+          "Position reconduite depuis plusieurs campagnes (« L'Avenir en commun ») : sortir progressivement du nucléaire, développer massivement les énergies renouvelables (éolien, solaire, hydraulique, géothermie) pour atteindre 100 % d'énergies renouvelables, et soumettre la question nucléaire à référendum.",
+        sourceOfficielle: "https://www.lejdd.fr/Politique/Nucleaire-Melenchon-appelle-la-gauche-a-organiser-un-referendum-413375-3116522",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position historique de LFI documentée depuis les campagnes 2012 et 2017 (« L'Avenir en commun ») ; Le JDD rapporte spécifiquement sa proposition de référendum sur le nucléaire.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: [], risques: ["Selon certaines analyses de la transition énergétique (ex. Allemagne), le remplacement d'une production nucléaire pilotable par des renouvelables peut entraîner une hausse temporaire des prix de l'électricité, qui pèserait proportionnellement plus sur cette catégorie"], angleMort: "Aucun chiffrage indépendant public du coût de la sortie du nucléaire ni de son effet sur la facture énergétique des ménages modestes." },
+          moyennes: { score: 0, avantages: ["Effet potentiellement positif à long terme si les projets citoyens d'énergie renouvelable locale réduisent la facture"], risques: ["Coût d'investissement de la transition pouvant se répercuter sur la fiscalité ou les tarifs"], angleMort: "Le calendrier précis de fermeture des réacteurs et son effet sur les prix ne sont pas chiffrés publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Les ménages aisés consacrant une part plus faible de leur revenu à l'énergie, cette catégorie est statistiquement moins exposée aux variations de prix ; aucun chiffrage spécifique n'est disponible." },
+          retraites: { score: -1, avantages: [], risques: ["Les retraités à revenu fixe sont, comme les catégories populaires, statistiquement plus exposés qu'un actif à une hausse durable des prix de l'énergie"], angleMort: "Aucune mesure de compensation spécifique pour les retraités n'est associée publiquement à cette proposition." },
+        },
+      },
+      {
+        id: "jlm-vie-republique",
+        theme: "Institutions et démocratie",
+        titre: "Instaurer une VIe République par une assemblée constituante convoquée par référendum",
+        resumeOfficiel:
+          "Proposition reconduite depuis 2012 : organiser un référendum pour convoquer une assemblée constituante (élue et tirée au sort), chargée de rédiger une nouvelle Constitution instaurant un régime parlementaire, la proportionnelle, le référendum d'initiative citoyenne (RIC) et le référendum révocatoire, avant adoption par un second référendum.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/instaurer-une-vie-republique-cinq-questions-pas-si-betes-sur-la-promesse-de-jean-luc-melenchon_2142248.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position historique de LFI documentée sur les campagnes 2012, 2017 et 2022 ; détaillée par franceinfo et Le JDD.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Objectif affiché de renforcer la participation citoyenne directe (référendum d'initiative citoyenne, tirage au sort), potentiellement plus accessible aux catégories habituellement moins représentées dans les instances élues"], risques: [], angleMort: "Une réforme constitutionnelle ne se traduit pas mécaniquement par un effet différencié selon la catégorie socio-économique ; son impact dépendrait des lois votées ensuite par la nouvelle assemblée, non connues à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : l'effet économique dépend des politiques mises en œuvre après l'adoption d'une nouvelle Constitution, non déterminées par la mesure elle-même." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+        },
+      },
     ],
   },
 
@@ -204,6 +236,22 @@ const CANDIDATS = [
           moyennes: { score: 1, avantages: ["Gain de pouvoir d'achat potentiel si la mesure s'applique à l'ensemble des salariés"], risques: [], angleMort: "Seuil de salaire concerné (s'il y en a un) non communiqué." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Effet sur les hauts salaires non précisé." },
           retraites: { score: 0, avantages: [], risques: ["Mesure centrée sur les actifs ; aucune mesure miroir annoncée pour les pensions à ce stade"], angleMort: "Le programme ne traite pas explicitement du pouvoir d'achat des retraités dans cette annonce." },
+        },
+      },
+      {
+        id: "ga-immigration",
+        theme: "Immigration et intégration",
+        titre: "Quotas migratoires votés par le Parlement tous les deux ans, par métier et secteur",
+        resumeOfficiel:
+          "Propose que le Parlement fixe, tous les deux ans, des quotas d'immigration de travail par métier et secteur d'activité, sur la base des besoins identifiés par les partenaires sociaux, en donnant la priorité à l'immigration de travail sur le regroupement familial.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/immigration-gabriel-attal-propose-des-quotas-par-metier-et-par-origine-geographique-180879",
+        niveauConfiance: "confirme",
+        noteConfiance: "Rapporté par Le JDD et franceinfo comme une proposition structurante de sa campagne 2027.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un pilotage par secteur pourrait, selon ses défenseurs, limiter une concurrence perçue sur certains emplois peu qualifiés"], risques: ["Risque de pénurie de main-d'œuvre dans des secteurs en tension (bâtiment, restauration, aide à la personne) qui emploient une proportion importante de travailleurs immigrés, ce qui pourrait aussi peser sur les prix ou les délais dans ces secteurs"], angleMort: "Le mécanisme précis de fixation des quotas et leur niveau ne sont pas encore chiffrés publiquement." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet peu documenté pour cette catégorie, moins directement concernée par les métiers cités comme prioritaires dans la proposition." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: ["Risque indirect sur les métiers de l'aide à domicile si les quotas se révèlent trop restrictifs pour ce secteur, où la main-d'œuvre immigrée est significative"], angleMort: "Aucune étude chiffrée publique sur l'effet des quotas envisagés sur le secteur de l'aide à la personne." },
         },
       },
     ],
@@ -249,6 +297,22 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: ["Les dépenses de retraite représentant une part importante de la dépense publique, un objectif de maîtrise budgétaire pourrait à terme les concerner sans que cela soit précisé"], angleMort: "Aucune mesure retraite chiffrée n'est associée publiquement à cet objectif à ce stade." },
         },
       },
+      {
+        id: "ep-reindustrialisation",
+        theme: "Souveraineté et industrie",
+        titre: "Réindustrialiser en misant sur la compétitivité : dette, formation, infrastructures",
+        resumeOfficiel:
+          "Lors du premier débat de la présidentielle organisé par le Medef (27 août 2026), a défendu que la réindustrialisation passe avant tout par la compétitivité : traiter la question de la dette, investir dans la formation et l'apprentissage, et développer les infrastructures. Propose par ailleurs une baisse de 50 milliards d'euros des impôts de production et la fin de la surtaxe sur les grandes holdings.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/dette-publique-retraites-reindustrialisation-ce-qu-il-faut-retenir-du-premier-debat-des-principaux-candidats-a-la-presidentielle_8165342.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Propos tenus publiquement lors du débat Medef du 27 août 2026, rapportés par franceinfo et Le JDD.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un plan de formation et d'apprentissage pourrait, selon ses défenseurs, améliorer l'accès à l'emploi industriel qualifié"], risques: ["La baisse d'impôts de production n'est pas assortie d'une contrepartie chiffrée publique en matière d'embauches ou de salaires"], angleMort: "Aucun chiffrage indépendant public ne permet d'établir si la baisse d'impôts se traduit par des emplois ou des salaires pour cette catégorie, plutôt que par des marges ou des dividendes." },
+          moyennes: { score: 0, avantages: ["Effet potentiel positif si la réindustrialisation crée des emplois qualifiés dans les territoires concernés"], risques: [], angleMort: "Le calendrier et la localisation des créations d'emplois industrielles ne sont pas précisés publiquement." },
+          aisees: { score: 1, avantages: ["Bénéfice direct de la suppression de la surtaxe sur les grandes holdings et de la baisse des impôts de production, qui profitent en premier lieu aux détenteurs de capital et aux grandes entreprises"], risques: [], angleMort: "Le chiffrage précis du gain pour les actionnaires et grandes entreprises, par rapport au coût pour les finances publiques, n'est pas public." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur la fiscalité des entreprises et l'investissement industriel, sans lien direct avec cette catégorie identifié publiquement." },
+        },
+      },
     ],
   },
 
@@ -274,6 +338,22 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct pour cette catégorie, non bénéficiaire du RSA dans son ensemble." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien avec cette catégorie." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct ; ne concerne pas les retraités, mais peut concerner des inactifs non retraités selon la catégorie retenue par le comparateur." },
+        },
+      },
+      {
+        id: "br-retention",
+        theme: "Sécurité et justice",
+        titre: "Allonger la durée de rétention administrative des étrangers jugés dangereux",
+        resumeOfficiel:
+          "En tant que ministre de l'Intérieur, a porté un texte allongeant la rétention administrative des étrangers en situation irrégulière jugés dangereux ; après une censure du Conseil constitutionnel, a annoncé la présentation d'un texte modifié reprenant cet objectif.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/retention-des-etrangers-dangereux-retailleau-promet-un-texte-modifie-apres-la-censure-du-conseil-constitutionnel-160881",
+        niveauConfiance: "confirme",
+        noteConfiance: "Rapporté par Le JDD ; s'inscrit dans la ligne sécuritaire documentée de Bruno Retailleau comme ministre de l'Intérieur, reprise dans sa campagne.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Objectif affiché de sécurité publique, argument parfois avancé comme bénéficiant en priorité aux quartiers où la délinquance liée à des étrangers en situation irrégulière jugés dangereux serait perçue comme plus présente"], risques: ["Risque, selon des associations de défense des droits, d'atteinte aux libertés individuelles et de rétention prolongée de personnes non encore jugées"], angleMort: "Aucune donnée chiffrée publique ne permet d'établir un effet différencié de cette mesure selon la catégorie socio-économique ; son objet est la sécurité publique, pas une politique économique." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique direct documenté par catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique direct documenté par catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique direct documenté par catégorie." },
         },
       },
     ],
@@ -309,14 +389,30 @@ const CANDIDATS = [
         titre: "Suppression de l'IFI et création d'un impôt sur la fortune financière (IFF)",
         resumeOfficiel:
           "Le Rassemblement national propose de remplacer l'impôt sur la fortune immobilière par un impôt ciblant les actifs financiers, présenté par le parti comme visant la « spéculation » plutôt que la détention d'un bien immobilier.",
-        sourceOfficielle: "https://votons-2027.fr/candidats/le-pen/programme",
+        sourceOfficielle: "https://www.franceinfo.fr/replay-radio/l-edito-politique/taxation-des-ultra-riches-le-grand-ecart-du-rn_7472092.html",
         niveauConfiance: "confirme",
-        noteConfiance: "Proposition distinctive et récurrente du RN documentée sur plusieurs campagnes (dont 2022) ; barème précis de l'IFF non retrouvé dans une source de premier rang pour 2027.",
+        noteConfiance: "Proposition distinctive et récurrente du RN documentée sur plusieurs campagnes (dont 2022), analysée par franceinfo ; barème précis de l'IFF non retrouvé dans une source de premier rang pour 2027.",
         impactParClasse: {
           populaires: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct, cette catégorie n'étant concernée ni par l'IFI ni par l'IFF envisagé." },
           moyennes: { score: 0, avantages: ["Non concernées par les seuils habituels de ce type d'impôt"], risques: [], angleMort: "Seuil exact de l'IFF non publié, ce qui empêche de vérifier l'absence totale d'effet pour le haut de cette catégorie." },
           aisees: { score: 0, avantages: ["Allègement pour les détenteurs de patrimoine immobilier important (suppression de l'IFI)"], risques: ["Une partie de cette catégorie, si elle détient un patrimoine financier important, pourrait être visée par le nouvel IFF sans que le barème soit public"], angleMort: "Le rendement budgétaire comparé de l'IFI supprimé et de l'IFF créé n'est pas chiffré publiquement, rendant l'effet net incertain même pour cette catégorie." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Effet marginal, sauf pour une minorité de retraités à patrimoine financier important, non quantifié." },
+        },
+      },
+      {
+        id: "mlp-immigration",
+        theme: "Immigration et intégration",
+        titre: "Référendum sur l'immigration pour inscrire la « priorité nationale » et supprimer le droit du sol",
+        resumeOfficiel:
+          "Si elle est élue, la première décision annoncée serait l'organisation d'un référendum sur l'immigration, visant à inscrire dans la Constitution une « priorité nationale » pour l'accès à l'emploi et au logement, et à supprimer le droit du sol.",
+        sourceOfficielle: "https://www.franceinfo.fr/politique/marine-le-pen/video-si-elle-etait-elue-presidente-de-la-republique-la-premiere-decision-de-marine-le-pen-serait-l-organisation-d-un-referendum-sur-l-immigration_4344025.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position historique du RN documentée sur plusieurs campagnes ; franceinfo rapporte cette annonce comme sa « première décision » en cas d'élection.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Objectif affiché de réduire la concurrence pour l'accès à l'emploi et au logement social, secteurs où cette catégorie est proportionnellement plus présente"], risques: ["Risque de pénurie de main-d'œuvre dans certains secteurs déjà en tension (bâtiment, aide à la personne, agriculture) et employant une proportion importante de travailleurs immigrés, selon plusieurs études économiques"], angleMort: "Aucun chiffrage indépendant public de l'effet net sur l'emploi ou les salaires des catégories populaires ; la mesure nécessiterait une révision constitutionnelle dont l'issue n'est pas garantie." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet moins documenté pour cette catégorie, moins directement concernée par l'accès prioritaire à l'emploi non qualifié ou au logement social." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: ["Risque indirect de tension sur les métiers de l'aide à domicile et du soin aux personnes âgées, secteurs qui emploient une proportion significative de travailleurs immigrés"], angleMort: "Aucune étude chiffrée publique ne permet d'établir l'ampleur de cet effet pour les retraités dépendants de ces services." },
         },
       },
     ],
