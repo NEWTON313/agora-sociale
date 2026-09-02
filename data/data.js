@@ -1,5 +1,5 @@
 /**
- * L'AGORA SOCIALE — Jeu de données RÉEL (présidentielle 2027)
+ * MON CHOIX 2027 — Jeu de données RÉEL (présidentielle 2027)
  * ===========================================================
  * ⚠️ AVERTISSEMENT MÉTHODOLOGIQUE IMPORTANT
  *

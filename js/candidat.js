@@ -1,5 +1,5 @@
 /**
- * L'AGORA SOCIALE — Fiche candidat dynamique
+ * MON CHOIX 2027 — Fiche candidat dynamique
  * Lit le paramètre ?c=<id> et affiche toutes les mesures connues
  * pour ce candidat, avec l'analyse croisée par classe sociale.
  */
@@ -74,7 +74,7 @@
   }
 
   function renderFiche(candidat) {
-    document.title = `${candidat.nom} — L'Agora Sociale`;
+    document.title = `${candidat.nom} — Mon Choix 2027`;
     root.innerHTML = `
       <div class="fiche-header">
         <div>

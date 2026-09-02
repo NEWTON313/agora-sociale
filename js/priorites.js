@@ -1,5 +1,5 @@
 /**
- * L'AGORA SOCIALE — "Mes priorités" : score personnalisé pondéré (logique pure, testable)
+ * MON CHOIX 2027 — "Mes priorités" : score personnalisé pondéré (logique pure, testable)
  * Miroir de lib/priorites.ts (version Next.js). Ne réordonne jamais l'affichage par défaut
  * des candidats (voir méthodologie, garde-fous de neutralité) : c'est une vue optionnelle
  * en plus, pas un verdict.

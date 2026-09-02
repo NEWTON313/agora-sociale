@@ -1,5 +1,5 @@
 /**
- * L'AGORA SOCIALE — Simulateur de classement socio-économique
+ * MON CHOIX 2027 — Simulateur de classement socio-économique
  * ---------------------------------------------------------------
  * MÉTHODE : reproduit la notion INSEE de "niveau de vie" = revenu
  * disponible du ménage / nombre d'unités de consommation (UC).

@@ -1,5 +1,5 @@
 /**
- * L'AGORA SOCIALE — Rendu du formulaire et du résultat du simulateur
+ * MON CHOIX 2027 — Rendu du formulaire et du résultat du simulateur
  */
 
 (function () {

@@ -1,5 +1,5 @@
 /**
- * L'AGORA SOCIALE — Comparateur interactif
+ * MON CHOIX 2027 — Comparateur interactif
  * Aucune dépendance de build : vanilla JS, pensé pour un déploiement
  * statique immédiat (GitHub Pages, Netlify, etc.).
  */

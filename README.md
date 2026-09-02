@@ -1,4 +1,4 @@
-# L'Agora Sociale
+# Mon Choix 2027
 
 Outil citoyen, open source et non partisan pour comparer l'impact des programmes
 présidentiels sur quatre grandes catégories socio-économiques.
@@ -90,7 +90,7 @@ npx serve agora-sociale
 cd agora-sociale
 git init
 git add .
-git commit -m "Premier commit : L'Agora Sociale (prototype statique)"
+git commit -m "Premier commit : Mon Choix 2027 (prototype statique)"
 git branch -M main
 
 # Crée d'abord un dépôt vide sur https://github.com/new (nom suggéré : agora-sociale)
