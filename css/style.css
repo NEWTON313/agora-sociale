@@ -155,7 +155,7 @@ a {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-.logo { color: var(--accent-bleu); }
+.logo { color: var(--accent-bleu); text-decoration: none; }
 .logo span { color: var(--ink-faint); font-weight: 400; }
 
 .site-header__meta {
@@ -531,41 +531,52 @@ nav.site-nav a.active { color: var(--accent-bleu); border-bottom-color: var(--ac
 .priorites-panel__list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .priorites-panel__row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(150px, 230px) 1fr;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px dashed var(--line);
 }
-.priorites-panel__row > span { font-size: 0.9rem; }
+.priorites-panel__row:last-child { border-bottom: none; padding-bottom: 4px; }
+.priorites-panel__row > span { font-size: 0.9rem; font-weight: 500; }
+
+/* Contrôle segmenté : les 4 niveaux forment un seul bloc à bordure partagée,
+   plutôt que 4 boutons séparés — plus net, toujours le même gabarit quelle
+   que soit la longueur du nom du thème. */
 .priorites-panel__niveaux {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.priorites-panel__niveau {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 6px 10px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
+  overflow: hidden;
   background: var(--paper);
+}
+.priorites-panel__niveau {
+  flex: 1;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 9px 6px;
+  border: none;
+  border-right: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink-soft);
   cursor: pointer;
-  transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
 }
-.priorites-panel__niveau:hover { border-color: var(--accent-bleu); }
+.priorites-panel__niveau:last-child { border-right: none; }
+.priorites-panel__niveau:hover { background: var(--accent-bleu-soft); color: var(--paper-raised); }
 .priorites-panel__niveau.active {
   background: var(--accent-bleu);
   color: var(--paper-raised);
-  border-color: var(--accent-bleu);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--accent-bleu);
 }
 .priorites-panel__tri {
   display: flex;
@@ -924,9 +935,11 @@ nav.site-nav a.active { color: var(--accent-bleu); border-bottom-color: var(--ac
   nav.site-nav { flex-wrap: nowrap; overflow-x: auto; gap: 18px; -webkit-overflow-scrolling: touch; padding-bottom: 12px; }
   nav.site-nav a { white-space: nowrap; }
   nav.site-nav::-webkit-scrollbar { display: none; }
-  .priorites-panel__row { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .priorites-panel__niveaux { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 6px; }
-  .priorites-panel__niveau { text-align: center; padding: 9px 4px; }
+  .priorites-panel__row { grid-template-columns: 1fr; gap: 8px; padding: 12px 0; }
+  .priorites-panel__niveaux { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; border: none; background: none; }
+  .priorites-panel__niveau { text-align: center; padding: 9px 4px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--paper); }
+  .priorites-panel__niveau:last-child { border-right: 1px solid var(--line-strong); }
+  .priorites-panel__niveau.active { box-shadow: none; }
 }
 
 @media (max-width: 560px) {
