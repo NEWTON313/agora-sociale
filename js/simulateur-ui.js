@@ -146,6 +146,12 @@
     return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n) + " €";
   }
 
+  function decrirePosition(percentile) {
+    if (percentile === 50) return "à la médiane exacte du niveau de vie";
+    if (percentile > 50) return `parmi les ${100 - percentile} % les plus aisés`;
+    return `parmi les ${percentile} % les plus modestes`;
+  }
+
   function classeInfo(id) {
     return CLASSES_SOCIALES.find((c) => c.id === id);
   }
@@ -244,7 +250,7 @@
 
         <dl class="resultat__chiffres">
           <div><dt>Niveau de vie estimé</dt><dd>${euros(r.niveauDeVie)} / an / UC</dd></div>
-          <div><dt>Position dans la population</dt><dd>environ le ${r.percentile}ᵉ percentile</dd></div>
+          <div><dt>Position dans la population</dt><dd>${decrirePosition(r.percentile)}</dd></div>
           <div><dt>Unités de consommation du foyer</dt><dd>${r.uc}</dd></div>
         </dl>
 
