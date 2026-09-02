@@ -37,6 +37,13 @@
   --impact-negatif: #8f382f;
   --impact-neutre:  #7a8090;
 
+  /* --- Accent discret (bleu-blanc-rouge désaturés, jamais le drapeau ---
+     littéral) : touche de couleur nationale sur les éléments interactifs,
+     séparée du bandeau spectre (signature des 4 classes sociales). --- */
+  --accent-bleu: #1e3a5f;
+  --accent-bleu-soft: #395670;
+  --accent-rouge: #8a2f35;
+
   /* --- Typographie --- */
   --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
   --font-body: "Source Serif 4", Georgia, serif;
@@ -130,7 +137,7 @@ a {
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(10px) saturate(1.4);
   -webkit-backdrop-filter: blur(10px) saturate(1.4);
-  box-shadow: 0 1px 0 var(--ink), var(--shadow-xs);
+  box-shadow: 0 1px 0 var(--accent-bleu), var(--shadow-sm);
 }
 
 .site-header__row {
@@ -148,6 +155,7 @@ a {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
+.logo { color: var(--accent-bleu); }
 .logo span { color: var(--ink-faint); font-weight: 400; }
 
 .site-header__meta {
@@ -173,8 +181,8 @@ nav.site-nav a {
   padding-bottom: 4px;
   color: var(--ink-soft);
 }
-nav.site-nav a:hover { color: var(--ink); border-bottom-color: var(--line-strong); }
-nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
+nav.site-nav a:hover { color: var(--accent-bleu); border-bottom-color: var(--accent-bleu-soft); }
+nav.site-nav a.active { color: var(--accent-bleu); border-bottom-color: var(--accent-bleu); font-weight: 500; }
 
 /* ---------- Hero ---------- */
 
@@ -205,8 +213,9 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   content: "";
   display: inline-block;
   width: 20px;
-  height: 1px;
-  background: var(--line-strong);
+  height: 2px;
+  background: var(--accent-rouge);
+  opacity: 0.55;
 }
 .hero h1 {
   font-size: clamp(2.1rem, 4.4vw, 3.4rem);
@@ -379,8 +388,8 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   border-radius: var(--radius);
   transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
-.select-mesure:hover { border-color: var(--ink-soft); }
-.select-mesure:focus-visible { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(16, 19, 26, 0.08); }
+.select-mesure:hover { border-color: var(--accent-bleu-soft); }
+.select-mesure:focus-visible { border-color: var(--accent-bleu); box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12); }
 
 .cartes-candidats {
   display: grid;
@@ -402,7 +411,7 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
 .carte-candidat:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
-  border-color: var(--line-strong);
+  border-color: var(--accent-bleu-soft);
 }
 .carte-candidat__nom {
   font-family: var(--font-display);
@@ -464,10 +473,23 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   gap: 13px;
 }
 
-#btn-mes-priorites.active {
-  background: var(--ink);
+.btn-toggle {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 8px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.btn-toggle:hover { border-color: var(--accent-bleu-soft); color: var(--accent-bleu); }
+.btn-toggle.active {
+  background: var(--accent-bleu);
   color: var(--paper-raised);
-  border-color: var(--ink);
+  border-color: var(--accent-bleu);
 }
 
 .priorites-panel__card {
@@ -500,7 +522,7 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   border: none;
   cursor: pointer;
 }
-.priorites-panel__reset:hover { color: var(--ink); }
+.priorites-panel__reset:hover { color: var(--accent-rouge); }
 .priorites-panel__intro {
   font-size: 0.85rem;
   color: var(--ink-soft);
@@ -539,11 +561,11 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   cursor: pointer;
   transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
 }
-.priorites-panel__niveau:hover { border-color: var(--ink); }
+.priorites-panel__niveau:hover { border-color: var(--accent-bleu); }
 .priorites-panel__niveau.active {
-  background: var(--ink);
+  background: var(--accent-bleu);
   color: var(--paper-raised);
-  border-color: var(--ink);
+  border-color: var(--accent-bleu);
 }
 .priorites-panel__tri {
   display: flex;
@@ -885,7 +907,7 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
 /* ---------- Accessibilité ---------- */
 
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--accent-bleu);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -899,4 +921,21 @@ nav.site-nav a.active { color: var(--ink); border-bottom-color: var(--ink); font
   .classe-rail { position: static; display: flex; overflow-x: auto; border-radius: var(--radius); }
   .classe-item { flex: 0 0 auto; min-width: 150px; border-bottom: none; border-right: 1px solid var(--line); }
   .site-header { position: static; }
+  nav.site-nav { flex-wrap: nowrap; overflow-x: auto; gap: 18px; -webkit-overflow-scrolling: touch; padding-bottom: 12px; }
+  nav.site-nav a { white-space: nowrap; }
+  nav.site-nav::-webkit-scrollbar { display: none; }
+  .priorites-panel__row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .priorites-panel__niveaux { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 6px; }
+  .priorites-panel__niveau { text-align: center; padding: 9px 4px; }
+}
+
+@media (max-width: 560px) {
+  .site-header__meta { display: none; }
+  .container { padding: 0 16px; }
+  .hero { padding: 44px 0 36px; }
+  .hero h1 { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+  .comparateur-header { flex-direction: column; align-items: flex-start; }
+  .comparateur-header > div { width: 100%; }
+  .select-mesure { flex: 1; min-width: 0; }
+  .carte-candidat { padding: 17px; }
 }
