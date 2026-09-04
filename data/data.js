@@ -3,11 +3,13 @@
  * ===========================================================
  * ⚠️ AVERTISSEMENT MÉTHODOLOGIQUE IMPORTANT
  *
- * 1. AUCUNE LISTE OFFICIELLE DE CANDIDATS N'EXISTE À CE JOUR (28/08/2026).
+ * 1. AUCUNE LISTE OFFICIELLE DE CANDIDATS N'EXISTE À CE JOUR (04/09/2026).
  *    Les parrainages ne seront validés par le Conseil constitutionnel
- *    qu'au plus tard le 12 mars 2027. La primaire du Parti socialiste
- *    se tient les 11 et 18 octobre 2026. La situation d'un candidat
- *    (Marine Le Pen) dépend d'un pourvoi en cassation en cours.
+ *    qu'au plus tard le 12 mars 2027. La primaire de la gauche socialiste
+ *    et démocratique (PS/Place publique) est prévue en deux tours les
+ *    9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. La situation
+ *    d'un candidat (Marine Le Pen) dépend de l'issue de son pourvoi en
+ *    cassation, actuellement en cours.
  *    Ne sont retenus ici QUE des candidats ayant OFFICIELLEMENT
  *    déclaré leur candidature à la date de rédaction.
  *
@@ -29,16 +31,16 @@
  *    que remplie par une extrapolation.
  *
  * 3. Cette liste est PARTIELLE et NON REPRÉSENTATIVE de l'ensemble du
- *    champ politique : la gauche modérée (primaire PS non tenue) et les
- *    écologistes ne sont pas encore inclus faute de candidat officialisé
- *    au moment de la rédaction. À compléter au fil des annonces.
+ *    champ politique : la gauche modérée (primaire PS non tenue) n'est
+ *    pas encore incluse faute de candidat officialisé au moment de la
+ *    rédaction. À compléter au fil des annonces.
  *
  * 4. Les scores d'impact par classe (impactParClasse) restent, comme
  *    précisé dans methodologie.html, une ANALYSE ÉDITORIALE du site
  *    fondée sur des critères économiques déclarés à l'avance — ce ne
  *    sont pas des citations des candidats eux-mêmes.
  *
- * Dernière mise à jour : 28 août 2026. À réviser dès qu'un programme
+ * Dernière mise à jour : 4 septembre 2026. À réviser dès qu'un programme
  * officiel complet est publié ou qu'une candidature change de statut.
  * ===========================================================
  */
@@ -88,20 +90,17 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-02",
+  dateMaj: "2026-09-04",
   texte:
-    "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire du Parti socialiste (11-18/10/2026) n'a pas eu lieu ; les écologistes n'ont pas encore de candidat déclaré. La candidature de Marine Le Pen dépend d'un pourvoi en cassation en cours. Chaque mesure indique sa source et son niveau de confiance.",
+    "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
-// Remapping vers la taxonomie à 9 thèmes (2026-08-29) : les 9 mesures existantes ont été
-// écrites sous l'ancienne taxonomie à 4 thèmes et sont réparties ici sur leur thème le plus
-// proche. Deux choix sont discutables et à revoir lors d'une prochaine relecture éditoriale :
-// `br-rsa` (RSA/emploi) est classée en "Pouvoir d'achat et économie" plutôt que "Retraites et
-// modèle social", et `ep-regle-or` (règle d'or budgétaire, à valeur quasi institutionnelle)
-// y est classée plutôt qu'en "Institutions et démocratie", car leur contenu chiffré reste
-// avant tout économique/budgétaire. Les 6 autres thèmes (immigration, sécurité, écologie,
-// souveraineté, institutions, Europe) n'ont aujourd'hui aucune mesure sourcée : case vide
-// assumée plutôt qu'invention de contenu (voir méthodologie).
+// Remapping vers la taxonomie à 9 thèmes (2026-08-29) : `br-rsa` (RSA/emploi) est classée en
+// "Pouvoir d'achat et économie" plutôt que "Retraites et modèle social", et `ep-regle-or`
+// (règle d'or budgétaire, à valeur quasi institutionnelle) y est classée plutôt qu'en
+// "Institutions et démocratie", car leur contenu chiffré reste avant tout économique/budgétaire.
+// Le thème "Europe et géopolitique" n'a à ce jour aucune mesure sourcée pour aucun candidat :
+// case vide assumée plutôt qu'invention de contenu (voir méthodologie).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -195,6 +194,78 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
         },
       },
+      {
+        id: "jlm-ecoregions",
+        theme: "Écologie et énergie",
+        titre: "Remplacer les régions par 13 « écorégions » organisées autour des bassins hydrographiques",
+        resumeOfficiel:
+          "La France insoumise propose de remplacer les régions actuelles par treize « écorégions » organisées autour des bassins hydrographiques, compétentes sur l'eau, l'air, le littoral, les forêts, la fertilité des sols, la mobilité, l'économie circulaire et la santé environnementale, avec un pouvoir réglementaire possible dans ces domaines. Les contours précis et les compétences définitives faisaient encore l'objet de travaux d'expertise à l'été 2026.",
+        sourceOfficielle: "https://www.franceinfo.fr/environnement/actions-ecologiques/jean-luc-melenchon-et-lfi-veulent-restructurer-les-regions-autour-des-fleuves-pour-quoi-faire-et-pourquoi-ce-n-est-pas-si-simple_8083088.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Projet détaillé publiquement par les député·es porteurs du dossier et rapporté par franceinfo, Le JDD et France 24 ; les contours exacts (limites, compétences, calendrier) restent en cours d'expertise à l'été 2026, sans texte définitif publié — d'où un niveau de confiance « annonce » malgré une intention déjà bien documentée.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Une politique de l'eau et de prévention des risques mieux articulée à l'échelle des bassins versants pourrait, selon ses défenseurs, mieux protéger les zones inondables ou en tension hydrique, où vivent aussi des ménages modestes"],
+            risques: ["Une réorganisation territoriale de cette ampleur comporte un risque de complexité administrative et de coût de transition, dont l'effet sur les services publics locaux n'est pas chiffré"],
+            angleMort: "Le projet n'est pas encore stabilisé publiquement ; aucun chiffrage du coût de la réforme ni de ses effets sur l'emploi public territorial n'est disponible.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: ["Incertitude sur l'avenir des compétences économiques régionales actuelles (formation professionnelle, développement économique) dans la nouvelle organisation"],
+            angleMort: "Le sort des compétences régionales non environnementales dans les futures écorégions n'est pas précisé publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique différencié identifiable à ce stade pour cette catégorie, faute de texte stabilisé.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure de réorganisation territoriale sans lien direct identifié avec cette catégorie à ce stade du projet.",
+          },
+        },
+      },
+      {
+        id: "jlm-conscription-ecologique",
+        theme: "Écologie et énergie",
+        titre: "Créer une « conscription écologique » pour renforcer la sécurité civile face aux crises climatiques",
+        resumeOfficiel:
+          "Jean-Luc Mélenchon propose une « conscription écologique » : constituer, via un service obligatoire, une réserve citoyenne mobilisable pour renforcer la sécurité civile face aux crises climatiques (incendies notamment), en reprenant et adaptant sa proposition de 2022 d'une conscription citoyenne de neuf mois rémunérée au Smic.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/quest-ce-que-la-conscription-ecologique-que-veut-instaurer-jean-luc-melenchon-181641",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition détaillée par le candidat le 23 août 2026 et rapportée par Le JDD et France 24, en filiation directe avec sa proposition chiffrée de 2022 (neuf mois, rémunération au Smic).",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Une conscription rémunérée au Smic, sur le modèle de la proposition 2022, constituerait un revenu et une expérience professionnelle pour des jeunes de cette catégorie, souvent plus exposés au chômage des jeunes"],
+            risques: ["Caractère obligatoire pouvant être vécu comme une contrainte, notamment pour les jeunes déjà entrés dans la vie active"],
+            angleMort: "Le niveau de rémunération et la durée définitifs pour la version 2027 de la mesure ne sont pas encore chiffrés publiquement, seule la version 2022 l'était.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: ["Interruption potentielle d'études ou de début de carrière pour les jeunes de cette catégorie"],
+            angleMort: "Modalités d'articulation avec les études supérieures non précisées publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Effet non différencié documenté publiquement pour cette catégorie.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Bénéfice indirect possible d'une meilleure réponse aux crises climatiques (feux de forêt) pouvant affecter des zones où résident des retraités"],
+            risques: [],
+            angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect.",
+          },
+        },
+      },
     ],
   },
 
@@ -227,15 +298,31 @@ const CANDIDATS = [
         theme: "Pouvoir d'achat et économie",
         titre: "Réduire l'écart entre salaire brut et salaire net",
         resumeOfficiel:
-          "Annoncé comme l'un des quatre « chantiers capitaux » de la campagne (avec l'école, les frontières et l'intelligence artificielle) : le candidat souhaite augmenter le salaire net à coût du travail constant pour l'employeur, sans que le mécanisme précis (baisse de cotisations, autre levier) soit encore détaillé.",
-        sourceOfficielle: "https://actu.orange.fr/politique/presidentielle-2027-gabriel-attal-revele-les-premieres-lignes-de-son-programme-magic-CNT000002pzsbo.html",
-        niveauConfiance: "annonce",
-        noteConfiance: "Priorité confirmée par plusieurs médias (Le Parisien, LCP, Orange Actu), mais mécanisme de mise en œuvre non encore publié.",
+          "Annoncé comme l'un des quatre « chantiers capitaux » de la campagne (avec l'école, les frontières et l'intelligence artificielle) : le candidat veut rapprocher le salaire net du salaire brut en agissant sur les cotisations vieillesse, via des économies sur les dépenses sociales et une réforme de l'assurance-chômage. Il chiffre le gain à environ 250 euros nets de plus par mois pour un salaire médian, pour un coût estimé à 40 milliards d'euros.",
+        sourceOfficielle: "https://www.franceinfo.fr/replay-jt/france-2/20-heures/rapprocher-le-salaire-net-du-brut-une-mesure-possible-ou-pas_8171264.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Mécanisme et chiffrage (250 € nets, coût de 40 milliards d'euros, cotisations vieillesse) précisés par le candidat et rapportés par France Télévisions/franceinfo : la mesure passe du statut d'annonce à celui de proposition chiffrée et documentée.",
         impactParClasse: {
-          populaires: { score: 1, avantages: ["Une hausse du net à brut constant profiterait proportionnellement plus aux bas salaires si elle passe par une baisse de cotisations salariales"], risques: ["Si la mesure passe par une baisse des cotisations sociales, la question du financement de la Sécurité sociale reste ouverte"], angleMort: "Aucun mécanisme précis rendu public : impossible d'évaluer l'ampleur réelle du gain à ce stade." },
-          moyennes: { score: 1, avantages: ["Gain de pouvoir d'achat potentiel si la mesure s'applique à l'ensemble des salariés"], risques: [], angleMort: "Seuil de salaire concerné (s'il y en a un) non communiqué." },
-          aisees: { score: 0, avantages: [], risques: [], angleMort: "Effet sur les hauts salaires non précisé." },
-          retraites: { score: 0, avantages: [], risques: ["Mesure centrée sur les actifs ; aucune mesure miroir annoncée pour les pensions à ce stade"], angleMort: "Le programme ne traite pas explicitement du pouvoir d'achat des retraités dans cette annonce." },
+          populaires: { score: 0, avantages: ["Gain de pouvoir d'achat direct de l'ordre de 250 € nets par mois pour un salaire médian"], risques: ["Le financement repose sur des économies sur les dépenses sociales, dont cette catégorie est statistiquement plus dépendante"], angleMort: "La répartition précise des 40 milliards d'économies entre postes de dépense sociale n'est pas publiée." },
+          moyennes: { score: 1, avantages: ["Gain net chiffré pour les salaires proches de la médiane"], risques: [], angleMort: "Effet pour les salaires nettement au-dessus ou en-dessous de la médiane non chiffré spécifiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Le mécanisme cible le salaire médian ; son effet sur les hauts salaires n'est pas précisé publiquement." },
+          retraites: { score: -1, avantages: [], risques: ["Le levier identifié par le candidat porte explicitement sur les cotisations vieillesse, ce qui interroge sur le financement futur des pensions"], angleMort: "Aucun chiffrage indépendant public de l'effet de la mesure sur l'équilibre financier du système de retraite par répartition." },
+        },
+      },
+      {
+        id: "ga-monoparentales",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Défiscaliser les pensions alimentaires perçues par les familles monoparentales",
+        resumeOfficiel:
+          "Gabriel Attal promet, s'il est élu, de rendre non imposables les pensions alimentaires perçues par le parent qui les reçoit (majoritairement des mères), une mesure qu'il chiffre lui-même à environ un milliard d'euros, accompagnée d'un « droit au répit » (garde d'enfants en soirée, week-end ou urgence) et d'une carte famille monoparentale ouvrant des réductions.",
+        sourceOfficielle: "https://lcp.fr/actualites/presidentielle-2027-comment-gabriel-attal-veut-soutenir-les-familles-monoparentales-s-il",
+        niveauConfiance: "confirme",
+        noteConfiance: "Rapporté par LCP (chaîne de l'Assemblée nationale) ; coût chiffré à environ un milliard d'euros par le candidat lui-même.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["La défiscalisation profite proportionnellement plus aux familles monoparentales à revenus modestes, où le poids relatif de l'impôt sur la pension alimentaire est plus élevé"], risques: [], angleMort: "Le financement du milliard d'euros annoncé n'est pas détaillé publiquement." },
+          moyennes: { score: 1, avantages: ["Gain net d'impôt pour les familles monoparentales de cette catégorie également concernées"], risques: [], angleMort: "Aucun plafond n'est mentionné publiquement par le candidat, à la différence d'un amendement parlementaire distinct sur le même sujet qui en prévoyait un." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure moins pertinente pour cette catégorie, où le poids de la pension alimentaire dans le revenu total est structurellement plus faible." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
         },
       },
       {
@@ -313,6 +400,22 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur la fiscalité des entreprises et l'investissement industriel, sans lien direct avec cette catégorie identifié publiquement." },
         },
       },
+      {
+        id: "ep-enseignants",
+        theme: "Services publics",
+        titre: "Augmenter de 20 % la rémunération moyenne des enseignants sur le quinquennat",
+        resumeOfficiel:
+          "Édouard Philippe propose d'augmenter de 20 % la rémunération moyenne des enseignants sur le quinquennat, pour la porter « au moins au niveau de la moyenne européenne », notamment en milieu de carrière, un financement présenté par le candidat comme rendu possible par la baisse démographique du nombre d'élèves (près d'un million d'élèves en moins).",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/presidentielle-2027-le-candidat-horizons-edouard-philippe-veut-augmenter-de-20-la-remuneration-moyenne-des-enseignants-sur-un-quinquennat_8159927.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Chiffrage (20 % sur un quinquennat) et financement (baisse démographique des effectifs scolaires) précisés par le candidat dans un entretien, rapportés par franceinfo et Le JDD.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Une revalorisation des enseignants peut, selon ses défenseurs, améliorer l'attractivité du métier et la qualité de l'encadrement dans les établissements les plus en difficulté, plus fréquentés par cette catégorie"], risques: [], angleMort: "Le candidat ne précise pas de ciblage spécifique vers les établissements défavorisés au sein de cette hausse générale." },
+          moyennes: { score: 0, avantages: ["Hausse générale bénéficiant à l'ensemble des enseignants, catégorie professionnelle elle-même largement issue des classes moyennes"], risques: [], angleMort: "Calendrier précis de mise en œuvre sur le quinquennat non détaillé." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur la rémunération des enseignants du public, sans effet direct documenté sur cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: ["Le financement reposant sur la baisse du nombre d'élèves plutôt que sur une ressource nouvelle, un doute subsiste sur sa soutenabilité si la mesure devait finalement peser sur la dépense publique globale, dont les pensions font partie"], angleMort: "Aucun chiffrage indépendant public du financement exact ne permet d'évaluer l'effet sur les autres postes de dépense publique." },
+        },
+      },
     ],
   },
 
@@ -354,6 +457,78 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique direct documenté par catégorie." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique direct documenté par catégorie." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique direct documenté par catégorie." },
+        },
+      },
+      {
+        id: "br-retraites",
+        theme: "Retraites et modèle social",
+        titre: "Lier l'âge légal de départ à la retraite à l'espérance de vie, en assumant son report",
+        resumeOfficiel:
+          "Bruno Retailleau assume vouloir repousser l'âge légal de départ à la retraite, en proposant de le lier par une formule à l'évolution de l'espérance de vie, une position déjà défendue par Valérie Pécresse en 2022.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/retraites-contrairement-a-beaucoup-d-autres-j-assumerai-le-fait-de-repousser-l-age-legal-lance-bruno-retailleau-candidat-lr-a-l-election-presidentielle_8166161.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position affirmée publiquement et rapportée par franceinfo, comparée par LCP aux propositions des autres candidats sur le sujet ; la formule précise d'indexation sur l'espérance de vie n'est pas encore chiffrée publiquement.",
+        impactParClasse: {
+          populaires: {
+            score: -2,
+            avantages: [],
+            risques: ["Un report supplémentaire de l'âge légal pèse proportionnellement plus sur les carrières commencées tôt et les métiers pénibles, plus représentés dans cette catégorie"],
+            angleMort: "La formule exacte d'indexation sur l'espérance de vie et son calendrier d'application ne sont pas chiffrés publiquement.",
+          },
+          moyennes: {
+            score: -1,
+            avantages: [],
+            risques: ["Report de l'âge de départ pour les carrières standards"],
+            angleMort: "Effet différencié selon les métiers et la pénibilité non détaillé publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: ["Effet plus limité pour les carrières longues d'études supérieures, qui partent déjà statistiquement plus tard"],
+            angleMort: "Aucune donnée publique ne permet de chiffrer précisément l'effet différencié pour cette catégorie.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Objectif affiché de pérennité financière du système de retraite par répartition, dont dépendent les pensions déjà versées"],
+            risques: [],
+            angleMort: "Mesure concernant les futurs retraités plus que les pensions actuellement versées ; son effet sur l'équilibre financier global du système n'est pas chiffré publiquement.",
+          },
+        },
+      },
+      {
+        id: "br-revenu-familial",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Créer un « revenu familial » unique et prolonger le congé de naissance à six mois",
+        resumeOfficiel:
+          "Bruno Retailleau propose de créer un « revenu familial » unique, chiffré à 40,3 milliards d'euros et financé par la suppression de dispositifs existants (dont les allocations familiales, pour 41 milliards d'euros d'économies), ainsi que de prolonger le congé de naissance à six mois à 70 % du salaire (coût supplémentaire estimé à environ 700 millions d'euros), pour lutter contre l'« hiver démographique ».",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/presidentielle-2027-creation-d-un-revenu-familial-prolongation-du-conge-naissance-bruno-retailleau-promet-de-sortir-la-france-de-l-hiver-demographique_7973942.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Chiffrage précis (40,3 milliards, 41 milliards d'économies, 700 millions pour le congé de naissance) rapporté par franceinfo et Le JDD.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Un revenu familial unique pourrait simplifier l'accès aux aides pour les familles nombreuses ou modestes"],
+            risques: ["Le financement par suppression d'aides existantes (allocations familiales) fait craindre une perte pour certains foyers selon la nouvelle formule de calcul, non détaillée publiquement"],
+            angleMort: "Le barème précis du nouveau revenu familial par rapport aux allocations familiales actuelles n'est pas public, ce qui empêche de savoir qui gagne et qui perd au change.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Prolongation du congé de naissance à 70 % du salaire pendant six mois, contre deux mois actuellement"],
+            risques: ["Incertitude sur l'effet net du remplacement des allocations familiales actuelles par le nouveau dispositif pour cette catégorie"],
+            angleMort: "Effet d'un éventuel plafonnement du nouveau revenu familial selon le niveau de revenu non précisé.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: ["Les allocations familiales actuelles n'étant pas soumises à condition de ressources, une refonte pourrait introduire une dégressivité qui désavantagerait cette catégorie, sans confirmation publique"],
+            angleMort: "Absence de barème public empêchant de vérifier si le nouveau dispositif serait ou non soumis à condition de ressources.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur les familles avec enfants, sans effet direct identifié pour cette catégorie.",
+          },
         },
       },
     ],
@@ -413,6 +588,161 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet moins documenté pour cette catégorie, moins directement concernée par l'accès prioritaire à l'emploi non qualifié ou au logement social." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
           retraites: { score: 0, avantages: [], risques: ["Risque indirect de tension sur les métiers de l'aide à domicile et du soin aux personnes âgées, secteurs qui emploient une proportion significative de travailleurs immigrés"], angleMort: "Aucune étude chiffrée publique ne permet d'établir l'ampleur de cet effet pour les retraités dépendants de ces services." },
+        },
+      },
+    ],
+  },
+
+  // ============================================================
+  // MARINE TONDELIER — Les Écologistes
+  // ============================================================
+  {
+    id: "tondelier",
+    nom: "Marine Tondelier",
+    parti: "Les Écologistes",
+    mesures: [
+      {
+        id: "mt-smic",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Porter le Smic à 2 000 euros bruts",
+        resumeOfficiel:
+          "Lors du premier débat de la présidentielle organisé par le Medef (27 août 2026), Marine Tondelier a défendu de porter le Smic à 2 000 euros bruts, ainsi qu'un plan d'aide aux PME et petites entreprises, en affirmant que « le revenu des Français, c'est leur pouvoir d'achat » plutôt qu'un simple coût pour les entreprises.",
+        sourceOfficielle: "https://www.france24.com/fr/france/20260827-premier-d%C3%A9bat-de-la-pr%C3%A9sidentielle-2027-les-principales-propositions-des-candidats",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition chiffrée, formulée publiquement lors du débat Medef du 27 août 2026 et rapportée par France 24 et franceinfo.",
+        impactParClasse: {
+          populaires: {
+            score: 2,
+            avantages: ["Hausse directe du salaire minimum, bénéficiant en priorité aux salariés les moins rémunérés, très représentés dans cette catégorie"],
+            risques: ["Un Smic à 2 000 € bruts représente une hausse importante par rapport au Smic actuel (1 823 € bruts début 2026) ; un plan d'aide aux PME est annoncé en contrepartie mais son financement précis n'est pas chiffré publiquement"],
+            angleMort: "Aucun chiffrage indépendant public de l'effet net sur l'emploi peu qualifié dans les petites entreprises.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Effet d'entraînement possible sur les grilles salariales proches du Smic"],
+            risques: [],
+            angleMort: "Effet sur les salariés situés juste au-dessus du nouveau Smic (tassement des grilles) non chiffré publiquement.",
+          },
+          aisees: {
+            score: -1,
+            avantages: [],
+            risques: ["Pour les employeurs et actionnaires de PME, une hausse du coût du travail au niveau du Smic sans compensation intégrale pourrait peser sur les marges"],
+            angleMort: "Le contenu exact du « plan d'aide » aux PME censé compenser le surcoût n'est pas détaillé publiquement.",
+          },
+          retraites: {
+            score: 1,
+            avantages: ["Effet indirect positif pour les retraités les plus modestes si la hausse du Smic sert de référence à une revalorisation d'autres minima sociaux"],
+            risques: [],
+            angleMort: "Aucun lien mécanique automatique entre Smic et minimum vieillesse n'est établi publiquement dans cette proposition.",
+          },
+        },
+      },
+      {
+        id: "mt-enseignants",
+        theme: "Services publics",
+        titre: "Augmenter les salaires des enseignants de 15 % sur le quinquennat",
+        resumeOfficiel:
+          "Marine Tondelier propose une hausse des salaires des enseignants de 15 % sur le quinquennat, une mesure comparée par la presse à celles d'autres candidats sur ce sujet (Gabriel Attal, Édouard Philippe).",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/les-professeurs-courtises-par-les-candidats-a-la-presidentielle-2027-quelles-revalorisations-proposent-ils-avec-quels-financements_8161409.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Chiffre (15 % sur le quinquennat) rapporté par franceinfo dans un comparatif des propositions des candidats, mais sans détail public sur le financement propre à cette proposition, à la différence du chiffrage plus détaillé fourni par d'autres candidats sur le même sujet.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Une revalorisation générale peut, selon ses défenseurs, améliorer l'attractivité du métier dans les établissements les plus en difficulté"],
+            risques: [],
+            angleMort: "Absence de financement détaillé publiquement, à la différence d'autres candidats sur le même sujet.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Hausse bénéficiant à la profession enseignante, majoritairement issue de cette catégorie"],
+            risques: [],
+            angleMort: "Calendrier de mise en œuvre sur le quinquennat non précisé.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure sans effet direct documenté pour cette catégorie.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure sans effet direct documenté pour cette catégorie.",
+          },
+        },
+      },
+      {
+        id: "mt-sante-environnementale",
+        theme: "Écologie et énergie",
+        titre: "Sortir des pesticides de synthèse d'ici 2050 et interdire les aliments ultratransformés dans les cantines",
+        resumeOfficiel:
+          "Marine Tondelier propose un « pacte agricole » planifiant la sortie progressive des pesticides de synthèse et des engrais azotés d'ici 2050 avec un fonds de transition vers l'agroécologie, l'interdiction des aliments ultratransformés dans les cantines scolaires, la restriction de la publicité télévisée pour les produits trop sucrés ou salés avant 21h, et l'interdiction des perturbateurs endocriniens et substances cancérogènes, mutagènes ou toxiques pour la reproduction (dont les PFAS) dans les produits du quotidien.",
+        sourceOfficielle: "https://www.france24.com/fr/info-en-continu/20260530-pr%C3%A9sidentielle-tondelier-d%C3%A9voile-ses-mesures-pour-la-sant%C3%A9-environnementale",
+        niveauConfiance: "confirme",
+        noteConfiance: "Mesures détaillées publiquement le 30 mai 2026 et rapportées par France 24, avec échéances et dispositifs précis (2050, fonds de transition, restriction horaire de publicité).",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["L'interdiction des aliments ultratransformés dans les cantines scolaires bénéficie en priorité aux enfants scolarisés dans le public, où cette catégorie est proportionnellement plus représentée"],
+            risques: ["La sortie des pesticides de synthèse, si elle renchérit les coûts de production agricole, pourrait se répercuter sur les prix alimentaires, qui pèsent proportionnellement plus sur le budget de cette catégorie"],
+            angleMort: "Le fonds de transition agroécologique annoncé n'est pas chiffré publiquement, ce qui empêche d'évaluer s'il suffit à limiter une hausse des prix alimentaires.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Réduction de l'exposition aux perturbateurs endocriniens et aux PFAS dans les produits du quotidien"],
+            risques: [],
+            angleMort: "Effet sur le prix des produits de consommation courante (hygiène, textile) non chiffré publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: ["Les agriculteurs et propriétaires fonciers de cette catégorie pourraient supporter une part du coût de la transition agroécologique en l'absence de compensation intégrale"],
+            angleMort: "Répartition précise du financement du fonds de transition entre État, filières et exploitants non détaillée publiquement.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Réduction de l'exposition aux substances cancérogènes et perturbateurs endocriniens, un enjeu de santé publique à long terme"],
+            risques: [],
+            angleMort: "Effet spécifique pour cette catégorie non chiffré publiquement, la mesure visant l'ensemble de la population.",
+          },
+        },
+      },
+      {
+        id: "mt-vie-republique",
+        theme: "Institutions et démocratie",
+        titre: "Instaurer une « Première République écologique et citoyenne »",
+        resumeOfficiel:
+          "Les Écologistes, portés par Marine Tondelier, proposent d'instaurer une « Première République écologique et citoyenne » mettant fin au « présidentialisme », consacrant l'indépendance de la justice dans la Constitution, et y inscrivant une règle de ne « pas prendre à la nature plus qu'elle ne peut se régénérer, ni produire plus qu'elle ne peut supporter en un an ».",
+        sourceOfficielle: "https://www.france24.com/fr/info-en-continu/20260713-2027-les-ecologistes-veulent-instaurer-la-premi%C3%A8re-r%C3%A9publique-%C3%A9cologique-et-citoyenne",
+        niveauConfiance: "annonce",
+        noteConfiance: "Projet institutionnel présenté publiquement le 13 juillet 2026 et rapporté par France 24 ; les modalités précises de la réforme constitutionnelle (procédure, calendrier) ne sont pas chiffrées ni détaillées à ce stade.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Objectif affiché de renforcement de l'État de droit et de la participation citoyenne, potentiellement plus protecteur pour les catégories les moins bien représentées dans les instances actuelles"],
+            risques: [],
+            angleMort: "Une réforme constitutionnelle n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois adoptées ensuite, non connues à ce stade.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Même angle mort que pour les autres catégories : effet dépendant de textes futurs non déterminés par cette seule mesure.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique direct identifiable à ce stade.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique direct identifiable à ce stade.",
+          },
         },
       },
     ],
