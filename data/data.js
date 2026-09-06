@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-04",
+  dateMaj: "2026-09-06",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -99,8 +99,9 @@ const AVIS_DONNEES_REELLES = {
 // "Pouvoir d'achat et économie" plutôt que "Retraites et modèle social", et `ep-regle-or`
 // (règle d'or budgétaire, à valeur quasi institutionnelle) y est classée plutôt qu'en
 // "Institutions et démocratie", car leur contenu chiffré reste avant tout économique/budgétaire.
-// Le thème "Europe et géopolitique" n'a à ce jour aucune mesure sourcée pour aucun candidat :
-// case vide assumée plutôt qu'invention de contenu (voir méthodologie).
+// Le thème "Europe et géopolitique" a reçu sa première mesure sourcée le 2026-09-06 (`jlm-dette-bce`) ;
+// case laissée vide pour les autres candidats faute de mesure sourcée équivalente, plutôt que
+// d'inventer du contenu (voir méthodologie).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -266,6 +267,42 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "jlm-dette-bce",
+        theme: "Europe et géopolitique",
+        titre: "Geler une partie de la dette publique française détenue par la BCE, en commençant par la dette Covid",
+        resumeOfficiel:
+          "Lors des universités d'été de La France insoumise le 23 août 2026, Jean-Luc Mélenchon a proposé que la Banque centrale européenne « mette au congélateur » les dettes des États, en commençant par celles de la période Covid : transformer en dette perpétuelle à taux nul la dette française détenue par la Banque de France pour le compte de la BCE, soit selon lui 18 % de la dette totale de l'État (636 milliards d'euros sur les 3 536 milliards recensés par l'Insee ; le gouvernement évalue plutôt le périmètre concerné à environ un quart de la dette, soit 884 milliards d'euros). Il propose d'étendre ce mécanisme aux dettes publiques des autres pays européens détenues par la BCE via leurs banques centrales nationales.",
+        sourceOfficielle: "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/cinq-questions-sur-la-proposition-de-jean-luc-melenchon-de-geler-une-partie-de-la-dette-francaise_8160833.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition détaillée publiquement par le candidat le 23 août 2026 lors des universités d'été de LFI, chiffrée (18 %, 636 milliards d'euros selon le candidat) et rapportée par franceinfo et France 24 ; sa faisabilité juridique (indépendance statutaire de la BCE, unanimité des 27 États membres requise pour une révision des traités) est contestée par plusieurs économistes, ce qui relève du débat sur la mesure et non de l'existence de la proposition elle-même.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Selon ses défenseurs, la marge budgétaire dégagée par le gel de la dette pourrait financer des dépenses sociales bénéficiant en priorité à cette catégorie"],
+            risques: ["Plusieurs économistes avertissent qu'une telle décision pourrait détériorer la confiance des marchés et renchérir le coût des emprunts publics futurs, dont la charge pèse sur le budget de l'État"],
+            angleMort: "Le programme ne garantit pas d'affectation précise de la marge budgétaire dégagée vers des dépenses profitant spécifiquement à cette catégorie ; aucun chiffrage indépendant public de l'effet sur les taux d'emprunt futurs n'est disponible.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: ["Comme pour les autres catégories, un risque de hausse des taux d'intérêt sur la dette future pourrait peser indirectement sur le coût du crédit"],
+            angleMort: "Effet différencié par catégorie non documenté publiquement, la mesure opérant au niveau macroéconomique plutôt que par un transfert direct aux ménages.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure de politique monétaire et budgétaire sans effet direct identifié pour cette catégorie à ce stade ; un effet indirect sur les détenteurs de dette française via les marchés financiers n'est pas chiffré publiquement.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Selon ses défenseurs, la marge budgétaire dégagée pourrait à terme contribuer au financement de dépenses sociales, dont les pensions"],
+            risques: [],
+            angleMort: "Aucun lien chiffré n'est établi publiquement entre cette mesure et le financement du système de retraite.",
+          },
+        },
+      },
     ],
   },
 
@@ -416,6 +453,22 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: ["Le financement reposant sur la baisse du nombre d'élèves plutôt que sur une ressource nouvelle, un doute subsiste sur sa soutenabilité si la mesure devait finalement peser sur la dépense publique globale, dont les pensions font partie"], angleMort: "Aucun chiffrage indépendant public du financement exact ne permet d'évaluer l'effet sur les autres postes de dépense publique." },
         },
       },
+      {
+        id: "ep-carence-arrets",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Renforcer les jours de carence non indemnisés pour les arrêts de travail courts et instaurer un délai avant rupture conventionnelle après un arrêt",
+        resumeOfficiel:
+          "Lors des rencontres du Medef le 27 août 2026, Édouard Philippe a proposé de mettre fin à ce qu'il qualifie d'« open bar » des arrêts de travail : renforcer les jours de carence non indemnisés pour les arrêts courts (les un ou deux premiers jours ne seraient plus indemnisés) et instaurer un délai de trois à six mois entre un arrêt maladie et une rupture conventionnelle, pour lutter contre un phénomène de « chantage » à l'arrêt de travail. Il justifie la mesure par une hausse de près de 40 % du coût des arrêts de travail entre 2019 et 2025, évalué à environ 17 milliards d'euros par an.",
+        sourceOfficielle: "https://www.lejdd.fr/economie/presidentielle-edouard-philippe-compte-reduire-lindemnisation-du-chomage-et-mettre-fin-a-lopen-bar-des-arrets-de-travail-181923",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition et chiffrage (hausse de 40 % entre 2019 et 2025, coût de 17 milliards d'euros par an) précisés par le candidat le 27 août 2026 et rapportés par Le JDD et franceinfo ; le syndicat de médecins généralistes MG France et d'autres professionnels de santé contestent le diagnostic d'« open bar ».",
+        impactParClasse: {
+          populaires: { score: -1, avantages: [], risques: ["Les salariés aux contrats les plus précaires ou aux métiers pénibles, plus représentés dans cette catégorie, sont statistiquement plus concernés par les arrêts de travail courts et par le risque de rupture conventionnelle après un arrêt", "Des professionnels de santé, dont le syndicat MG France, contestent le diagnostic d'« open bar » et dénoncent un risque de stigmatisation des patients"], angleMort: "Le programme ne détaille pas de dispositif de compensation pour les salariés qui ne pourraient pas absorber la perte de revenu liée aux jours de carence non indemnisés." },
+          moyennes: { score: -1, avantages: [], risques: ["Perte de revenu pour les arrêts courts non couverts par une complémentaire prenant en charge la carence"], angleMort: "L'effet dépend de la couverture par la complémentaire santé ou prévoyance de l'employeur, non détaillée publiquement dans le programme." },
+          aisees: { score: 0, avantages: [], risques: ["Effet plus limité pour les cadres bénéficiant plus souvent d'un maintien de salaire par l'employeur pendant la carence, selon les conventions collectives applicables"], angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié selon les conventions collectives applicables à cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les arrêts de travail des actifs, sans effet direct documenté pour cette catégorie." },
+        },
+      },
     ],
   },
 
@@ -531,6 +584,42 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "br-censure-referendum",
+        theme: "Institutions et démocratie",
+        titre: "Permettre par référendum ou vote du Congrès de faire appliquer une loi malgré une censure du Conseil constitutionnel",
+        resumeOfficiel:
+          "Bruno Retailleau propose une réforme constitutionnelle donnant au peuple, par référendum, ou aux parlementaires réunis en Congrès, la possibilité de faire appliquer une loi votée par le Parlement malgré sa censure par le Conseil constitutionnel — ce qu'il appelle « censurer la censure ». La proposition s'inscrit dans le prolongement des critiques du candidat après plusieurs censures de dispositions de textes sur l'immigration, dont la loi allongeant la rétention administrative des étrangers jugés dangereux.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/immigration-securite-justice-le-plan-de-bruno-retailleau-pour-reformer-la-constitution-182508",
+        niveauConfiance: "confirme",
+        noteConfiance: "Plan détaillé publiquement début septembre 2026 et rapporté par Le JDD ; a suscité une réaction publique de la présidente de l'Assemblée nationale Yaël Braun-Pivet, confirmant la réalité et la portée de la proposition.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Objectif affiché de renforcer le pouvoir des citoyens face aux décisions du Conseil constitutionnel ; un sondage Odoxa cité par Le JDD indique que 80 % des Français soutiendraient le principe d'être consultés après la censure d'une loi votée par le Parlement"],
+            risques: ["Selon ses opposants, dont la présidente de l'Assemblée nationale, une remise en cause du contrôle de constitutionnalité fragiliserait la protection des libertés individuelles, qui bénéficie à l'ensemble de la population, y compris cette catégorie"],
+            angleMort: "Une réforme constitutionnelle n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois qui seraient appliquées malgré une censure, non connues à ce stade.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Même angle mort que pour les autres catégories : l'effet dépend de lois futures non déterminées par cette seule mesure institutionnelle.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique direct identifiable à ce stade.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique direct identifiable à ce stade.",
+          },
+        },
+      },
     ],
   },
 
@@ -588,6 +677,22 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet moins documenté pour cette catégorie, moins directement concernée par l'accès prioritaire à l'emploi non qualifié ou au logement social." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
           retraites: { score: 0, avantages: [], risques: ["Risque indirect de tension sur les métiers de l'aide à domicile et du soin aux personnes âgées, secteurs qui emploient une proportion significative de travailleurs immigrés"], angleMort: "Aucune étude chiffrée publique ne permet d'établir l'ampleur de cet effet pour les retraités dépendants de ces services." },
+        },
+      },
+      {
+        id: "mlp-retraites",
+        theme: "Retraites et modèle social",
+        titre: "Maintenir un départ à la retraite dès 60 ans pour les carrières commencées tôt et ramener la durée de cotisation à 42 annuités",
+        resumeOfficiel:
+          "Marine Le Pen maintient la position du Rassemblement national portée depuis 2022 : un départ possible dès 60 ans pour les personnes ayant commencé à travailler avant 20 ans (départ dégressif entre 60 ans et 9 mois et 62 ans pour celles ayant débuté entre 20 et 24,5 ans, système inchangé au-delà), et une durée de cotisation ramenée à 42 annuités. Elle a réaffirmé cette position publiquement à l'été 2026, alors que Jordan Bardella, qui pourrait porter la candidature du RN en cas d'inéligibilité confirmée de Marine Le Pen, indiquait de son côté vouloir « examiner la question » d'un report de l'âge légal et présenter un « nouveau système », révélant des divergences internes au RN sur ce sujet.",
+        sourceOfficielle: "https://lcp.fr/actualites/presidentielle-2027-qui-propose-quoi-sur-les-retraites-437864",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position historique du RN documentée depuis 2022 et réaffirmée publiquement par Marine Le Pen à l'été 2026 malgré les divergences émergentes avec Jordan Bardella sur ce sujet, rapportées par LCP et franceinfo.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Bénéficie en priorité aux carrières commencées tôt (avant 20 ans), plus représentées dans cette catégorie, via un départ possible dès 60 ans"], risques: ["Le financement du dispositif de départ anticipé et de la baisse à 42 annuités n'est pas chiffré publiquement"], angleMort: "Aucun chiffrage indépendant public du coût de la mesure ni de son financement." },
+          moyennes: { score: 0, avantages: ["Départ anticipé par rapport à l'âge légal actuellement en vigueur pour les carrières standards ayant débuté entre 20 et 24,5 ans"], risques: [], angleMort: "Effet différencié selon l'âge d'entrée dans la vie active au sein de cette catégorie non détaillé publiquement." },
+          aisees: { score: 0, avantages: [], risques: ["Cette catégorie, aux carrières généralement plus longues du fait d'études supérieures, bénéficie moins du dispositif de départ anticipé pour carrière commencée tôt"], angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié pour cette catégorie." },
+          retraites: { score: 1, avantages: ["Objectif affiché d'un âge de départ plus favorable que la trajectoire actuelle pour les futurs retraités concernés par la transition"], risques: ["Pérennité financière du système de retraite par répartition non démontrée par un chiffrage indépendant public"], angleMort: "Le Conseil d'orientation des retraites n'a pas publié d'évaluation officielle de cette version 2027 de la proposition du RN." },
         },
       },
     ],
