@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-06",
+  dateMaj: "2026-09-07",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -99,9 +99,9 @@ const AVIS_DONNEES_REELLES = {
 // "Pouvoir d'achat et économie" plutôt que "Retraites et modèle social", et `ep-regle-or`
 // (règle d'or budgétaire, à valeur quasi institutionnelle) y est classée plutôt qu'en
 // "Institutions et démocratie", car leur contenu chiffré reste avant tout économique/budgétaire.
-// Le thème "Europe et géopolitique" a reçu sa première mesure sourcée le 2026-09-06 (`jlm-dette-bce`) ;
-// case laissée vide pour les autres candidats faute de mesure sourcée équivalente, plutôt que
-// d'inventer du contenu (voir méthodologie).
+// Le thème "Europe et géopolitique" a reçu sa première mesure sourcée le 2026-09-06 (`jlm-dette-bce`),
+// puis une deuxième le 2026-09-07 (`br-espagne-schengen`) ; case laissée vide pour les autres candidats
+// faute de mesure sourcée équivalente, plutôt que d'inventer du contenu (voir méthodologie).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -378,6 +378,38 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: ["Risque indirect sur les métiers de l'aide à domicile si les quotas se révèlent trop restrictifs pour ce secteur, où la main-d'œuvre immigrée est significative"], angleMort: "Aucune étude chiffrée publique sur l'effet des quotas envisagés sur le secteur de l'aide à la personne." },
         },
       },
+      {
+        id: "ga-retraites",
+        theme: "Retraites et modèle social",
+        titre: "Supprimer l'âge légal de départ à la retraite au profit d'une seule durée de cotisation, et créer un capital de naissance de 1 000 €",
+        resumeOfficiel:
+          "Gabriel Attal propose de supprimer l'âge légal de départ à la retraite, en ne conservant qu'une durée de cotisation assortie de « vraies décotes et de vraies surcotes », dans un système par points qui intégrerait une part de capitalisation. Il propose par ailleurs qu'un capital de 1 000 euros soit versé par l'État à la naissance de chaque enfant sur un compte de capitalisation, une idée qu'il présente lui-même comme volontairement soumise au débat avant l'élection de 2027.",
+        sourceOfficielle: "https://lcp.fr/actualites/presidentielle-2027-qui-propose-quoi-sur-les-retraites-437864",
+        niveauConfiance: "annonce",
+        noteConfiance: "Position développée par le candidat dans plusieurs interventions et reprise dans le comparatif dédié de LCP sur les retraites pour la présidentielle 2027 ; le barème précis des décotes/surcotes, le calendrier de la réforme et le chiffrage global n'ont pas été publiés, et le candidat présente lui-même le capital de naissance comme une piste ouverte au débat plutôt qu'une mesure arrêtée.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: ["Les carrières complètes commencées tôt pourraient, comme dans le système actuel, partir sans attendre un âge légal dès lors que la durée de cotisation est atteinte"], risques: ["Un système fondé sur la seule durée de cotisation, avec décote en cas de carrière incomplète, pourrait pénaliser les parcours interrompus (temps partiel subi, chômage), plus fréquents dans cette catégorie"], angleMort: "Le barème précis des décotes et surcotes n'est pas publié, ce qui empêche de chiffrer l'effet net pour les carrières incomplètes ou interrompues." },
+          moyennes: { score: 0, avantages: ["Le capital de naissance de 1 000 € bénéficierait, en l'état de la proposition, à l'ensemble des familles sans condition de ressources annoncée"], risques: [], angleMort: "Le programme ne précise pas si le capital de naissance serait soumis à une condition de ressources ni comment il s'articulerait avec les allocations familiales existantes." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "L'introduction d'une part de capitalisation dans le système de retraite pourrait favoriser les ménages ayant une capacité d'épargne plus importante, mais aucun barème ni volume de cette part de capitalisation n'est publié pour en chiffrer l'effet différencié." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "La réforme concerne les futures retraites et les nouveau-nés ; son éventuel effet sur les pensions déjà versées n'est pas précisé publiquement." },
+        },
+      },
+      {
+        id: "ga-justice-mineurs",
+        theme: "Sécurité et justice",
+        titre: "Durcir la justice des mineurs délinquants et créer un parquet national dédié à la pédocriminalité",
+        resumeOfficiel:
+          "Comme président du groupe Ensemble pour la République, Gabriel Attal a porté une proposition de loi pour « restaurer l'autorité de la justice » à l'égard des mineurs délinquants et de leurs parents (comparution immédiate, délit de soustraction d'un parent à ses obligations légales), adoptée par le Parlement mi-mai 2025 puis partiellement censurée par le Conseil constitutionnel le 19 juin 2025, qui a annulé six articles dont la levée de l'« excuse de minorité » pour les récidivistes de plus de 16 ans ; une nouvelle proposition de loi reprenant cet objectif a été annoncée pour l'automne 2025. Dans sa campagne 2027, il propose en complément de créer un parquet national dédié à la pédocriminalité doté d'un service de renseignement spécialisé, un fichier des pédocriminels sur le modèle des fichés S, et l'extension des vérifications d'antécédents aux métiers au contact d'enfants.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/gabriel-attal-souhaite-aligner-le-traitement-des-pedocriminels-sur-celui-des-terroristes-176274",
+        niveauConfiance: "confirme",
+        noteConfiance: "Le volet mineurs délinquants s'appuie sur un texte effectivement voté par le Parlement puis partiellement censuré par le Conseil constitutionnel, largement documenté par LCP et franceinfo ; le volet pédocriminalité est une proposition de campagne rapportée par Le JDD, sans chiffrage public du coût du parquet national dédié.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Le texte sur les mineurs délinquants a été présenté comme une réponse aux émeutes urbaines de juin 2023, dans des quartiers où cette catégorie est proportionnellement plus présente"], risques: ["Le Conseil constitutionnel a jugé disproportionnée la levée de l'atténuation de peine pour les mineurs récidivistes ; des professionnels de la justice des mineurs critiquent un durcissement pénal sans renforcement proportionné des moyens éducatifs"], angleMort: "Le budget consacré aux mesures éducatives ou de prévention accompagnant ce durcissement pénal, ainsi que celui du futur parquet national dédié à la pédocriminalité, ne sont pas chiffrés publiquement." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
+        },
+      },
     ],
   },
 
@@ -467,6 +499,22 @@ const CANDIDATS = [
           moyennes: { score: -1, avantages: [], risques: ["Perte de revenu pour les arrêts courts non couverts par une complémentaire prenant en charge la carence"], angleMort: "L'effet dépend de la couverture par la complémentaire santé ou prévoyance de l'employeur, non détaillée publiquement dans le programme." },
           aisees: { score: 0, avantages: [], risques: ["Effet plus limité pour les cadres bénéficiant plus souvent d'un maintien de salaire par l'employeur pendant la carence, selon les conventions collectives applicables"], angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié selon les conventions collectives applicables à cette catégorie." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les arrêts de travail des actifs, sans effet direct documenté pour cette catégorie." },
+        },
+      },
+      {
+        id: "ep-verrou-schengen",
+        theme: "Immigration et intégration",
+        titre: "Créer un « verrou Schengen » contre les régularisations massives unilatérales et suspendre l'enregistrement des demandes d'asile à Mayotte et en Guyane",
+        resumeOfficiel:
+          "Après l'afflux de migrants à Ceuta lié au plan espagnol de régularisation de sans-papiers, Édouard Philippe a proposé de soumettre tout projet de régularisation massive à l'accord des autres États membres de l'espace Schengen — un « verrou Schengen » empêchant qu'un seul État agisse unilatéralement — ainsi que la création d'un régime de sanctions européen spécifiquement dédié à la lutte contre l'immigration irrégulière, et la suspension pendant plusieurs années de l'enregistrement des demandes d'asile à Mayotte et en Guyane, territoires qu'il juge en situation de « saturation migratoire ».",
+        sourceOfficielle: "https://www.franceinfo.fr/societe/immigration/apres-l-afflux-de-migrants-a-ceuta-edouard-philippe-propose-des-mesures-pour-limiter-l-immigration-et-les-regularisations-de-sans-papiers-dans-l-union-europeenne_8141837.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Propositions présentées publiquement le 10 août 2026 en réaction à la crise migratoire de Ceuta et rapportées par franceinfo ; le mécanisme juridique précis du « verrou Schengen » et du régime de sanctions européen, ainsi que la durée exacte de la suspension à Mayotte et en Guyane, ne sont pas chiffrés publiquement à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Une limitation des régularisations massives ailleurs en Europe pourrait, selon ses défenseurs, réduire une pression migratoire perçue sur l'emploi peu qualifié et le logement social"], risques: ["À Mayotte, où la pauvreté est déjà très marquée, la suspension de l'enregistrement des demandes d'asile laisserait des personnes en situation irrégulière sans statut ni accès aux droits associés à une demande en cours, une situation dénoncée par des associations de défense des migrants"], angleMort: "Aucune étude chiffrée publique n'évalue le nombre de personnes concernées par la suspension à Mayotte et en Guyane, ni l'effet économique local de cette mesure sur ces territoires." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure principalement centrée sur l'immigration et les territoires ultramarins concernés, sans effet économique documenté pour cette catégorie en métropole." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
         },
       },
     ],
@@ -618,6 +666,22 @@ const CANDIDATS = [
             risques: [],
             angleMort: "Aucun effet économique direct identifiable à ce stade.",
           },
+        },
+      },
+      {
+        id: "br-espagne-schengen",
+        theme: "Europe et géopolitique",
+        titre: "Suspendre la libre circulation de Schengen avec l'Espagne en réaction à sa régularisation massive de sans-papiers",
+        resumeOfficiel:
+          "Face au plan espagnol de régularisation de près de 500 000 personnes sans papiers lancé en avril 2026, Bruno Retailleau a proposé de « mettre au ban » l'Espagne des nations européennes et de suspendre la libre circulation des personnes prévue par les accords de Schengen entre la France et l'Espagne, jugeant les règles de Schengen « plus tenables » avec ce pays ; il a réclamé un Conseil européen extraordinaire sur le sujet et s'est rangé du côté de la présidente du Conseil italien Giorgia Meloni, elle aussi favorable à une suspension de Schengen avec l'Espagne. Il a réitéré ses critiques envers le gouvernement espagnol en juin 2026, l'accusant de « clientélisme ».",
+        sourceOfficielle: "https://www.france24.com/fr/info-en-continu/20260420-immigration-retailleau-lr-veut-mettre-l-espagne-au-ban-des-nations-europ%C3%A9ennes",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition formulée publiquement le 20 avril 2026 et rapportée par France 24, Le JDD et LCP, puis réitérée en juin 2026 selon France 24 ; elle ne précise pas de mécanisme juridique détaillé pour suspendre unilatéralement un accord multilatéral comme Schengen.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Selon ses défenseurs, limiter les arrivées de personnes régularisées en Espagne puis susceptibles de rejoindre la France réduirait une concurrence perçue sur l'emploi peu qualifié et le logement social, où cette catégorie est proportionnellement plus présente"], risques: ["Une suspension de Schengen avec l'Espagne compliquerait aussi la libre circulation des travailleurs frontaliers et saisonniers français dans ce pays, dont une partie appartient à cette catégorie"], angleMort: "Aucune étude chiffrée publique n'évalue le nombre de personnes régularisées en Espagne susceptibles de rejoindre effectivement la France, ni le coût économique d'une suspension de Schengen pour les échanges avec l'Espagne." },
+          moyennes: { score: 0, avantages: [], risques: ["Une suspension de Schengen pourrait perturber le tourisme et les échanges commerciaux avec l'Espagne, secteurs où une partie de cette catégorie est employée"], angleMort: "L'effet économique chiffré d'une suspension de Schengen sur les échanges franco-espagnols n'est pas publié." },
+          aisees: { score: 0, avantages: [], risques: ["Les entreprises ayant des activités transfrontalières avec l'Espagne pourraient être affectées par un rétablissement de contrôles aux frontières"], angleMort: "Aucun chiffrage public de l'effet d'une telle mesure sur les investissements ou échanges commerciaux franco-espagnols." },
+          retraites: { score: 0, avantages: [], risques: ["Les retraités français résidant en Espagne ou y effectuant des séjours réguliers pourraient être affectés par un rétablissement de contrôles frontaliers"], angleMort: "Aucune donnée publique ne chiffre le nombre de retraités français concernés par une suspension de la libre circulation avec l'Espagne." },
         },
       },
     ],
