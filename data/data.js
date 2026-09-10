@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-07",
+  dateMaj: "2026-09-10",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -100,8 +100,9 @@ const AVIS_DONNEES_REELLES = {
 // (règle d'or budgétaire, à valeur quasi institutionnelle) y est classée plutôt qu'en
 // "Institutions et démocratie", car leur contenu chiffré reste avant tout économique/budgétaire.
 // Le thème "Europe et géopolitique" a reçu sa première mesure sourcée le 2026-09-06 (`jlm-dette-bce`),
-// puis une deuxième le 2026-09-07 (`br-espagne-schengen`) ; case laissée vide pour les autres candidats
-// faute de mesure sourcée équivalente, plutôt que d'inventer du contenu (voir méthodologie).
+// une deuxième le 2026-09-07 (`br-espagne-schengen`) et une troisième le 2026-09-10 (`br-bouclier-constitutionnel`) ;
+// case laissée vide pour les autres candidats faute de mesure sourcée équivalente, plutôt que d'inventer du
+// contenu (voir méthodologie).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -395,6 +396,22 @@ const CANDIDATS = [
         },
       },
       {
+        id: "ga-zero-deficit-2037",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Un plan de redressement des finances publiques visant le « zéro déficit » en 2037 (année blanche, 100 000 suppressions de postes de fonctionnaires, responsabilité budgétaire des ministres)",
+        resumeOfficiel:
+          "Gabriel Attal a dévoilé le 2 juillet 2026 une série de mesures pour rétablir les finances publiques, avec un objectif de retour à l'équilibre budgétaire (« zéro déficit ») en 2037 : une « année blanche » de gel de certaines prestations sociales en début de mandat, en épargnant les petites pensions ; un plan de départs volontaires supprimant 100 000 postes de fonctionnaires, hors ministères de l'Éducation, des Armées, de la Justice et de l'Intérieur ; et un principe de responsabilité budgétaire imposant la démission des ministres et des directeurs d'administration centrale ne respectant pas leur trajectoire budgétaire, ainsi que celle du Premier ministre et du gouvernement si la trajectoire n'est pas tenue pendant trois ans sans crise le justifiant.",
+        sourceOfficielle: "https://www.franceinfo.fr/politique/gabriel-attal/zero-deficit-en-2037-gabriel-attal-devoile-une-serie-de-mesures-pour-retablir-les-finances-publiques-en-vue-de-la-presidentielle_8091860.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Plan chiffré (100 000 suppressions de postes de fonctionnaires, objectif de zéro déficit en 2037) dévoilé publiquement par le candidat le 2 juillet 2026 et rapporté par franceinfo.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: [], risques: ["Le gel de certaines prestations sociales en début de mandat (« année blanche »), même s'il épargnerait les petites pensions, pourrait réduire le pouvoir d'achat des ménages les plus dépendants d'autres prestations sociales"], angleMort: "Le périmètre exact des prestations concernées par le gel, au-delà des petites pensions explicitement épargnées, n'est pas détaillé publiquement." },
+          moyennes: { score: 0, avantages: [], risques: ["Incertitude sur l'effet du gel de prestations sociales pour les ménages de cette catégorie bénéficiant de certaines aides"], angleMort: "La liste précise des prestations gelées n'est pas publiée." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les dépenses sociales et la fonction publique, sans effet direct documenté pour cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: ["Les petites pensions seraient explicitement épargnées par le gel de prestations prévu en début de mandat"], risques: ["Les pensions plus élevées ne bénéficient pas de cette exception explicite et pourraient être concernées par le gel"], angleMort: "Le seuil précis distinguant les « petites pensions » épargnées des autres pensions n'est pas publié." },
+        },
+      },
+      {
         id: "ga-justice-mineurs",
         theme: "Sécurité et justice",
         titre: "Durcir la justice des mineurs délinquants et créer un parquet national dédié à la pédocriminalité",
@@ -684,6 +701,22 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: ["Les retraités français résidant en Espagne ou y effectuant des séjours réguliers pourraient être affectés par un rétablissement de contrôles frontaliers"], angleMort: "Aucune donnée publique ne chiffre le nombre de retraités français concernés par une suspension de la libre circulation avec l'Espagne." },
         },
       },
+      {
+        id: "br-bouclier-constitutionnel",
+        theme: "Europe et géopolitique",
+        titre: "Un « bouclier constitutionnel » pour faire prévaloir la Constitution sur le droit de l'Union européenne et les décisions de la CEDH et de la CJUE",
+        resumeOfficiel:
+          "Dans le prolongement de son plan de réforme constitutionnelle, Bruno Retailleau propose d'inscrire dans la Constitution la possibilité de déroger à la primauté des traités et du droit de l'Union européenne, par une loi organique votée en termes identiques par les deux Assemblées ou approuvée par référendum, lorsque des « intérêts fondamentaux de la nation » (sécurité, immigration, laïcité) sont en jeu. Ce « bouclier constitutionnel » viserait à empêcher que des dispositions ainsi adoptées soient ensuite remises en cause par une décision de la Cour européenne des droits de l'homme (CEDH) ou de la Cour de justice de l'Union européenne (CJUE).",
+        sourceOfficielle: "https://www.lejdd.fr/politique/le-peuple-face-aux-juges-la-bataille-du-dernier-mot-182691",
+        niveauConfiance: "confirme",
+        noteConfiance: "Volet distinct, consacré au droit européen et aux juridictions européennes (CEDH, CJUE), du plan de réforme constitutionnelle détaillé publiquement par le candidat début septembre 2026 et rapporté par Le JDD ; ce mécanisme complète, sans s'y confondre, la proposition de « censurer la censure » du Conseil constitutionnel déjà recensée (mesure `br-censure-referendum`). Le texte de loi organique définitif et son calendrier ne sont pas encore publiés.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Selon des opposants à la mesure, dont la présidente de l'Assemblée nationale, un affaiblissement de la portée du droit européen et de la CEDH pourrait fragiliser des protections (droits sociaux, libertés individuelles) dont bénéficie l'ensemble de la population, y compris cette catégorie"], angleMort: "Une réforme constitutionnelle de ce type n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois qui seraient appliquées grâce à ce mécanisme, non connues à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : l'effet dépend de lois futures non déterminées par cette seule mesure institutionnelle." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+        },
+      },
     ],
   },
 
@@ -757,6 +790,22 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: ["Départ anticipé par rapport à l'âge légal actuellement en vigueur pour les carrières standards ayant débuté entre 20 et 24,5 ans"], risques: [], angleMort: "Effet différencié selon l'âge d'entrée dans la vie active au sein de cette catégorie non détaillé publiquement." },
           aisees: { score: 0, avantages: [], risques: ["Cette catégorie, aux carrières généralement plus longues du fait d'études supérieures, bénéficie moins du dispositif de départ anticipé pour carrière commencée tôt"], angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié pour cette catégorie." },
           retraites: { score: 1, avantages: ["Objectif affiché d'un âge de départ plus favorable que la trajectoire actuelle pour les futurs retraités concernés par la transition"], risques: ["Pérennité financière du système de retraite par répartition non démontrée par un chiffrage indépendant public"], angleMort: "Le Conseil d'orientation des retraites n'a pas publié d'évaluation officielle de cette version 2027 de la proposition du RN." },
+        },
+      },
+      {
+        id: "mlp-regle-or",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Inscrire une « règle d'or » budgétaire dans la Constitution et présenter un plan de 125 milliards d'euros d'économies sur cinq ans",
+        resumeOfficiel:
+          "Lors du premier débat de la présidentielle organisé par le Medef (27 août 2026), Marine Le Pen a annoncé vouloir inscrire dans la Constitution une « règle d'or » budgétaire plafonnant le déficit public à 3 % du PIB, ainsi qu'un plan de redressement des finances publiques totalisant 125 milliards d'euros d'économies sur cinq ans, l'effort étant concentré sur les deux premières années et portant sur les dépenses de fonctionnement plutôt que sur l'investissement. Ce ralliement à une règle budgétaire européenne marque une évolution par rapport aux positions antérieures du RN sur la dette.",
+        sourceOfficielle: "https://lcp.fr/actualites/une-regle-d-or-budgetaire-pourquoi-le-rn-abandonne-l-un-de-ses-marqueurs-historiques-sur",
+        niveauConfiance: "confirme",
+        noteConfiance: "Annonce chiffrée (plafond de déficit à 3 % du PIB, plan de 125 milliards d'euros d'économies sur cinq ans) faite publiquement par la candidate lors du débat Medef du 27 août 2026 et rapportée par LCP et franceinfo ; le détail poste par poste des économies n'était pas encore publié à cette date, le RN ayant annoncé une présentation complète juste avant le débat budgétaire parlementaire de l'automne 2026.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: [], risques: ["Un plan de 125 milliards d'économies concentré sur les deux premières années, même s'il vise en priorité les dépenses de fonctionnement de l'État, fait craindre à certains économistes un effet sur les prestations sociales dont cette catégorie est statistiquement plus dépendante"], angleMort: "Le détail poste par poste des 125 milliards d'économies n'est pas encore publié, ce qui empêche de vérifier si les prestations sociales seraient ou non concernées." },
+          moyennes: { score: 0, avantages: ["Objectif affiché de stabilisation de la dette pouvant limiter une hausse future des prélèvements obligatoires"], risques: ["Effet possible sur les services publics utilisés par cette catégorie si les économies portent sur des postes de dépense courante"], angleMort: "Répartition précise des économies entre postes non publiée." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Un plan centré sur les dépenses de fonctionnement de l'État plutôt que sur la fiscalité n'a pas d'effet direct identifié pour cette catégorie à ce stade, faute de détail public." },
+          retraites: { score: 0, avantages: [], risques: ["Les dépenses de retraite représentant une part importante des dépenses de fonctionnement de l'État visées par le plan, un objectif de 125 milliards d'économies pourrait à terme les concerner si le détail à venir les inclut"], angleMort: "Aucune indication publique ne précise si les pensions seraient concernées ou explicitement épargnées par ce plan d'économies." },
         },
       },
     ],
