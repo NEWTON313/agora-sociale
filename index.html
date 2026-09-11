@@ -29,23 +29,26 @@
 <section class="hero">
   <div class="container hero__grid">
     <div>
-      <div class="hero__eyebrow">Qui gagne, qui perd, mesure par mesure</div>
-      <h1>Comparez les programmes selon leur impact réel sur votre classe sociale.</h1>
+      <div class="hero__eyebrow">6 candidats · 9 thèmes · zéro étiquette partisane</div>
+      <h1>Quel candidat colle vraiment à votre situation&nbsp;?</h1>
       <p class="lede">
-        Mon Choix 2027 croise les mesures phares des candidats avec quatre grandes
-        catégories socio-économiques pour rendre visibles les avantages, les risques
-        et les angles morts de chaque proposition — sans étiquette partisane.
+        2 minutes de questions, une méthode INSEE, un score calculé à partir de
+        <strong>vos</strong> priorités — jamais l'inverse. Classement complet
+        systématique, jamais un seul nom mis en avant.
       </p>
-      <div class="hero__disclaimer">
-        <strong>Neutralité :</strong> ce site ne soutient aucun candidat. Chaque analyse
-        est sourcée sur le programme officiel et documentée dans notre
-        <a href="methodologie.html" style="text-decoration:underline;">méthodologie</a>.
+      <div class="hero__cta">
+        <a href="simulateur.html" class="bouton-principal bouton-principal--hero">Faire le test (2 min) →</a>
+        <a href="#comparateur" class="hero__cta-secondaire">Explorer sans faire le test</a>
       </div>
-      <div class="hero__disclaimer" style="margin-top:12px; border-left-color:var(--classe-retraites);" id="avis-donnees-reelles"></div>
+      <p class="hero__note">
+        Ce site ne soutient aucun candidat.
+        <a href="methodologie.html" style="text-decoration:underline;">Voir la méthodologie</a>
+        et les règles de collecte des données.
+      </p>
     </div>
 
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-visual__eyebrow">Le registre — illustration</div>
+      <div class="hero-visual__eyebrow">Votre résultat pourrait ressembler à ça</div>
       <div class="hero-visual__row">
         <div class="hero-visual__label">Classes<br>populaires</div>
         <div class="hero-visual__track"><div class="hero-visual__axis"></div><div class="hero-visual__fill pos" style="width:38%"></div></div>
@@ -67,7 +70,11 @@
   </div>
 </section>
 
-<div class="container layout">
+<div class="bandeau-confiance">
+  <div class="container" id="avis-donnees-reelles"></div>
+</div>
+
+<div class="container layout" id="comparateur">
 
   <aside class="classe-rail" id="classe-rail" aria-label="Filtrer par catégorie sociale">
     <!-- injecté par js/app.js -->
