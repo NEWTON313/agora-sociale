@@ -194,7 +194,7 @@ nav.site-nav a.active { color: var(--accent-bleu); border-bottom-color: var(--ac
 }
 .hero .container.hero__grid {
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 400px;
   gap: 52px;
   align-items: center;
 }
@@ -293,7 +293,7 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
   border-radius: var(--radius-lg);
   background: var(--paper-raised);
   box-shadow: var(--shadow-lg);
-  padding: 20px 22px;
+  padding: 28px;
   animation: rise 0.6s var(--ease) 0.15s both;
   transform: rotate(-1.2deg);
 }
@@ -303,18 +303,21 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--ink-faint);
-  margin-bottom: 14px;
-  padding-bottom: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px dashed var(--line);
+}
+.hero-visual__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .hero-visual__row {
   display: grid;
-  grid-template-columns: 96px 1fr;
+  grid-template-columns: 132px 1fr;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 16px;
 }
-.hero-visual__row:last-of-type { margin-bottom: 0; }
 .hero-visual__label {
   font-size: 0.76rem;
   color: var(--ink-soft);
@@ -324,17 +327,16 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
   position: relative;
   height: 9px;
   background: var(--paper);
-  border: 1px solid var(--line);
   border-radius: 2px;
   overflow: hidden;
 }
-.hero-visual__axis { position: absolute; left: 50%; top: -1px; bottom: -1px; width: 1px; background: var(--ink); }
+.hero-visual__axis { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--line-strong); }
 .hero-visual__fill { position: absolute; top: 0; bottom: 0; }
 .hero-visual__fill.pos { left: 50%; background: var(--impact-positif); }
 .hero-visual__fill.neg { right: 50%; background: var(--impact-negatif); }
 .hero-visual__footer {
-  margin-top: 16px;
-  padding-top: 12px;
+  margin-top: 20px;
+  padding-top: 14px;
   border-top: 1px dashed var(--line);
   font-size: 0.72rem;
   color: var(--ink-faint);
