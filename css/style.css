@@ -511,6 +511,22 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
   gap: 13px;
 }
 
+.carte-candidat__toggle {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-faint);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.carte-candidat__toggle:hover { color: var(--accent-bleu); }
+
 .btn-toggle {
   font-size: 0.78rem;
   text-transform: uppercase;

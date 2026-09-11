@@ -25,6 +25,11 @@
   let poidsThemes = window.AGORA_PRIORITES.poidsThemesParDefaut();
   let trierParScore = false;
 
+  // Cartes dépliées (candidats ayant plusieurs mesures sur le thème actif et dont
+  // le visiteur a demandé à voir le détail) — repliées par défaut pour éviter que
+  // ces candidats n'écrasent visuellement les autres cartes de la grille.
+  const cartesDepliees = new Set();
+
   const railEl = document.getElementById("classe-rail");
   const cartesEl = document.getElementById("cartes-candidats");
   const selectMesureEl = document.getElementById("select-mesure");
@@ -48,6 +53,7 @@
     railEl.querySelectorAll(".classe-item").forEach((btn) => {
       btn.addEventListener("click", () => {
         classeActive = btn.dataset.classe;
+        cartesDepliees.clear();
         initRail();
         renderCartes();
       });
@@ -60,6 +66,7 @@
     ).join("");
     selectMesureEl.addEventListener("change", (e) => {
       themeActif = e.target.value;
+      cartesDepliees.clear();
       renderCartes();
     });
   }
@@ -201,14 +208,25 @@
       // candidat (ex. Édouard Philippe sur "Pouvoir d'achat et économie") depuis
       // l'élargissement à 9 thèmes.
       const mesures = candidat.mesures.filter((m) => m.theme === themeActif);
+      const depliee = cartesDepliees.has(candidat.id);
+      const mesuresVisibles = depliee || mesures.length <= 1 ? mesures : mesures.slice(0, 1);
+      const nbMasquees = mesures.length - mesuresVisibles.length;
+
+      const toggleHtml = mesures.length > 1
+        ? `
+            <button type="button" class="carte-candidat__toggle mono" data-toggle-candidat="${candidat.id}" aria-expanded="${depliee}">
+              ${depliee ? "Réduire ▲" : `+ ${nbMasquees} autre${nbMasquees > 1 ? "s" : ""} mesure${nbMasquees > 1 ? "s" : ""} sur ce thème`}
+            </button>
+          `
+        : "";
 
       const mesuresHtml = mesures.length
-        ? mesures.map((mesure) => `
+        ? mesuresVisibles.map((mesure) => `
             <div class="carte-candidat__mesure-bloc">
               <div class="carte-candidat__mesure">${mesure.titre}</div>
               ${renderLedger(mesure.impactParClasse[classeActive])}
             </div>
-          `).join("")
+          `).join("") + toggleHtml
         : `
             <div class="carte-candidat__mesure">Aucune mesure recensée sur ce thème pour ce candidat.</div>
             ${renderLedger(null)}
@@ -238,6 +256,18 @@
     btnMesPrioritesEl.classList.toggle("active", modePriorites);
     prioritesPanelEl.hidden = !modePriorites;
     if (modePriorites) initPrioritesPanel();
+    renderCartes();
+  });
+
+  cartesEl.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-toggle-candidat]");
+    if (!btn) return;
+    const id = btn.dataset.toggleCandidat;
+    if (cartesDepliees.has(id)) {
+      cartesDepliees.delete(id);
+    } else {
+      cartesDepliees.add(id);
+    }
     renderCartes();
   });
 
