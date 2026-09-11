@@ -431,18 +431,18 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
 
 .cartes-candidats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
 }
 
 .carte-candidat {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--paper-raised);
-  padding: 22px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   box-shadow: var(--shadow-xs);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
 }
@@ -451,16 +451,31 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
   box-shadow: var(--shadow-md);
   border-color: var(--accent-bleu-soft);
 }
+.carte-candidat > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 .carte-candidat__nom {
   font-family: var(--font-display);
-  font-size: 1.18rem;
+  font-size: 1.24rem;
   letter-spacing: -0.01em;
 }
+.carte-candidat__parti {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
 .carte-candidat__mesure {
-  font-size: 0.94rem;
+  font-size: 0.96rem;
   color: var(--ink-soft);
+  line-height: 1.4;
   border-top: 1px dashed var(--line);
-  padding-top: 13px;
+  padding-top: 16px;
 }
 
 /* Ledger bar : la barre "crédit / débit" pour la classe sélectionnée */
@@ -508,7 +523,7 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
 .carte-candidat__mesure-bloc {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 14px;
 }
 
 .carte-candidat__toggle {

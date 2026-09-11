@@ -238,7 +238,7 @@
         <article class="carte-candidat">
           <header>
             <div class="carte-candidat__nom">${candidat.nom}</div>
-            <span class="badge mono">${candidat.parti}</span>
+            <span class="carte-candidat__parti">${candidat.parti}</span>
           </header>
           ${mesuresHtml}
           ${scoreHtml}
