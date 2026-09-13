@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-10",
+  dateMaj: "2026-09-13",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -102,7 +102,9 @@ const AVIS_DONNEES_REELLES = {
 // Le thème "Europe et géopolitique" a reçu sa première mesure sourcée le 2026-09-06 (`jlm-dette-bce`),
 // une deuxième le 2026-09-07 (`br-espagne-schengen`) et une troisième le 2026-09-10 (`br-bouclier-constitutionnel`) ;
 // case laissée vide pour les autres candidats faute de mesure sourcée équivalente, plutôt que d'inventer du
-// contenu (voir méthodologie).
+// contenu (voir méthodologie). Le 2026-09-13, ajout d'une première mesure "Institutions et démocratie" pour
+// Attal (`ga-nouvelle-republique`) et de deux mesures pour Retailleau : la première "Immigration et intégration"
+// (`br-droit-du-sol`) et une seconde "Sécurité et justice" (`br-peines-policiers`).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -427,6 +429,22 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
         },
       },
+      {
+        id: "ga-nouvelle-republique",
+        theme: "Institutions et démocratie",
+        titre: "Une « nouvelle République » : réforme territoriale donnant le pouvoir aux maires et recours facilité au référendum",
+        resumeOfficiel:
+          "Gabriel Attal propose, s'il est élu, de soumettre aux Français « la plus grande réforme institutionnelle depuis 1958 » : une nouvelle organisation territoriale visant à « priver Paris de son pouvoir » en faisant du maire l'élu local le plus puissant, l'État se recentrant sur ses grandes missions régaliennes ; une réduction du nombre de parlementaires et d'élus et la suppression d'un échelon de collectivité territoriale ; et une révision constitutionnelle destinée à faciliter massivement le recours au référendum, tant au niveau national (une journée de référendum annuelle à questions multiples) qu'au niveau local, où les maires pourraient plus facilement organiser des référendums locaux. Il a réaffirmé la nécessité d'une « réforme constitutionnelle profonde » pour « mieux partager le pouvoir », notamment avec les collectivités locales, le 1er septembre 2026 au « 20 Heures » de France 2.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/exclusif-gabriel-attal-je-propose-la-plus-grande-reforme-institutionnelle-depuis-1958-180333",
+        niveauConfiance: "confirme",
+        noteConfiance: "Projet détaillé dans un entretien exclusif au JDD, présenté publiquement en meeting à Arras (rapporté par LCP et France 24) et réaffirmé le 1er septembre 2026 au « 20 Heures » de France 2 (rapporté par franceinfo) ; le texte constitutionnel précis, le nombre exact de parlementaires visé et le calendrier de mise en œuvre ne sont pas encore publiés.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Objectif affiché de renforcer le pouvoir de décision des maires et le recours au référendum local, pouvant rapprocher la décision publique des habitants des communes les plus modestes"], risques: [], angleMort: "Une réforme territoriale et institutionnelle de cette ampleur n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des compétences et moyens effectivement transférés aux communes, non détaillés à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : l'effet dépend de la répartition future des compétences et des moyens entre l'État et les communes, non déterminée par cette seule annonce." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+        },
+      },
     ],
   },
 
@@ -715,6 +733,38 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : l'effet dépend de lois futures non déterminées par cette seule mesure institutionnelle." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+        },
+      },
+      {
+        id: "br-droit-du-sol",
+        theme: "Immigration et intégration",
+        titre: "Supprimer le droit du sol sur le modèle du régime dérogatoire de Mayotte",
+        resumeOfficiel:
+          "Bruno Retailleau propose de supprimer le droit du sol en France, sur le modèle du régime dérogatoire déjà appliqué à Mayotte depuis 2018 et durci en 2025, qui conditionne l'acquisition de la nationalité française pour un enfant né sur place à la résidence régulière d'au moins un an de ses deux parents avant sa naissance ; il propose d'étendre ce régime à l'ensemble du territoire national, ainsi que de réduire le regroupement familial et de durcir les aides versées aux étrangers en situation irrégulière. Position détaillée dans un entretien à Valeurs actuelles et réitérée le 8 septembre 2026 sur CNews lors de l'émission « Objectif Élysée 2027 ».",
+        sourceOfficielle: "https://www.lejdd.fr/politique/presidentielle-bruno-retailleau-veut-supprimer-le-droit-du-sol-177978",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position documentée par un article dédié du JDD et réitérée publiquement le 8 septembre 2026 sur CNews (« Objectif Élysée 2027 »), également rapportée par Le JDD ; le mécanisme légal précis (loi ordinaire ou révision constitutionnelle) et le calendrier ne sont pas encore chiffrés publiquement.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Selon ses défenseurs, une restriction de l'accès à la nationalité pourrait, à leurs yeux, réduire une pression migratoire perçue sur l'emploi peu qualifié et le logement social"], risques: ["Un enfant né en France de parents en situation irrégulière n'acquerrait plus automatiquement la nationalité française, ce qui pourrait, selon des associations de défense des droits, accroître le nombre de personnes durablement sans statut clair, notamment dans les familles les plus modestes"], angleMort: "Aucune étude chiffrée publique n'évalue le nombre d'enfants concernés à l'échelle nationale ni le mécanisme juridique précis envisagé pour étendre le régime de Mayotte à la métropole." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur l'acquisition de la nationalité, sans effet économique direct documenté pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet économique direct documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
+        },
+      },
+      {
+        id: "br-peines-policiers",
+        theme: "Sécurité et justice",
+        titre: "Peines minimales pour les agressions commises contre les policiers",
+        resumeOfficiel:
+          "Le 8 septembre 2026, sur CNews (« Objectif Élysée 2027 »), Bruno Retailleau a déclaré vouloir « des peines minimales pour ceux qui tabassent des policiers », dans la continuité de son action comme ministre de l'Intérieur et de sa position de soutien au projet de loi S.U.R.E porté par Gérald Darmanin, qui prévoit notamment des peines minimales pour les auteurs de violences contre les forces de l'ordre.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/suppression-du-droit-du-sol-peines-minimales-bruno-retailleau-devoile-ses-ambitions-sur-cnews-182979",
+        niveauConfiance: "annonce",
+        noteConfiance: "Déclaration faite publiquement le 8 septembre 2026 sur CNews et rapportée par Le JDD, cohérente avec le projet de loi S.U.R.E du gouvernement qu'il soutient ; aucun seuil de peine précis ni texte de loi propre à sa candidature n'est publié à ce stade, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Objectif affiché de mieux protéger les policiers, souvent affectés en priorité dans des zones où cette catégorie est proportionnellement plus présente"], risques: ["Une partie des jeunes de cette catégorie, statistiquement plus exposée aux contrôles et interactions avec les forces de l'ordre, pourrait être proportionnellement plus concernée par un durcissement des peines"], angleMort: "Aucun chiffrage indépendant public de l'effet de peines minimales sur le nombre d'agressions contre les policiers, ni du profil socio-économique des personnes condamnées." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
         },
       },
     ],
