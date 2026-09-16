@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-13",
+  dateMaj: "2026-09-16",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -104,7 +104,11 @@ const AVIS_DONNEES_REELLES = {
 // case laissée vide pour les autres candidats faute de mesure sourcée équivalente, plutôt que d'inventer du
 // contenu (voir méthodologie). Le 2026-09-13, ajout d'une première mesure "Institutions et démocratie" pour
 // Attal (`ga-nouvelle-republique`) et de deux mesures pour Retailleau : la première "Immigration et intégration"
-// (`br-droit-du-sol`) et une seconde "Sécurité et justice" (`br-peines-policiers`).
+// (`br-droit-du-sol`) et une seconde "Sécurité et justice" (`br-peines-policiers`). Le 2026-09-16, ajout d'une
+// mesure "Pouvoir d'achat et économie" pour Mélenchon (`jlm-blocage-prix`), d'une première mesure "Europe et
+// géopolitique" pour Attal (`ga-preference-europeenne`, qui n'avait aucune mesure sur ce thème jusqu'ici), d'une
+// mesure "Sécurité et justice" pour Philippe (`ep-narcotrafic-urgence`) et d'une mesure "Immigration et
+// intégration" pour Le Pen (`mlp-logement`).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -267,6 +271,42 @@ const CANDIDATS = [
             avantages: ["Bénéfice indirect possible d'une meilleure réponse aux crises climatiques (feux de forêt) pouvant affecter des zones où résident des retraités"],
             risques: [],
             angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect.",
+          },
+        },
+      },
+      {
+        id: "jlm-blocage-prix",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Blocage des prix et des marges sur les produits de première nécessité, et échelle mobile des salaires",
+        resumeOfficiel:
+          "Lors d'un meeting à la Fête de l'Humanité le 12 septembre 2026, Jean-Luc Mélenchon a plaidé pour un blocage des prix et des marges sur les produits de première nécessité et proposé une échelle mobile des salaires, mécanisme d'indexation automatique et régulière des salaires sur l'inflation, pour enrayer la baisse du pouvoir d'achat ; il a également promis la gratuité des cantines scolaires.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/en-meeting-a-la-fete-de-l-humanite-jean-luc-melenchon-attire-les-foules-et-plaide-pour-le-blocage-des-prix_8190017.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Propositions formulées publiquement par le candidat le 12 septembre 2026 lors d'un meeting à la Fête de l'Humanité et rapportées par franceinfo ; le mécanisme précis de l'échelle mobile des salaires (périodicité, produits concernés par le blocage des prix) et son chiffrage global ne sont pas publiés à ce stade.",
+        impactParClasse: {
+          populaires: {
+            score: 2,
+            avantages: ["Un blocage des prix et des marges sur les produits de première nécessité bénéficierait proportionnellement plus aux ménages consacrant une part importante de leur revenu à ces produits", "L'échelle mobile des salaires viserait à protéger en priorité les bas salaires contre l'érosion par l'inflation", "La gratuité des cantines scolaires réduirait une dépense contrainte pour les familles modestes"],
+            risques: ["Des économistes mettent traditionnellement en garde contre un risque de pénurie ou de marché noir en cas de blocage prolongé des prix", "Le financement de la gratuité des cantines et le mécanisme de compensation pour les commerçants et producteurs ne sont pas chiffrés publiquement"],
+            angleMort: "Aucun chiffrage indépendant public du coût de la gratuité des cantines ni du périmètre exact des produits concernés par le blocage des prix.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Bénéfice du blocage des prix sur les produits de première nécessité, dans une proportion moindre du revenu que pour les classes populaires"],
+            risques: ["Une échelle mobile des salaires généralisée pourrait, selon certains économistes, alimenter une spirale prix-salaires dont l'effet net sur le pouvoir d'achat réel de cette catégorie n'est pas démontré"],
+            angleMort: "Aucune étude chiffrée publique n'évalue l'effet net d'une échelle mobile des salaires sur l'inflation elle-même.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: ["Les commerçants, distributeurs ou producteurs de cette catégorie pourraient voir leurs marges directement affectées par un blocage des prix"],
+            angleMort: "Aucun chiffrage public de l'effet du blocage des marges sur la rentabilité des entreprises concernées.",
+          },
+          retraites: {
+            score: 1,
+            avantages: ["Un blocage des prix sur les produits de première nécessité bénéficierait aux retraités aux pensions modestes, à la part de consommation contrainte proportionnellement élevée"],
+            risques: [],
+            angleMort: "Effet différencié selon le niveau de pension non chiffré publiquement.",
           },
         },
       },
@@ -445,6 +485,42 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
         },
       },
+      {
+        id: "ga-preference-europeenne",
+        theme: "Europe et géopolitique",
+        titre: "Conditionner l'accès des industriels chinois au marché européen à un transfert de technologie et à des partenariats à 50 %, et soutenir la préférence européenne dans les marchés publics",
+        resumeOfficiel:
+          "Gabriel Attal défend l'idée de conditionner désormais l'accès des industriels chinois au marché européen au transfert de leurs technologies vers des industriels européens et à des partenariats à parts égales (50-50) avec eux. Il soutient par ailleurs la proposition du vice-président de la Commission européenne Stéphane Séjourné d'instaurer une préférence européenne dans les marchés publics, estimant que sans un tel dispositif l'Europe ne pourra pas combler son retard technologique face à la Chine.",
+        sourceOfficielle: "https://www.franceinfo.fr/monde/europe/union-europeenne/emprunts-communs-europeens-ca-peut-etre-une-mesure-mais-a-quelques-conditions-estime-gabriel-attal_7798355.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Position exprimée publiquement par le candidat et rapportée par franceinfo, cohérente avec le projet de règlement européen sur les marchés publics présenté par la Commission européenne en septembre 2026 ; aucun texte de loi ni chiffrage propre à la candidature 2027 d'Attal n'est publié à ce stade, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Selon ses défenseurs, une préférence européenne dans les marchés publics pourrait préserver des emplois industriels, y compris peu qualifiés, menacés par la concurrence chinoise"],
+            risques: ["Un renchérissement de certains produits ou équipements publics faute de fournisseurs chinois moins chers pourrait indirectement peser sur le coût de certains services publics"],
+            angleMort: "Aucun chiffrage public de l'effet net sur l'emploi industriel ni sur le coût des marchés publics concernés.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Bénéfice potentiel pour les emplois qualifiés de la sous-traitance industrielle européenne favorisée par la préférence dans les marchés publics"],
+            risques: [],
+            angleMort: "Le périmètre exact des secteurs concernés par la préférence européenne n'est pas précisé publiquement par le candidat.",
+          },
+          aisees: {
+            score: 0,
+            avantages: ["Les dirigeants et actionnaires d'entreprises industrielles européennes bénéficiant de la préférence dans les marchés publics ou de partenariats technologiques avec des industriels chinois pourraient tirer un avantage commercial direct"],
+            risques: [],
+            angleMort: "Aucun chiffrage public du gain attendu pour les entreprises européennes concernées.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure de politique industrielle et commerciale européenne sans lien direct identifié avec cette catégorie à ce stade.",
+          },
+        },
+      },
     ],
   },
 
@@ -550,6 +626,42 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure principalement centrée sur l'immigration et les territoires ultramarins concernés, sans effet économique documenté pour cette catégorie en métropole." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct documenté pour cette catégorie." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
+        },
+      },
+      {
+        id: "ep-narcotrafic-urgence",
+        theme: "Sécurité et justice",
+        titre: "Créer un « état d'urgence narcotrafic » avec reconnaissance faciale, saisie facilitée des avoirs et suppression des prestations sociales pour les trafiquants",
+        resumeOfficiel:
+          "Lors d'un déplacement à Alès (Gard) le 7 septembre 2026, Édouard Philippe a proposé de créer un état d'urgence dédié au narcotrafic, sur le modèle des mesures antiterroristes : mesures administratives, perquisitions et moyens technologiques non autorisés en droit commun tels que la reconnaissance faciale, pour empêcher les trafiquants d'accéder à certains territoires. Il propose également de frapper les trafiquants au portefeuille par une saisie facilitée de leurs avoirs, et de priver de prestations sociales les personnes impliquées dans le narcotrafic.",
+        sourceOfficielle: "https://france3-regions.franceinfo.fr/occitanie/gard/ales/vous-n-etes-pas-seuls-edouard-philippe-en-campagne-presidentielle-et-en-croisade-contre-le-narcotrafic-dans-les-rues-d-ales-3412994.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition détaillée publiquement par le candidat le 7 septembre 2026 lors d'un déplacement de campagne à Alès et rapportée par France 3/franceinfo régions ; le cadre juridique précis de cet « état d'urgence narcotrafic » et son calendrier ne sont pas encore chiffrés publiquement.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Les quartiers les plus touchés par le trafic de drogue, où cette catégorie est proportionnellement plus présente, seraient la cible prioritaire de ce dispositif renforcé"],
+            risques: ["Le recours à des moyens technologiques dérogatoires au droit commun comme la reconnaissance faciale, dans des zones où cette catégorie est surreprésentée, fait craindre à des associations de défense des libertés un risque de surveillance disproportionnée", "La suppression des prestations sociales pour les personnes impliquées pourrait aussi toucher l'entourage familial, dont des enfants, sans que ce risque soit chiffré"],
+            angleMort: "Le périmètre exact des personnes visées par la suppression de prestations sociales (auteurs seuls ou membres de leur foyer) n'est pas précisé publiquement.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure de sécurité publique ciblant des zones et publics spécifiques, sans effet économique différencié documenté pour cette catégorie.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure de sécurité publique sans effet économique différencié documenté pour cette catégorie.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Bénéfice indirect possible d'une sécurité renforcée dans certains quartiers où résident aussi des retraités"],
+            risques: [],
+            angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect pour cette catégorie.",
+          },
         },
       },
     ],
@@ -856,6 +968,42 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: ["Objectif affiché de stabilisation de la dette pouvant limiter une hausse future des prélèvements obligatoires"], risques: ["Effet possible sur les services publics utilisés par cette catégorie si les économies portent sur des postes de dépense courante"], angleMort: "Répartition précise des économies entre postes non publiée." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Un plan centré sur les dépenses de fonctionnement de l'État plutôt que sur la fiscalité n'a pas d'effet direct identifié pour cette catégorie à ce stade, faute de détail public." },
           retraites: { score: 0, avantages: [], risques: ["Les dépenses de retraite représentant une part importante des dépenses de fonctionnement de l'État visées par le plan, un objectif de 125 milliards d'économies pourrait à terme les concerner si le détail à venir les inclut"], angleMort: "Aucune indication publique ne précise si les pensions seraient concernées ou explicitement épargnées par ce plan d'économies." },
+        },
+      },
+      {
+        id: "mlp-logement",
+        theme: "Immigration et intégration",
+        titre: "Réserver l'APL et l'accès aux HLM aux Français, et expulser les familles délinquantes du parc social",
+        resumeOfficiel:
+          "Lors de sa rentrée politique à Hénin-Beaumont le 13 septembre 2026, Marine Le Pen a fait de la « priorité nationale » le fil conducteur de ses propositions sur le logement : réserver l'aide personnalisée au logement (APL) et l'accès aux HLM aux Français, autoriser la vente d'une partie du parc HLM à des Français, et expulser du logement social les familles reconnues coupables de délits.",
+        sourceOfficielle: "https://www.franceinfo.fr/politique/marine-le-pen/video-marine-le-pen-candidate-du-rn-a-la-presidentielle-2027-detaille-une-serie-de-propositions-sur-le-logement-qui-sera-un-des-grands-chantiers-de-son-quinquennat-si-elle-est-elue_8190839.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Propositions détaillées publiquement par la candidate le 13 septembre 2026 lors de sa rentrée politique à Hénin-Beaumont et rapportées par franceinfo et LCP ; la présidente de la confédération des bailleurs sociaux a réagi publiquement, confirmant la réalité et la portée de la proposition. Le mécanisme légal précis (loi ordinaire ou critère de résidence) et son calendrier ne sont pas encore chiffrés publiquement.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Les 2,7 millions de personnes actuellement en attente d'un logement social pourraient, selon les défenseurs de la mesure, voir leur délai d'attente réduit si la priorité nationale limite le nombre de candidats étrangers éligibles"],
+            risques: ["La présidente de la confédération des bailleurs sociaux qualifie la mesure de discriminatoire ; des étrangers en situation régulière aujourd'hui éligibles au logement social ou à l'APL, souvent parmi les ménages les plus modestes, en perdraient le bénéfice"],
+            angleMort: "Aucun chiffrage public n'évalue le nombre de personnes qui perdraient l'accès à l'APL ou au logement social du fait du critère de nationalité, ni l'effet net sur la liste d'attente.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur le parc social et l'APL, dont cette catégorie est statistiquement moins bénéficiaire ; effet indirect non chiffré publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure sans effet direct documenté pour cette catégorie, non concernée par le logement social ou l'APL.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: ["Les retraités étrangers en situation régulière résidant en HLM ou bénéficiant de l'APL, souvent parmi les pensions les plus modestes, perdraient ce bénéfice selon cette proposition"],
+            angleMort: "Aucune donnée publique ne chiffre le nombre de retraités concernés par cette restriction.",
+          },
         },
       },
     ],
