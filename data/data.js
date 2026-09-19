@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-16",
+  dateMaj: "2026-09-19",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -108,7 +108,11 @@ const AVIS_DONNEES_REELLES = {
 // mesure "Pouvoir d'achat et économie" pour Mélenchon (`jlm-blocage-prix`), d'une première mesure "Europe et
 // géopolitique" pour Attal (`ga-preference-europeenne`, qui n'avait aucune mesure sur ce thème jusqu'ici), d'une
 // mesure "Sécurité et justice" pour Philippe (`ep-narcotrafic-urgence`) et d'une mesure "Immigration et
-// intégration" pour Le Pen (`mlp-logement`).
+// intégration" pour Le Pen (`mlp-logement`). Le 2026-09-19, ajout d'une mesure "Institutions et démocratie"
+// pour Mélenchon (`jlm-etat-urgence-sociale`, état d'urgence sociale/écologique annoncé le 12/09/2026), d'une
+// deuxième mesure "Europe et géopolitique" pour Attal (`ga-etats-unis-europe`, États-Unis d'Europe annoncés le
+// 17/09/2026) et d'une première mesure "Écologie et énergie" pour Philippe (`ep-securite-climatique`, thème
+// jusqu'ici vide pour ce candidat, sécurité climatique annoncée le 17/09/2026).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -346,6 +350,42 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "jlm-etat-urgence-sociale",
+        theme: "Institutions et démocratie",
+        titre: "Instaurer un « état d'urgence sociale et écologique » pour engager une taxation des grandes fortunes et désarmer la finance",
+        resumeOfficiel:
+          "Lors de son meeting à la Fête de l'Humanité le 12 septembre 2026, Jean-Luc Mélenchon a évoqué la possibilité de décréter, sous des conditions objectives à préciser, un « état d'urgence sociale » ou un « état d'urgence écologique ». Selon la députée LFI Aurélie Trouvé, présidente de la commission des affaires économiques à l'Assemblée nationale, ce dispositif viserait à faire constater une situation de crise économique et sociale urgente justifiant une politique de rupture plutôt que des mesures ponctuelles, et permettrait d'engager trois axes : la taxation des plus grandes fortunes, une relance du pouvoir d'achat et des recettes fiscales par la hausse des salaires, et un « désarmement de la finance » consistant à arrêter le paiement de frais financiers jugés excessifs sur la dette publique détenue par des acteurs financiers privés.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/en-quoi-consiste-l-etat-d-urgence-sociale-que-souhaite-declencher-jean-luc-melenchon_8190866.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Proposition présentée publiquement par le candidat le 12 septembre 2026 et détaillée par une députée LFI dans un article dédié de franceinfo ; les conditions objectives précises de déclenchement, la base légale et le chiffrage des trois axes d'action ne sont pas publiés à ce stade, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Les trois axes évoqués (hausse des salaires, taxation des grandes fortunes, réduction des frais financiers sur la dette) visent explicitement à améliorer le pouvoir d'achat, en priorité pour les ménages aux revenus modestes"],
+            risques: [],
+            angleMort: "Le mécanisme juridique précis de déclenchement de cet « état d'urgence » et les pouvoirs exacts qu'il conférerait à l'exécutif ne sont pas publiés, ce qui empêche d'évaluer l'ampleur réelle de ses effets.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Comme pour les autres catégories, l'absence de texte précisant les conditions de déclenchement et la durée du dispositif empêche d'évaluer un effet différencié pour cette catégorie.",
+          },
+          aisees: {
+            score: -1,
+            avantages: [],
+            risques: ["La taxation des plus grandes fortunes est explicitement présentée comme l'un des trois axes de ce dispositif, ce qui identifie cette catégorie comme contributrice probable"],
+            angleMort: "Aucun chiffrage public du taux ou du périmètre de cette taxation renforcée des grandes fortunes n'est disponible à ce stade.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Une réduction des frais financiers payés sur la dette publique pourrait, selon ses défenseurs, dégager une marge budgétaire profitant à terme au financement des retraites"],
+            risques: [],
+            angleMort: "Aucun lien chiffré n'est établi publiquement entre ce dispositif et le financement du système de retraite.",
+          },
+        },
+      },
     ],
   },
 
@@ -521,6 +561,42 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "ga-etats-unis-europe",
+        theme: "Europe et géopolitique",
+        titre: "Proposer des « États-Unis d'Europe » par fusion économique et écologique d'un noyau dur de pays, validée par référendum européen simultané",
+        resumeOfficiel:
+          "Le 17 septembre 2026, Gabriel Attal a défendu la création d'« États-Unis d'Europe », qu'il présente comme « le projet d'une génération » face à une Europe des 27 qu'il juge avoir « atteint ses limites » et « attaquée » par la concurrence américaine et chinoise. Il ne s'agit pas, selon lui, de créer un pays unique mais d'organiser une fusion économique et écologique d'abord entre un « noyau dur » de pays européens, dont le nombre n'est pas précisé, validée par un référendum européen inédit consistant en une consultation simultanée dans l'ensemble des pays appelés à y participer. Il évoque la nécessité d'un endettement commun européen pour permettre à l'Europe de rivaliser avec les États-Unis et la Chine, tout en excluant que cela se traduise par des impôts supplémentaires ou une hausse massive de la contribution française au budget européen.",
+        sourceOfficielle: "https://www.franceinfo.fr/monde/europe/gabriel-attal-juge-que-l-europe-des-27-a-atteint-ses-limites-et-plaide-pour-des-etats-unis-d-europe_8197754.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Déclaration faite publiquement par le candidat le 17 septembre 2026 et rapportée par franceinfo ; ni le nombre de pays concernés par le « noyau dur », ni le calendrier du référendum européen, ni le mécanisme précis de la dette commune évoquée ne sont chiffrés ou détaillés dans un texte à ce stade, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Une intégration économique renforcée avec d'autres pays européens pourrait, selon ses défenseurs, consolider l'emploi industriel face à la concurrence américaine et chinoise"],
+            risques: ["Un endettement commun européen, même sans hausse d'impôt annoncée, pourrait à terme peser sur les marges de manœuvre budgétaires nationales si son remboursement n'est pas précisé"],
+            angleMort: "Le nombre de pays formant le « noyau dur », le calendrier du référendum européen et le mécanisme précis de la dette commune évoquée ne sont pas publiés à ce stade, ce qui empêche de chiffrer l'effet concret pour les ménages de cette catégorie.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Comme pour les autres catégories, l'absence de texte précisant les secteurs économiques concernés par la fusion et le contour de la dette commune empêche d'évaluer un effet différencié pour cette catégorie.",
+          },
+          aisees: {
+            score: 0,
+            avantages: ["Les entreprises et investisseurs opérant à l'échelle européenne pourraient bénéficier d'une intégration économique renforcée entre les pays du « noyau dur »"],
+            risques: [],
+            angleMort: "Aucun chiffrage public ne permet d'évaluer l'ampleur de ce bénéfice potentiel ni les secteurs effectivement concernés.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure de politique européenne institutionnelle sans effet direct identifié pour cette catégorie à ce stade, faute de texte précisant son financement ou sa mise en œuvre.",
+          },
+        },
+      },
     ],
   },
 
@@ -661,6 +737,42 @@ const CANDIDATS = [
             avantages: ["Bénéfice indirect possible d'une sécurité renforcée dans certains quartiers où résident aussi des retraités"],
             risques: [],
             angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect pour cette catégorie.",
+          },
+        },
+      },
+      {
+        id: "ep-securite-climatique",
+        theme: "Écologie et énergie",
+        titre: "Une politique de « sécurité climatique » dotée d'un fonds unique d'adaptation de 2 milliards d'euros par an et de la production d'un « Canadair français »",
+        resumeOfficiel:
+          "Le 17 septembre 2026, Édouard Philippe a présenté sa volonté de doter la France d'une « véritable politique de sécurité climatique », avec la création d'un fonds unique d'adaptation au changement climatique doté de 2 milliards d'euros par an, la production d'un « Canadair français » au cours du prochain quinquennat, l'instauration d'une « journée nationale d'alerte » et le lancement de trois grands chantiers : un plan piscines, un plan d'adaptation des infrastructures et un plan montagne.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/edouard-philippe-souhaite-doter-la-france-d-une-veritable-politique-de-securite-climatique_8197976.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Annonce chiffrée (fonds de 2 milliards d'euros par an) et détaillée (production d'un Canadair français, journée nationale d'alerte, trois grands chantiers identifiés) faite publiquement par le candidat le 17 septembre 2026 et rapportée par franceinfo.",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Les ménages modestes sont statistiquement plus exposés aux logements mal isolés ou situés en zones à risque (inondation, canicule), et pourraient bénéficier en priorité d'un fonds d'adaptation ciblant les infrastructures et l'habitat"],
+            risques: ["Le financement du fonds de 2 milliards d'euros par an, s'il repose sur la fiscalité générale, pourrait solliciter l'ensemble des contribuables sans ciblage précisé"],
+            angleMort: "La répartition territoriale et sociale précise des 2 milliards d'euros annuels entre les différents chantiers (piscines, infrastructures, montagne) n'est pas publiée.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Bénéfice potentiel via les infrastructures locales (piscines, adaptation aux canicules) financées par le fonds"],
+            risques: [],
+            angleMort: "Le mode de financement précis du fonds (fiscalité, emprunt, redéploiement de crédits existants) n'est pas détaillé publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet différencié documenté publiquement pour cette catégorie, la mesure ciblant des infrastructures collectives plutôt qu'un dispositif individuel.",
+          },
+          retraites: {
+            score: 1,
+            avantages: ["Les personnes âgées sont particulièrement vulnérables aux vagues de chaleur ; un plan d'adaptation et une journée nationale d'alerte pourraient bénéficier en priorité à cette catégorie"],
+            risques: [],
+            angleMort: "Aucune mesure spécifique aux établissements pour personnes âgées (Ehpad) n'est mentionnée publiquement dans l'annonce, dont le périmètre exact reste à préciser.",
           },
         },
       },
