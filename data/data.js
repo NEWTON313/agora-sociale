@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-09-19",
+  dateMaj: "2026-10-02",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -597,6 +597,42 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "ga-plan-eau",
+        theme: "Écologie et énergie",
+        titre: "Un plan national de lutte contre les fuites d'eau et un bouclier tarifaire sur les premiers litres essentiels",
+        resumeOfficiel:
+          "Dans un entretien à l'AFP le 9 août 2026, Gabriel Attal a promis, s'il est élu, un plan « massif » contre le gaspillage de l'eau : récupérer 1 000 milliards de litres d'eau (l'équivalent de 400 000 piscines olympiques) d'ici 2035, en réparant en priorité les 500 réseaux de distribution les moins performants — où jusqu'à un litre sur cinq est aujourd'hui perdu par des fuites — via un plan de financement « clé en main » proposé aux communes et intercommunalités. Il veut aussi lever certains freins administratifs à la réutilisation des eaux usées, sur le modèle espagnol, et instaurer un bouclier tarifaire garantissant un tarif bas et fixe pour les premiers litres jugés essentiels selon la taille du foyer, ciblé sur les ménages modestes et moyens.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/en-campagne-gabriel-attal-promet-un-plan-massif-sur-l-eau-s-il-est-elu-president_8140991.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Plan détaillé par le candidat lors d'un entretien à l'AFP le 9 août 2026, avec un objectif chiffré (1 000 milliards de litres d'ici 2035) et des mécanismes identifiés (financement clé en main pour les 500 réseaux les moins performants, bouclier tarifaire), rapporté par franceinfo ; le coût budgétaire global du plan et le financement précis du bouclier tarifaire ne sont pas chiffrés publiquement à ce stade.",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Le bouclier tarifaire, explicitement ciblé sur les ménages modestes et moyens, garantirait un tarif bas et fixe pour les premiers litres essentiels, une dépense contrainte pesant proportionnellement plus sur cette catégorie"],
+            risques: ["Le financement du plan de réparation des réseaux les moins performants pourrait, s'il repose en partie sur la facture d'eau, peser sur les ménages non couverts par le bouclier tarifaire"],
+            angleMort: "Le financement précis du bouclier tarifaire et le seuil exact de litres couverts selon la taille du foyer ne sont pas publiés.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["Bénéfice potentiel du bouclier tarifaire selon le seuil retenu, non encore publié"],
+            risques: [],
+            angleMort: "Le candidat ne précise pas si cette catégorie serait pleinement couverte par le bouclier, présenté comme ciblé sur les ménages modestes et moyens sans seuil de revenu publié.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: ["Cette catégorie, moins ciblée par un bouclier tarifaire réservé aux ménages modestes et moyens, ne bénéficierait pas de la même protection sur ses factures d'eau"],
+            angleMort: "Aucun chiffrage public ne permet d'évaluer l'effet du plan sur la facture d'eau de cette catégorie.",
+          },
+          retraites: {
+            score: 0,
+            avantages: ["Les retraités aux pensions modestes pourraient bénéficier du bouclier tarifaire selon les mêmes critères que les autres ménages modestes"],
+            risques: [],
+            angleMort: "Aucune donnée publique ne précise si le bouclier tarifaire tient compte spécifiquement des retraités à revenu fixe.",
+          },
+        },
+      },
     ],
   },
 
@@ -776,6 +812,78 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "ep-retraites-65-ans",
+        theme: "Retraites et modèle social",
+        titre: "Porter l'âge légal de départ à la retraite à 65 ans et la durée de cotisation à 45 annuités, avec un volet capitalisation",
+        resumeOfficiel:
+          "Édouard Philippe a dévoilé le 29 septembre 2026 son projet de réforme des retraites : reprendre d'abord la réforme de 2023 (âge légal à 64 ans, 43 annuités), puis porter en moins de dix ans l'âge légal à 65 ans et la durée de cotisation à 45 annuités. Un Français sur trois pourrait continuer à partir avant 65 ans (entre 60 et 64 ans), au titre des carrières longues ou des métiers pénibles ; les départs dérogatoires pour les personnes en situation de handicap (55 ans), en incapacité permanente (60 ans) ou en invalidité (62 ans) ne seraient pas modifiés. Le système par répartition resterait le socle, complété par un volet de capitalisation. Le candidat chiffre le gain budgétaire en année pleine à environ 30 milliards d'euros.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/age-de-depart-a-65-ans-45-annuites-de-cotisation-edouard-philippe-candidat-horizons-a-la-presidentielle-devoile-son-projet-de-reforme-des-retraites_8214737.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Projet détaillé publiquement par le candidat le 29 septembre 2026 (âge légal, durée de cotisation, exceptions par pénibilité ou handicap, gain chiffré à 30 milliards d'euros) et rapporté par franceinfo, LCP, Le JDD et France 24.",
+        impactParClasse: {
+          populaires: {
+            score: -2,
+            avantages: ["Un départ dérogatoire entre 60 et 64 ans resterait possible pour les carrières longues et les métiers pénibles, plus représentés dans cette catégorie"],
+            risques: ["Le report à 65 ans de l'âge légal pèse statistiquement plus sur les carrières commencées tôt et les métiers physiques, majoritaires dans cette catégorie, y compris avec les dérogations prévues"],
+            angleMort: "Le barème précis déterminant qui, au sein de cette catégorie, pourra bénéficier d'un départ dérogatoire avant 65 ans n'est pas encore publié.",
+          },
+          moyennes: {
+            score: -1,
+            avantages: [],
+            risques: ["Report de deux ans par rapport à l'âge légal actuel de 64 ans (issu de la réforme de 2023) pour les carrières standards"],
+            angleMort: "Le calendrier précis de la montée en charge sur moins de dix ans n'est pas détaillé publiquement.",
+          },
+          aisees: {
+            score: 0,
+            avantages: ["Le volet capitalisation complémentaire pourrait bénéficier davantage aux ménages disposant d'une capacité d'épargne plus importante"],
+            risques: [],
+            angleMort: "Le barème et le volume de cette part de capitalisation ne sont pas chiffrés publiquement.",
+          },
+          retraites: {
+            score: 1,
+            avantages: ["Le candidat chiffre à 30 milliards d'euros en année pleine le gain budgétaire attendu, présenté comme un gage de pérennité du système par répartition dont dépendent les pensions déjà versées"],
+            risques: ["La mesure ne concerne pas directement les pensions déjà versées, mais une dégradation perçue de la soutenabilité du système pourrait peser sur le débat public autour de leur revalorisation future"],
+            angleMort: "Aucune évaluation indépendante publique (Conseil d'orientation des retraites) de ce chiffrage à 30 milliards d'euros n'est disponible à ce stade.",
+          },
+        },
+      },
+      {
+        id: "ep-ukraine-otan",
+        theme: "Europe et géopolitique",
+        titre: "Soutenir l'entrée de l'Ukraine dans l'OTAN et le déploiement de troupes européennes de réassurance après un cessez-le-feu",
+        resumeOfficiel:
+          "En déplacement à Kiev le 26 mai 2026 pour rencontrer le président Volodymyr Zelensky, Édouard Philippe a déclaré vouloir « travailler pour que l'Ukraine puisse entrer dans l'Otan » et s'est dit favorable au déploiement de troupes européennes en Ukraine après un retour de la paix, pour garantir que la Russie ne soit pas tentée de reprendre ses attaques.",
+        sourceOfficielle: "https://www.lejdd.fr/International/edouard-philippe-defend-lentree-de-lukraine-dans-lotan-174870",
+        niveauConfiance: "confirme",
+        noteConfiance: "Déclarations faites publiquement lors d'un déplacement à Kiev le 26 mai 2026, rapportées par Le JDD et France 24 ; le format exact, les effectifs et le calendrier d'un éventuel déploiement de troupes européennes ne sont pas chiffrés publiquement, cette partie du projet restant conditionnée à un cessez-le-feu non encore intervenu.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: [],
+            risques: ["Un déploiement de troupes françaises dans le cadre d'une force européenne de réassurance comporte un risque pour les militaires engagés, population au sein de laquelle cette catégorie est proportionnellement représentée au regard de la sociologie du recrutement des armées"],
+            angleMort: "Aucun chiffrage public des effectifs français qui seraient engagés ni de leur financement n'est disponible à ce stade, la mesure restant conditionnée à un cessez-le-feu non encore intervenu.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique direct documenté pour cette catégorie à ce stade.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet économique direct documenté pour cette catégorie à ce stade.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet direct documenté pour cette catégorie à ce stade.",
+          },
+        },
+      },
     ],
   },
 
@@ -822,36 +930,36 @@ const CANDIDATS = [
       {
         id: "br-retraites",
         theme: "Retraites et modèle social",
-        titre: "Lier l'âge légal de départ à la retraite à l'espérance de vie, en assumant son report",
+        titre: "Instaurer un âge minimal de départ à 63 ans, un taux plein à 65 ans et une part de capitalisation pour les jeunes actifs",
         resumeOfficiel:
-          "Bruno Retailleau assume vouloir repousser l'âge légal de départ à la retraite, en proposant de le lier par une formule à l'évolution de l'espérance de vie, une position déjà défendue par Valérie Pécresse en 2022.",
-        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/retraites-contrairement-a-beaucoup-d-autres-j-assumerai-le-fait-de-repousser-l-age-legal-lance-bruno-retailleau-candidat-lr-a-l-election-presidentielle_8166161.html",
+          "Bruno Retailleau a détaillé le 22 septembre 2026 sa réforme des retraites : un âge minimal de départ fixé à 63 ans, avec une décote de 7 % par an en cas de départ avant 65 ans ; un taux plein porté automatiquement à 65 ans (contre 67 ans aujourd'hui), même sans avoir validé tous ses trimestres ; et l'introduction, pour les jeunes actifs entrant sur le marché du travail, d'une part de capitalisation représentant dans un premier temps environ 25 à 30 % de leur future pension, sans effet sur les retraités actuels. Il prévient que cet âge de 65 ans pour le taux plein est appelé à évoluer avec l'espérance de vie.",
+        sourceOfficielle: "https://www.franceinfo.fr/politique/bruno-retailleau/s-il-est-elu-bruno-retailleau-veut-instaurer-un-age-minimal-de-depart-a-la-retraite-a-63-ans-le-taux-plein-a-65_8205254.html",
         niveauConfiance: "confirme",
-        noteConfiance: "Position affirmée publiquement et rapportée par franceinfo, comparée par LCP aux propositions des autres candidats sur le sujet ; la formule précise d'indexation sur l'espérance de vie n'est pas encore chiffrée publiquement.",
+        noteConfiance: "Réforme détaillée publiquement par le candidat le 22 septembre 2026 (âge minimal, taux plein, décote de 7 % par an, capitalisation chiffrée à 25-30 % pour les jeunes actifs) et rapportée par franceinfo, LCP, Le JDD et France 24 ; cette annonce chiffrée précise une position antérieure moins détaillée (simple liaison de l'âge légal à l'espérance de vie).",
         impactParClasse: {
           populaires: {
             score: -2,
             avantages: [],
-            risques: ["Un report supplémentaire de l'âge légal pèse proportionnellement plus sur les carrières commencées tôt et les métiers pénibles, plus représentés dans cette catégorie"],
-            angleMort: "La formule exacte d'indexation sur l'espérance de vie et son calendrier d'application ne sont pas chiffrés publiquement.",
+            risques: ["Un âge minimal de départ à 63 ans, avec une décote de 7 % par an avant le taux plein à 65 ans, pèse proportionnellement plus sur les carrières commencées tôt et les métiers pénibles, plus représentés dans cette catégorie"],
+            angleMort: "Le programme ne détaille pas de dispositif spécifique d'exonération de la décote pour les carrières longues ou pénibles.",
           },
           moyennes: {
             score: -1,
             avantages: [],
-            risques: ["Report de l'âge de départ pour les carrières standards"],
-            angleMort: "Effet différencié selon les métiers et la pénibilité non détaillé publiquement.",
+            risques: ["Risque de décote de 7 % par an pour un départ entre 63 et 65 ans sans carrière complète"],
+            angleMort: "Le barème précis des trimestres requis pour échapper à la décote n'est pas publié.",
           },
           aisees: {
             score: 0,
-            avantages: [],
-            risques: ["Effet plus limité pour les carrières longues d'études supérieures, qui partent déjà statistiquement plus tard"],
-            angleMort: "Aucune donnée publique ne permet de chiffrer précisément l'effet différencié pour cette catégorie.",
+            avantages: ["Le volet capitalisation, chiffré à 25-30 % de la pension des jeunes actifs, pourrait davantage profiter aux ménages disposant d'une capacité d'épargne ou de placement plus importante"],
+            risques: [],
+            angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié de ce volet de capitalisation selon le niveau de patrimoine.",
           },
           retraites: {
             score: 0,
-            avantages: ["Objectif affiché de pérennité financière du système de retraite par répartition, dont dépendent les pensions déjà versées"],
+            avantages: ["Le candidat précise explicitement que la capitalisation n'est pas destinée aux retraités actuels, qui ne sont pas concernés par ce volet"],
             risques: [],
-            angleMort: "Mesure concernant les futurs retraités plus que les pensions actuellement versées ; son effet sur l'équilibre financier global du système n'est pas chiffré publiquement.",
+            angleMort: "Aucune évaluation indépendante publique (Conseil d'orientation des retraites) de l'effet de cette réforme sur l'équilibre financier global du système n'est disponible à ce stade.",
           },
         },
       },
