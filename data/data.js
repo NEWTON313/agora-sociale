@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-10-02",
+  dateMaj: "2026-10-04",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -112,7 +112,11 @@ const AVIS_DONNEES_REELLES = {
 // pour Mélenchon (`jlm-etat-urgence-sociale`, état d'urgence sociale/écologique annoncé le 12/09/2026), d'une
 // deuxième mesure "Europe et géopolitique" pour Attal (`ga-etats-unis-europe`, États-Unis d'Europe annoncés le
 // 17/09/2026) et d'une première mesure "Écologie et énergie" pour Philippe (`ep-securite-climatique`, thème
-// jusqu'ici vide pour ce candidat, sécurité climatique annoncée le 17/09/2026).
+// jusqu'ici vide pour ce candidat, sécurité climatique annoncée le 17/09/2026). Le 2026-10-04, ajout d'une
+// première mesure "Sécurité et justice" pour Mélenchon (`jlm-refonder-police`, thème jusqu'ici vide pour ce
+// candidat : refonte de la police, dissolution de l'IGPN, garde nationale de jeunes volontaires, dépénalisation
+// du cannabis) et d'une troisième mesure "Sécurité et justice" pour Retailleau (`br-majorite-penale`, abaissement
+// de la majorité pénale à 15 ans, annoncé le 08/09/2026 sur CNews).
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -383,6 +387,42 @@ const CANDIDATS = [
             avantages: ["Une réduction des frais financiers payés sur la dette publique pourrait, selon ses défenseurs, dégager une marge budgétaire profitant à terme au financement des retraites"],
             risques: [],
             angleMort: "Aucun lien chiffré n'est établi publiquement entre ce dispositif et le financement du système de retraite.",
+          },
+        },
+      },
+      {
+        id: "jlm-refonder-police",
+        theme: "Sécurité et justice",
+        titre: "Refonder la police « de la cave au grenier », dissoudre l'IGPN et créer une garde nationale de jeunes volontaires",
+        resumeOfficiel:
+          "Dans une longue vidéo publiée fin août 2026 sur sa chaîne YouTube, Jean-Luc Mélenchon promet, s'il est élu en 2027, de revoir l'organisation de la police « de la cave au grenier » dans toutes ses missions. Lors d'un colloque de La France insoumise à Paris le 14 septembre 2026, intitulé « Sécurité, violences, délinquance : retour à la raison », il a détaillé ses propositions autour d'un triptyque « prévention, répression, réparation » : « refonder la police de fond en comble » en restaurant une formation initiale plus sérieuse des policiers, en créant un nouveau code de déontologie, en dissolvant l'Inspection générale de la police nationale (IGPN), en créant une garde nationale composée de jeunes volontaires, et en dépénalisant l'usage du cannabis.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/nous-transformerons-la-police-de-la-cave-au-grenier-melenchon-promet-une-refonte-des-missions-des-forces-de-lordre-160044",
+        niveauConfiance: "confirme",
+        noteConfiance: "La promesse de refonte de la police « de la cave au grenier » est rapportée par Le JDD fin août 2026 et prolonge une image déjà utilisée par La France insoumise lors de précédentes campagnes ; les mesures précises (dissolution de l'IGPN, garde nationale de jeunes volontaires, dépénalisation du cannabis) ont été détaillées lors du colloque du 14 septembre 2026, également rapporté par LCP et franceinfo. Le chiffrage budgétaire de la garde nationale et le dispositif exact destiné à remplacer l'IGPN ne sont pas publiés à ce stade.",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Une garde nationale de jeunes volontaires, si elle est rémunérée sur le modèle de la « conscription écologique » déjà proposée par le candidat, pourrait offrir un revenu et une expérience professionnelle à des jeunes de cette catégorie, plus touchés par le chômage des jeunes", "La dissolution de l'IGPN et un nouveau code de déontologie visent à répondre aux critiques de violences policières exprimées en priorité par des habitants de quartiers populaires"],
+            risques: ["La dépénalisation du cannabis pourrait, selon des opposants, être perçue comme un signal d'affaiblissement de la réponse pénale dans des zones où le trafic de stupéfiants est identifié comme un problème de sécurité publique"],
+            angleMort: "Aucun chiffrage public du coût de la garde nationale de jeunes volontaires ni du dispositif destiné à remplacer les missions de contrôle de l'IGPN n'est disponible à ce stade.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur l'organisation des forces de l'ordre et la politique pénale, sans effet économique différencié documenté pour cette catégorie.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur l'organisation des forces de l'ordre et la politique pénale, sans effet économique différencié documenté pour cette catégorie.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucune donnée publique ne permet d'établir un effet différencié de cette réorganisation policière pour les retraités.",
           },
         },
       },
@@ -1097,6 +1137,22 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
+        },
+      },
+      {
+        id: "br-majorite-penale",
+        theme: "Sécurité et justice",
+        titre: "Abaisser la majorité pénale à 15 ans",
+        resumeOfficiel:
+          "Le 8 septembre 2026, sur CNews (« Objectif Élysée 2027 »), Bruno Retailleau a déclaré vouloir abaisser la majorité pénale à 15 ans, afin que les mineurs de cette tranche d'âge auteurs d'infractions puissent être jugés et sanctionnés dans des conditions plus proches de celles d'un majeur, dans la continuité de ses prises de position antérieures en faveur d'un durcissement de la justice des mineurs lorsqu'il était ministre de l'Intérieur.",
+        sourceOfficielle: "https://www.lejdd.fr/politique/suppression-du-droit-du-sol-peines-minimales-bruno-retailleau-devoile-ses-ambitions-sur-cnews-182979",
+        niveauConfiance: "annonce",
+        noteConfiance: "Déclaration faite publiquement le 8 septembre 2026 sur CNews et rapportée par Le JDD, dans la continuité de son action comme ministre de l'Intérieur en faveur d'un durcissement de la justice des mineurs ; le mécanisme légal précis (articulation avec l'ordonnance de 1945 sur la justice pénale des mineurs, seuil d'âge pour chaque type de sanction) et un éventuel texte de loi propre à sa candidature ne sont pas publiés à ce stade, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Pourrait, selon ses défenseurs, permettre une réponse judiciaire plus rapide et dissuasive face à des mineurs multirécidivistes, dans des quartiers populaires où une partie des habitants exprime une demande de fermeté face à certaines formes de délinquance de voie publique"], risques: ["Les mineurs de 15 à 17 ans suivis par la justice sont statistiquement sur-représentés dans les familles aux revenus modestes selon les données du ministère de la Justice ; jugés et condamnés dans des conditions plus proches de celles d'un majeur, ils pourraient voir leurs chances de réinsertion réduites par des peines plus lourdes"], angleMort: "Aucune étude d'impact publique ne chiffre le nombre de mineurs de 15 à 17 ans concernés par ce changement de seuil, ni son effet sur le taux de récidive comparé au régime actuel de l'ordonnance de 1945." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique pénale sans effet économique différencié documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: ["Peut répondre à une demande de fermeté perçue comme rassurante par une partie des retraités, catégorie statistiquement plus sensible au sentiment d'insécurité selon les enquêtes de victimation"], risques: [], angleMort: "Aucune donnée chiffrée n'établit de lien direct entre cette mesure et la sécurité spécifique des retraités." },
         },
       },
     ],
