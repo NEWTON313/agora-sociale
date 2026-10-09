@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résultat partagé | Mon Choix 2027</title>
+<meta name="description" content="Voici ce que donne le comparateur selon une catégorie sociale et des priorités. À vous d'essayer : 2 minutes, aucune donnée conservée.">
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="brand-spectrum" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container site-header__row">
+    <a href="index.html" class="logo">Mon <span>Choix 2027</span></a>
+    <div class="site-header__meta">Résultat partagé</div>
+  </div>
+  <div class="container">
+    <nav class="site-nav">
+      <a href="simulateur.html">Simulateur</a>
+      <a href="candidat.html">Fiches candidats</a>
+      <a href="methodologie.html">Méthodologie</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__eyebrow">Résultat partagé</div>
+    <h1 id="resultat-titre" style="max-width:22ch;">Ce que donne le comparateur</h1>
+    <p class="lede" id="resultat-description"></p>
+  </div>
+</section>
+
+<div class="container" style="max-width:720px; padding-top:32px; padding-bottom:80px;">
+
+  <div class="resultat" id="resultat-partage">
+    <div class="resultat__eyebrow">Priorités indiquées</div>
+    <ul class="resultat-partage__priorites" id="resultat-priorites"></ul>
+    <p style="font-size:0.85rem; font-style:italic; color:var(--ink-soft);">
+      Score calculé d'après ces priorités et les mesures recensées pour cette catégorie sociale. Ce n'est
+      ni un jugement de valeur ni une recommandation de vote — voir la
+      <a href="methodologie.html#score-personnalise" style="text-decoration:underline;">méthodologie</a>.
+      Le classement complet est toujours affiché.
+    </p>
+    <ol id="resultat-classement" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:16px;"></ol>
+  </div>
+
+  <div class="resultat" style="margin-top:32px; border-left:4px solid var(--line-strong);">
+    <h3>Et pour vous ?</h3>
+    <p>
+      Le résultat dépend de la situation et des priorités de chacun. Refaites le calcul avec les vôtres : 2
+      minutes, le calcul se fait dans votre navigateur et rien n'est conservé.
+    </p>
+    <a href="simulateur.html" class="bouton-principal bouton-principal--hero">Faire le test (2 min) →</a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">MON CHOIX 2027 — outil communautaire et open source.</div>
+</footer>
+
+<script src="data/data.js"></script>
+<script src="js/priorites.js"></script>
+<script src="js/partage.js"></script>
+<script src="js/resultat.js"></script>
+</body>
+</html>

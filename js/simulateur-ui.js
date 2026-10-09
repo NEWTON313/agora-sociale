@@ -138,8 +138,97 @@
             </li>
           `).join("")}
         </ol>
+
+        <div class="partage" id="partage">
+          <button type="button" class="partage__btn partage__btn--primaire mono" id="btn-ouvrir-partage">
+            Partager mon résultat
+          </button>
+          <p class="partage__note">
+            Facultatif, et entièrement dans votre navigateur. Seuls votre catégorie sociale et vos priorités
+            figurent sur la carte : jamais votre revenu, votre âge ni votre patrimoine.
+          </p>
+          <div class="partage__panneau" id="partage-panneau" hidden>
+            <canvas id="partage-canvas" class="partage__canvas" role="img"
+              aria-label="Carte de résultat : ma catégorie sociale, mes priorités et le classement complet des candidats selon ces priorités"></canvas>
+            <p class="partage__note">
+              La carte montre le classement complet et précise que ce n'est pas une recommandation de vote.
+            </p>
+            <div class="partage__actions">
+              <button type="button" class="partage__btn partage__btn--primaire mono" id="btn-partage-natif" hidden>Partager</button>
+              <button type="button" class="partage__btn mono" id="btn-partage-lien">Copier le lien</button>
+              <button type="button" class="partage__btn mono" id="btn-partage-image">Télécharger l'image</button>
+            </div>
+          </div>
+        </div>
       </div>
     `;
+  }
+
+  const TEXTE_PARTAGE =
+    "Voici ce que donne le comparateur Mon Choix 2027 pour ma situation et mes priorités. À toi d'essayer :";
+
+  function lienPartage(classeActive) {
+    const base = window.location.href.split("?")[0].replace(/[^/]*$/, "");
+    return `${base}resultat.html?${window.AGORA_PARTAGE.encoderPartage(classeActive, poidsThemes)}`;
+  }
+
+  function canvasEnBlob(canvas) {
+    return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+  }
+
+  function initPartage(classeActive) {
+    const btnOuvrir = document.getElementById("btn-ouvrir-partage");
+    if (!btnOuvrir) return; // pas de priorités indiquées : rien à partager
+
+    const panneau = document.getElementById("partage-panneau");
+    const canvas = document.getElementById("partage-canvas");
+    const btnNatif = document.getElementById("btn-partage-natif");
+    const btnLien = document.getElementById("btn-partage-lien");
+    const btnImage = document.getElementById("btn-partage-image");
+
+    btnOuvrir.addEventListener("click", async () => {
+      btnOuvrir.hidden = true;
+      panneau.hidden = false;
+      if (typeof navigator.share === "function") btnNatif.hidden = false;
+      // Les polices du site doivent être chargées avant de dessiner, sinon le texte sort en police de secours.
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      window.AGORA_PARTAGE.dessinerCarte(canvas, classeActive, poidsThemes);
+    });
+
+    btnLien.addEventListener("click", async () => {
+      const lien = lienPartage(classeActive);
+      try {
+        await navigator.clipboard.writeText(lien);
+        btnLien.textContent = "Lien copié ✓";
+        setTimeout(() => (btnLien.textContent = "Copier le lien"), 2500);
+      } catch (e) {
+        window.prompt("Copiez ce lien :", lien);
+      }
+    });
+
+    btnImage.addEventListener("click", async () => {
+      const blob = await canvasEnBlob(canvas);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "mon-choix-2027.png";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    btnNatif.addEventListener("click", async () => {
+      const lien = lienPartage(classeActive);
+      try {
+        const fichier = new File([await canvasEnBlob(canvas)], "mon-choix-2027.png", { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [fichier] })) {
+          await navigator.share({ files: [fichier], text: `${TEXTE_PARTAGE} ${lien}` });
+          return;
+        }
+        await navigator.share({ title: "Mon Choix 2027", text: TEXTE_PARTAGE, url: lien });
+      } catch (e) {
+        // Partage annulé par le visiteur : rien à faire.
+      }
+    });
   }
 
   function euros(n) {
@@ -268,6 +357,7 @@
       ${renderMonCandidat(r.classePrincipale)}
     `;
     resultatEl.hidden = false;
+    initPartage(r.classePrincipale);
     resultatEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

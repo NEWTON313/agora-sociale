@@ -927,6 +927,49 @@ a.bouton-principal.bouton-principal--hero:hover { background: var(--accent-bleu-
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
+/* ---------- Partage d'un résultat (carte dessinée dans le navigateur) ---------- */
+
+.partage { margin-top: 28px; padding-top: 22px; border-top: 1px dashed var(--line); }
+.partage__note { font-size: 0.8rem; color: var(--ink-soft); margin: 10px 0 0; max-width: 58ch; }
+.partage__panneau { margin-top: 4px; }
+.partage__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.partage__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.partage__btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 16px;
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.partage__btn:hover { border-color: var(--accent-bleu-soft); color: var(--accent-bleu); }
+.partage__btn--primaire { background: var(--accent-bleu); color: var(--paper-raised); border-color: var(--accent-bleu); }
+.partage__btn--primaire:hover { background: var(--accent-bleu-soft); color: var(--paper-raised); border-color: var(--accent-bleu-soft); }
+
+.resultat-partage__priorites { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 6px; }
+.resultat-partage__priorites li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.95rem;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--line);
+}
+.resultat-partage__niveau { font-size: 0.72rem; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+
 .bouton-suite {
   display: inline-block;
   margin-top: 20px;
