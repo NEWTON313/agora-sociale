@@ -23,7 +23,7 @@
   function renderScorePersonnalise(resultat) {
     if (resultat.scoreGlobal === null) {
       return `
-        <div class="score-personnalise score-personnalise--vide mono">
+        <div class="score-personnalise score-personnalise--vide">
           Score personnalisé non calculable — aucune mesure recensée sur vos thèmes prioritaires pour ce candidat
         </div>
       `;
@@ -33,16 +33,16 @@
     const side = scoreGlobal >= 0 ? "positif" : "negatif";
     const avertissement =
       themesCouverts < themesPonderes
-        ? `<div class="score-personnalise__avertissement mono">Estimation basée sur une partie seulement de vos priorités : à interpréter avec prudence.</div>`
+        ? `<div class="score-personnalise__avertissement">Estimation basée sur une partie seulement de vos priorités : à interpréter avec prudence.</div>`
         : "";
     return `
       <div class="score-personnalise">
-        <div class="score-personnalise__label mono">Score personnalisé selon vos priorités</div>
+        <div class="score-personnalise__tete"><span class="score-personnalise__label">Score personnalisé selon vos priorités</span><span class="score-personnalise__valeur">${scoreGlobal > 0 ? "+" : scoreGlobal < 0 ? "−" : ""}${Math.abs(scoreGlobal).toFixed(1)} / 2</span></div>
         <div class="ledger__track" role="img" aria-label="Score personnalisé ${scoreGlobal.toFixed(1)} sur une échelle de -2 à 2, ${themesCouverts} sur ${themesPonderes} thèmes prioritaires couverts">
           <div class="ledger__axis"></div>
           <div class="ledger__fill ${side}" style="width:${width}%"></div>
         </div>
-        <div class="ledger__score mono">${scoreGlobal > 0 ? "+" : ""}${scoreGlobal.toFixed(1)} / 2 · ${themesCouverts}/${themesPonderes} thème${themesPonderes > 1 ? "s" : ""} prioritaire${themesPonderes > 1 ? "s" : ""} couvert${themesCouverts > 1 ? "s" : ""}</div>
+        <div class="score-personnalise__couverture">${themesCouverts}/${themesPonderes} thème${themesPonderes > 1 ? "s" : ""} prioritaire${themesPonderes > 1 ? "s" : ""} couvert${themesCouverts > 1 ? "s" : ""}</div>
         ${avertissement}
       </div>
     `;
@@ -132,7 +132,7 @@
             <li style="${i === 0 && aUneCorrespondance ? "" : "opacity:0.8;"}">
               <div style="margin-bottom:6px;">
                 <span class="font-display">${i + 1}. ${candidat.nom}</span>
-                <span class="mono" style="font-size:0.7rem; text-transform:uppercase; color:var(--ink-faint);">${candidat.parti}</span>
+                <span class="classement__parti">${candidat.parti}</span>
               </div>
               ${renderScorePersonnalise(resultatsParId[candidat.id])}
             </li>

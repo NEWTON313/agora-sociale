@@ -173,16 +173,17 @@
     const { score } = impact;
     const width = scoreToWidth(score);
     const side = score >= 0 ? "positif" : "negatif";
-    const label = score > 0 ? "Impact plutôt favorable" : score < 0 ? "Impact plutôt défavorable" : "Impact neutre / non déterminant";
+    const label = score > 0 ? "Impact plutôt favorable" : score < 0 ? "Impact plutôt défavorable" : "Impact neutre ou non déterminant";
+    const signe = score > 0 ? "ledger--pos" : score < 0 ? "ledger--neg" : "ledger--neutre";
 
     return `
-      <div class="ledger">
+      <div class="ledger ${signe}">
         <div class="ledger__label">${label}</div>
         <div class="ledger__track" role="img" aria-label="${label}, score ${score} sur une échelle de -2 à 2">
           <div class="ledger__axis"></div>
           <div class="ledger__fill ${side}" style="width:${width}%"></div>
         </div>
-        <div class="ledger__score mono">score : ${score > 0 ? "+" : ""}${score} / 2</div>
+        <div class="ledger__score">${score > 0 ? "+" : score < 0 ? "−" : ""}${Math.abs(score)} / 2</div>
       </div>
     `;
   }

@@ -15,9 +15,6 @@
 <header class="site-header">
   <div class="container site-header__row">
     <a href="index.html" class="logo">Mon <span>Choix 2027</span></a>
-    <div class="site-header__meta">Résultat partagé</div>
-  </div>
-  <div class="container">
     <nav class="site-nav">
       <a href="simulateur.html">Simulateur</a>
       <a href="candidat.html">Fiches candidats</a>
@@ -48,19 +45,25 @@
     <ol id="resultat-classement" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:16px;"></ol>
   </div>
 
-  <div class="resultat" style="margin-top:32px; border-left:4px solid var(--line-strong);">
+  <div class="resultat resultat--cta">
     <h3>Et pour vous ?</h3>
     <p>
       Le résultat dépend de la situation et des priorités de chacun. Refaites le calcul avec les vôtres : 2
       minutes, le calcul se fait dans votre navigateur et rien n'est conservé.
     </p>
-    <a href="simulateur.html" class="bouton-principal bouton-principal--hero">Faire le test (2 min) →</a>
+    <a href="simulateur.html" class="resultat--cta__bouton">Faire le test, 2 minutes <span aria-hidden="true">→</span></a>
   </div>
 
 </div>
 
 <footer class="site-footer">
-  <div class="container">MON CHOIX 2027 — outil communautaire et open source.</div>
+  <div class="container site-footer__row">
+    <div>
+      <div class="site-footer__marque">Mon Choix 2027</div>
+      <p>Outil communautaire et open source. Aucun financement de parti, de candidat ou d'annonceur.</p>
+    </div>
+    <div class="site-footer__meta">Projet citoyen · Présidentielle 2027</div>
+  </div>
 </footer>
 
 <script src="data/data.js"></script>

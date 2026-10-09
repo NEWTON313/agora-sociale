@@ -15,9 +15,6 @@
 <header class="site-header">
   <div class="container site-header__row">
     <a href="index.html" class="logo">Mon <span>Choix 2027</span></a>
-    <div class="site-header__meta">Projet citoyen · Open source · Présidentielle 2027</div>
-  </div>
-  <div class="container">
     <nav class="site-nav">
       <a href="simulateur.html">Simulateur</a>
       <a href="candidat.html">Fiches candidats</a>
@@ -32,12 +29,12 @@
       <div class="hero__eyebrow">6 candidats · 9 thèmes · zéro étiquette partisane</div>
       <h1>Quel candidat colle vraiment à votre situation&nbsp;?</h1>
       <p class="lede">
-        2 minutes de questions, une méthode INSEE, un score calculé à partir de
-        <strong>vos</strong> priorités — jamais l'inverse. Classement complet
-        systématique, jamais un seul nom mis en avant.
+        Deux minutes de questions, une méthode INSEE, un score calculé à partir de
+        <strong>vos</strong> priorités. Le classement est toujours complet : jamais
+        un seul nom mis en avant.
       </p>
       <div class="hero__cta">
-        <a href="simulateur.html" class="bouton-principal bouton-principal--hero">Faire le test (2 min) →</a>
+        <a href="simulateur.html" class="bouton-principal bouton-principal--hero">Faire le test, 2 minutes <span aria-hidden="true">→</span></a>
         <a href="#comparateur" class="hero__cta-secondaire">Explorer sans faire le test</a>
       </div>
       <p class="hero__note">
@@ -84,13 +81,13 @@
 
   <main>
     <div class="comparateur-header">
-      <h2>Impact sur : <span id="comparateur-titre-classe" class="mono" style="font-size:1.1rem;"></span></h2>
-      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-        <label class="mono" style="font-size:0.8rem;">
-          Thème :
+      <h2>Impact sur <span id="comparateur-titre-classe" class="titre-classe"></span></h2>
+      <div class="comparateur-outils">
+        <label class="comparateur-label">
+          Thème
           <select id="select-mesure" class="select-mesure" aria-label="Choisir la thématique de la mesure"></select>
         </label>
-        <button type="button" id="btn-mes-priorites" class="mono btn-toggle" aria-pressed="false">
+        <button type="button" id="btn-mes-priorites" class="btn-toggle" aria-pressed="false">
           Mes priorités
         </button>
       </div>
@@ -107,10 +104,23 @@
 
 </div>
 
+<section class="bande-cta">
+  <div class="container bande-cta__row">
+    <div>
+      <h2>Et pour vous, que changent ces programmes&nbsp;?</h2>
+      <p>Le calcul se fait dans votre navigateur : rien n'est envoyé, rien n'est conservé.</p>
+    </div>
+    <a href="simulateur.html" class="bande-cta__bouton">Faire le test <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
 <footer class="site-footer">
-  <div class="container">
-    MON CHOIX 2027 — outil communautaire et open source. Aucun financement de parti,
-    de candidat ou d'annonceur. Signalez une erreur factuelle via le dépôt de code.
+  <div class="container site-footer__row">
+    <div>
+      <div class="site-footer__marque">Mon Choix 2027</div>
+      <p>Outil communautaire et open source. Aucun financement de parti, de candidat ou d'annonceur.</p>
+    </div>
+    <div class="site-footer__meta">Projet citoyen · Présidentielle 2027</div>
   </div>
 </footer>
 
