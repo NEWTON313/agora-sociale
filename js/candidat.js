@@ -10,6 +10,9 @@
   const candidatId = params.get("c");
   const root = document.getElementById("fiche-candidat-root");
 
+  // Ordre alphabétique des identifiants, jamais par sondage ni popularité (garde-fous de neutralité).
+  const candidatsTries = [...CANDIDATS].sort((a, b) => a.id.localeCompare(b.id));
+
   function badgeConfiance(mesure) {
     const estConfirme = mesure.niveauConfiance === "confirme";
     const couleur = estConfirme ? "var(--impact-positif)" : "var(--impact-neutre)";
@@ -62,7 +65,7 @@
     root.innerHTML = `
       <h1 style="font-size:1.6rem; margin-bottom:20px;">Choisissez un candidat</h1>
       <div class="cartes-candidats">
-        ${CANDIDATS.map((c) => `
+        ${candidatsTries.map((c) => `
           <a href="candidat.html?c=${c.id}" class="carte-candidat" style="text-decoration:none; color:inherit;">
             <div class="carte-candidat__nom">${c.nom}</div>
             <span class="badge mono">${c.parti}</span>
@@ -76,6 +79,12 @@
   function renderFiche(candidat) {
     document.title = `${candidat.nom} — Mon Choix 2027`;
     root.innerHTML = `
+      <nav class="fiche-nav" aria-label="Autres fiches candidats">
+        <a href="candidat.html" class="fiche-nav__retour">← Tous les candidats</a>
+        ${candidatsTries.map((c) => `
+          <a href="candidat.html?c=${c.id}" class="fiche-nav__pastille ${c.id === candidat.id ? "active" : ""}" ${c.id === candidat.id ? 'aria-current="page"' : ""}>${c.nom}</a>
+        `).join("")}
+      </nav>
       <div class="fiche-header">
         <div>
           <div class="hero__eyebrow">${candidat.parti}</div>
