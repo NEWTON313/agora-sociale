@@ -7,6 +7,10 @@
 (function () {
   const { CLASSES_SOCIALES, THEMES, CANDIDATS, AVIS_DONNEES_REELLES } = window.AGORA_DATA;
 
+  // Le nombre de candidats suit les données (la routine de mise à jour peut en ajouter).
+  const compteurEl = document.getElementById("hero-compteur");
+  if (compteurEl) compteurEl.textContent = `${CANDIDATS.length} candidats · ${THEMES.length} thèmes · zéro étiquette partisane`;
+
   const avisEl = document.getElementById("avis-donnees-reelles");
   if (avisEl && AVIS_DONNEES_REELLES) {
     avisEl.innerHTML = `<strong>⚠️ Données en cours de constitution (màj ${AVIS_DONNEES_REELLES.dateMaj}) :</strong> ${AVIS_DONNEES_REELLES.texte}`;
