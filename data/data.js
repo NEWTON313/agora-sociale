@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-10-07",
+  dateMaj: "2026-10-10",
   texte:
     "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -426,6 +426,42 @@ const CANDIDATS = [
           },
         },
       },
+      {
+        id: "jlm-anticoncentration-medias",
+        theme: "Institutions et démocratie",
+        titre: "Faire voter une loi « anticoncentration » des médias dès le premier trimestre du mandat et démanteler les grands groupes de presse privés",
+        resumeOfficiel:
+          "Jean-Luc Mélenchon a annoncé en mai 2026 que La France insoumise ferait voter en priorité, dès le premier trimestre d'un éventuel mandat, une loi « anticoncentration » des médias visant à la « dislocation des monopoles », à commencer par celui de Vincent Bolloré sans s'y limiter (il a aussi cité les groupes de Matthieu Pigasse et Rodolphe Saadé). Il a évoqué la création d'un conseil déontologique des médias et qualifié l'Arcom de « farce ambulante ». En février 2026, il avait employé des termes plus radicaux, évoquant la « confiscation » et la vente « à la découpe » de certains groupes. Cette orientation prolonge une proposition déjà présente dans son programme de 2022 et une proposition de loi LFI « anticoncentration » rejetée en commission à l'Assemblée nationale en novembre 2023.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/presidentielle-2027-jean-luc-melenchon-souhaite-demanteler-les-groupes-de-presse-prives-des-le-premier-trimestre-suivant-son-election_8014646.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Position réaffirmée publiquement par le candidat en mai 2026 comme une mesure prioritaire de son éventuel mandat, rapportée par franceinfo, LCP et France 24, et documentée sur plusieurs campagnes (programme 2022, proposition de loi LFI de 2023). Le mécanisme juridique précis du démantèlement (nationalisation, cession forcée, régulation renforcée du marché) n'est en revanche pas arbitré publiquement à ce stade.",
+        impactParClasse: {
+          populaires: {
+            score: 0,
+            avantages: ["Une loi anticoncentration viserait, selon ses défenseurs, à limiter l'influence de grands groupes privés sur le débat public, un enjeu démocratique qui concerne l'ensemble des citoyens au même titre"],
+            risques: [],
+            angleMort: "Aucune donnée publique ne permet d'établir un effet différencié de cette mesure selon la catégorie de revenu des citoyens, la mesure portant sur la structure de propriété des médias plutôt que sur le pouvoir d'achat des ménages.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur la régulation du secteur médiatique, sans effet économique différencié documenté pour cette catégorie.",
+          },
+          aisees: {
+            score: -1,
+            avantages: [],
+            risques: ["Les actionnaires et propriétaires des groupes de médias explicitement cités par le candidat (Bolloré, Pigasse, Saadé) relèvent de cette catégorie et seraient directement visés par un démantèlement ou une cession forcée de leurs actifs"],
+            angleMort: "Le mécanisme juridique précis du démantèlement n'étant pas arbitré publiquement, l'ampleur financière exacte de l'effet pour les propriétaires concernés ne peut être chiffrée.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Aucun effet documenté pour cette catégorie, la mesure portant sur la structure de propriété des médias plutôt que sur les revenus des ménages.",
+          },
+        },
+      },
     ],
   },
 
@@ -670,6 +706,42 @@ const CANDIDATS = [
             avantages: ["Les retraités aux pensions modestes pourraient bénéficier du bouclier tarifaire selon les mêmes critères que les autres ménages modestes"],
             risques: [],
             angleMort: "Aucune donnée publique ne précise si le bouclier tarifaire tient compte spécifiquement des retraités à revenu fixe.",
+          },
+        },
+      },
+      {
+        id: "ga-ia-formation",
+        theme: "Souveraineté et industrie",
+        titre: "Un plan de formation à l'intelligence artificielle pour 20 millions de salariés d'ici 2030",
+        resumeOfficiel:
+          "Lors de son passage au « 8h30 franceinfo » le 18 juin 2026, Gabriel Attal a proposé d'organiser, d'ici 2030, un plan de formation à l'intelligence artificielle pour 20 millions de salariés en France. Il présente cette mesure comme l'un des quatre « chantiers capitaux » de sa campagne (avec l'école, les salaires et les frontières) et comme un enjeu de souveraineté : selon lui, « le premier risque n'est pas d'être remplacé par une IA dans son travail, mais d'être remplacé par quelqu'un qui maîtrise l'IA », la maîtrise technologique devant selon lui précéder la puissance économique et militaire. Il affiche l'ambition de faire de la France « la première puissance d'Europe sur l'intelligence artificielle ».",
+        sourceOfficielle: "https://www.franceinfo.fr/replay-radio/8h30-fauvelle-dely/accord-de-paix-ia-presidentielle-le-8h30-franceinfo-de-gabriel-attal_8043875.html",
+        niveauConfiance: "annonce",
+        noteConfiance: "Annoncé par le candidat lors de son passage au « 8h30 franceinfo » le 18 juin 2026 et confirmé comme l'un des quatre « chantiers capitaux » de sa campagne 2027, également rapporté par France 24 le 23 mai 2026. Aucun chiffrage public du coût, du financement ni des modalités de mise en œuvre (formation obligatoire ou volontaire, ciblage par secteur) n'est disponible à ce stade, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Un plan de formation visant 20 millions de salariés inclurait potentiellement les métiers les plus exposés à l'automatisation par l'IA, parmi lesquels des emplois peu qualifiés de cette catégorie"],
+            risques: ["Aucune garantie publique que les salariés les moins qualifiés, souvent les plus éloignés de la formation continue, soient effectivement prioritaires dans le dispositif"],
+            angleMort: "Le candidat ne précise pas publiquement les modalités d'accès à cette formation ni son financement, ce qui empêche de déterminer qui en bénéficiera réellement en priorité.",
+          },
+          moyennes: {
+            score: 1,
+            avantages: ["Les professions intermédiaires et administratives, particulièrement concernées par l'automatisation de certaines tâches par l'IA, pourraient être une cible prioritaire d'un tel plan"],
+            risques: [],
+            angleMort: "Aucun chiffrage du nombre de salariés de cette catégorie effectivement concernés par le plan n'est publié.",
+          },
+          aisees: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure présentée comme visant prioritairement les salariés en risque de déclassement par l'IA, sans effet direct documenté pour les cadres dirigeants ou les professions les plus qualifiées, déjà davantage formées à ces outils.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur les actifs en emploi, sans effet direct documenté pour les retraités.",
           },
         },
       },
@@ -921,6 +993,42 @@ const CANDIDATS = [
             avantages: [],
             risques: [],
             angleMort: "Aucun effet direct documenté pour cette catégorie à ce stade.",
+          },
+        },
+      },
+      {
+        id: "ep-allocation-familiale-unique",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Remplacer les allocations familiales par une allocation familiale unique de 350 € dès le premier enfant, dégressive avec l'impôt sur le revenu",
+        resumeOfficiel:
+          "Lors du premier numéro de « L'Heure de vérité » sur France 2 le 8 octobre 2026, Édouard Philippe a proposé de remplacer le système actuel des allocations familiales, qu'il juge n'aider véritablement les familles qu'à partir du deuxième enfant, par une allocation familiale unique de 350 euros par mois versée dès le premier enfant, dégressive en fonction de l'impôt sur le revenu du foyer. Il propose en complément une réduction d'impôt d'environ 3 000 euros pendant les trois premières années de l'enfant (les foyers payant moins de 3 000 euros d'impôt sur le revenu en seraient exonérés pendant ces trois ans), ainsi qu'un prêt à taux zéro pour les familles devant changer de logement après une naissance.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/edouard-philippe-veut-aider-les-familles-des-le-premier-enfant-et-via-une-reduction-d-impot_8229028.html",
+        niveauConfiance: "confirme",
+        noteConfiance: "Propositions détaillées lors du premier numéro de « L'Heure de vérité » sur France 2 le 8 octobre 2026, rapportées et chiffrées de façon concordante par franceinfo et LCP (350 euros dès le premier enfant, réduction d'impôt d'environ 3 000 euros sur trois ans, dégressivité avec l'impôt sur le revenu). Le coût budgétaire total de la réforme et le barème précis de dégressivité ne sont pas publiés à ce stade.",
+        impactParClasse: {
+          populaires: {
+            score: 1,
+            avantages: ["Une allocation de 350 euros versée dès le premier enfant bénéficierait aux familles modestes qui n'ont aujourd'hui droit aux allocations familiales qu'à partir du deuxième enfant"],
+            risques: ["Le candidat ne précise pas si le nouveau dispositif remplace à l'euro près l'ensemble des aides existantes (allocations familiales, complément familial) ; une refonte globale pourrait faire des perdants dans cette catégorie selon la configuration exacte du barème"],
+            angleMort: "Le barème précis de dégressivité en fonction de l'impôt sur le revenu et l'articulation avec les aides existantes ne sont pas publiés, ce qui empêche de déterminer qui gagne et qui perd par rapport au système actuel.",
+          },
+          moyennes: {
+            score: 0,
+            avantages: ["La réduction d'impôt d'environ 3 000 euros sur les trois premières années de l'enfant bénéficierait aux foyers imposables de cette catégorie"],
+            risques: ["La dégressivité annoncée de l'allocation avec l'impôt sur le revenu pourrait réduire le montant perçu par une partie de cette catégorie par rapport aux familles les plus modestes"],
+            angleMort: "Le seuil exact de revenu à partir duquel la dégressivité de l'allocation s'applique n'est pas publié.",
+          },
+          aisees: {
+            score: -1,
+            avantages: [],
+            risques: ["La dégressivité de l'allocation avec l'impôt sur le revenu et le plafonnement implicite de la réduction d'impôt (à 3 000 euros d'impôt dû) désavantageraient relativement les foyers aux revenus les plus élevés par rapport au système actuel d'allocations familiales, non soumis à condition de ressources"],
+            angleMort: "Le barème précis de dégressivité n'étant pas publié, l'ampleur exacte de la perte pour cette catégorie ne peut être chiffrée.",
+          },
+          retraites: {
+            score: 0,
+            avantages: [],
+            risques: [],
+            angleMort: "Mesure centrée sur les familles avec de jeunes enfants, sans effet direct documenté pour les retraités sans enfant à charge.",
           },
         },
       },
