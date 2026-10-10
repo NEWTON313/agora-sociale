@@ -247,7 +247,7 @@
         <article class="carte-candidat${vide ? " carte-candidat--vide" : ""}">
           <header>
             <div class="carte-candidat__nom">${candidat.nom}</div>
-            <span class="carte-candidat__parti">${candidat.parti}</span>
+            <span class="carte-candidat__parti">${window.AGORA_PARTI.badgePartiHtml(candidat.parti)}${candidat.parti}</span>
           </header>
           ${mesuresHtml}
           ${scoreHtml}

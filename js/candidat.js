@@ -67,7 +67,7 @@
         ${candidatsTries.map((c) => `
           <a href="candidat.html?c=${c.id}" class="carte-candidat" style="text-decoration:none; color:inherit;">
             <div class="carte-candidat__nom">${c.nom}</div>
-            <span class="badge mono">${c.parti}</span>
+            <span class="carte-candidat__parti">${window.AGORA_PARTI.badgePartiHtml(c.parti)}${c.parti}</span>
             <div style="font-size:0.85rem; color:var(--ink-soft); margin-top:8px;">${c.mesures.length ? `${c.mesures.length} mesure${c.mesures.length > 1 ? "s" : ""} recensée${c.mesures.length > 1 ? "s" : ""}` : "Aucune mesure recensée à ce stade"}</div>
           </a>
         `).join("")}
@@ -90,7 +90,7 @@
       </nav>
       <div class="fiche-header">
         <div>
-          <div class="hero__eyebrow">${candidat.parti}</div>
+          <div class="hero__eyebrow fiche-parti">${window.AGORA_PARTI.badgePartiHtml(candidat.parti)}${candidat.parti}</div>
           <h1 style="font-size:2rem;">${candidat.nom}</h1>
         </div>
       </div>
