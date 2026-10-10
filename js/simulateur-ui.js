@@ -95,6 +95,21 @@
     });
   }
 
+
+  // Candidats sans mesure sur les thèmes prioritaires : regroupés dans un volet repliable mais toujours
+  // listés (aucun candidat n'est jamais retiré du classement).
+  function renderNonCalculables(liste, adjectif, ouvert) {
+    if (!liste.length) return "";
+    const n = liste.length;
+    return `
+      <details class="non-calculables"${ouvert ? " open" : ""}>
+        <summary>${n} autre${n > 1 ? "s" : ""} candidat${n > 1 ? "s" : ""} : score non calculable</summary>
+        <p>Aucune mesure n'est recensée pour ces candidats sur ${adjectif} thèmes prioritaires : aucun score ne peut être calculé, et ce n'est ni un bon ni un mauvais résultat.</p>
+        <ul>${liste.map((c) => `<li>${c.nom} <span>· ${c.parti}</span></li>`).join("")}</ul>
+      </details>
+    `;
+  }
+
   function renderMonCandidat(classeActive) {
     const themesPonderes = Object.values(poidsThemes).some((n) => n > 0);
     if (!themesPonderes) {
@@ -113,6 +128,8 @@
       resultatsParId[c.id] = calculerScorePersonnalise(c, classeActive, poidsThemes);
     });
     const classement = trierParScorePersonnalise(CANDIDATS, resultatsParId);
+    const calculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal !== null);
+    const nonCalculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal === null);
     const premier = resultatsParId[classement[0].id];
     const aUneCorrespondance = premier && premier.scoreGlobal !== null;
 
@@ -125,10 +142,10 @@
           Le candidat dont les mesures recensées obtiennent le score le plus favorable pour vos priorités déclarées.
           Ce n'est ni un jugement de valeur ni une recommandation de vote — voir la
           <a href="methodologie.html#score-personnalise" style="text-decoration:underline;">méthodologie</a>.
-          Le classement complet ci-dessous reste toujours visible, dans l'ordre de correspondance.
+          Tous les candidats restent listés ci-dessous : ceux dont le score est calculable dans l'ordre de correspondance, les autres regroupés en fin de liste.
         </p>
         <ol style="list-style:none; padding:0; display:flex; flex-direction:column; gap:16px;">
-          ${classement.map((candidat, i) => `
+          ${calculables.map((candidat, i) => `
             <li style="${i === 0 && aUneCorrespondance ? "" : "opacity:0.8;"}">
               <div style="margin-bottom:6px;">
                 <span class="font-display">${i + 1}. ${candidat.nom}</span>
@@ -138,6 +155,7 @@
             </li>
           `).join("")}
         </ol>
+        ${renderNonCalculables(nonCalculables, "vos", calculables.length === 0)}
 
         <div class="partage" id="partage">
           <button type="button" class="partage__btn partage__btn--primaire mono" id="btn-ouvrir-partage">

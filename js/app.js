@@ -5,7 +5,7 @@
  */
 
 (function () {
-  const { CLASSES_SOCIALES, THEMES, CANDIDATS, AVIS_DONNEES_REELLES } = window.AGORA_DATA;
+  const { CLASSES_SOCIALES, THEMES, CANDIDATS, CANDIDATS_ALPHABETIQUE, AVIS_DONNEES_REELLES } = window.AGORA_DATA;
 
   // Le nombre de candidats suit les données (la routine de mise à jour peut en ajouter).
   const compteurEl = document.getElementById("hero-compteur");
@@ -198,15 +198,15 @@
 
     const resultatsParId = {};
     if (modePriorites) {
-      CANDIDATS.forEach((candidat) => {
+      CANDIDATS_ALPHABETIQUE.forEach((candidat) => {
         resultatsParId[candidat.id] = window.AGORA_PRIORITES.calculerScorePersonnalise(candidat, classeActive, poidsThemes);
       });
     }
 
     const candidatsAffiches =
       modePriorites && trierParScore
-        ? window.AGORA_PRIORITES.trierParScorePersonnalise(CANDIDATS, resultatsParId)
-        : CANDIDATS;
+        ? window.AGORA_PRIORITES.trierParScorePersonnalise(CANDIDATS_ALPHABETIQUE, resultatsParId)
+        : CANDIDATS_ALPHABETIQUE;
 
     cartesEl.innerHTML = candidatsAffiches.map((candidat) => {
       // .filter() et non .find() : un même thème peut regrouper plusieurs mesures d'un
@@ -225,6 +225,11 @@
           `
         : "";
 
+      // Carte compacte quand rien n'est à comparer sur ce thème : tous les candidats restent présents (équité)
+      // sans que les cartes vides ne noient celles qui contiennent des mesures.
+      const vide = mesures.length === 0;
+      const aucuneMesure = candidat.mesures.length === 0;
+
       const mesuresHtml = mesures.length
         ? mesuresVisibles.map((mesure) => `
             <div class="carte-candidat__mesure-bloc">
@@ -233,14 +238,13 @@
             </div>
           `).join("") + toggleHtml
         : `
-            <div class="carte-candidat__mesure">Aucune mesure recensée sur ce thème pour ce candidat.</div>
-            ${renderLedger(null)}
+            <div class="carte-candidat__mesure">${aucuneMesure ? "Aucune mesure recensée à ce stade pour ce candidat." : "Aucune mesure recensée sur ce thème pour ce candidat."}</div>
           `;
 
       const scoreHtml = modePriorites ? renderScorePersonnalise(resultatsParId[candidat.id]) : "";
 
       return `
-        <article class="carte-candidat">
+        <article class="carte-candidat${vide ? " carte-candidat--vide" : ""}">
           <header>
             <div class="carte-candidat__nom">${candidat.nom}</div>
             <span class="carte-candidat__parti">${candidat.parti}</span>

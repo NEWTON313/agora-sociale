@@ -1533,3 +1533,23 @@ a.bouton-principal.bouton-principal--hero:hover span { transform: translateX(4px
 }
 .fiche-nav__pastille:hover { border-color: var(--accent-bleu-soft); color: var(--accent-bleu); }
 .fiche-nav__pastille.active { background: var(--accent-bleu); border-color: var(--accent-bleu); color: #fff; }
+
+/* Carte compacte (aucune mesure sur ce thème) et volet des scores non calculables */
+.carte-candidat--vide { gap: 16px; padding: 24px; }
+.carte-candidat--vide .carte-candidat__mesure { font-size: 0.98rem; color: var(--ink-soft); padding-top: 16px; }
+.carte-candidat--vide > a[href^="candidat.html"] { padding-top: 16px; }
+
+.non-calculables { margin-top: 24px; padding: 16px 20px; border-radius: 12px; background: rgba(236, 233, 225, 0.6); }
+.non-calculables summary { cursor: pointer; font-family: var(--font-display); font-size: 0.95rem; font-weight: 500; }
+.non-calculables p { margin: 12px 0; font-size: 0.9rem; font-style: italic; color: var(--ink-soft); }
+.non-calculables ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px 24px; font-family: var(--font-display); font-size: 0.92rem; }
+.non-calculables li span { color: var(--ink-faint); font-size: 0.82rem; }
+
+/* Navigation entre fiches (précédent / suivant) et fiche sans mesure */
+.fiche-nav { justify-content: space-between; font-family: var(--font-display); font-size: 0.92rem; }
+.fiche-nav__voisins { display: flex; flex-wrap: wrap; gap: 24px; }
+.fiche-nav__voisins a { color: var(--ink-soft); text-decoration: none; }
+.fiche-nav__voisins a:hover { color: var(--accent-bleu); text-decoration: underline; text-underline-offset: 4px; }
+.fiche-vide { max-width: 62ch; margin-bottom: 64px; padding: 32px; border: 1px dashed var(--line-strong); border-radius: 20px; background: rgba(236, 233, 225, 0.5); }
+.fiche-vide h2 { font-size: 1.5rem; margin-bottom: 12px; }
+.fiche-vide p { margin: 0; color: var(--ink-soft); line-height: 1.65; }

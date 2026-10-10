@@ -142,53 +142,73 @@
 
     const largeurBarre = 230;
     const xBarre = xD + 34 + 262;
-    classement.forEach((candidat, i) => {
+
+    // Avec beaucoup de candidats, la carte affiche ceux dont le score est calculable (au plus 12, taille
+    // adaptée) et résume les autres ; la liste complète reste toujours consultable sur le site.
+    const calculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal !== null);
+    const nonCalculables = classement.length - calculables.length;
+    const lignes = calculables.slice(0, 12);
+    const restants = calculables.length - lignes.length;
+    const hauteurLigne = Math.min(66, Math.floor(420 / Math.max(lignes.length, 1)));
+    const compact = hauteurLigne < 54;
+
+    lignes.forEach((candidat, i) => {
       const r = resultatsParId[candidat.id];
-      const yBase = 182 + i * 66;
+      const yBase = 182 + i * hauteurLigne - (compact ? 0 : 0);
 
       ctx.fillStyle = "#7a8090";
-      ctx.font = `700 26px ${display}`;
+      ctx.font = `700 ${compact ? 20 : 26}px ${display}`;
       ctx.fillText(String(i + 1), xD, yBase + 8);
 
       ctx.fillStyle = "#10131a";
-      ctx.font = `700 24px ${display}`;
-      ctx.fillText(candidat.nom, xD + 34, yBase + 2);
-      ctx.fillStyle = "#7a8090";
-      ctx.font = `400 12px ${mono}`;
-      espacer("1.2px");
-      ctx.fillText(candidat.parti.toUpperCase(), xD + 34, yBase + 22);
-      espacer("0px");
-
-      if (r.scoreGlobal === null) {
+      ctx.font = `700 ${compact ? 20 : 24}px ${display}`;
+      ctx.fillText(candidat.nom, xD + 34, yBase + (compact ? 7 : 2));
+      if (!compact) {
         ctx.fillStyle = "#7a8090";
-        ctx.font = `italic 400 18px ${corps}`;
-        ctx.fillText("non calculable", xBarre, yBase + 8);
-        return;
+        ctx.font = `400 12px ${mono}`;
+        espacer("1.2px");
+        ctx.fillText(candidat.parti.toUpperCase(), xD + 34, yBase + 22);
+        espacer("0px");
       }
 
-      const yBarre = yBase - 8;
+      const hBarre = compact ? 12 : 16;
+      const yBarre = yBase - (compact ? 4 : 8);
       ctx.fillStyle = "#ffffff";
-      ctx.fillRect(xBarre, yBarre, largeurBarre, 16);
+      ctx.fillRect(xBarre, yBarre, largeurBarre, hBarre);
       ctx.strokeStyle = "#c9ced8";
       ctx.lineWidth = 1;
-      ctx.strokeRect(xBarre + 0.5, yBarre + 0.5, largeurBarre - 1, 15);
+      ctx.strokeRect(xBarre + 0.5, yBarre + 0.5, largeurBarre - 1, hBarre - 1);
       const largeur = (Math.min(Math.abs(r.scoreGlobal) / 2, 1) * largeurBarre) / 2;
       const milieu = xBarre + largeurBarre / 2;
       ctx.fillStyle = r.scoreGlobal >= 0 ? "#326049" : "#8f382f";
-      ctx.fillRect(r.scoreGlobal >= 0 ? milieu : milieu - largeur, yBarre + 1, largeur, 14);
+      ctx.fillRect(r.scoreGlobal >= 0 ? milieu : milieu - largeur, yBarre + 1, largeur, hBarre - 2);
       ctx.fillStyle = "#10131a";
-      ctx.fillRect(Math.round(milieu), yBarre - 1, 1, 18);
+      ctx.fillRect(Math.round(milieu), yBarre - 1, 1, hBarre + 2);
 
-      ctx.font = `700 22px ${display}`;
-      ctx.fillText(`${r.scoreGlobal > 0 ? "+" : ""}${r.scoreGlobal.toFixed(1)}`, xBarre + largeurBarre + 14, yBase + 2);
-      ctx.fillStyle = "#7a8090";
-      ctx.font = `400 13px ${display}`;
-      ctx.fillText(
-        `${r.themesCouverts}/${r.themesPonderes} thème${r.themesPonderes > 1 ? "s" : ""}`,
-        xBarre + largeurBarre + 14,
-        yBase + 21
-      );
+      ctx.font = `700 ${compact ? 18 : 22}px ${display}`;
+      ctx.fillText(`${r.scoreGlobal > 0 ? "+" : ""}${r.scoreGlobal.toFixed(1)}`, xBarre + largeurBarre + 14, yBase + (compact ? 7 : 2));
+      if (!compact) {
+        ctx.fillStyle = "#7a8090";
+        ctx.font = `400 13px ${display}`;
+        ctx.fillText(
+          `${r.themesCouverts}/${r.themesPonderes} thème${r.themesPonderes > 1 ? "s" : ""}`,
+          xBarre + largeurBarre + 14,
+          yBase + 21
+        );
+      }
     });
+
+    // Résumé des candidats non affichés ligne par ligne
+    ctx.fillStyle = "#454e5e";
+    ctx.font = `400 15px ${display}`;
+    let yNote = 182 + lignes.length * hauteurLigne + 8;
+    if (restants > 0) {
+      ctx.fillText(`+ ${restants} autre${restants > 1 ? "s" : ""} candidat${restants > 1 ? "s" : ""} classé${restants > 1 ? "s" : ""} (liste complète sur le site)`, xD, yNote);
+      yNote += 20;
+    }
+    if (nonCalculables > 0) {
+      ctx.fillText(`${nonCalculables} autre${nonCalculables > 1 ? "s" : ""} candidat${nonCalculables > 1 ? "s" : ""} : score non calculable (aucune mesure recensée)`, xD, yNote);
+    }
 
     // --- Pied de carte
     ctx.fillStyle = "#454e5e";

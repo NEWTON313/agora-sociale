@@ -50,17 +50,17 @@
   /**
    * Tri stable et explicite (jamais l'ordre par défaut) : les candidats sans score
    * calculable restent toujours en fin de liste, jamais traités comme un score de 0.
-   * À égalité de score, on retombe sur l'ordre alphabétique du nom.
+   * À égalité de score, on retombe sur l'ordre alphabétique (identifiant = nom de famille).
    */
   function trierParScorePersonnalise(candidats, resultatsParId) {
     return [...candidats].sort((a, b) => {
       const scoreA = resultatsParId[a.id] ? resultatsParId[a.id].scoreGlobal : null;
       const scoreB = resultatsParId[b.id] ? resultatsParId[b.id].scoreGlobal : null;
-      if (scoreA === null && scoreB === null) return a.nom.localeCompare(b.nom);
+      if (scoreA === null && scoreB === null) return a.id.localeCompare(b.id, "fr");
       if (scoreA === null) return 1;
       if (scoreB === null) return -1;
       if (scoreB !== scoreA) return scoreB - scoreA;
-      return a.nom.localeCompare(b.nom);
+      return a.id.localeCompare(b.id, "fr");
     });
   }
 

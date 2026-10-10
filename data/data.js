@@ -92,7 +92,7 @@ const THEMES = [
 const AVIS_DONNEES_REELLES = {
   dateMaj: "2026-10-10",
   texte:
-    "Liste partielle et provisoire : aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) est prévue en deux tours les 9-10 et 16-17 octobre 2026 et n'a pas encore eu lieu. Marine Tondelier (Les Écologistes) est officiellement candidate depuis octobre 2025. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
+    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) a son premier tour les 9-11 octobre 2026 et un éventuel second tour les 16-17 octobre ; les candidats non désignés seront retirés du comparateur à l'issue de la primaire. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
 // Remapping vers la taxonomie à 9 thèmes (2026-08-29) : `br-rsa` (RSA/emploi) est classée en
@@ -1547,8 +1547,181 @@ const CANDIDATS = [
       },
     ],
   },
+  {
+    id: "arthaud",
+    nom: "Nathalie Arthaud",
+    parti: "Lutte ouvrière",
+    mesures: [],
+  },
+  {
+    id: "asselineau",
+    nom: "François Asselineau",
+    parti: "Union populaire républicaine",
+    mesures: [],
+  },
+  {
+    id: "batho",
+    nom: "Delphine Batho",
+    parti: "Génération écologie",
+    mesures: [],
+  },
+  {
+    id: "becht",
+    nom: "Olivier Becht",
+    parti: "Apparenté Ensemble pour la République",
+    mesures: [],
+  },
+  {
+    id: "bertrand",
+    nom: "Xavier Bertrand",
+    parti: "Nous France",
+    mesures: [],
+  },
+  {
+    id: "bouamrane",
+    nom: "Karim Bouamrane",
+    parti: "Parti socialiste",
+    mesures: [],
+  },
+  {
+    id: "branco",
+    nom: "Juan Branco",
+    parti: "Les Ruches",
+    mesures: [],
+  },
+  {
+    id: "dupont-aignan",
+    nom: "Nicolas Dupont-Aignan",
+    parti: "Debout la France",
+    mesures: [],
+  },
+  {
+    id: "durif",
+    nom: "Sylvain Pierre Durif",
+    parti: "Étiquette non précisée",
+    mesures: [],
+  },
+  {
+    id: "egger",
+    nom: "Clara Egger",
+    parti: "Solution démocratique",
+    mesures: [],
+  },
+  {
+    id: "faure",
+    nom: "Olivier Faure",
+    parti: "Parti socialiste",
+    mesures: [],
+  },
+  {
+    id: "glucksmann",
+    nom: "Raphaël Glucksmann",
+    parti: "Place publique",
+    mesures: [],
+  },
+  {
+    id: "guedj",
+    nom: "Jérôme Guedj",
+    parti: "Parti socialiste",
+    mesures: [],
+  },
+  {
+    id: "kazib",
+    nom: "Anasse Kazib",
+    parti: "Révolution permanente",
+    mesures: [],
+  },
+  {
+    id: "labib",
+    nom: "Selma Labib",
+    parti: "NPA-Révolutionnaires",
+    mesures: [],
+  },
+  {
+    id: "lalanne",
+    nom: "Francis Lalanne",
+    parti: "France Libre",
+    mesures: [],
+  },
+  {
+    id: "lassalle",
+    nom: "Jean Lassalle",
+    parti: "Résistons",
+    mesures: [],
+  },
+  {
+    id: "legendre",
+    nom: "Jean-François Legendre",
+    parti: "À nous maintenant",
+    mesures: [],
+  },
+  {
+    id: "lisnard",
+    nom: "David Lisnard",
+    parti: "Nouvelle Énergie",
+    mesures: [],
+  },
+  {
+    id: "mathieu",
+    nom: "Benoît Mathieu",
+    parti: "Étiquette non précisée",
+    mesures: [],
+  },
+  {
+    id: "maurel",
+    nom: "Emmanuel Maurel",
+    parti: "Gauche républicaine et socialiste",
+    mesures: [],
+  },
+  {
+    id: "mikolajczak",
+    nom: "Antoine Mikolajczak",
+    parti: "Équinoxe",
+    mesures: [],
+  },
+  {
+    id: "mlekuz",
+    nom: "Manolo Mlekuz",
+    parti: "Trajectoire",
+    mesures: [],
+  },
+  {
+    id: "philippot",
+    nom: "Florian Philippot",
+    parti: "Les Patriotes",
+    mesures: [],
+  },
+  {
+    id: "roussel",
+    nom: "Fabien Roussel",
+    parti: "Parti communiste français",
+    mesures: [],
+  },
+  {
+    id: "royal",
+    nom: "Ségolène Royal",
+    parti: "Parti socialiste",
+    mesures: [],
+  },
+  {
+    id: "ruffin",
+    nom: "François Ruffin",
+    parti: "Debout !",
+    mesures: [],
+  },
+  {
+    id: "zemmour",
+    nom: "Éric Zemmour",
+    parti: "Reconquête",
+    mesures: [],
+  },
 ];
 
+// Ordre d'affichage par défaut de tous les candidats : alphabétique sur l'identifiant (nom de famille),
+// jamais par sondage, popularité ni quantité de mesures recensées (équité). L'ordre du tableau CANDIDATS
+// lui-même n'a aucune signification.
+const CANDIDATS_ALPHABETIQUE = [...CANDIDATS].sort((a, b) => a.id.localeCompare(b.id, "fr"));
+
 if (typeof window !== "undefined") {
-  window.AGORA_DATA = { CLASSES_SOCIALES, THEMES, CANDIDATS, AVIS_DONNEES_REELLES };
+  window.AGORA_DATA = { CLASSES_SOCIALES, THEMES, CANDIDATS, CANDIDATS_ALPHABETIQUE, AVIS_DONNEES_REELLES };
 }

@@ -5,13 +5,12 @@
  */
 
 (function () {
-  const { CLASSES_SOCIALES, CANDIDATS } = window.AGORA_DATA;
+  const { CLASSES_SOCIALES, CANDIDATS, CANDIDATS_ALPHABETIQUE } = window.AGORA_DATA;
   const params = new URLSearchParams(window.location.search);
   const candidatId = params.get("c");
   const root = document.getElementById("fiche-candidat-root");
 
-  // Ordre alphabétique des identifiants, jamais par sondage ni popularité (garde-fous de neutralité).
-  const candidatsTries = [...CANDIDATS].sort((a, b) => a.id.localeCompare(b.id));
+  const candidatsTries = CANDIDATS_ALPHABETIQUE;
 
   function badgeConfiance(mesure) {
     const estConfirme = mesure.niveauConfiance === "confirme";
@@ -69,7 +68,7 @@
           <a href="candidat.html?c=${c.id}" class="carte-candidat" style="text-decoration:none; color:inherit;">
             <div class="carte-candidat__nom">${c.nom}</div>
             <span class="badge mono">${c.parti}</span>
-            <div style="font-size:0.85rem; color:var(--ink-soft); margin-top:8px;">${c.mesures.length} mesure(s) recensée(s)</div>
+            <div style="font-size:0.85rem; color:var(--ink-soft); margin-top:8px;">${c.mesures.length ? `${c.mesures.length} mesure${c.mesures.length > 1 ? "s" : ""} recensée${c.mesures.length > 1 ? "s" : ""}` : "Aucune mesure recensée à ce stade"}</div>
           </a>
         `).join("")}
       </div>
@@ -77,13 +76,17 @@
   }
 
   function renderFiche(candidat) {
+    const position = candidatsTries.findIndex((c) => c.id === candidat.id);
+    const precedent = position > 0 ? candidatsTries[position - 1] : null;
+    const suivant = position < candidatsTries.length - 1 ? candidatsTries[position + 1] : null;
     document.title = `${candidat.nom} — Mon Choix 2027`;
     root.innerHTML = `
-      <nav class="fiche-nav" aria-label="Autres fiches candidats">
-        <a href="candidat.html" class="fiche-nav__retour">← Tous les candidats</a>
-        ${candidatsTries.map((c) => `
-          <a href="candidat.html?c=${c.id}" class="fiche-nav__pastille ${c.id === candidat.id ? "active" : ""}" ${c.id === candidat.id ? 'aria-current="page"' : ""}>${c.nom}</a>
-        `).join("")}
+      <nav class="fiche-nav" aria-label="Navigation entre les fiches">
+        <a href="candidat.html" class="fiche-nav__retour">← Tous les candidats (${candidatsTries.length})</a>
+        <span class="fiche-nav__voisins">
+          ${precedent ? `<a href="candidat.html?c=${precedent.id}">← ${precedent.nom}</a>` : ""}
+          ${suivant ? `<a href="candidat.html?c=${suivant.id}">${suivant.nom} →</a>` : ""}
+        </span>
       </nav>
       <div class="fiche-header">
         <div>
@@ -91,6 +94,11 @@
           <h1 style="font-size:2rem;">${candidat.nom}</h1>
         </div>
       </div>
+      ${candidat.mesures.length === 0 ? `
+        <div class="fiche-vide">
+          <h2>Aucune mesure recensée à ce stade</h2>
+          <p>${candidat.nom} figure dans le comparateur parce que sa candidature est officiellement déclarée, mais aucune mesure n'a encore pu être recensée avec une source vérifiable dans les médias de référence. Plutôt que d'extrapoler, la fiche reste vide : elle sera complétée dès que son programme se précise.</p>
+        </div>` : ""}
       ${candidat.mesures.map(renderMesure).join("")}
       <p style="margin-top:12px; font-size:0.82rem; color:var(--ink-soft); max-width:70ch;">
         Cette fiche ne recense que les mesures pour lesquelles une source vérifiable a été retrouvée

@@ -58,7 +58,24 @@
     `;
   }
 
-  document.getElementById("resultat-classement").innerHTML = classement
+  const calculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal !== null);
+  const nonCalculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal === null);
+
+  // Candidats sans mesure sur les thèmes prioritaires : regroupés dans un volet repliable mais toujours
+  // listés (aucun candidat n'est jamais retiré du classement).
+  function renderNonCalculables(liste, adjectif, ouvert) {
+    if (!liste.length) return "";
+    const n = liste.length;
+    return `
+      <details class="non-calculables"${ouvert ? " open" : ""}>
+        <summary>${n} autre${n > 1 ? "s" : ""} candidat${n > 1 ? "s" : ""} : score non calculable</summary>
+        <p>Aucune mesure n'est recensée pour ces candidats sur ${adjectif} thèmes prioritaires : aucun score ne peut être calculé, et ce n'est ni un bon ni un mauvais résultat.</p>
+        <ul>${liste.map((c) => `<li>${c.nom} <span>· ${c.parti}</span></li>`).join("")}</ul>
+      </details>
+    `;
+  }
+
+  document.getElementById("resultat-classement").innerHTML = calculables
     .map(
       (candidat, i) => `
         <li>
@@ -71,4 +88,5 @@
       `
     )
     .join("");
+  document.getElementById("resultat-non-calculables").innerHTML = renderNonCalculables(nonCalculables, "ces", calculables.length === 0);
 })();
