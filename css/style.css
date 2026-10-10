@@ -1574,3 +1574,17 @@ a.bouton-principal.bouton-principal--hero:hover span { transform: translateX(4px
 }
 .fiche-parti { display: flex; align-items: center; gap: 10px; }
 .fiche-parti .badge-parti { font-size: 0.82rem; padding: 4px 10px; }
+
+/* Volet « Comment ce résultat est-il calculé ? » */
+.detail-calcul { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 12px; background: rgba(236, 233, 225, 0.5); }
+.detail-calcul summary { cursor: pointer; font-family: var(--font-display); font-size: 0.95rem; font-weight: 500; }
+.detail-calcul ol { margin: 16px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); }
+.detail-calcul li > strong:first-child { font-weight: 500; color: var(--ink); }
+.detail-calcul__valeur { font-weight: 500; color: var(--ink); white-space: nowrap; }
+.detail-calcul__seuils { list-style: none; margin: 8px 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.detail-calcul__seuil { padding: 6px 12px; border-radius: 6px; }
+.detail-calcul__seuil--actif { background: var(--paper-raised, #fff); color: var(--ink); font-weight: 500; box-shadow: var(--shadow-sm); }
+.detail-calcul__repere { font-family: var(--font-display); font-size: 0.82rem; }
+.detail-calcul__ecart { display: block; }
+.detail-calcul__note { margin: 16px 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+.detail-calcul__note a { text-decoration: underline; text-underline-offset: 3px; }

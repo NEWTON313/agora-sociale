@@ -4,7 +4,7 @@
 
 (function () {
   const { CLASSES_SOCIALES, CANDIDATS, THEMES } = window.AGORA_DATA;
-  const { classerProfil, SEUILS_NIVEAU_DE_VIE } = window.AGORA_SIMULATEUR;
+  const { classerProfil, SEUILS_NIVEAU_DE_VIE, SEUILS_CLASSIFICATION } = window.AGORA_SIMULATEUR;
   const { NIVEAUX_PRIORITE, LABELS_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise, trierParScorePersonnalise } =
     window.AGORA_PRIORITES;
 
@@ -253,6 +253,71 @@
     return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n) + " €";
   }
 
+  function nombre(n) {
+    return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n);
+  }
+
+  /** Volet repliable « Comment ce résultat est-il calculé ? » (miroir de components/DetailCalcul.tsx). */
+  function renderDetailCalcul(r) {
+    const { populaires_max: popMax, moyennes_max: moyMax, patrimoine_bump_aisees: patrimoineSeuil } = SEUILS_CLASSIFICATION;
+    const classeNiveau = r.niveauDeVie < popMax ? "populaires" : r.niveauDeVie < moyMax ? "moyennes" : "aisees";
+    const seuilProche =
+      classeNiveau === "populaires" ? popMax
+      : classeNiveau === "aisees" ? moyMax
+      : (r.niveauDeVie - popMax < moyMax - r.niveauDeVie ? popMax : moyMax);
+    const ecart = Math.abs(r.niveauDeVie - seuilProche);
+    const ecartPct = Math.round((ecart / seuilProche) * 100);
+    const auDessus = r.niveauDeVie >= seuilProche;
+    const pluriel = (n, mot) => `${mot}${n > 1 ? "s" : ""}`;
+
+    const termesUC = [
+      "1 (premier adulte)",
+      r.nbAdultes > 1 ? `${r.nbAdultes - 1} × 0,5 (${pluriel(r.nbAdultes - 1, "adulte")} ${pluriel(r.nbAdultes - 1, "supplémentaire")})` : null,
+      r.nbEnfants14Plus > 0 ? `${r.nbEnfants14Plus} × 0,5 (${pluriel(r.nbEnfants14Plus, "enfant")} de 14 ans ou plus)` : null,
+      r.nbEnfantsMoins14 > 0 ? `${r.nbEnfantsMoins14} × 0,3 (${pluriel(r.nbEnfantsMoins14, "enfant")} de moins de 14 ans)` : null,
+    ].filter(Boolean);
+
+    const lignesSeuils = [
+      ["populaires", `moins de ${euros(popMax)}`],
+      ["moyennes", `de ${euros(popMax)} à moins de ${euros(moyMax)}`],
+      ["aisees", `${euros(moyMax)} et plus`],
+    ].map(([id, libelle]) => `
+        <li class="detail-calcul__seuil${id === classeNiveau ? " detail-calcul__seuil--actif" : ""}">
+          ${classeInfo(id).nom} : ${libelle}${id === classeNiveau ? ' <span class="detail-calcul__repere">← votre niveau de vie</span>' : ""}
+        </li>`).join("");
+
+    let ajustement;
+    if (r.bumpPatrimoine) {
+      ajustement = `Votre patrimoine net déclaré atteint ${euros(patrimoineSeuil)} : un foyer des classes moyennes passe alors en classes aisées.`;
+    } else if (r.estRetraiteOuInactif) {
+      ajustement = `Votre statut (retraité·e, chômage, études ou autre situation sans emploi) vous place dans la catégorie « ${classeInfo("retraites").nom} » quel que soit le niveau de vie ; le niveau de vie seul vous aurait classé·e en « ${classeInfo(r.classeRevenuSecondaire).nom} ».`;
+    } else {
+      ajustement = `Aucun : ni le statut ni le patrimoine n'ont modifié ce classement. (Le patrimoine n'intervient que pour un foyer des classes moyennes, à partir de ${euros(patrimoineSeuil)} ; le statut seulement pour les retraité·es et inactifs·ves.)`;
+    }
+
+    return `
+      <details class="detail-calcul">
+        <summary>Comment ce résultat est-il calculé ?</summary>
+        <ol>
+          <li><strong>Revenu annuel du foyer.</strong> Votre revenu mensuel saisi, multiplié par 12 :
+            <strong class="detail-calcul__valeur">${euros(r.revenuAnnuel)}</strong> par an.</li>
+          <li><strong>Unités de consommation (UC).</strong> L'échelle de l'Insee pondère la composition du foyer :
+            ${termesUC.join(" + ")} = <strong class="detail-calcul__valeur">${nombre(r.uc)} UC</strong>.</li>
+          <li><strong>Niveau de vie.</strong> ${euros(r.revenuAnnuel)} ÷ ${nombre(r.uc)} UC =
+            <strong class="detail-calcul__valeur">${euros(r.niveauDeVie)} par an et par UC</strong>.</li>
+          <li><strong>Comparaison aux seuils Insee</strong> (déciles du niveau de vie, données ${SEUILS_NIVEAU_DE_VIE.annee_source}) :
+            <ul class="detail-calcul__seuils">${lignesSeuils}</ul>
+            <span class="detail-calcul__ecart">Votre niveau de vie est à ${euros(ecart)} (environ ${ecartPct} %)
+              ${auDessus ? "au-dessus" : "en dessous"} du seuil de ${euros(seuilProche)}. Les seuils sont des repères
+              statistiques : un foyer proche d'une frontière pourrait relever de l'une ou l'autre catégorie.</span></li>
+          <li><strong>Ajustements.</strong> ${ajustement}</li>
+        </ol>
+        <p class="detail-calcul__note">La position dans la population (${r.percentile}ᵉ percentile) est estimée par
+          interpolation entre les déciles de l'Insee. L'année de naissance ne sert qu'aux repères sur la retraite.
+          Détail des sources : <a href="methodologie.html#simulateur">méthodologie du simulateur</a>.</p>
+      </details>`;
+  }
+
   function decrirePosition(percentile) {
     if (percentile === 50) return "à la médiane exacte du niveau de vie";
     if (percentile > 50) return `parmi les ${100 - percentile} % les plus aisés`;
@@ -360,6 +425,8 @@
           <div><dt>Position dans la population</dt><dd>${decrirePosition(r.percentile)}</dd></div>
           <div><dt>Unités de consommation du foyer</dt><dd>${r.uc}</dd></div>
         </dl>
+
+        ${renderDetailCalcul(r)}
 
         ${noteStatut}
 
