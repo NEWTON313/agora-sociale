@@ -90,9 +90,9 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-10-10",
+  dateMaj: "2026-10-13",
   texte:
-    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique) a son premier tour les 9-11 octobre 2026 et un éventuel second tour les 16-17 octobre ; les candidats non désignés seront retirés du comparateur à l'issue de la primaire. La candidature de Marine Le Pen dépend de l'issue de son pourvoi en cassation, actuellement en cours après la réduction de sa peine d'inéligibilité en appel. Chaque mesure indique sa source et son niveau de confiance.",
+    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen est déclarée candidate après la réduction de sa peine d'inéligibilité par la cour d'appel de Paris (7 juillet 2026) ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour. Seuls Mélenchon, Attal, Philippe, Retailleau, Le Pen et Tondelier disposent à ce stade de plusieurs mesures sourcées ; les autres candidats sont enrichis progressivement, en priorité ceux qui n'ont encore aucune mesure recensée. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
 // Remapping vers la taxonomie à 9 thèmes (2026-08-29) : `br-rsa` (RSA/emploi) est classée en
@@ -117,6 +117,14 @@ const AVIS_DONNEES_REELLES = {
 // candidat : refonte de la police, dissolution de l'IGPN, garde nationale de jeunes volontaires, dépénalisation
 // du cannabis) et d'une troisième mesure "Sécurité et justice" pour Retailleau (`br-majorite-penale`, abaissement
 // de la majorité pénale à 15 ans, annoncé le 08/09/2026 sur CNews).
+// Le 2026-10-13, retrait de Faure, Royal, Maurel et Guedj (primaire PS/Place publique/GRS désignant Raphaël
+// Glucksmann dès le premier tour le 11/10/2026, qu'ils soutiennent tous). Ajout de la première mesure pour 5
+// candidats qui n'en avaient aucune, en commençant par ordre alphabétique des id (prochaine exécution : reprendre
+// à partir de "branco") : `na-smic-2000` ("Pouvoir d'achat et économie", Arthaud), `fa-frexit` ("Europe et
+// géopolitique", Asselineau), `ob-electricite-carburants` ("Pouvoir d'achat et économie", Becht),
+// `xb-republique-territoires` ("Institutions et démocratie", Bertrand) et `kb-fonds-souverain` ("Souveraineté
+// et industrie", Bouamrane). Batho (`batho`) n'a pas reçu de mesure cette exécution, faute de programme 2027
+// suffisamment sourcé à ce stade.
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -1551,13 +1559,50 @@ const CANDIDATS = [
     id: "arthaud",
     nom: "Nathalie Arthaud",
     parti: "Lutte ouvrière",
-    mesures: [],
+    mesures: [
+      {
+        id: "na-smic-2000",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Smic porté à 2 000 euros nets par mois",
+        resumeOfficiel:
+          "Porte-parole de Lutte ouvrière, candidate pour la quatrième fois à la présidentielle, elle réclame une augmentation générale des salaires avec un Smic net mensuel de 2 000 euros, indexé sur l'inflation.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-magazine/franceinfo/l-invite-politique/prix-du-carburant-nathalie-arthaud-porte-parole-de-lutte-ouvriere-souhaite-la-mise-en-place-du-smic-a-2-000-euros-net-par-mois_7978223.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Déclaration rapportée directement par franceinfo lors d'une interview politique ; la revendication d'une hausse générale des salaires indexée sur l'inflation est une ligne constante de Lutte ouvrière, documentée sur ses candidatures successives depuis 2007.",
+        impactParClasse: {
+          populaires: { score: 2, avantages: ["Hausse immédiate du pouvoir d'achat pour les salariés au Smic ou proches du Smic, catégorie où cette population est surreprésentée"], risques: ["Risque de destruction d'emplois peu qualifiés évoqué par certains économistes si la hausse n'est pas accompagnée d'allègements de charges, non chiffré par la candidate"], angleMort: "Aucun chiffrage public du coût pour les employeurs ni du mode de financement (charges, aides, répercussion sur les prix)." },
+          moyennes: { score: 1, avantages: ["Effet d'entraînement possible sur les salaires immédiatement supérieurs au Smic"], risques: ["Si financée par une hausse de cotisations ou de la fiscalité, cette catégorie pourrait contribuer sans bénéficier directement de la revalorisation"], angleMort: "Aucune indication publique sur le financement précis de la mesure." },
+          aisees: { score: -1, avantages: [], risques: ["Catégorie identifiée par les opposants à ce type de mesure comme contributrice probable si elle est financée par la fiscalité ou les cotisations patronales"], angleMort: "Le programme ne précise pas de mécanisme de financement chiffré impliquant cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "La mesure porte sur le salaire minimum des actifs ; son éventuel effet indirect sur le minimum contributif des pensions n'est pas précisé par la candidate." },
+        },
+      },
+    ],
   },
   {
     id: "asselineau",
     nom: "François Asselineau",
     parti: "Union populaire républicaine",
-    mesures: [],
+    mesures: [
+      {
+        id: "fa-frexit",
+        theme: "Europe et géopolitique",
+        titre: "« Frexit » : sortie de l'Union européenne, de la zone euro et de l'OTAN",
+        resumeOfficiel:
+          "Position fondatrice et inchangée de l'UPR : faire sortir la France de l'Union européenne, de la zone euro et de l'OTAN par la voie de l'article 50 du traité sur l'Union européenne, pour restaurer la souveraineté monétaire, commerciale et diplomatique du pays.",
+        sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/a-quoi-ressemblerait-la-france-de-francoisasselineau_2098509.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position unique et fondatrice de l'UPR, documentée par franceinfo depuis la candidature de 2017 et constante sur l'ensemble des scrutins où François Asselineau s'est présenté depuis la création du parti en 2007.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: ["Le candidat affirme qu'une sortie de l'euro permettrait de retrouver une politique monétaire et commerciale nationale favorable à l'emploi industriel, sans chiffrage indépendant disponible"], risques: ["La plupart des économistes cités par les médias de référence évoquent un risque d'instabilité monétaire et de hausse des prix à l'importation (énergie, produits de consommation), qui pèserait proportionnellement plus sur les budgets serrés"], angleMort: "Aucune étude d'impact indépendante et chiffrée n'accompagne la proposition ; les évaluations économiques disponibles sur un Frexit restent elles-mêmes anciennes et contestées." },
+          moyennes: { score: -1, avantages: ["Argument du candidat : retour d'une souveraineté commerciale pouvant favoriser certains secteurs protégés"], risques: ["Risque de hausse du coût du crédit et de l'épargne en cas de changement de monnaie, selon des économistes cités par les médias"], angleMort: "Pas de chiffrage public de l'effet sur le taux d'intérêt, l'épargne ou le crédit immobilier de cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: ["Risque de volatilité sur les actifs financiers et l'épargne en cas de sortie de l'euro, catégorie statistiquement plus exposée aux marchés financiers"], angleMort: "Aucune évaluation chiffrée publique de l'effet sur les actifs financiers ou immobiliers des ménages aisés." },
+          retraites: { score: -1, avantages: [], risques: ["Les retraités à revenu fixe seraient, comme les catégories populaires, exposés à un risque d'inflation importée en cas de changement monétaire, selon les critiques de la mesure"], angleMort: "Aucune mesure de compensation ou de protection spécifique des pensions n'est associée publiquement à cette proposition." },
+        },
+      },
+    ],
   },
   {
     id: "batho",
@@ -1569,19 +1614,76 @@ const CANDIDATS = [
     id: "becht",
     nom: "Olivier Becht",
     parti: "Apparenté Ensemble pour la République",
-    mesures: [],
+    mesures: [
+      {
+        id: "ob-electricite-carburants",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Baisser le prix de l'électricité au coût marginal pour amortir la hausse des carburants",
+        resumeOfficiel:
+          "Face à la hausse des prix à la pompe, le candidat propose à court terme de vendre l'électricité au plus proche de son coût de production marginal pour permettre une forte ristourne sur la facture des Français, en complément d'une réflexion sur la fiscalité des carburants, et à moyen terme de lancer un programme national de production de carburants de synthèse décarbonés.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/economie/automobile/essence/hausse-des-prix-des-carburants-le-depute-olivier-becht-propose-d-agir-sur-le-prix-de-l-electricite_8202695.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Proposition détaillée dans une interview récente rapportée par franceinfo (citant ICI Alsace), sans chiffrage global du coût ni calendrier législatif précis à ce stade.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Une baisse du prix de l'électricité profiterait proportionnellement plus aux ménages pour qui les factures d'énergie pèsent le plus dans le budget"], risques: ["Le candidat écarte lui-même le blocage des prix et une baisse de la TVA, jugés trop coûteux (plus de 17 milliards d'euros), ce qui limite l'ampleur de la baisse réellement possible à court terme pour cette catégorie"], angleMort: "Aucun chiffrage public du montant réel de la ristourne attendue sur la facture des ménages modestes." },
+          moyennes: { score: 1, avantages: ["Bénéficie de la même baisse de facture d'électricité, dans des proportions comparables au reste de la population"], risques: [], angleMort: "Le mécanisme précis de tarification « au coût marginal » et son effet concret sur le prix affiché au compteur ne sont pas détaillés publiquement." },
+          aisees: { score: 0, avantages: ["Bénéficie aussi d'une éventuelle baisse du prix de l'électricité, mais dans une proportion plus faible de son budget"], risques: [], angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié selon le niveau de revenu." },
+          retraites: { score: 1, avantages: ["Les retraités, souvent présents à domicile en journée, ont une consommation électrique proportionnellement plus importante et bénéficieraient de la baisse"], risques: [], angleMort: "Aucun chiffrage spécifique à cette catégorie n'est disponible." },
+        },
+      },
+    ],
   },
   {
     id: "bertrand",
     nom: "Xavier Bertrand",
     parti: "Nous France",
-    mesures: [],
+    mesures: [
+      {
+        id: "xb-republique-territoires",
+        theme: "Institutions et démocratie",
+        titre: "« République des territoires » : l'État recentré sur le régalien, les collectivités décisionnaires sur le quotidien",
+        resumeOfficiel:
+          "Projet porté depuis plusieurs années par Xavier Bertrand et désormais par son mouvement « Nous France » : réserver à l'État les fonctions régaliennes (sécurité, justice, immigration, défense, lutte contre l'islamisme) et transférer aux collectivités territoriales les décisions de la vie quotidienne, aujourd'hui jugées trop centralisées à Paris.",
+        sourceOfficielle:
+          "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/xavier-bertrand-candidat-a-la-presidentielle-2027-5-choses-qu-il-faut-savoir-sur-ses-declarations-2918511.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Thème porté publiquement par Xavier Bertrand depuis sa candidature de 2017 et sa mission de conseiller « République des territoires et travail » en 2022, repris pour 2027 par son mouvement Nous France : position documentée sur plusieurs campagnes successives.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Objectif affiché de rapprocher du terrain les décisions du quotidien (logement, action sociale, services publics locaux), dont les catégories modestes sont souvent les plus dépendantes"], risques: ["Un transfert de compétences sans garantie de financement équivalent pourrait créer des inégalités territoriales dans l'accès aux services selon la richesse de la collectivité"], angleMort: "Aucun chiffrage ni garantie publique de compensation financière aux collectivités qui recevraient de nouvelles compétences." },
+          moyennes: { score: 0, avantages: [], risques: ["Mêmes incertitudes sur le financement, pouvant se traduire par une fiscalité locale différenciée selon le territoire"], angleMort: "Le projet ne précise pas la répartition exacte des compétences ni son effet sur la fiscalité locale." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade ; l'impact dépendrait des politiques locales mises en œuvre ensuite, non connues." },
+          retraites: { score: 0, avantages: ["Les services de proximité (santé, dépendance, transport) concernent particulièrement cette catégorie, qui pourrait bénéficier d'une gestion plus locale si elle est bien financée"], risques: ["Risque d'inégalités territoriales dans l'offre de services pour les personnes âgées selon la richesse de la collectivité"], angleMort: "Aucune garantie publique d'un financement national égalitaire entre collectivités riches et pauvres." },
+        },
+      },
+    ],
   },
   {
     id: "bouamrane",
     nom: "Karim Bouamrane",
     parti: "Parti socialiste",
-    mesures: [],
+    mesures: [
+      {
+        id: "kb-fonds-souverain",
+        theme: "Souveraineté et industrie",
+        titre: "Fonds souverain de 100 milliards d'euros financé par un impôt sur la fortune immobilière",
+        resumeOfficiel:
+          "Le maire socialiste de Saint-Ouen propose de créer un fonds souverain doté de 100 milliards d'euros pour investir dans l'économie française, financé en grande partie par un impôt sur la fortune immobilière qu'il évalue à environ 2 milliards d'euros de recettes annuelles.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-magazine/franceinfo/l-invite-politique/l-invite-politique-du-mercredi-24-juin-2026_8043938.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Proposition chiffrée annoncée lors d'une interview politique sur franceinfo ; le mécanisme précis de l'impôt sur la fortune immobilière et les modalités d'investissement du fonds ne sont pas détaillés publiquement à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un fonds souverain d'investissement pourrait financer des emplois industriels, dont bénéficient statistiquement aussi les catégories populaires"], risques: [], angleMort: "Aucun chiffrage public des secteurs ou emplois concrètement visés par les investissements du fonds." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Le fonds est présenté comme un outil d'investissement national ; son effet concret sur l'emploi ou les revenus de cette catégorie n'est pas chiffré." },
+          aisees: { score: -1, avantages: [], risques: ["Catégorie directement concernée par le nouvel impôt sur la fortune immobilière cité pour financer le fonds"], angleMort: "Le barème exact de cet impôt et son rendement réel (chiffré à environ 2 milliards d'euros par le candidat, bien inférieur aux 100 milliards visés pour le fonds) ne sont pas précisés publiquement." },
+          retraites: { score: 0, avantages: [], risques: ["Les retraités propriétaires d'un bien immobilier de valeur élevée pourraient être concernés par le nouvel impôt, dans une mesure non précisée"], angleMort: "Aucun seuil d'imposition ni mode de calcul n'est public à ce stade." },
+        },
+      },
+    ],
   },
   {
     id: "branco",
@@ -1608,21 +1710,9 @@ const CANDIDATS = [
     mesures: [],
   },
   {
-    id: "faure",
-    nom: "Olivier Faure",
-    parti: "Parti socialiste",
-    mesures: [],
-  },
-  {
     id: "glucksmann",
     nom: "Raphaël Glucksmann",
     parti: "Place publique",
-    mesures: [],
-  },
-  {
-    id: "guedj",
-    nom: "Jérôme Guedj",
-    parti: "Parti socialiste",
     mesures: [],
   },
   {
@@ -1668,12 +1758,6 @@ const CANDIDATS = [
     mesures: [],
   },
   {
-    id: "maurel",
-    nom: "Emmanuel Maurel",
-    parti: "Gauche républicaine et socialiste",
-    mesures: [],
-  },
-  {
     id: "mikolajczak",
     nom: "Antoine Mikolajczak",
     parti: "Équinoxe",
@@ -1695,12 +1779,6 @@ const CANDIDATS = [
     id: "roussel",
     nom: "Fabien Roussel",
     parti: "Parti communiste français",
-    mesures: [],
-  },
-  {
-    id: "royal",
-    nom: "Ségolène Royal",
-    parti: "Parti socialiste",
     mesures: [],
   },
   {
