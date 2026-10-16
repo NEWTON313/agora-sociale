@@ -90,9 +90,9 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-10-13",
+  dateMaj: "2026-10-16",
   texte:
-    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen est déclarée candidate après la réduction de sa peine d'inéligibilité par la cour d'appel de Paris (7 juillet 2026) ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour. Seuls Mélenchon, Attal, Philippe, Retailleau, Le Pen et Tondelier disposent à ce stade de plusieurs mesures sourcées ; les autres candidats sont enrichis progressivement, en priorité ceux qui n'ont encore aucune mesure recensée. Chaque mesure indique sa source et son niveau de confiance.",
+    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature ; l'essayiste Natacha Polony (mouvement « Nous sommes la France ») a ainsi rejoint le comparateur le 14 octobre 2026, date de l'annonce de sa candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen est déclarée candidate après la réduction de sa peine d'inéligibilité par la cour d'appel de Paris (7 juillet 2026) ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour. Mélenchon, Attal, Philippe, Retailleau, Le Pen, Tondelier et désormais Glucksmann disposent à ce stade de plusieurs mesures sourcées ; les autres candidats sont enrichis progressivement, en priorité ceux qui n'ont encore aucune mesure recensée. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
 // Remapping vers la taxonomie à 9 thèmes (2026-08-29) : `br-rsa` (RSA/emploi) est classée en
@@ -1695,7 +1695,26 @@ const CANDIDATS = [
     id: "dupont-aignan",
     nom: "Nicolas Dupont-Aignan",
     parti: "Debout la France",
-    mesures: [],
+    mesures: [
+      {
+        id: "nda-frexit",
+        theme: "Europe et géopolitique",
+        titre: "Sortie de l'Union européenne, de la zone euro et de l'OTAN (« Frexit »)",
+        resumeOfficiel:
+          "Position centrale de sa quatrième candidature présidentielle, officialisée le 8 mars 2026 : sortir la France de l'Union européenne, de la zone euro et de l'OTAN, mettre en place un protectionnisme « intelligent » avec des droits de douane nationaux en cas de concurrence jugée déloyale, et sortir du marché européen de l'électricité pour en baisser le prix d'environ 30 %.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/presidentielle-nicolas-dupont-aignan-officialise-sa-candidature-et-fait-le-pari-du-frexit-183876",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position fondatrice de Debout la France, documentée sur ses candidatures de 2012, 2017, 2022 et 2027 (candidature 2027 officialisée le 8 mars 2026, rapportée par Le JDD et franceinfo).",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Le candidat affirme que sortir du marché européen de l'électricité permettrait d'en baisser le prix d'environ 30 %, un gain qui pèserait proportionnellement plus dans le budget des ménages modestes, sans chiffrage indépendant disponible"], risques: ["Une sortie de l'euro et de l'UE comporte, selon la plupart des économistes cités par les médias de référence, un risque d'instabilité monétaire et de hausse des prix à l'importation qui pèserait proportionnellement plus sur les budgets modestes"], angleMort: "Aucune étude d'impact indépendante ne chiffre ni la baisse de prix de l'électricité annoncée ni le risque inflationniste d'une sortie de l'euro." },
+          moyennes: { score: -1, avantages: ["Le candidat promet une relocalisation d'un million d'emplois industriels grâce au protectionnisme national, sans chiffrage indépendant disponible"], risques: ["Risque de hausse du coût du crédit et de l'épargne en cas de changement de monnaie, selon des économistes cités par les médias de référence"], angleMort: "Aucun chiffrage public de l'effet sur le pouvoir d'achat des classes moyennes à court terme." },
+          aisees: { score: 0, avantages: [], risques: ["Risque de volatilité sur les actifs financiers et l'épargne en cas de sortie de l'euro, catégorie statistiquement plus exposée aux marchés financiers"], angleMort: "Aucune évaluation chiffrée publique de l'effet sur les actifs financiers ou immobiliers des ménages aisés." },
+          retraites: { score: 0, avantages: ["Le candidat annonce vouloir baisser le prix de l'électricité, une dépense qui pèse proportionnellement sur les retraités souvent présents à domicile en journée"], risques: ["Risque d'inflation importée en cas de changement monétaire pour des pensions à revenu fixe, selon les critiques de ce type de mesure"], angleMort: "Aucune mesure de compensation ou de protection spécifique des pensions n'est associée publiquement à cette proposition." },
+        },
+      },
+    ],
   },
   {
     id: "durif",
@@ -1707,13 +1726,85 @@ const CANDIDATS = [
     id: "egger",
     nom: "Clara Egger",
     parti: "Solution démocratique",
-    mesures: [],
+    mesures: [
+      {
+        id: "ce-ric",
+        theme: "Institutions et démocratie",
+        titre: "Instaurer un référendum d'initiative citoyenne (RIC)",
+        resumeOfficiel:
+          "Présidente du mouvement Solution démocratique, Clara Egger a annoncé sa candidature le 20 avril 2026 en portant comme axe central l'instauration d'un référendum d'initiative citoyenne (RIC) et le renforcement du pouvoir des maires, après une première candidature en 2022 sous la bannière du mouvement Espoir RIC 2022 déjà centrée sur cette revendication.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Position centrale de ses deux candidatures (2022 sous la bannière Espoir RIC 2022, puis 2027 sous Solution démocratique), rapportée par franceinfo, mais sans détail de mise en œuvre chiffré (modalités précises du RIC, seuil de signatures) à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un RIC donnerait en théorie un canal d'expression directe aux catégories les moins représentées dans les instances de décision actuelles"], risques: [], angleMort: "L'effet d'un RIC dépend des sujets effectivement soumis à référendum une fois l'outil créé, non déterminés par cette seule proposition." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : l'effet économique dépend de décisions futures prises par référendum, non connues à ce stade." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+        },
+      },
+    ],
   },
   {
     id: "glucksmann",
     nom: "Raphaël Glucksmann",
     parti: "Place publique",
-    mesures: [],
+    mesures: [
+      {
+        id: "rg-enseignants-salaires",
+        theme: "Services publics",
+        titre: "Augmenter les salaires des enseignants de 10 %, jusqu'à 25 % selon l'ancienneté, et plan de sauvetage de l'école publique",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose une revalorisation des salaires enseignants de 10 % pour tous, avec des hausses supplémentaires pouvant atteindre 25 % pour les enseignants du primaire en milieu de carrière, pour un coût chiffré par son équipe de campagne à 6 milliards d'euros, assortie d'un plan de sauvetage de l'école publique sur cinq ans (réduction du nombre d'élèves par classe, grand plan de rénovation des bâtiments scolaires).",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/les-professeurs-courtises-par-les-candidats-a-la-presidentielle-2027-quelles-revalorisations-proposent-ils-avec-quels-financements_8161409.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Mesure chiffrée (6 milliards d'euros) et détaillée publiquement fin août 2026, rapportée par franceinfo et Le JDD, avec un barème précis par ancienneté.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Une revalorisation enseignante peut améliorer l'attractivité du métier dans les établissements les plus en difficulté, souvent situés en zone populaire"], risques: [], angleMort: "Le financement du plan (6 milliards d'euros) n'est pas détaillé poste par poste publiquement (nouvelle recette ou redéploiement budgétaire)." },
+          moyennes: { score: 1, avantages: ["Hausse bénéficiant directement à la profession enseignante, en grande partie issue de cette catégorie"], risques: [], angleMort: "Calendrier précis de montée en charge de la hausse (jusqu'à 25 %) sur le quinquennat non détaillé publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure visant les enseignants en activité ; aucun effet direct documenté sur les retraités." },
+        },
+      },
+      {
+        id: "rg-convention-citoyenne-immigration",
+        theme: "Immigration et intégration",
+        titre: "Convention citoyenne sur l'immigration",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose la création d'une convention citoyenne sur l'immigration, sur le modèle des conventions citoyennes convoquées par Emmanuel Macron sur le climat et la fin de vie : des citoyens tirés au sort, représentatifs de la population et confrontés à des données démographiques, économiques et sécuritaires, débattraient publiquement du sujet et transmettraient leurs propositions au Parlement, pour aborder l'immigration « sans tabou ».",
+        sourceOfficielle: "https://www.france24.com/fr/info-en-continu/20260524-glucksmann-veut-une-convention-citoyenne-sur-l-immigration",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Proposition de méthode (convocation d'une convention citoyenne) rapportée par France 24 et Le JDD, sans contenu normatif chiffré : l'issue dépend des propositions que la convention formulerait elle-même.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Le contenu concret des règles d'immigration dépend des propositions de la convention citoyenne, non connues à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort : effet dépendant de décisions futures non déterminées par cette seule mesure de méthode." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+        },
+      },
+      {
+        id: "rg-service-civique",
+        theme: "Institutions et démocratie",
+        titre: "Service civique obligatoire de dix mois pour les jeunes",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose d'instaurer un service civique obligatoire de dix mois pour les jeunes Français, effectué dans des Ehpad, des écoles, des services publics ou des missions d'intérêt général, la dimension militaire restant sur la base du volontariat, dans le cadre de ce qu'il présente comme un « nouveau contrat patriotique ».",
+        sourceOfficielle: "https://lcp.fr/actualites/presidentielle-raphael-glucksmann-devoile-les-premieres-lignes-de-son-possible-programme",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Proposition détaillée rapportée par LCP, sans chiffrage public du coût budgétaire ni du calendrier de mise en œuvre.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un service civique rémunéré pourrait constituer, selon ses défenseurs, une première expérience professionnelle pour des jeunes qui n'auraient pas accès à d'autres dispositifs"], risques: ["Le caractère obligatoire pourrait peser davantage sur les jeunes devant déjà travailler ou financer leurs études, plus représentés dans cette catégorie, si aucune compensation n'est prévue"], angleMort: "Aucune indemnisation ni compensation chiffrée publiquement pour les jeunes concernés." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet sur le calendrier des études supérieures non précisé publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: ["Les Ehpad et établissements accueillant des personnes âgées figurent parmi les structures d'accueil envisagées pour ce service civique, ce qui pourrait améliorer leur encadrement"], risques: [], angleMort: "Aucun chiffrage public du nombre de jeunes affectés aux structures pour personnes âgées." },
+        },
+      },
+    ],
   },
   {
     id: "kazib",
@@ -1773,6 +1864,12 @@ const CANDIDATS = [
     id: "philippot",
     nom: "Florian Philippot",
     parti: "Les Patriotes",
+    mesures: [],
+  },
+  {
+    id: "polony",
+    nom: "Natacha Polony",
+    parti: "Nous sommes la France",
     mesures: [],
   },
   {
