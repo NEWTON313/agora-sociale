@@ -90,9 +90,9 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-10-13",
+  dateMaj: "2026-10-19",
   texte:
-    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen est déclarée candidate après la réduction de sa peine d'inéligibilité par la cour d'appel de Paris (7 juillet 2026) ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour. Seuls Mélenchon, Attal, Philippe, Retailleau, Le Pen et Tondelier disposent à ce stade de plusieurs mesures sourcées ; les autres candidats sont enrichis progressivement, en priorité ceux qui n'ont encore aucune mesure recensée. Chaque mesure indique sa source et son niveau de confiance.",
+    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature : Natacha Polony, qui a annoncé sa candidature le 14 octobre 2026, vient d'y être ajoutée. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen est déclarée candidate après la réduction de sa peine d'inéligibilité par la cour d'appel de Paris (7 juillet 2026) ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour. Seuls Mélenchon, Attal, Philippe, Retailleau, Le Pen et Tondelier disposent à ce stade de plusieurs mesures sourcées ; les autres candidats sont enrichis progressivement, en priorité ceux qui n'ont encore aucune mesure recensée. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
 // Remapping vers la taxonomie à 9 thèmes (2026-08-29) : `br-rsa` (RSA/emploi) est classée en
@@ -1695,7 +1695,62 @@ const CANDIDATS = [
     id: "dupont-aignan",
     nom: "Nicolas Dupont-Aignan",
     parti: "Debout la France",
-    mesures: [],
+    mesures: [
+      {
+        id: "nda-frexit",
+        theme: "Europe et géopolitique",
+        titre: "« Frexit » : sortie de l'Union européenne, de la zone euro et de l'OTAN",
+        resumeOfficiel:
+          "Nicolas Dupont-Aignan fait de la sortie de la France de l'Union européenne, de la zone euro et de l'OTAN l'axe central de sa quatrième candidature présidentielle. Il décrit ce « Frexit » comme un recours permettant de recouvrer souveraineté monétaire, commerciale et diplomatique, et propose de remplacer l'UE par une structure de coopération plus légère.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/presidentielle-nicolas-dupont-aignan-officialise-sa-candidature-et-fait-le-pari-du-frexit-183876",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position fondatrice de Nicolas Dupont-Aignan et de Debout la France, défendue lors de ses candidatures de 2007, 2012, 2017 et 2022, et réaffirmée au lancement officiel de sa candidature 2027 (Le JDD).",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Promesse de reprise de contrôle sur les frontières et les règles commerciales, et fin des contributions nettes au budget européen que le candidat propose de réorienter vers des aides nationales"], risques: ["Une sortie de l'union douanière et du marché unique ferait courir un risque de hausse des prix à l'importation et de rupture d'approvisionnement, sans étude d'impact publique"], angleMort: "Aucun plan de transition chiffré n'est publié pour amortir un choc économique à court terme sur les ménages aux revenus les plus modestes." },
+          moyennes: { score: 0, avantages: [], risques: ["Les professions dépendant des échanges avec l'UE (exportation, tourisme, transport) seraient exposées à une incertitude juridique et commerciale prolongée"], angleMort: "Le calendrier et les modalités pratiques d'une sortie coordonnée de l'UE et de l'OTAN ne sont pas détaillés." },
+          aisees: { score: -1, avantages: ["Récupération revendiquée de la souveraineté réglementaire et fiscale nationale"], risques: ["Une sortie de la zone euro ferait courir un risque de volatilité monétaire et financière pouvant affecter l'épargne et les placements"], angleMort: "Aucune étude publique sur la conversion de l'épargne et des contrats en cours en cas de retour à une monnaie nationale." },
+          retraites: { score: 0, avantages: [], risques: ["Une instabilité monétaire liée à une sortie de l'euro pourrait affecter la valeur réelle des pensions versées"], angleMort: "Le candidat ne chiffre pas l'effet d'un Frexit sur le financement ou le pouvoir d'achat des pensions de retraite." },
+        },
+      },
+      {
+        id: "nda-droit-du-sol",
+        theme: "Immigration et intégration",
+        titre: "Suppression du droit du sol et rétablissement du délit de séjour irrégulier",
+        resumeOfficiel:
+          "Au lancement de sa candidature 2027, Nicolas Dupont-Aignan annonce vouloir supprimer le droit du sol et rétablir le délit de séjour irrégulier, qui permettait de sanctionner pénalement la présence irrégulière sur le territoire avant son abrogation par la loi du 31 décembre 2012.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/presidentielle-nicolas-dupont-aignan-officialise-sa-candidature-et-fait-le-pari-du-frexit-183876",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Déclaration rapportée par Le JDD lors de l'officialisation de sa candidature 2027 ; la suppression du droit du sol est une position que Nicolas Dupont-Aignan défend depuis plusieurs campagnes antérieures.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Un rétablissement du délit de séjour irrégulier exposerait les personnes en situation irrégulière, population statistiquement plus précaire, à des poursuites pénales et à la détention"], angleMort: "Le candidat ne précise pas les moyens budgétaires et le nombre de places de détention nécessaires pour appliquer concrètement cette pénalisation." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct identifiable sur cette catégorie ; la mesure vise spécifiquement le statut administratif des personnes étrangères en situation irrégulière." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct identifiable sur cette catégorie ; la mesure concerne le statut des personnes étrangères en situation irrégulière, non les retraités français." },
+        },
+      },
+      {
+        id: "nda-electricite-30",
+        theme: "Écologie et énergie",
+        titre: "Sortie du marché européen de l'électricité pour baisser les prix de 30 %",
+        resumeOfficiel:
+          "Nicolas Dupont-Aignan propose de sortir du marché européen de l'électricité pour revenir à une tarification fondée sur le coût de production nucléaire français, et annonce une baisse de 30 % des prix de l'électricité ; il propose de financer une baisse des taxes sur les carburants en supprimant 12 milliards d'euros d'aides publiques aux énergies éolienne et solaire.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-magazine/franceinfo/l-invite-politique/l-invite-politique-du-mardi-02-juin-2026_8001014.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Chiffrage annoncé par le candidat lors d'un entretien sur franceinfo le 2 juin 2026 ; interrogé sur la soutenabilité de ce prix pour EDF et le contribuable, il n'a pas apporté de réponse chiffrée, et aucune étude indépendante ne confirme le chiffre de 30 %.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Une baisse de 30 % du prix de l'électricité, si elle se concrétisait, profiterait proportionnellement davantage aux ménages modestes pour qui l'énergie représente une part importante du budget"], risques: ["La suppression des aides aux énergies renouvelables pourrait fragiliser des filières et des emplois locaux dans ces secteurs"], angleMort: "Le chiffrage de 30 % n'est documenté par aucune étude indépendante ni par EDF ; sa soutenabilité financière pour l'opérateur n'est pas précisée." },
+          moyennes: { score: 1, avantages: ["Baisse de facture annoncée pour l'ensemble des ménages raccordés au réseau électrique"], risques: ["Incertitude sur la pérennité de la baisse si elle n'est pas financée de façon soutenable par EDF"], angleMort: "Aucune étude publique ne vérifie la capacité d'EDF à maintenir ce niveau de prix sur la durée." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "L'effet relatif sur le budget de cette catégorie, pour qui l'électricité pèse moins dans les dépenses, n'est pas chiffré par le candidat." },
+          retraites: { score: 1, avantages: ["Une baisse du prix de l'électricité bénéficierait aux retraités, dont les dépenses de chauffage et d'électricité pèsent souvent proportionnellement plus dans le budget"], risques: [], angleMort: "Le chiffrage de 30 % n'est pas confirmé par une source indépendante." },
+        },
+      },
+    ],
   },
   {
     id: "durif",
@@ -1707,13 +1762,69 @@ const CANDIDATS = [
     id: "egger",
     nom: "Clara Egger",
     parti: "Solution démocratique",
-    mesures: [],
+    mesures: [
+      {
+        id: "ce-ric-pouvoir-maires",
+        theme: "Institutions et démocratie",
+        titre: "Référendum d'initiative citoyenne (RIC) et renforcement du pouvoir des maires",
+        resumeOfficiel:
+          "Candidate pour la deuxième fois après sa tentative de 2022 sous l'étiquette « Espoir RIC », Clara Egger porte une candidature centrée sur la transition démocratique : instauration d'un référendum d'initiative citoyenne (RIC) et transfert de davantage de pouvoirs de décision aux maires.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position fondatrice de Clara Egger, documentée depuis sa candidature de 2022 (mouvement « Espoir RIC 2022 ») et reprise pour 2027 selon franceinfo.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Le RIC donnerait un droit d'initiative directe aux citoyens sur des sujets de leur choix, y compris sociaux et économiques"], risques: [], angleMort: "Les seuils de signatures et les sujets exclus d'un éventuel RIC ne sont pas précisés publiquement." },
+          moyennes: { score: 0, avantages: ["Davantage de pouvoir laissé aux maires pourrait rapprocher certaines décisions locales (urbanisme, services publics de proximité) des citoyens"], risques: [], angleMort: "La répartition exacte des compétences transférées aux maires et leur financement ne sont pas détaillés." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: ["Le RIC offrirait aussi aux retraités un droit d'initiative citoyenne sur des sujets les concernant directement, comme la dépendance"], risques: [], angleMort: "Aucune précision publique sur la mise en œuvre concrète de ces outils démocratiques pour cette catégorie." },
+        },
+      },
+    ],
   },
   {
     id: "glucksmann",
     nom: "Raphaël Glucksmann",
     parti: "Place publique",
-    mesures: [],
+    mesures: [
+      {
+        id: "rg-heritage-salaires",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Taxation des très gros héritages pour financer une hausse des salaires nets",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose de taxer davantage les plus gros héritages — environ 1 % des successions les plus élevées — pour financer une hausse des salaires nets, avec un rendement qu'il évalue à 15 milliards d'euros.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-radio/le-vrai-du-faux/augmenter-les-salaires-en-taxant-les-plus-gros-heritages-la-proposition-de-raphael-glucksmann-est-elle-realiste_8076284.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Chiffrage de 15 milliards d'euros annoncé par le candidat ; franceinfo (rubrique Le Vrai du Faux) relève que ce rendement est jugé optimiste par plusieurs économistes et que le mécanisme précis de reversement aux salaires n'est pas détaillé.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Objectif affiché de hausse des salaires nets financée par une fiscalité ciblée sur les très gros patrimoines transmis, sans nouvelle charge directe sur les ménages modestes"], risques: [], angleMort: "Le mécanisme précis de reversement du produit de la taxe aux salaires (barème, bénéficiaires, calendrier) n'est pas publié." },
+          moyennes: { score: 1, avantages: ["Même objectif de hausse du salaire net, sans alourdissement de la fiscalité pour cette catégorie"], risques: [], angleMort: "Le rendement de 15 milliards d'euros, jugé optimiste par des économistes selon franceinfo, n'est pas garanti ; la mesure concrète de hausse salariale pour cette catégorie n'est pas chiffrée." },
+          aisees: { score: -1, avantages: [], risques: ["Catégorie directement concernée par le durcissement de la taxation des successions les plus élevées"], angleMort: "Le seuil exact de succession visé par le 1 % le plus taxé n'est pas précisé publiquement." },
+          retraites: { score: 0, avantages: [], risques: ["Les retraités transmettant un patrimoine élevé pourraient être concernés par le durcissement de la fiscalité successorale, dans une mesure non précisée"], angleMort: "Aucun barème précis n'est public pour évaluer l'effet sur les successions des retraités aisés." },
+        },
+      },
+      {
+        id: "rg-service-civique",
+        theme: "Retraites et modèle social",
+        titre: "Service civique obligatoire de dix mois pour tous les jeunes",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose d'instaurer un service civique obligatoire de dix mois pour l'ensemble des jeunes Français, la dimension militaire restant sur la base du volontariat.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-raphael-glucksmann-devoile-les-premieres-lignes-de-son-possible-programme",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Proposition annoncée publiquement par le candidat ; les modalités précises (coût, organisation, encadrement, exemptions) n'ont pas encore été détaillées à ce stade de la campagne.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un service civique rémunéré pourrait offrir une expérience professionnelle et un revenu temporaire aux jeunes de cette catégorie"], risques: ["Le caractère obligatoire pourrait retarder l'entrée dans l'emploi ou la poursuite d'études pour des jeunes ayant besoin de revenus rapides"], angleMort: "Le niveau de rémunération du service civique et son financement ne sont pas chiffrés publiquement." },
+          moyennes: { score: 0, avantages: [], risques: ["Même risque de retard d'un an dans les études ou l'entrée dans la vie active pour les jeunes de cette catégorie"], angleMort: "Aucune précision publique sur les équivalences possibles avec un cursus d'études déjà engagé." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: ["Un encadrement renforcé de la jeunesse par un service civique est présenté par le candidat comme un facteur de cohésion sociale, dont bénéficierait indirectement l'ensemble de la société, y compris les retraités"], risques: [], angleMort: "Aucun chiffrage de l'effet, même indirect, sur le modèle social ou les retraites n'est publié." },
+        },
+      },
+    ],
   },
   {
     id: "kazib",
@@ -1773,6 +1884,12 @@ const CANDIDATS = [
     id: "philippot",
     nom: "Florian Philippot",
     parti: "Les Patriotes",
+    mesures: [],
+  },
+  {
+    id: "polony",
+    nom: "Natacha Polony",
+    parti: "Étiquette non précisée",
     mesures: [],
   },
   {
