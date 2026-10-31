@@ -90,7 +90,7 @@ const THEMES = [
 
 // Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-10-13",
+  dateMaj: "2026-10-31",
   texte:
     "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027). La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen est déclarée candidate après la réduction de sa peine d'inéligibilité par la cour d'appel de Paris (7 juillet 2026) ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour. Seuls Mélenchon, Attal, Philippe, Retailleau, Le Pen et Tondelier disposent à ce stade de plusieurs mesures sourcées ; les autres candidats sont enrichis progressivement, en priorité ceux qui n'ont encore aucune mesure recensée. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -125,6 +125,18 @@ const AVIS_DONNEES_REELLES = {
 // `xb-republique-territoires` ("Institutions et démocratie", Bertrand) et `kb-fonds-souverain` ("Souveraineté
 // et industrie", Bouamrane). Batho (`batho`) n'a pas reçu de mesure cette exécution, faute de programme 2027
 // suffisamment sourcé à ce stade.
+// Le 2026-10-19, ajout de Natacha Polony (candidature annoncée le 14/10/2026) et de la première mesure pour
+// Dupont-Aignan (3 mesures : `nda-frexit`, `nda-droit-du-sol`, `nda-electricite-30`), Egger (`ce-ric-pouvoir-maires`)
+// et Glucksmann (2 mesures : `rg-heritage-salaires`, `rg-service-civique`) ; Branco, Durif et Kazib vérifiés sans
+// programme 2027 suffisamment sourcé.
+// Le 2026-10-31, aucun ajout ni retrait de candidat (listes de référence franceinfo/LCP/France 24/Le JDD vérifiées,
+// aucune nouvelle déclaration ni aucun retrait depuis Polony ; Xavier Bertrand reste listé comme déclaré malgré une
+// formulation prudente de certaines sources). Enrichissement, par ordre alphabétique en reprenant après Glucksmann :
+// Kazib et Labib revérifiés sans programme 2027 sourcé (aucun changement), Legendre vérifié sans aucune source sur
+// ses propositions. Ajout d'une première mesure pour Lalanne (`fl-ric-generalise`, "Institutions et démocratie") et
+// pour Lassalle (`lassalle-ruralite`, "Services publics"), et de trois mesures pour Lisnard (`lisnard-csg-is`,
+// `lisnard-retraites-capitalisation`, `lisnard-droit-sejour`), qui n'en avait encore aucune (prochaine exécution :
+// reprendre à partir de "mathieu").
 const CANDIDATS = [
   // ============================================================
   // JEAN-LUC MÉLENCHON — La France insoumise
@@ -1695,7 +1707,62 @@ const CANDIDATS = [
     id: "dupont-aignan",
     nom: "Nicolas Dupont-Aignan",
     parti: "Debout la France",
-    mesures: [],
+    mesures: [
+      {
+        id: "nda-frexit",
+        theme: "Europe et géopolitique",
+        titre: "« Frexit » : sortie de l'Union européenne, de la zone euro et de l'OTAN",
+        resumeOfficiel:
+          "Nicolas Dupont-Aignan fait de la sortie de la France de l'Union européenne, de la zone euro et de l'OTAN l'axe central de sa quatrième candidature présidentielle. Il décrit ce « Frexit » comme un recours permettant de recouvrer souveraineté monétaire, commerciale et diplomatique, et propose de remplacer l'UE par une structure de coopération plus légère.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/presidentielle-nicolas-dupont-aignan-officialise-sa-candidature-et-fait-le-pari-du-frexit-183876",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position fondatrice de Nicolas Dupont-Aignan et de Debout la France, défendue lors de ses candidatures de 2007, 2012, 2017 et 2022, et réaffirmée au lancement officiel de sa candidature 2027 (Le JDD).",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Promesse de reprise de contrôle sur les frontières et les règles commerciales, et fin des contributions nettes au budget européen que le candidat propose de réorienter vers des aides nationales"], risques: ["Une sortie de l'union douanière et du marché unique ferait courir un risque de hausse des prix à l'importation et de rupture d'approvisionnement, sans étude d'impact publique"], angleMort: "Aucun plan de transition chiffré n'est publié pour amortir un choc économique à court terme sur les ménages aux revenus les plus modestes." },
+          moyennes: { score: 0, avantages: [], risques: ["Les professions dépendant des échanges avec l'UE (exportation, tourisme, transport) seraient exposées à une incertitude juridique et commerciale prolongée"], angleMort: "Le calendrier et les modalités pratiques d'une sortie coordonnée de l'UE et de l'OTAN ne sont pas détaillés." },
+          aisees: { score: -1, avantages: ["Récupération revendiquée de la souveraineté réglementaire et fiscale nationale"], risques: ["Une sortie de la zone euro ferait courir un risque de volatilité monétaire et financière pouvant affecter l'épargne et les placements"], angleMort: "Aucune étude publique sur la conversion de l'épargne et des contrats en cours en cas de retour à une monnaie nationale." },
+          retraites: { score: 0, avantages: [], risques: ["Une instabilité monétaire liée à une sortie de l'euro pourrait affecter la valeur réelle des pensions versées"], angleMort: "Le candidat ne chiffre pas l'effet d'un Frexit sur le financement ou le pouvoir d'achat des pensions de retraite." },
+        },
+      },
+      {
+        id: "nda-droit-du-sol",
+        theme: "Immigration et intégration",
+        titre: "Suppression du droit du sol et rétablissement du délit de séjour irrégulier",
+        resumeOfficiel:
+          "Au lancement de sa candidature 2027, Nicolas Dupont-Aignan annonce vouloir supprimer le droit du sol et rétablir le délit de séjour irrégulier, qui permettait de sanctionner pénalement la présence irrégulière sur le territoire avant son abrogation par la loi du 31 décembre 2012.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/presidentielle-nicolas-dupont-aignan-officialise-sa-candidature-et-fait-le-pari-du-frexit-183876",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Déclaration rapportée par Le JDD lors de l'officialisation de sa candidature 2027 ; la suppression du droit du sol est une position que Nicolas Dupont-Aignan défend depuis plusieurs campagnes antérieures.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Un rétablissement du délit de séjour irrégulier exposerait les personnes en situation irrégulière, population statistiquement plus précaire, à des poursuites pénales et à la détention"], angleMort: "Le candidat ne précise pas les moyens budgétaires et le nombre de places de détention nécessaires pour appliquer concrètement cette pénalisation." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct identifiable sur cette catégorie ; la mesure vise spécifiquement le statut administratif des personnes étrangères en situation irrégulière." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct identifiable sur cette catégorie ; la mesure concerne le statut des personnes étrangères en situation irrégulière, non les retraités français." },
+        },
+      },
+      {
+        id: "nda-electricite-30",
+        theme: "Écologie et énergie",
+        titre: "Sortie du marché européen de l'électricité pour baisser les prix de 30 %",
+        resumeOfficiel:
+          "Nicolas Dupont-Aignan propose de sortir du marché européen de l'électricité pour revenir à une tarification fondée sur le coût de production nucléaire français, et annonce une baisse de 30 % des prix de l'électricité ; il propose de financer une baisse des taxes sur les carburants en supprimant 12 milliards d'euros d'aides publiques aux énergies éolienne et solaire.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-magazine/franceinfo/l-invite-politique/l-invite-politique-du-mardi-02-juin-2026_8001014.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Chiffrage annoncé par le candidat lors d'un entretien sur franceinfo le 2 juin 2026 ; interrogé sur la soutenabilité de ce prix pour EDF et le contribuable, il n'a pas apporté de réponse chiffrée, et aucune étude indépendante ne confirme le chiffre de 30 %.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Une baisse de 30 % du prix de l'électricité, si elle se concrétisait, profiterait proportionnellement davantage aux ménages modestes pour qui l'énergie représente une part importante du budget"], risques: ["La suppression des aides aux énergies renouvelables pourrait fragiliser des filières et des emplois locaux dans ces secteurs"], angleMort: "Le chiffrage de 30 % n'est documenté par aucune étude indépendante ni par EDF ; sa soutenabilité financière pour l'opérateur n'est pas précisée." },
+          moyennes: { score: 1, avantages: ["Baisse de facture annoncée pour l'ensemble des ménages raccordés au réseau électrique"], risques: ["Incertitude sur la pérennité de la baisse si elle n'est pas financée de façon soutenable par EDF"], angleMort: "Aucune étude publique ne vérifie la capacité d'EDF à maintenir ce niveau de prix sur la durée." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "L'effet relatif sur le budget de cette catégorie, pour qui l'électricité pèse moins dans les dépenses, n'est pas chiffré par le candidat." },
+          retraites: { score: 1, avantages: ["Une baisse du prix de l'électricité bénéficierait aux retraités, dont les dépenses de chauffage et d'électricité pèsent souvent proportionnellement plus dans le budget"], risques: [], angleMort: "Le chiffrage de 30 % n'est pas confirmé par une source indépendante." },
+        },
+      },
+    ],
   },
   {
     id: "durif",
@@ -1707,13 +1774,69 @@ const CANDIDATS = [
     id: "egger",
     nom: "Clara Egger",
     parti: "Solution démocratique",
-    mesures: [],
+    mesures: [
+      {
+        id: "ce-ric-pouvoir-maires",
+        theme: "Institutions et démocratie",
+        titre: "Référendum d'initiative citoyenne (RIC) et renforcement du pouvoir des maires",
+        resumeOfficiel:
+          "Candidate pour la deuxième fois après sa tentative de 2022 sous l'étiquette « Espoir RIC », Clara Egger porte une candidature centrée sur la transition démocratique : instauration d'un référendum d'initiative citoyenne (RIC) et transfert de davantage de pouvoirs de décision aux maires.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position fondatrice de Clara Egger, documentée depuis sa candidature de 2022 (mouvement « Espoir RIC 2022 ») et reprise pour 2027 selon franceinfo.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Le RIC donnerait un droit d'initiative directe aux citoyens sur des sujets de leur choix, y compris sociaux et économiques"], risques: [], angleMort: "Les seuils de signatures et les sujets exclus d'un éventuel RIC ne sont pas précisés publiquement." },
+          moyennes: { score: 0, avantages: ["Davantage de pouvoir laissé aux maires pourrait rapprocher certaines décisions locales (urbanisme, services publics de proximité) des citoyens"], risques: [], angleMort: "La répartition exacte des compétences transférées aux maires et leur financement ne sont pas détaillés." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: ["Le RIC offrirait aussi aux retraités un droit d'initiative citoyenne sur des sujets les concernant directement, comme la dépendance"], risques: [], angleMort: "Aucune précision publique sur la mise en œuvre concrète de ces outils démocratiques pour cette catégorie." },
+        },
+      },
+    ],
   },
   {
     id: "glucksmann",
     nom: "Raphaël Glucksmann",
     parti: "Place publique",
-    mesures: [],
+    mesures: [
+      {
+        id: "rg-heritage-salaires",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Taxation des très gros héritages pour financer une hausse des salaires nets",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose de taxer davantage les plus gros héritages — environ 1 % des successions les plus élevées — pour financer une hausse des salaires nets, avec un rendement qu'il évalue à 15 milliards d'euros.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-radio/le-vrai-du-faux/augmenter-les-salaires-en-taxant-les-plus-gros-heritages-la-proposition-de-raphael-glucksmann-est-elle-realiste_8076284.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Chiffrage de 15 milliards d'euros annoncé par le candidat ; franceinfo (rubrique Le Vrai du Faux) relève que ce rendement est jugé optimiste par plusieurs économistes et que le mécanisme précis de reversement aux salaires n'est pas détaillé.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Objectif affiché de hausse des salaires nets financée par une fiscalité ciblée sur les très gros patrimoines transmis, sans nouvelle charge directe sur les ménages modestes"], risques: [], angleMort: "Le mécanisme précis de reversement du produit de la taxe aux salaires (barème, bénéficiaires, calendrier) n'est pas publié." },
+          moyennes: { score: 1, avantages: ["Même objectif de hausse du salaire net, sans alourdissement de la fiscalité pour cette catégorie"], risques: [], angleMort: "Le rendement de 15 milliards d'euros, jugé optimiste par des économistes selon franceinfo, n'est pas garanti ; la mesure concrète de hausse salariale pour cette catégorie n'est pas chiffrée." },
+          aisees: { score: -1, avantages: [], risques: ["Catégorie directement concernée par le durcissement de la taxation des successions les plus élevées"], angleMort: "Le seuil exact de succession visé par le 1 % le plus taxé n'est pas précisé publiquement." },
+          retraites: { score: 0, avantages: [], risques: ["Les retraités transmettant un patrimoine élevé pourraient être concernés par le durcissement de la fiscalité successorale, dans une mesure non précisée"], angleMort: "Aucun barème précis n'est public pour évaluer l'effet sur les successions des retraités aisés." },
+        },
+      },
+      {
+        id: "rg-service-civique",
+        theme: "Retraites et modèle social",
+        titre: "Service civique obligatoire de dix mois pour tous les jeunes",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose d'instaurer un service civique obligatoire de dix mois pour l'ensemble des jeunes Français, la dimension militaire restant sur la base du volontariat.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-raphael-glucksmann-devoile-les-premieres-lignes-de-son-possible-programme",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Proposition annoncée publiquement par le candidat ; les modalités précises (coût, organisation, encadrement, exemptions) n'ont pas encore été détaillées à ce stade de la campagne.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un service civique rémunéré pourrait offrir une expérience professionnelle et un revenu temporaire aux jeunes de cette catégorie"], risques: ["Le caractère obligatoire pourrait retarder l'entrée dans l'emploi ou la poursuite d'études pour des jeunes ayant besoin de revenus rapides"], angleMort: "Le niveau de rémunération du service civique et son financement ne sont pas chiffrés publiquement." },
+          moyennes: { score: 0, avantages: [], risques: ["Même risque de retard d'un an dans les études ou l'entrée dans la vie active pour les jeunes de cette catégorie"], angleMort: "Aucune précision publique sur les équivalences possibles avec un cursus d'études déjà engagé." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: ["Un encadrement renforcé de la jeunesse par un service civique est présenté par le candidat comme un facteur de cohésion sociale, dont bénéficierait indirectement l'ensemble de la société, y compris les retraités"], risques: [], angleMort: "Aucun chiffrage de l'effet, même indirect, sur le modèle social ou les retraites n'est publié." },
+        },
+      },
+    ],
   },
   {
     id: "kazib",
@@ -1731,13 +1854,51 @@ const CANDIDATS = [
     id: "lalanne",
     nom: "Francis Lalanne",
     parti: "France Libre",
-    mesures: [],
+    mesures: [
+      {
+        id: "fl-ric-generalise",
+        theme: "Institutions et démocratie",
+        titre: "Référendum d'initiative citoyenne généralisé, sur tous les sujets",
+        resumeOfficiel:
+          "Francis Lalanne défend l'instauration d'un référendum d'initiative citoyenne pouvant porter sur tous les sujets, dans le cadre d'un projet qu'il présente comme la création de « la première démocratie au monde », avec reprise de la souveraineté nationale et réforme profonde de la justice.",
+        sourceOfficielle:
+          "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/loire/presidentielle-2027-on-propose-de-creer-la-premiere-democratie-au-monde-francis-lalanne-tente-de-se-frayer-une-place-dans-le-debat-public-3440997.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Déclaration rapportée par franceinfo (France 3 régions) à l'occasion d'un déplacement de campagne ; les modalités précises du RIC généralisé (seuils de signatures, sujets éventuellement exclus) ne sont pas publiées à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Un RIC sur tous les sujets donnerait un droit d'initiative directe aux citoyens, y compris sur des sujets économiques et sociaux"], risques: [], angleMort: "Les seuils de signatures et les modalités pratiques d'un tel RIC ne sont pas précisés publiquement." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet non différencié documenté pour cette catégorie, la mesure portant sur le fonctionnement des institutions plutôt que sur le pouvoir d'achat." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: ["Un RIC généralisé offrirait aussi aux retraités un droit d'initiative citoyenne sur des sujets les concernant directement"], risques: [], angleMort: "Aucune précision publique sur la mise en œuvre concrète de cet outil pour cette catégorie." },
+        },
+      },
+    ],
   },
   {
     id: "lassalle",
     nom: "Jean Lassalle",
     parti: "Résistons",
-    mesures: [],
+    mesures: [
+      {
+        id: "lassalle-ruralite",
+        theme: "Services publics",
+        titre: "Faire de la ruralité une grande cause nationale, avec un fonds dédié et un hôpital à moins de 40 minutes partout",
+        resumeOfficiel:
+          "Jean Lassalle porte depuis plusieurs campagnes la défense de la ruralité comme priorité nationale : un fonds dédié de plusieurs milliards d'euros par an pour les territoires ruraux et l'objectif d'un accès à un hôpital à moins de 40 minutes partout en France.",
+        sourceOfficielle:
+          "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/pyrenees-atlantiques/election-presidentielle-les-priorites-de-jean-lassalle-candidat-de-la-ruralite-et-pour-un-etat-puissant-2482402.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Position historique de Jean Lassalle, documentée lors de ses campagnes de 2017 et 2022 (franceinfo) ; aucune source récente ne confirme explicitement que cet objectif chiffré (fonds, délai hospitalier) est repris tel quel dans sa candidature 2027, d'où un niveau de confiance « annonce ».",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["Un accès facilité aux hôpitaux et un fonds dédié aux territoires ruraux bénéficieraient en priorité aux ménages modestes vivant en zone rurale, souvent éloignés des services publics"], risques: [], angleMort: "Le chiffrage exact du fonds pour la version 2027 de la candidature n'est pas confirmé dans une source récente." },
+          moyennes: { score: 0, avantages: ["Amélioration de l'accès aux services publics de santé pour les habitants des zones rurales de cette catégorie"], risques: [], angleMort: "Le financement précis de ce fonds et son articulation avec les budgets régionaux existants ne sont pas détaillés." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les territoires ruraux, sans effet différencié documenté pour cette catégorie." },
+          retraites: { score: 1, avantages: ["Les retraités vivant en zone rurale, souvent confrontés à l'éloignement des services de santé, bénéficieraient directement d'un accès facilité à un hôpital"], risques: [], angleMort: "Aucun chiffrage récent ne confirme le maintien de cet objectif précis (40 minutes) pour la candidature 2027." },
+        },
+      },
+    ],
   },
   {
     id: "legendre",
@@ -1749,7 +1910,61 @@ const CANDIDATS = [
     id: "lisnard",
     nom: "David Lisnard",
     parti: "Nouvelle Énergie",
-    mesures: [],
+    mesures: [
+      {
+        id: "lisnard-csg-is",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Baisse de la CSG sur les revenus du travail, de l'impôt sur les sociétés et plafonnement de la taxation du capital",
+        resumeOfficiel:
+          "David Lisnard propose d'abaisser le taux de CSG sur les revenus du travail de 9,2 % à 6,6 %, pour l'aligner sur celui des revenus de remplacement, de réduire l'impôt sur les sociétés de 25 % à 20 %, et de plafonner la taxation des revenus du capital à 22 %.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/depenses-publiques-justice-appel-a-ciotti-ce-quil-faut-retenir-de-linterview-de-david-lisnard-a-cnews-187194",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Chiffrage détaillé (taux précis de CSG et d'impôt sur les sociétés, plafond de taxation du capital) donné par le candidat lors d'une interview sur CNews le 27 octobre 2026, rapportée par Le JDD.",
+        impactParClasse: {
+          populaires: { score: 1, avantages: ["La baisse de la CSG sur les revenus du travail augmente directement le salaire net pour l'ensemble des salariés, y compris les plus modestes"], risques: ["Une baisse de recettes de CSG, qui finance la Sécurité sociale, pose la question de son financement de remplacement, non précisée par le candidat"], angleMort: "Le chiffrage du coût budgétaire de cette double baisse (CSG et impôt sur les sociétés) et son mode de financement ne sont pas publiés." },
+          moyennes: { score: 1, avantages: ["Gain de pouvoir d'achat proportionnel au salaire pour les classes moyennes salariées"], risques: [], angleMort: "L'effet différencié selon le niveau de salaire n'est pas chiffré précisément par le candidat." },
+          aisees: { score: 2, avantages: ["La baisse de l'impôt sur les sociétés et le plafonnement de la taxation des revenus du capital à 22 % bénéficient directement aux détenteurs de capital et aux entreprises"], risques: [], angleMort: "Aucun chiffrage indépendant public du coût de ces baisses pour les finances publiques n'est disponible." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "La mesure vise la CSG sur les revenus du travail ; son effet sur la CSG applicable aux pensions n'est pas précisé par le candidat." },
+        },
+      },
+      {
+        id: "lisnard-retraites-capitalisation",
+        theme: "Retraites et modèle social",
+        titre: "Fusionner les régimes public et privé de retraite et instaurer une part de capitalisation individualisée",
+        resumeOfficiel:
+          "David Lisnard propose de fusionner les régimes de retraite public et privé en un système unique et d'introduire une part de capitalisation individualisée, combinée à la répartition, dans le cadre d'un recentrage plus large de l'État sur ses missions régaliennes.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/david-lisnard-redresser-la-france-ne-se-resume-pas-a-un-slogan-185976",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Position développée par le candidat dans un entretien au JDD ; le barème précis de la part de capitalisation, son caractère obligatoire ou non, son financement et son calendrier de mise en œuvre ne sont pas publiés à ce stade.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: [], risques: ["Une part de capitalisation suppose une capacité d'épargne que les ménages modestes ont structurellement moins les moyens de mobiliser, ce qui pourrait accentuer les inégalités de pension"], angleMort: "Le candidat ne précise pas de mécanisme de compensation pour les ménages sans capacité d'épargne." },
+          moyennes: { score: 0, avantages: [], risques: ["Effet incertain selon la capacité d'épargne de chacun dans cette catégorie"], angleMort: "Le barème de la part de capitalisation et son caractère obligatoire ou non ne sont pas précisés." },
+          aisees: { score: 1, avantages: ["Une part de capitalisation profiterait davantage aux ménages ayant une capacité d'épargne élevée, qui peuvent mieux en tirer parti"], risques: [], angleMort: "Aucun chiffrage du volume de cette part de capitalisation n'est public." },
+          retraites: { score: 0, avantages: [], risques: ["La fusion des régimes public et privé pourrait affecter les modalités de calcul des pensions en cours d'acquisition, sans détail publié"], angleMort: "Le candidat ne précise pas l'effet de la réforme sur les pensions déjà versées ou en cours d'acquisition." },
+        },
+      },
+      {
+        id: "lisnard-droit-sejour",
+        theme: "Immigration et intégration",
+        titre: "Rétablir le délit de séjour irrégulier et instaurer des quotas migratoires",
+        resumeOfficiel:
+          "David Lisnard propose de rétablir le délit de séjour irrégulier, aboli en 2012, et de fixer des quotas migratoires.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/Societe/immigration-david-lisnard-compte-retablir-le-delit-de-sejour-irregulier-182505",
+        niveauConfiance: "confirme",
+        noteConfiance: "Proposition détaillée dans un article dédié du JDD.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Un rétablissement du délit de séjour irrégulier exposerait les personnes en situation irrégulière, population statistiquement plus précaire, à des poursuites pénales"], angleMort: "Le candidat ne précise pas les moyens budgétaires nécessaires pour l'application de cette pénalisation." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct identifiable sur cette catégorie, la mesure visant le statut administratif des personnes en situation irrégulière." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable sur cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct identifiable sur cette catégorie." },
+        },
+      },
+    ],
   },
   {
     id: "mathieu",
@@ -1773,6 +1988,12 @@ const CANDIDATS = [
     id: "philippot",
     nom: "Florian Philippot",
     parti: "Les Patriotes",
+    mesures: [],
+  },
+  {
+    id: "polony",
+    nom: "Natacha Polony",
+    parti: "Étiquette non précisée",
     mesures: [],
   },
   {
