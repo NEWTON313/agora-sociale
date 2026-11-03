@@ -1,14 +1,14 @@
 /**
  * MON CHOIX 2027 — Partage d'un résultat (miroir de lib/partage.ts, version Next.js)
- * Un résultat partagé ne contient QUE la catégorie sociale et les priorités par thème :
- * jamais le revenu, la composition du foyer, l'âge ni le patrimoine saisis dans le simulateur.
+ * Un résultat partagé ne contient QUE la catégorie sociale et les thèmes prioritaires :
+ * jamais le revenu, la composition du foyer, l'âge, le patrimoine ni les réponses à la boussole
+ * (ce sont des opinions politiques : elles ne figurent ni dans le lien ni sur la carte).
  * Les priorités sont encodées dans l'ordre de THEMES (un chiffre 0-3 par thème).
  * Ici, la carte est dessinée dans le navigateur (canvas) : aucun serveur n'intervient.
  */
 (function () {
-  const { CLASSES_SOCIALES, CANDIDATS, THEMES } = window.AGORA_DATA;
-  const { NIVEAUX_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise, trierParScorePersonnalise } =
-    window.AGORA_PRIORITES;
+  const { CLASSES_SOCIALES, CANDIDATS_ALPHABETIQUE, THEMES } = window.AGORA_DATA;
+  const { NIVEAUX_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise } = window.AGORA_PRIORITES;
 
   function encoderPartage(classe, poids) {
     return `classe=${classe}&p=${THEMES.map((t) => poids[t]).join("")}`;
@@ -39,12 +39,13 @@
       .map((x) => x.t);
   }
 
+  /** Effet économique estimé par candidat, par ordre alphabétique : ce n'est pas un classement. */
   function classerCandidats(classe, poids) {
     const resultatsParId = {};
-    CANDIDATS.forEach((c) => {
+    CANDIDATS_ALPHABETIQUE.forEach((c) => {
       resultatsParId[c.id] = calculerScorePersonnalise(c, classe, poids);
     });
-    return { classement: trierParScorePersonnalise(CANDIDATS, resultatsParId), resultatsParId };
+    return { classement: CANDIDATS_ALPHABETIQUE, resultatsParId };
   }
 
   const COULEURS_CLASSES = { populaires: "#3d5a78", moyennes: "#566f4d", aisees: "#7a4258", retraites: "#9c7539" };
@@ -112,7 +113,7 @@
     ctx.fillStyle = "#7a8090";
     ctx.font = `400 15px ${mono}`;
     espacer("2px");
-    ctx.fillText("MES PRIORITÉS", xG, yPriorites);
+    ctx.fillText("MES THÈMES PRIORITAIRES", xG, yPriorites);
     espacer("0px");
     ctx.fillStyle = "#10131a";
     ctx.font = `400 25px ${display}`;
@@ -122,57 +123,68 @@
     });
 
     ctx.fillStyle = "#454e5e";
-    ctx.font = `400 16px ${corps}`;
+    ctx.font = `400 15px ${corps}`;
     retourALaLigne(
       ctx,
-      "Score calculé d'après mes priorités et les mesures recensées — ce n'est pas une recommandation de vote.",
+      "Effet économique direct estimé des mesures recensées sur ma catégorie, par ordre alphabétique — ni un classement des candidats ni une recommandation de vote.",
       xG,
-      528,
+      506,
       400,
-      22
+      20
     );
 
-    // --- Colonne droite : classement complet
+    // --- Colonne droite : effet économique estimé, par ordre alphabétique (jamais un classement)
     const xD = xG + 400 + 52;
+    const yHaut = 150;
+    const hListe = 370;
     ctx.fillStyle = "#7a8090";
     ctx.font = `400 15px ${mono}`;
     espacer("2px");
-    ctx.fillText("CORRESPONDANCE AVEC MES PRIORITÉS", xD, 128);
+    ctx.fillText("EFFET ÉCONOMIQUE ESTIMÉ SUR MA CATÉGORIE", xD, 128);
     espacer("0px");
 
-    const largeurBarre = 230;
-    const xBarre = xD + 34 + 262;
-
-    // Avec beaucoup de candidats, la carte affiche ceux dont le score est calculable (au plus 12, taille
-    // adaptée) et résume les autres ; la liste complète reste toujours consultable sur le site.
+    // Tous les candidats dont l'effet est calculable, au plus 10 sur une colonne (lignes détaillées) ou 24 sur deux
+    // colonnes (lignes compactes) ; les autres sont résumés, la liste complète reste sur le site.
     const calculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal !== null);
     const nonCalculables = classement.length - calculables.length;
-    const lignes = calculables.slice(0, 12);
+    const nbColonnes = calculables.length > 10 ? 2 : 1;
+    const parColonne = nbColonnes === 2 ? 12 : 10;
+    const lignes = calculables.slice(0, parColonne * nbColonnes);
     const restants = calculables.length - lignes.length;
-    const hauteurLigne = Math.min(66, Math.floor(420 / Math.max(lignes.length, 1)));
-    const compact = hauteurLigne < 54;
+    const nbLignesCol = Math.min(parColonne, Math.ceil(lignes.length / nbColonnes)) || 1;
+    const hauteurLigne = Math.min(60, Math.floor(hListe / nbLignesCol));
+    const compact = nbColonnes === 2 || hauteurLigne < 52;
+    const largeurCol = nbColonnes === 2 ? 306 : 636;
+    const largeurBarre = compact ? 56 : 230;
+    const largeurNom = compact ? 190 : 262;
 
     lignes.forEach((candidat, i) => {
       const r = resultatsParId[candidat.id];
-      const yBase = 182 + i * hauteurLigne - (compact ? 0 : 0);
-
-      ctx.fillStyle = "#7a8090";
-      ctx.font = `700 ${compact ? 20 : 26}px ${display}`;
-      ctx.fillText(String(i + 1), xD, yBase + 8);
+      const col = Math.floor(i / nbLignesCol);
+      const xL = xD + col * (largeurCol + 24);
+      const yL = yHaut + (i % nbLignesCol) * hauteurLigne;
+      const yTexte = yL + hauteurLigne / 2 + (compact ? 6 : 0);
 
       ctx.fillStyle = "#10131a";
-      ctx.font = `700 ${compact ? 20 : 24}px ${display}`;
-      ctx.fillText(candidat.nom, xD + 34, yBase + (compact ? 7 : 2));
+      // Taille réduite pour les noms longs afin qu'ils tiennent dans leur colonne.
+      let taille = compact ? 17 : 24;
+      ctx.font = `700 ${taille}px ${display}`;
+      while (ctx.measureText(candidat.nom).width > largeurNom - 8 && taille > 12) {
+        taille -= 1;
+        ctx.font = `700 ${taille}px ${display}`;
+      }
+      ctx.fillText(candidat.nom, xL, yTexte);
       if (!compact) {
         ctx.fillStyle = "#7a8090";
         ctx.font = `400 12px ${mono}`;
         espacer("1.2px");
-        ctx.fillText(candidat.parti.toUpperCase(), xD + 34, yBase + 22);
+        ctx.fillText(candidat.parti.toUpperCase(), xL, yTexte + 20);
         espacer("0px");
       }
 
+      const xBarre = xL + largeurNom;
       const hBarre = compact ? 12 : 16;
-      const yBarre = yBase - (compact ? 4 : 8);
+      const yBarre = yL + hauteurLigne / 2 - hBarre / 2;
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(xBarre, yBarre, largeurBarre, hBarre);
       ctx.strokeStyle = "#c9ced8";
@@ -185,15 +197,15 @@
       ctx.fillStyle = "#10131a";
       ctx.fillRect(Math.round(milieu), yBarre - 1, 1, hBarre + 2);
 
-      ctx.font = `700 ${compact ? 18 : 22}px ${display}`;
-      ctx.fillText(`${r.scoreGlobal > 0 ? "+" : ""}${r.scoreGlobal.toFixed(1)}`, xBarre + largeurBarre + 14, yBase + (compact ? 7 : 2));
+      ctx.font = `700 ${compact ? 16 : 22}px ${display}`;
+      ctx.fillText(`${r.scoreGlobal > 0 ? "+" : ""}${r.scoreGlobal.toFixed(1)}`, xBarre + largeurBarre + 12, yTexte);
       if (!compact) {
         ctx.fillStyle = "#7a8090";
         ctx.font = `400 13px ${display}`;
         ctx.fillText(
           `${r.themesCouverts}/${r.themesPonderes} thème${r.themesPonderes > 1 ? "s" : ""}`,
-          xBarre + largeurBarre + 14,
-          yBase + 21
+          xBarre + largeurBarre + 12,
+          yTexte + 20
         );
       }
     });
@@ -201,13 +213,13 @@
     // Résumé des candidats non affichés ligne par ligne
     ctx.fillStyle = "#454e5e";
     ctx.font = `400 15px ${display}`;
-    let yNote = 182 + lignes.length * hauteurLigne + 8;
+    let yNote = yHaut + nbLignesCol * hauteurLigne + 28;
     if (restants > 0) {
-      ctx.fillText(`+ ${restants} autre${restants > 1 ? "s" : ""} candidat${restants > 1 ? "s" : ""} classé${restants > 1 ? "s" : ""} (liste complète sur le site)`, xD, yNote);
+      ctx.fillText(`+ ${restants} autre${restants > 1 ? "s" : ""} candidat${restants > 1 ? "s" : ""} (liste complète sur le site)`, xD, yNote);
       yNote += 20;
     }
     if (nonCalculables > 0) {
-      ctx.fillText(`${nonCalculables} autre${nonCalculables > 1 ? "s" : ""} candidat${nonCalculables > 1 ? "s" : ""} : score non calculable (aucune mesure recensée)`, xD, yNote);
+      ctx.fillText(`${nonCalculables} autre${nonCalculables > 1 ? "s" : ""} candidat${nonCalculables > 1 ? "s" : ""} : effet non calculable (aucune mesure recensée sur ces thèmes)`, xD, yNote);
     }
 
     // --- Pied de carte

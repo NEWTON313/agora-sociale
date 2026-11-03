@@ -1588,3 +1588,43 @@ a.bouton-principal.bouton-principal--hero:hover span { transform: translateX(4px
 .detail-calcul__ecart { display: block; }
 .detail-calcul__note { margin: 16px 0 0; font-size: 0.85rem; color: var(--ink-soft); }
 .detail-calcul__note a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Parcours en deux étapes et boussole (étape 2) */
+.etapes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.etapes__pastille { display: flex; align-items: center; gap: 10px; padding: 0; border: none; background: none; cursor: pointer; font-family: var(--font-display); font-size: 0.92rem; color: var(--ink-faint); }
+.etapes__pastille:hover { color: var(--ink-soft); }
+.etapes__pastille.actif { color: var(--ink); font-weight: 500; }
+.etapes__pastille span { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--paper-deep); font-size: 0.8rem; }
+.etapes__pastille.actif span { background: var(--accent-bleu); color: #fff; }
+.etapes__fleche { color: var(--ink-faint); }
+.lien-bouton { padding: 0; border: none; background: none; cursor: pointer; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+
+.boussole__liste, .boussole__resultats { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 24px; }
+.boussole__resultats { gap: 16px; margin-bottom: 40px; }
+.boussole__question, .boussole__carte { padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper-raised); box-shadow: var(--shadow-sm); }
+.boussole__theme { margin-bottom: 12px; font-family: var(--font-display); font-size: 0.8rem; font-weight: 500; color: var(--ink-faint); }
+.boussole__options { display: flex; flex-direction: column; gap: 10px; }
+.boussole__option { padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: none; text-align: left; font: inherit; line-height: 1.4; color: var(--ink-soft); cursor: pointer; transition: border-color 0.15s; }
+.boussole__option:hover { border-color: var(--line-strong); }
+.boussole__option.actif { border-color: var(--accent-bleu); background: var(--paper-deep); color: var(--ink); font-weight: 500; }
+.boussole__option.estompe { color: var(--ink-faint); }
+.boussole__bas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; font-family: var(--font-display); font-size: 0.86rem; }
+.boussole__importance { display: flex; align-items: center; gap: 6px; color: var(--ink-soft); }
+.boussole__puce { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-deep); font: inherit; color: var(--ink-soft); cursor: pointer; }
+.boussole__puce:hover { border-color: var(--line-strong); }
+.boussole__puce.actif { border-color: var(--accent-bleu); background: var(--accent-bleu); color: #fff; }
+button.boussole__puce[data-sans-avis].actif { background: var(--paper-deep); color: var(--ink); font-weight: 500; }
+.boussole__barre { position: sticky; bottom: 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 32px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper-raised); box-shadow: var(--shadow-sm); font-family: var(--font-display); color: var(--ink-soft); }
+.boussole__barre .bouton-principal { margin: 0; width: auto; }
+.boussole__barre .bouton-principal:disabled { opacity: 0.4; cursor: not-allowed; }
+.boussole__avis { margin-bottom: 32px; padding: 16px 20px; border-radius: 12px; background: rgba(236, 233, 225, 0.7); font-size: 0.92rem; line-height: 1.6; color: var(--ink-soft); }
+.boussole__titre { margin: 0 0 16px; font-size: 1.5rem; }
+.boussole__vide { margin-bottom: 32px; color: var(--ink-soft); }
+.boussole__carte-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 1.05rem; }
+.boussole__carte p { margin: 6px 0 0; font-family: var(--font-display); font-size: 0.88rem; color: var(--ink-soft); }
+.boussole__carte details { margin-top: 12px; }
+.boussole__carte summary { cursor: pointer; font-family: var(--font-display); font-size: 0.86rem; color: var(--accent-bleu); }
+.boussole__carte ul { margin: 8px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: var(--ink-soft); }
+.boussole__carte ul a { text-decoration: underline; text-underline-offset: 4px; }
+.boussole__liens { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; font-family: var(--font-display); font-size: 0.95rem; }
+.boussole__liens a { text-decoration: underline; text-underline-offset: 4px; }
