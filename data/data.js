@@ -50,29 +50,29 @@ const CLASSES_SOCIALES = [
     id: "populaires",
     nom: "Classes populaires",
     description: "Salariés modestes, employés, ouvriers, travailleurs précaires",
-    couleur: "var(--classe-populaire)",
-    couleurFond: "var(--classe-populaire-bg)",
+    couleurVar: "populaires",
+    couleurFondVar: "populaires-bg",
   },
   {
     id: "moyennes",
     nom: "Classes moyennes",
     description: "Classes moyennes inf. et sup., artisans, commerçants, professions intermédiaires",
-    couleur: "var(--classe-moyenne)",
-    couleurFond: "var(--classe-moyenne-bg)",
+    couleurVar: "moyennes",
+    couleurFondVar: "moyennes-bg",
   },
   {
     id: "aisees",
     nom: "Classes aisées",
     description: "Cadres dirigeants, professions libérales, hauts revenus, gros patrimoines",
-    couleur: "var(--classe-aisee)",
-    couleurFond: "var(--classe-aisee-bg)",
+    couleurVar: "aisees",
+    couleurFondVar: "aisees-bg",
   },
   {
     id: "retraites",
     nom: "Retraités & inactifs",
     description: "Pensions, pouvoir d'achat des retraités, dépenses de santé",
-    couleur: "var(--classe-retraites)",
-    couleurFond: "var(--classe-retraites-bg)",
+    couleurVar: "retraites",
+    couleurFondVar: "retraites-bg",
   },
 ];
 
@@ -88,7 +88,6 @@ const THEMES = [
   "Europe et géopolitique",
 ];
 
-// Note de transparence affichée en haut du comparateur — voir index.html
 const AVIS_DONNEES_REELLES = {
   dateMaj: "2026-11-01",
   texte:
@@ -125,10 +124,6 @@ const AVIS_DONNEES_REELLES = {
 // `xb-republique-territoires` ("Institutions et démocratie", Bertrand) et `kb-fonds-souverain` ("Souveraineté
 // et industrie", Bouamrane). Batho (`batho`) n'a pas reçu de mesure cette exécution, faute de programme 2027
 // suffisamment sourcé à ce stade.
-// Rattrapage de synchronisation (2026-11-01) : ce dépôt n'avait pas reçu la mise à jour du 19/10/2026 déjà
-// fusionnée sur agora-sociale-app (ajout de Natacha Polony et des mesures `nda-frexit`, `nda-droit-du-sol`,
-// `nda-electricite-30` pour Dupont-Aignan, `ce-ric-pouvoir-maires` pour Egger et `rg-heritage-salaires`,
-// `rg-service-civique` pour Glucksmann) ; elle est désormais reportée ici à l'identique.
 // Le 2026-11-01, ajout de 5 candidats déclarés recensés par le trombinoscope franceinfo (mis à jour au
 // 22/10/2026) et absents du comparateur : `billetdoux`, `collovati`, `markovic`, `platret`, `rohou` (aucune
 // mesure sourcée trouvée à ce stade pour ces 5 candidats). Dominique de Villepin n'est pas ajouté : il n'a
@@ -139,9 +134,6 @@ const AVIS_DONNEES_REELLES = {
 // trouvé). Prochaine exécution : reprendre l'enrichissement par équité à partir de `mikolajczak`, puis les 5
 // candidats ajoutés ce jour-ci (`billetdoux`, `collovati`, `markovic`, `platret`, `rohou`), encore sans mesure.
 const CANDIDATS = [
-  // ============================================================
-  // JEAN-LUC MÉLENCHON — La France insoumise
-  // ============================================================
   {
     id: "melenchon",
     nom: "Jean-Luc Mélenchon",
@@ -157,30 +149,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Position historique de LFI, répétée et documentée sur trois campagnes présidentielles successives.",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Bénéficie en priorité aux carrières commencées tôt et aux métiers pénibles, plus représentés dans cette catégorie", "Revalorisation des petites pensions au niveau du Smic"],
-            risques: ["Financement non détaillé publiquement (hausse de cotisations, autres recettes ?), donc incertitude sur qui supporte le coût à terme"],
-            angleMort: "Le chiffrage précis du coût et de son financement n'est pas public à ce stade de la campagne.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Départ plus précoce pour les carrières complètes à 40 ans"],
-            risques: ["Si financée par la fiscalité ou les cotisations, une partie de cette catégorie pourrait contribuer sans bénéficier de la même revalorisation que les petites pensions"],
-            angleMort: "Aucune indication publique sur un éventuel geste fiscal ciblant spécifiquement cette catégorie pour financer la mesure.",
-          },
-          aisees: {
-            score: -1,
-            avantages: [],
-            risques: ["Combinée aux mesures fiscales du même programme (voir fiche fiscalité), cette catégorie est identifiée comme contributrice nette probable au financement"],
-            angleMort: "Le lien précis entre cette mesure retraites et les mesures fiscales n'est pas établi par un document budgétaire chiffré public.",
-          },
-          retraites: {
-            score: 2,
-            avantages: ["Effet direct et immédiat pour les futurs retraités concernés par l'abaissement de l'âge", "Revalorisation des pensions les plus faibles"],
-            risques: ["Pérennité financière du système à moyen terme non démontrée par un chiffrage indépendant public"],
-            angleMort: "Le Conseil d'orientation des retraites n'a pas publié d'évaluation officielle de cette proposition spécifique à ce stade.",
-          },
+          populaires: { score: 1, avantages: ["Bénéficie en priorité aux carrières commencées tôt et aux métiers pénibles, plus représentés dans cette catégorie", "Revalorisation des petites pensions au niveau du Smic"], risques: ["Financement non détaillé publiquement, donc incertitude sur qui supporte le coût à terme"], angleMort: "Le chiffrage précis du coût et de son financement n'est pas public à ce stade de la campagne." },
+          moyennes: { score: 0, avantages: ["Départ plus précoce pour les carrières complètes à 40 ans"], risques: ["Si financée par la fiscalité ou les cotisations, une partie de cette catégorie pourrait contribuer sans bénéficier de la même revalorisation"], angleMort: "Aucune indication publique sur un éventuel geste fiscal ciblant spécifiquement cette catégorie." },
+          aisees: { score: -1, avantages: [], risques: ["Combinée aux mesures fiscales du même programme, cette catégorie est identifiée comme contributrice nette probable au financement"], angleMort: "Le lien précis entre cette mesure et les mesures fiscales n'est pas établi par un document budgétaire chiffré public." },
+          retraites: { score: 2, avantages: ["Effet direct et immédiat pour les futurs retraités concernés", "Revalorisation des pensions les plus faibles"], risques: ["Pérennité financière du système à moyen terme non démontrée par un chiffrage indépendant public"], angleMort: "Le Conseil d'orientation des retraites n'a pas publié d'évaluation officielle de cette proposition spécifique à ce stade." },
         },
       },
       {
@@ -188,14 +160,14 @@ const CANDIDATS = [
         theme: "Pouvoir d'achat et économie",
         titre: "Nouvelles tranches d'impôt sur le revenu et alignement de la fiscalité du capital sur celle du travail",
         resumeOfficiel:
-          "Création de tranches supplémentaires d'impôt sur le revenu pour les hauts revenus et taxation des revenus du capital (dividendes, plus-values) au même barème que les revenus du travail, dans l'objectif annoncé de financer les services publics et réduire les inégalités.",
+          "Création de tranches supplémentaires d'impôt sur le revenu pour les hauts revenus et taxation des revenus du capital au même barème que les revenus du travail, pour financer les services publics et réduire les inégalités.",
         sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/salarie-chomeur-chef-d-entreprise-si-jean-luc-melenchon-devient-president-voici-ce-qui-changera-pour-vous_2044075.html",
         niveauConfiance: "annonce",
         noteConfiance: "Détaillé par franceinfo lors de la campagne 2022 (barème à 14 tranches contre 5 actuellement, taux marginal élevé au-delà d'un seuil élevé de revenu, capital taxé comme le travail), cohérent avec « L'Avenir en commun » ; chiffrage spécifique à 2027 non retrouvé dans une source de premier rang à ce jour.",
         impactParClasse: {
           populaires: { score: 0, avantages: ["Non concernées par les tranches ou la taxation du capital"], risques: [], angleMort: "Le programme ne précise pas d'affectation ciblée d'une partie des recettes vers cette catégorie." },
-          moyennes: { score: 0, avantages: ["Non concernées par le haut de barème visé"], risques: ["Une partie supérieure de cette catégorie détenant une épargne financière pourrait être affectée par l'alignement de la fiscalité du capital, sans que le seuil exact soit public"], angleMort: "Absence de seuil précis rendu public pour distinguer petite épargne et gros patrimoine financier." },
-          aisees: { score: -2, avantages: [], risques: ["Hausse significative de la charge fiscale sur les hauts revenus et les revenus du capital", "Risque d'optimisation ou de délocalisation fiscale, évoqué de façon récurrente par des économistes critiques de ce type de mesure"], angleMort: "Aucun chiffrage indépendant public du rendement budgétaire attendu au moment de la rédaction." },
+          moyennes: { score: 0, avantages: ["Non concernées par le haut de barème visé"], risques: ["Une partie supérieure de cette catégorie détenant une épargne financière pourrait être affectée, sans seuil exact public"], angleMort: "Absence de seuil précis pour distinguer petite épargne et gros patrimoine financier." },
+          aisees: { score: -2, avantages: [], risques: ["Hausse significative de la charge fiscale sur les hauts revenus et les revenus du capital", "Risque d'optimisation ou de délocalisation fiscale évoqué par des économistes critiques"], angleMort: "Aucun chiffrage indépendant public du rendement budgétaire attendu." },
           retraites: { score: 0, avantages: ["Neutre pour la quasi-totalité des pensions"], risques: [], angleMort: "Effet possible pour une minorité de retraités disposant de revenus du capital importants, non quantifié." },
         },
       },
@@ -241,30 +213,10 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Projet détaillé publiquement par les député·es porteurs du dossier et rapporté par franceinfo, Le JDD et France 24 ; les contours exacts (limites, compétences, calendrier) restent en cours d'expertise à l'été 2026, sans texte définitif publié — d'où un niveau de confiance « annonce » malgré une intention déjà bien documentée.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Une politique de l'eau et de prévention des risques mieux articulée à l'échelle des bassins versants pourrait, selon ses défenseurs, mieux protéger les zones inondables ou en tension hydrique, où vivent aussi des ménages modestes"],
-            risques: ["Une réorganisation territoriale de cette ampleur comporte un risque de complexité administrative et de coût de transition, dont l'effet sur les services publics locaux n'est pas chiffré"],
-            angleMort: "Le projet n'est pas encore stabilisé publiquement ; aucun chiffrage du coût de la réforme ni de ses effets sur l'emploi public territorial n'est disponible.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: ["Incertitude sur l'avenir des compétences économiques régionales actuelles (formation professionnelle, développement économique) dans la nouvelle organisation"],
-            angleMort: "Le sort des compétences régionales non environnementales dans les futures écorégions n'est pas précisé publiquement.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique différencié identifiable à ce stade pour cette catégorie, faute de texte stabilisé.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure de réorganisation territoriale sans lien direct identifié avec cette catégorie à ce stade du projet.",
-          },
+          populaires: { score: 0, avantages: ["Une politique de l'eau et de prévention des risques mieux articulée à l'échelle des bassins versants pourrait, selon ses défenseurs, mieux protéger les zones inondables ou en tension hydrique, où vivent aussi des ménages modestes"], risques: ["Une réorganisation territoriale de cette ampleur comporte un risque de complexité administrative et de coût de transition, dont l'effet sur les services publics locaux n'est pas chiffré"], angleMort: "Le projet n'est pas encore stabilisé publiquement ; aucun chiffrage du coût de la réforme ni de ses effets sur l'emploi public territorial n'est disponible." },
+          moyennes: { score: 0, avantages: [], risques: ["Incertitude sur l'avenir des compétences économiques régionales actuelles (formation professionnelle, développement économique) dans la nouvelle organisation"], angleMort: "Le sort des compétences régionales non environnementales dans les futures écorégions n'est pas précisé publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique différencié identifiable à ce stade pour cette catégorie, faute de texte stabilisé." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure de réorganisation territoriale sans lien direct identifié avec cette catégorie à ce stade du projet." },
         },
       },
       {
@@ -277,30 +229,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Proposition détaillée par le candidat le 23 août 2026 et rapportée par Le JDD et France 24, en filiation directe avec sa proposition chiffrée de 2022 (neuf mois, rémunération au Smic).",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Une conscription rémunérée au Smic, sur le modèle de la proposition 2022, constituerait un revenu et une expérience professionnelle pour des jeunes de cette catégorie, souvent plus exposés au chômage des jeunes"],
-            risques: ["Caractère obligatoire pouvant être vécu comme une contrainte, notamment pour les jeunes déjà entrés dans la vie active"],
-            angleMort: "Le niveau de rémunération et la durée définitifs pour la version 2027 de la mesure ne sont pas encore chiffrés publiquement, seule la version 2022 l'était.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: ["Interruption potentielle d'études ou de début de carrière pour les jeunes de cette catégorie"],
-            angleMort: "Modalités d'articulation avec les études supérieures non précisées publiquement.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Effet non différencié documenté publiquement pour cette catégorie.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Bénéfice indirect possible d'une meilleure réponse aux crises climatiques (feux de forêt) pouvant affecter des zones où résident des retraités"],
-            risques: [],
-            angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect.",
-          },
+          populaires: { score: 1, avantages: ["Une conscription rémunérée au Smic, sur le modèle de la proposition 2022, constituerait un revenu et une expérience professionnelle pour des jeunes de cette catégorie, souvent plus exposés au chômage des jeunes"], risques: ["Caractère obligatoire pouvant être vécu comme une contrainte, notamment pour les jeunes déjà entrés dans la vie active"], angleMort: "Le niveau de rémunération et la durée définitifs pour la version 2027 de la mesure ne sont pas encore chiffrés publiquement, seule la version 2022 l'était." },
+          moyennes: { score: 0, avantages: [], risques: ["Interruption potentielle d'études ou de début de carrière pour les jeunes de cette catégorie"], angleMort: "Modalités d'articulation avec les études supérieures non précisées publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Effet non différencié documenté publiquement pour cette catégorie." },
+          retraites: { score: 0, avantages: ["Bénéfice indirect possible d'une meilleure réponse aux crises climatiques (feux de forêt) pouvant affecter des zones où résident des retraités"], risques: [], angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect." },
         },
       },
       {
@@ -313,30 +245,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Propositions formulées publiquement par le candidat le 12 septembre 2026 lors d'un meeting à la Fête de l'Humanité et rapportées par franceinfo ; le mécanisme précis de l'échelle mobile des salaires (périodicité, produits concernés par le blocage des prix) et son chiffrage global ne sont pas publiés à ce stade.",
         impactParClasse: {
-          populaires: {
-            score: 2,
-            avantages: ["Un blocage des prix et des marges sur les produits de première nécessité bénéficierait proportionnellement plus aux ménages consacrant une part importante de leur revenu à ces produits", "L'échelle mobile des salaires viserait à protéger en priorité les bas salaires contre l'érosion par l'inflation", "La gratuité des cantines scolaires réduirait une dépense contrainte pour les familles modestes"],
-            risques: ["Des économistes mettent traditionnellement en garde contre un risque de pénurie ou de marché noir en cas de blocage prolongé des prix", "Le financement de la gratuité des cantines et le mécanisme de compensation pour les commerçants et producteurs ne sont pas chiffrés publiquement"],
-            angleMort: "Aucun chiffrage indépendant public du coût de la gratuité des cantines ni du périmètre exact des produits concernés par le blocage des prix.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Bénéfice du blocage des prix sur les produits de première nécessité, dans une proportion moindre du revenu que pour les classes populaires"],
-            risques: ["Une échelle mobile des salaires généralisée pourrait, selon certains économistes, alimenter une spirale prix-salaires dont l'effet net sur le pouvoir d'achat réel de cette catégorie n'est pas démontré"],
-            angleMort: "Aucune étude chiffrée publique n'évalue l'effet net d'une échelle mobile des salaires sur l'inflation elle-même.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: ["Les commerçants, distributeurs ou producteurs de cette catégorie pourraient voir leurs marges directement affectées par un blocage des prix"],
-            angleMort: "Aucun chiffrage public de l'effet du blocage des marges sur la rentabilité des entreprises concernées.",
-          },
-          retraites: {
-            score: 1,
-            avantages: ["Un blocage des prix sur les produits de première nécessité bénéficierait aux retraités aux pensions modestes, à la part de consommation contrainte proportionnellement élevée"],
-            risques: [],
-            angleMort: "Effet différencié selon le niveau de pension non chiffré publiquement.",
-          },
+          populaires: { score: 2, avantages: ["Un blocage des prix et des marges sur les produits de première nécessité bénéficierait proportionnellement plus aux ménages consacrant une part importante de leur revenu à ces produits", "L'échelle mobile des salaires viserait à protéger en priorité les bas salaires contre l'érosion par l'inflation", "La gratuité des cantines scolaires réduirait une dépense contrainte pour les familles modestes"], risques: ["Des économistes mettent traditionnellement en garde contre un risque de pénurie ou de marché noir en cas de blocage prolongé des prix", "Le financement de la gratuité des cantines et le mécanisme de compensation pour les commerçants et producteurs ne sont pas chiffrés publiquement"], angleMort: "Aucun chiffrage indépendant public du coût de la gratuité des cantines ni du périmètre exact des produits concernés par le blocage des prix." },
+          moyennes: { score: 0, avantages: ["Bénéfice du blocage des prix sur les produits de première nécessité, dans une proportion moindre du revenu que pour les classes populaires"], risques: ["Une échelle mobile des salaires généralisée pourrait, selon certains économistes, alimenter une spirale prix-salaires dont l'effet net sur le pouvoir d'achat réel de cette catégorie n'est pas démontré"], angleMort: "Aucune étude chiffrée publique n'évalue l'effet net d'une échelle mobile des salaires sur l'inflation elle-même." },
+          aisees: { score: 0, avantages: [], risques: ["Les commerçants, distributeurs ou producteurs de cette catégorie pourraient voir leurs marges directement affectées par un blocage des prix"], angleMort: "Aucun chiffrage public de l'effet du blocage des marges sur la rentabilité des entreprises concernées." },
+          retraites: { score: 1, avantages: ["Un blocage des prix sur les produits de première nécessité bénéficierait aux retraités aux pensions modestes, à la part de consommation contrainte proportionnellement élevée"], risques: [], angleMort: "Effet différencié selon le niveau de pension non chiffré publiquement." },
         },
       },
       {
@@ -349,30 +261,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Proposition détaillée publiquement par le candidat le 23 août 2026 lors des universités d'été de LFI, chiffrée (18 %, 636 milliards d'euros selon le candidat) et rapportée par franceinfo et France 24 ; sa faisabilité juridique (indépendance statutaire de la BCE, unanimité des 27 États membres requise pour une révision des traités) est contestée par plusieurs économistes, ce qui relève du débat sur la mesure et non de l'existence de la proposition elle-même.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Selon ses défenseurs, la marge budgétaire dégagée par le gel de la dette pourrait financer des dépenses sociales bénéficiant en priorité à cette catégorie"],
-            risques: ["Plusieurs économistes avertissent qu'une telle décision pourrait détériorer la confiance des marchés et renchérir le coût des emprunts publics futurs, dont la charge pèse sur le budget de l'État"],
-            angleMort: "Le programme ne garantit pas d'affectation précise de la marge budgétaire dégagée vers des dépenses profitant spécifiquement à cette catégorie ; aucun chiffrage indépendant public de l'effet sur les taux d'emprunt futurs n'est disponible.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: ["Comme pour les autres catégories, un risque de hausse des taux d'intérêt sur la dette future pourrait peser indirectement sur le coût du crédit"],
-            angleMort: "Effet différencié par catégorie non documenté publiquement, la mesure opérant au niveau macroéconomique plutôt que par un transfert direct aux ménages.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure de politique monétaire et budgétaire sans effet direct identifié pour cette catégorie à ce stade ; un effet indirect sur les détenteurs de dette française via les marchés financiers n'est pas chiffré publiquement.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Selon ses défenseurs, la marge budgétaire dégagée pourrait à terme contribuer au financement de dépenses sociales, dont les pensions"],
-            risques: [],
-            angleMort: "Aucun lien chiffré n'est établi publiquement entre cette mesure et le financement du système de retraite.",
-          },
+          populaires: { score: 0, avantages: ["Selon ses défenseurs, la marge budgétaire dégagée par le gel de la dette pourrait financer des dépenses sociales bénéficiant en priorité à cette catégorie"], risques: ["Plusieurs économistes avertissent qu'une telle décision pourrait détériorer la confiance des marchés et renchérir le coût des emprunts publics futurs, dont la charge pèse sur le budget de l'État"], angleMort: "Le programme ne garantit pas d'affectation précise de la marge budgétaire dégagée vers des dépenses profitant spécifiquement à cette catégorie ; aucun chiffrage indépendant public de l'effet sur les taux d'emprunt futurs n'est disponible." },
+          moyennes: { score: 0, avantages: [], risques: ["Comme pour les autres catégories, un risque de hausse des taux d'intérêt sur la dette future pourrait peser indirectement sur le coût du crédit"], angleMort: "Effet différencié par catégorie non documenté publiquement, la mesure opérant au niveau macroéconomique plutôt que par un transfert direct aux ménages." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique monétaire et budgétaire sans effet direct identifié pour cette catégorie à ce stade ; un effet indirect sur les détenteurs de dette française via les marchés financiers n'est pas chiffré publiquement." },
+          retraites: { score: 0, avantages: ["Selon ses défenseurs, la marge budgétaire dégagée pourrait à terme contribuer au financement de dépenses sociales, dont les pensions"], risques: [], angleMort: "Aucun lien chiffré n'est établi publiquement entre cette mesure et le financement du système de retraite." },
         },
       },
       {
@@ -385,30 +277,10 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Proposition présentée publiquement par le candidat le 12 septembre 2026 et détaillée par une députée LFI dans un article dédié de franceinfo ; les conditions objectives précises de déclenchement, la base légale et le chiffrage des trois axes d'action ne sont pas publiés à ce stade, d'où un niveau de confiance « annonce ».",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Les trois axes évoqués (hausse des salaires, taxation des grandes fortunes, réduction des frais financiers sur la dette) visent explicitement à améliorer le pouvoir d'achat, en priorité pour les ménages aux revenus modestes"],
-            risques: [],
-            angleMort: "Le mécanisme juridique précis de déclenchement de cet « état d'urgence » et les pouvoirs exacts qu'il conférerait à l'exécutif ne sont pas publiés, ce qui empêche d'évaluer l'ampleur réelle de ses effets.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Comme pour les autres catégories, l'absence de texte précisant les conditions de déclenchement et la durée du dispositif empêche d'évaluer un effet différencié pour cette catégorie.",
-          },
-          aisees: {
-            score: -1,
-            avantages: [],
-            risques: ["La taxation des plus grandes fortunes est explicitement présentée comme l'un des trois axes de ce dispositif, ce qui identifie cette catégorie comme contributrice probable"],
-            angleMort: "Aucun chiffrage public du taux ou du périmètre de cette taxation renforcée des grandes fortunes n'est disponible à ce stade.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Une réduction des frais financiers payés sur la dette publique pourrait, selon ses défenseurs, dégager une marge budgétaire profitant à terme au financement des retraites"],
-            risques: [],
-            angleMort: "Aucun lien chiffré n'est établi publiquement entre ce dispositif et le financement du système de retraite.",
-          },
+          populaires: { score: 1, avantages: ["Les trois axes évoqués (hausse des salaires, taxation des grandes fortunes, réduction des frais financiers sur la dette) visent explicitement à améliorer le pouvoir d'achat, en priorité pour les ménages aux revenus modestes"], risques: [], angleMort: "Le mécanisme juridique précis de déclenchement de cet « état d'urgence » et les pouvoirs exacts qu'il conférerait à l'exécutif ne sont pas publiés, ce qui empêche d'évaluer l'ampleur réelle de ses effets." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Comme pour les autres catégories, l'absence de texte précisant les conditions de déclenchement et la durée du dispositif empêche d'évaluer un effet différencié pour cette catégorie." },
+          aisees: { score: -1, avantages: [], risques: ["La taxation des plus grandes fortunes est explicitement présentée comme l'un des trois axes de ce dispositif, ce qui identifie cette catégorie comme contributrice probable"], angleMort: "Aucun chiffrage public du taux ou du périmètre de cette taxation renforcée des grandes fortunes n'est disponible à ce stade." },
+          retraites: { score: 0, avantages: ["Une réduction des frais financiers payés sur la dette publique pourrait, selon ses défenseurs, dégager une marge budgétaire profitant à terme au financement des retraites"], risques: [], angleMort: "Aucun lien chiffré n'est établi publiquement entre ce dispositif et le financement du système de retraite." },
         },
       },
       {
@@ -421,30 +293,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "La promesse de refonte de la police « de la cave au grenier » est rapportée par Le JDD fin août 2026 et prolonge une image déjà utilisée par La France insoumise lors de précédentes campagnes ; les mesures précises (dissolution de l'IGPN, garde nationale de jeunes volontaires, dépénalisation du cannabis) ont été détaillées lors du colloque du 14 septembre 2026, également rapporté par LCP et franceinfo. Le chiffrage budgétaire de la garde nationale et le dispositif exact destiné à remplacer l'IGPN ne sont pas publiés à ce stade.",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Une garde nationale de jeunes volontaires, si elle est rémunérée sur le modèle de la « conscription écologique » déjà proposée par le candidat, pourrait offrir un revenu et une expérience professionnelle à des jeunes de cette catégorie, plus touchés par le chômage des jeunes", "La dissolution de l'IGPN et un nouveau code de déontologie visent à répondre aux critiques de violences policières exprimées en priorité par des habitants de quartiers populaires"],
-            risques: ["La dépénalisation du cannabis pourrait, selon des opposants, être perçue comme un signal d'affaiblissement de la réponse pénale dans des zones où le trafic de stupéfiants est identifié comme un problème de sécurité publique"],
-            angleMort: "Aucun chiffrage public du coût de la garde nationale de jeunes volontaires ni du dispositif destiné à remplacer les missions de contrôle de l'IGPN n'est disponible à ce stade.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur l'organisation des forces de l'ordre et la politique pénale, sans effet économique différencié documenté pour cette catégorie.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur l'organisation des forces de l'ordre et la politique pénale, sans effet économique différencié documenté pour cette catégorie.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucune donnée publique ne permet d'établir un effet différencié de cette réorganisation policière pour les retraités.",
-          },
+          populaires: { score: 1, avantages: ["Une garde nationale de jeunes volontaires, si elle est rémunérée sur le modèle de la « conscription écologique » déjà proposée par le candidat, pourrait offrir un revenu et une expérience professionnelle à des jeunes de cette catégorie, plus touchés par le chômage des jeunes", "La dissolution de l'IGPN et un nouveau code de déontologie visent à répondre aux critiques de violences policières exprimées en priorité par des habitants de quartiers populaires"], risques: ["La dépénalisation du cannabis pourrait, selon des opposants, être perçue comme un signal d'affaiblissement de la réponse pénale dans des zones où le trafic de stupéfiants est identifié comme un problème de sécurité publique"], angleMort: "Aucun chiffrage public du coût de la garde nationale de jeunes volontaires ni du dispositif destiné à remplacer les missions de contrôle de l'IGPN n'est disponible à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur l'organisation des forces de l'ordre et la politique pénale, sans effet économique différencié documenté pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur l'organisation des forces de l'ordre et la politique pénale, sans effet économique différencié documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucune donnée publique ne permet d'établir un effet différencié de cette réorganisation policière pour les retraités." },
         },
       },
       {
@@ -457,38 +309,14 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Position réaffirmée publiquement par le candidat en mai 2026 comme une mesure prioritaire de son éventuel mandat, rapportée par franceinfo, LCP et France 24, et documentée sur plusieurs campagnes (programme 2022, proposition de loi LFI de 2023). Le mécanisme juridique précis du démantèlement (nationalisation, cession forcée, régulation renforcée du marché) n'est en revanche pas arbitré publiquement à ce stade.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Une loi anticoncentration viserait, selon ses défenseurs, à limiter l'influence de grands groupes privés sur le débat public, un enjeu démocratique qui concerne l'ensemble des citoyens au même titre"],
-            risques: [],
-            angleMort: "Aucune donnée publique ne permet d'établir un effet différencié de cette mesure selon la catégorie de revenu des citoyens, la mesure portant sur la structure de propriété des médias plutôt que sur le pouvoir d'achat des ménages.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur la régulation du secteur médiatique, sans effet économique différencié documenté pour cette catégorie.",
-          },
-          aisees: {
-            score: -1,
-            avantages: [],
-            risques: ["Les actionnaires et propriétaires des groupes de médias explicitement cités par le candidat (Bolloré, Pigasse, Saadé) relèvent de cette catégorie et seraient directement visés par un démantèlement ou une cession forcée de leurs actifs"],
-            angleMort: "Le mécanisme juridique précis du démantèlement n'étant pas arbitré publiquement, l'ampleur financière exacte de l'effet pour les propriétaires concernés ne peut être chiffrée.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet documenté pour cette catégorie, la mesure portant sur la structure de propriété des médias plutôt que sur les revenus des ménages.",
-          },
+          populaires: { score: 0, avantages: ["Une loi anticoncentration viserait, selon ses défenseurs, à limiter l'influence de grands groupes privés sur le débat public, un enjeu démocratique qui concerne l'ensemble des citoyens au même titre"], risques: [], angleMort: "Aucune donnée publique ne permet d'établir un effet différencié de cette mesure selon la catégorie de revenu des citoyens, la mesure portant sur la structure de propriété des médias plutôt que sur le pouvoir d'achat des ménages." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur la régulation du secteur médiatique, sans effet économique différencié documenté pour cette catégorie." },
+          aisees: { score: -1, avantages: [], risques: ["Les actionnaires et propriétaires des groupes de médias explicitement cités par le candidat (Bolloré, Pigasse, Saadé) relèvent de cette catégorie et seraient directement visés par un démantèlement ou une cession forcée de leurs actifs"], angleMort: "Le mécanisme juridique précis du démantèlement n'étant pas arbitré publiquement, l'ampleur financière exacte de l'effet pour les propriétaires concernés ne peut être chiffrée." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet documenté pour cette catégorie, la mesure portant sur la structure de propriété des médias plutôt que sur les revenus des ménages." },
         },
       },
     ],
   },
-
-  // ============================================================
-  // GABRIEL ATTAL — Renaissance
-  // ============================================================
   {
     id: "attal",
     nom: "Gabriel Attal",
@@ -499,14 +327,14 @@ const CANDIDATS = [
         theme: "Services publics",
         titre: "Réforme de l'école dès la rentrée 2027 (brevet obligatoire, groupes de niveau, fermeture des collèges les plus difficiles)",
         resumeOfficiel:
-          "Brevet des collèges rendu obligatoire pour l'entrée au lycée, généralisation des groupes de niveau en français et mathématiques, ministre de l'Éducation nommé pour la durée du quinquennat, et fermeture d'une centaine de collèges qualifiés par le candidat de « ghettos scolaires » avec répartition des élèves dans d'autres établissements.",
+          "Brevet des collèges rendu obligatoire pour l'entrée au lycée, généralisation des groupes de niveau en français et mathématiques, ministre de l'Éducation nommé pour la durée du quinquennat, et fermeture d'une centaine de collèges qualifiés par le candidat de « ghettos scolaires ».",
         sourceOfficielle: "https://lcp.fr/actualites/presidentielle-retour-du-certificat-d-etudes-revalorisation-des-salaires-ce-que-propose",
         niveauConfiance: "confirme",
         noteConfiance: "Rapporté par LCP (chaîne de l'Assemblée nationale) à partir d'un entretien donné au Monde le 25 août 2026.",
         impactParClasse: {
-          populaires: { score: -1, avantages: ["Objectif affiché de mixité sociale via la fermeture des collèges les plus en difficulté"], risques: ["Les groupes de niveau ont déjà été contestés par une partie des enseignants lors d'une première tentative en 2023-2024, avec un risque documenté de renforcement du tri scolaire selon leurs détracteurs"], angleMort: "Le sort concret des familles déplacées par la fermeture de collèges (temps de trajet, mixité réelle) n'est pas détaillé publiquement." },
+          populaires: { score: -1, avantages: ["Objectif affiché de mixité sociale via la fermeture des collèges les plus en difficulté"], risques: ["Les groupes de niveau ont déjà été contestés par une partie des enseignants lors d'une première tentative en 2023-2024"], angleMort: "Le sort concret des familles déplacées par la fermeture de collèges n'est pas détaillé publiquement." },
           moyennes: { score: 0, avantages: ["Stabilité pédagogique recherchée via un ministre fixé sur la durée du quinquennat"], risques: [], angleMort: "Effet sur les collèges privés sous contrat non précisé." },
-          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure principalement centrée sur l'enseignement public, effet indirect non chiffré sur les stratégies de scolarisation privée." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur le public, effet indirect non chiffré sur les stratégies de scolarisation privée." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien direct avec cette catégorie." },
         },
       },
@@ -515,7 +343,7 @@ const CANDIDATS = [
         theme: "Pouvoir d'achat et économie",
         titre: "Réduire l'écart entre salaire brut et salaire net",
         resumeOfficiel:
-          "Annoncé comme l'un des quatre « chantiers capitaux » de la campagne (avec l'école, les frontières et l'intelligence artificielle) : le candidat veut rapprocher le salaire net du salaire brut en agissant sur les cotisations vieillesse, via des économies sur les dépenses sociales et une réforme de l'assurance-chômage. Il chiffre le gain à environ 250 euros nets de plus par mois pour un salaire médian, pour un coût estimé à 40 milliards d'euros.",
+          "Annoncé comme l'un des quatre « chantiers capitaux » de la campagne (avec l'école, les frontières et l'IA) : rapprocher le salaire net du salaire brut en agissant sur les cotisations vieillesse, via des économies sur les dépenses sociales et une réforme de l'assurance-chômage. Le candidat chiffre le gain à environ 250 euros nets de plus par mois pour un salaire médian, pour un coût estimé à 40 milliards d'euros.",
         sourceOfficielle: "https://www.franceinfo.fr/replay-jt/france-2/20-heures/rapprocher-le-salaire-net-du-brut-une-mesure-possible-ou-pas_8171264.html",
         niveauConfiance: "confirme",
         noteConfiance: "Mécanisme et chiffrage (250 € nets, coût de 40 milliards d'euros, cotisations vieillesse) précisés par le candidat et rapportés par France Télévisions/franceinfo : la mesure passe du statut d'annonce à celui de proposition chiffrée et documentée.",
@@ -632,30 +460,10 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Position exprimée publiquement par le candidat et rapportée par franceinfo, cohérente avec le projet de règlement européen sur les marchés publics présenté par la Commission européenne en septembre 2026 ; aucun texte de loi ni chiffrage propre à la candidature 2027 d'Attal n'est publié à ce stade, d'où un niveau de confiance « annonce ».",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Selon ses défenseurs, une préférence européenne dans les marchés publics pourrait préserver des emplois industriels, y compris peu qualifiés, menacés par la concurrence chinoise"],
-            risques: ["Un renchérissement de certains produits ou équipements publics faute de fournisseurs chinois moins chers pourrait indirectement peser sur le coût de certains services publics"],
-            angleMort: "Aucun chiffrage public de l'effet net sur l'emploi industriel ni sur le coût des marchés publics concernés.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Bénéfice potentiel pour les emplois qualifiés de la sous-traitance industrielle européenne favorisée par la préférence dans les marchés publics"],
-            risques: [],
-            angleMort: "Le périmètre exact des secteurs concernés par la préférence européenne n'est pas précisé publiquement par le candidat.",
-          },
-          aisees: {
-            score: 0,
-            avantages: ["Les dirigeants et actionnaires d'entreprises industrielles européennes bénéficiant de la préférence dans les marchés publics ou de partenariats technologiques avec des industriels chinois pourraient tirer un avantage commercial direct"],
-            risques: [],
-            angleMort: "Aucun chiffrage public du gain attendu pour les entreprises européennes concernées.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure de politique industrielle et commerciale européenne sans lien direct identifié avec cette catégorie à ce stade.",
-          },
+          populaires: { score: 0, avantages: ["Selon ses défenseurs, une préférence européenne dans les marchés publics pourrait préserver des emplois industriels, y compris peu qualifiés, menacés par la concurrence chinoise"], risques: ["Un renchérissement de certains produits ou équipements publics faute de fournisseurs chinois moins chers pourrait indirectement peser sur le coût de certains services publics"], angleMort: "Aucun chiffrage public de l'effet net sur l'emploi industriel ni sur le coût des marchés publics concernés." },
+          moyennes: { score: 0, avantages: ["Bénéfice potentiel pour les emplois qualifiés de la sous-traitance industrielle européenne favorisée par la préférence dans les marchés publics"], risques: [], angleMort: "Le périmètre exact des secteurs concernés par la préférence européenne n'est pas précisé publiquement par le candidat." },
+          aisees: { score: 0, avantages: ["Les dirigeants et actionnaires d'entreprises industrielles européennes bénéficiant de la préférence dans les marchés publics ou de partenariats technologiques avec des industriels chinois pourraient tirer un avantage commercial direct"], risques: [], angleMort: "Aucun chiffrage public du gain attendu pour les entreprises européennes concernées." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique industrielle et commerciale européenne sans lien direct identifié avec cette catégorie à ce stade." },
         },
       },
       {
@@ -668,30 +476,10 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Déclaration faite publiquement par le candidat le 17 septembre 2026 et rapportée par franceinfo ; ni le nombre de pays concernés par le « noyau dur », ni le calendrier du référendum européen, ni le mécanisme précis de la dette commune évoquée ne sont chiffrés ou détaillés dans un texte à ce stade, d'où un niveau de confiance « annonce ».",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Une intégration économique renforcée avec d'autres pays européens pourrait, selon ses défenseurs, consolider l'emploi industriel face à la concurrence américaine et chinoise"],
-            risques: ["Un endettement commun européen, même sans hausse d'impôt annoncée, pourrait à terme peser sur les marges de manœuvre budgétaires nationales si son remboursement n'est pas précisé"],
-            angleMort: "Le nombre de pays formant le « noyau dur », le calendrier du référendum européen et le mécanisme précis de la dette commune évoquée ne sont pas publiés à ce stade, ce qui empêche de chiffrer l'effet concret pour les ménages de cette catégorie.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Comme pour les autres catégories, l'absence de texte précisant les secteurs économiques concernés par la fusion et le contour de la dette commune empêche d'évaluer un effet différencié pour cette catégorie.",
-          },
-          aisees: {
-            score: 0,
-            avantages: ["Les entreprises et investisseurs opérant à l'échelle européenne pourraient bénéficier d'une intégration économique renforcée entre les pays du « noyau dur »"],
-            risques: [],
-            angleMort: "Aucun chiffrage public ne permet d'évaluer l'ampleur de ce bénéfice potentiel ni les secteurs effectivement concernés.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure de politique européenne institutionnelle sans effet direct identifié pour cette catégorie à ce stade, faute de texte précisant son financement ou sa mise en œuvre.",
-          },
+          populaires: { score: 0, avantages: ["Une intégration économique renforcée avec d'autres pays européens pourrait, selon ses défenseurs, consolider l'emploi industriel face à la concurrence américaine et chinoise"], risques: ["Un endettement commun européen, même sans hausse d'impôt annoncée, pourrait à terme peser sur les marges de manœuvre budgétaires nationales si son remboursement n'est pas précisé"], angleMort: "Le nombre de pays formant le « noyau dur », le calendrier du référendum européen et le mécanisme précis de la dette commune évoquée ne sont pas publiés à ce stade, ce qui empêche de chiffrer l'effet concret pour les ménages de cette catégorie." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Comme pour les autres catégories, l'absence de texte précisant les secteurs économiques concernés par la fusion et le contour de la dette commune empêche d'évaluer un effet différencié pour cette catégorie." },
+          aisees: { score: 0, avantages: ["Les entreprises et investisseurs opérant à l'échelle européenne pourraient bénéficier d'une intégration économique renforcée entre les pays du « noyau dur »"], risques: [], angleMort: "Aucun chiffrage public ne permet d'évaluer l'ampleur de ce bénéfice potentiel ni les secteurs effectivement concernés." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure de politique européenne institutionnelle sans effet direct identifié pour cette catégorie à ce stade, faute de texte précisant son financement ou sa mise en œuvre." },
         },
       },
       {
@@ -704,30 +492,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Plan détaillé par le candidat lors d'un entretien à l'AFP le 9 août 2026, avec un objectif chiffré (1 000 milliards de litres d'ici 2035) et des mécanismes identifiés (financement clé en main pour les 500 réseaux les moins performants, bouclier tarifaire), rapporté par franceinfo ; le coût budgétaire global du plan et le financement précis du bouclier tarifaire ne sont pas chiffrés publiquement à ce stade.",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Le bouclier tarifaire, explicitement ciblé sur les ménages modestes et moyens, garantirait un tarif bas et fixe pour les premiers litres essentiels, une dépense contrainte pesant proportionnellement plus sur cette catégorie"],
-            risques: ["Le financement du plan de réparation des réseaux les moins performants pourrait, s'il repose en partie sur la facture d'eau, peser sur les ménages non couverts par le bouclier tarifaire"],
-            angleMort: "Le financement précis du bouclier tarifaire et le seuil exact de litres couverts selon la taille du foyer ne sont pas publiés.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Bénéfice potentiel du bouclier tarifaire selon le seuil retenu, non encore publié"],
-            risques: [],
-            angleMort: "Le candidat ne précise pas si cette catégorie serait pleinement couverte par le bouclier, présenté comme ciblé sur les ménages modestes et moyens sans seuil de revenu publié.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: ["Cette catégorie, moins ciblée par un bouclier tarifaire réservé aux ménages modestes et moyens, ne bénéficierait pas de la même protection sur ses factures d'eau"],
-            angleMort: "Aucun chiffrage public ne permet d'évaluer l'effet du plan sur la facture d'eau de cette catégorie.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Les retraités aux pensions modestes pourraient bénéficier du bouclier tarifaire selon les mêmes critères que les autres ménages modestes"],
-            risques: [],
-            angleMort: "Aucune donnée publique ne précise si le bouclier tarifaire tient compte spécifiquement des retraités à revenu fixe.",
-          },
+          populaires: { score: 1, avantages: ["Le bouclier tarifaire, explicitement ciblé sur les ménages modestes et moyens, garantirait un tarif bas et fixe pour les premiers litres essentiels, une dépense contrainte pesant proportionnellement plus sur cette catégorie"], risques: ["Le financement du plan de réparation des réseaux les moins performants pourrait, s'il repose en partie sur la facture d'eau, peser sur les ménages non couverts par le bouclier tarifaire"], angleMort: "Le financement précis du bouclier tarifaire et le seuil exact de litres couverts selon la taille du foyer ne sont pas publiés." },
+          moyennes: { score: 0, avantages: ["Bénéfice potentiel du bouclier tarifaire selon le seuil retenu, non encore publié"], risques: [], angleMort: "Le candidat ne précise pas si cette catégorie serait pleinement couverte par le bouclier, présenté comme ciblé sur les ménages modestes et moyens sans seuil de revenu publié." },
+          aisees: { score: 0, avantages: [], risques: ["Cette catégorie, moins ciblée par un bouclier tarifaire réservé aux ménages modestes et moyens, ne bénéficierait pas de la même protection sur ses factures d'eau"], angleMort: "Aucun chiffrage public ne permet d'évaluer l'effet du plan sur la facture d'eau de cette catégorie." },
+          retraites: { score: 0, avantages: ["Les retraités aux pensions modestes pourraient bénéficier du bouclier tarifaire selon les mêmes critères que les autres ménages modestes"], risques: [], angleMort: "Aucune donnée publique ne précise si le bouclier tarifaire tient compte spécifiquement des retraités à revenu fixe." },
         },
       },
       {
@@ -740,38 +508,14 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Annoncé par le candidat lors de son passage au « 8h30 franceinfo » le 18 juin 2026 et confirmé comme l'un des quatre « chantiers capitaux » de sa campagne 2027, également rapporté par France 24 le 23 mai 2026. Aucun chiffrage public du coût, du financement ni des modalités de mise en œuvre (formation obligatoire ou volontaire, ciblage par secteur) n'est disponible à ce stade, d'où un niveau de confiance « annonce ».",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Un plan de formation visant 20 millions de salariés inclurait potentiellement les métiers les plus exposés à l'automatisation par l'IA, parmi lesquels des emplois peu qualifiés de cette catégorie"],
-            risques: ["Aucune garantie publique que les salariés les moins qualifiés, souvent les plus éloignés de la formation continue, soient effectivement prioritaires dans le dispositif"],
-            angleMort: "Le candidat ne précise pas publiquement les modalités d'accès à cette formation ni son financement, ce qui empêche de déterminer qui en bénéficiera réellement en priorité.",
-          },
-          moyennes: {
-            score: 1,
-            avantages: ["Les professions intermédiaires et administratives, particulièrement concernées par l'automatisation de certaines tâches par l'IA, pourraient être une cible prioritaire d'un tel plan"],
-            risques: [],
-            angleMort: "Aucun chiffrage du nombre de salariés de cette catégorie effectivement concernés par le plan n'est publié.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure présentée comme visant prioritairement les salariés en risque de déclassement par l'IA, sans effet direct documenté pour les cadres dirigeants ou les professions les plus qualifiées, déjà davantage formées à ces outils.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur les actifs en emploi, sans effet direct documenté pour les retraités.",
-          },
+          populaires: { score: 1, avantages: ["Un plan de formation visant 20 millions de salariés inclurait potentiellement les métiers les plus exposés à l'automatisation par l'IA, parmi lesquels des emplois peu qualifiés de cette catégorie"], risques: ["Aucune garantie publique que les salariés les moins qualifiés, souvent les plus éloignés de la formation continue, soient effectivement prioritaires dans le dispositif"], angleMort: "Le candidat ne précise pas publiquement les modalités d'accès à cette formation ni son financement, ce qui empêche de déterminer qui en bénéficiera réellement en priorité." },
+          moyennes: { score: 1, avantages: ["Les professions intermédiaires et administratives, particulièrement concernées par l'automatisation de certaines tâches par l'IA, pourraient être une cible prioritaire d'un tel plan"], risques: [], angleMort: "Aucun chiffrage du nombre de salariés de cette catégorie effectivement concernés par le plan n'est publié." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure présentée comme visant prioritairement les salariés en risque de déclassement par l'IA, sans effet direct documenté pour les cadres dirigeants ou les professions les plus qualifiées, déjà davantage formées à ces outils." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les actifs en emploi, sans effet direct documenté pour les retraités." },
         },
       },
     ],
   },
-
-  // ============================================================
-  // ÉDOUARD PHILIPPE — Horizons
-  // ============================================================
   {
     id: "philippe",
     nom: "Édouard Philippe",
@@ -781,15 +525,14 @@ const CANDIDATS = [
         id: "ep-chomage",
         theme: "Pouvoir d'achat et économie",
         titre: "Réduire à 12 mois la durée d'indemnisation chômage pour les moins de 50 ans",
-        resumeOfficiel:
-          "Présenté par le candidat comme un alignement sur le modèle allemand, dans le cadre plus large d'un programme économique axé sur la maîtrise de la dépense publique.",
+        resumeOfficiel: "Présenté par le candidat comme un alignement sur le modèle allemand, dans un programme économique axé sur la maîtrise de la dépense publique.",
         sourceOfficielle: "https://www.lejdd.fr/economie/presidentielle-edouard-philippe-compte-reduire-lindemnisation-du-chomage-et-mettre-fin-a-lopen-bar-des-arrets-de-travail-181923",
         niveauConfiance: "confirme",
         noteConfiance: "Rapporté par le JDD et confirmé lors du débat des candidats organisé par le Medef, selon France Info.",
         impactParClasse: {
-          populaires: { score: -1, avantages: [], risques: ["Réduction de la durée de couverture pour les demandeurs d'emploi les plus exposés au chômage de longue durée", "Effet potentiellement plus dur pour les métiers avec un marché du travail local tendu"], angleMort: "Le programme ne précise pas de mesure d'accompagnement spécifique pour les publics les plus fragiles pendant la transition." },
-          moyennes: { score: -1, avantages: [], risques: ["Réduction de la sécurité en cas de perte d'emploi pour les salariés en milieu de carrière"], angleMort: "Effet différencié selon les secteurs (durée moyenne de retour à l'emploi) non détaillé." },
-          aisees: { score: 0, avantages: [], risques: ["Effet limité pour les cadres dont la durée de recherche d'emploi est statistiquement plus courte, bien que non nul"], angleMort: "Pas de donnée publique du candidat sur l'effet différencié par catégorie socioprofessionnelle." },
+          populaires: { score: -1, avantages: [], risques: ["Réduction de la durée de couverture pour les demandeurs d'emploi les plus exposés au chômage de longue durée"], angleMort: "Le programme ne précise pas de mesure d'accompagnement spécifique pour les publics les plus fragiles." },
+          moyennes: { score: -1, avantages: [], risques: ["Réduction de la sécurité en cas de perte d'emploi pour les salariés en milieu de carrière"], angleMort: "Effet différencié selon les secteurs non détaillé." },
+          aisees: { score: 0, avantages: [], risques: ["Effet limité pour les cadres, dont la durée de recherche d'emploi est statistiquement plus courte"], angleMort: "Pas de donnée publique sur l'effet différencié par catégorie socioprofessionnelle." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct sur cette catégorie." },
         },
       },
@@ -797,16 +540,15 @@ const CANDIDATS = [
         id: "ep-regle-or",
         theme: "Pouvoir d'achat et économie",
         titre: "Constitutionnaliser une règle d'or budgétaire limitant les déficits publics",
-        resumeOfficiel:
-          "Le candidat propose d'inscrire dans la Constitution une limite aux déficits publics, présentée comme un objectif de retour sous les 3 % de déficit d'ici 2030, sans détail chiffré public sur les mesures fiscales ou d'économies permettant de l'atteindre.",
+        resumeOfficiel: "Inscrire dans la Constitution une limite aux déficits publics, avec un objectif de retour sous les 3 % de déficit d'ici 2030, sans détail chiffré public sur la trajectoire.",
         sourceOfficielle: "https://www.franceinfo.fr/elections/presidentielle/dette-publique-retraites-reindustrialisation-ce-qu-il-faut-retenir-du-premier-debat-des-principaux-candidats-a-la-presidentielle_8165342.html",
         niveauConfiance: "annonce",
-        noteConfiance: "Objectif confirmé par France Info (débat Medef) ; la trajectoire précise (hausses d'impôts et/ou baisses de dépenses) n'est pas publique à ce stade.",
+        noteConfiance: "Objectif confirmé par France Info (débat Medef) ; la trajectoire précise n'est pas publique à ce stade.",
         impactParClasse: {
-          populaires: { score: -1, avantages: [], risques: ["Si l'objectif est atteint par une baisse des dépenses publiques plutôt que par des recettes nouvelles, cette catégorie est historiquement plus dépendante des prestations et services publics concernés"], angleMort: "Le candidat n'a pas précisé la répartition entre hausses de recettes et baisses de dépenses." },
-          moyennes: { score: 0, avantages: [], risques: ["Exposition possible si la trajectoire budgétaire passe par une hausse de la fiscalité générale"], angleMort: "Absence de détail sur les postes de dépenses ou de recettes concernés." },
+          populaires: { score: -1, avantages: [], risques: ["Si l'objectif est atteint par une baisse des dépenses publiques, cette catégorie est historiquement plus dépendante des prestations concernées"], angleMort: "Le candidat n'a pas précisé la répartition entre hausses de recettes et baisses de dépenses." },
+          moyennes: { score: 0, avantages: [], risques: ["Exposition possible si la trajectoire passe par une hausse de la fiscalité générale"], angleMort: "Absence de détail sur les postes de dépenses ou de recettes concernés." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun élément public ne permet d'évaluer un effet spécifique sur cette catégorie." },
-          retraites: { score: 0, avantages: [], risques: ["Les dépenses de retraite représentant une part importante de la dépense publique, un objectif de maîtrise budgétaire pourrait à terme les concerner sans que cela soit précisé"], angleMort: "Aucune mesure retraite chiffrée n'est associée publiquement à cet objectif à ce stade." },
+          retraites: { score: 0, avantages: [], risques: ["Les dépenses de retraite représentant une part importante de la dépense publique, un objectif de maîtrise budgétaire pourrait à terme les concerner"], angleMort: "Aucune mesure retraite chiffrée n'est associée publiquement à cet objectif." },
         },
       },
       {
@@ -883,30 +625,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Proposition détaillée publiquement par le candidat le 7 septembre 2026 lors d'un déplacement de campagne à Alès et rapportée par France 3/franceinfo régions ; le cadre juridique précis de cet « état d'urgence narcotrafic » et son calendrier ne sont pas encore chiffrés publiquement.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Les quartiers les plus touchés par le trafic de drogue, où cette catégorie est proportionnellement plus présente, seraient la cible prioritaire de ce dispositif renforcé"],
-            risques: ["Le recours à des moyens technologiques dérogatoires au droit commun comme la reconnaissance faciale, dans des zones où cette catégorie est surreprésentée, fait craindre à des associations de défense des libertés un risque de surveillance disproportionnée", "La suppression des prestations sociales pour les personnes impliquées pourrait aussi toucher l'entourage familial, dont des enfants, sans que ce risque soit chiffré"],
-            angleMort: "Le périmètre exact des personnes visées par la suppression de prestations sociales (auteurs seuls ou membres de leur foyer) n'est pas précisé publiquement.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure de sécurité publique ciblant des zones et publics spécifiques, sans effet économique différencié documenté pour cette catégorie.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure de sécurité publique sans effet économique différencié documenté pour cette catégorie.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Bénéfice indirect possible d'une sécurité renforcée dans certains quartiers où résident aussi des retraités"],
-            risques: [],
-            angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect pour cette catégorie.",
-          },
+          populaires: { score: 0, avantages: ["Les quartiers les plus touchés par le trafic de drogue, où cette catégorie est proportionnellement plus présente, seraient la cible prioritaire de ce dispositif renforcé"], risques: ["Le recours à des moyens technologiques dérogatoires au droit commun comme la reconnaissance faciale, dans des zones où cette catégorie est surreprésentée, fait craindre à des associations de défense des libertés un risque de surveillance disproportionnée", "La suppression des prestations sociales pour les personnes impliquées pourrait aussi toucher l'entourage familial, dont des enfants, sans que ce risque soit chiffré"], angleMort: "Le périmètre exact des personnes visées par la suppression de prestations sociales (auteurs seuls ou membres de leur foyer) n'est pas précisé publiquement." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique ciblant des zones et publics spécifiques, sans effet économique différencié documenté pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité publique sans effet économique différencié documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: ["Bénéfice indirect possible d'une sécurité renforcée dans certains quartiers où résident aussi des retraités"], risques: [], angleMort: "Aucune donnée publique ne permet de chiffrer cet effet indirect pour cette catégorie." },
         },
       },
       {
@@ -919,30 +641,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Annonce chiffrée (fonds de 2 milliards d'euros par an) et détaillée (production d'un Canadair français, journée nationale d'alerte, trois grands chantiers identifiés) faite publiquement par le candidat le 17 septembre 2026 et rapportée par franceinfo.",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Les ménages modestes sont statistiquement plus exposés aux logements mal isolés ou situés en zones à risque (inondation, canicule), et pourraient bénéficier en priorité d'un fonds d'adaptation ciblant les infrastructures et l'habitat"],
-            risques: ["Le financement du fonds de 2 milliards d'euros par an, s'il repose sur la fiscalité générale, pourrait solliciter l'ensemble des contribuables sans ciblage précisé"],
-            angleMort: "La répartition territoriale et sociale précise des 2 milliards d'euros annuels entre les différents chantiers (piscines, infrastructures, montagne) n'est pas publiée.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Bénéfice potentiel via les infrastructures locales (piscines, adaptation aux canicules) financées par le fonds"],
-            risques: [],
-            angleMort: "Le mode de financement précis du fonds (fiscalité, emprunt, redéploiement de crédits existants) n'est pas détaillé publiquement.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet différencié documenté publiquement pour cette catégorie, la mesure ciblant des infrastructures collectives plutôt qu'un dispositif individuel.",
-          },
-          retraites: {
-            score: 1,
-            avantages: ["Les personnes âgées sont particulièrement vulnérables aux vagues de chaleur ; un plan d'adaptation et une journée nationale d'alerte pourraient bénéficier en priorité à cette catégorie"],
-            risques: [],
-            angleMort: "Aucune mesure spécifique aux établissements pour personnes âgées (Ehpad) n'est mentionnée publiquement dans l'annonce, dont le périmètre exact reste à préciser.",
-          },
+          populaires: { score: 1, avantages: ["Les ménages modestes sont statistiquement plus exposés aux logements mal isolés ou situés en zones à risque (inondation, canicule), et pourraient bénéficier en priorité d'un fonds d'adaptation ciblant les infrastructures et l'habitat"], risques: ["Le financement du fonds de 2 milliards d'euros par an, s'il repose sur la fiscalité générale, pourrait solliciter l'ensemble des contribuables sans ciblage précisé"], angleMort: "La répartition territoriale et sociale précise des 2 milliards d'euros annuels entre les différents chantiers (piscines, infrastructures, montagne) n'est pas publiée." },
+          moyennes: { score: 0, avantages: ["Bénéfice potentiel via les infrastructures locales (piscines, adaptation aux canicules) financées par le fonds"], risques: [], angleMort: "Le mode de financement précis du fonds (fiscalité, emprunt, redéploiement de crédits existants) n'est pas détaillé publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet différencié documenté publiquement pour cette catégorie, la mesure ciblant des infrastructures collectives plutôt qu'un dispositif individuel." },
+          retraites: { score: 1, avantages: ["Les personnes âgées sont particulièrement vulnérables aux vagues de chaleur ; un plan d'adaptation et une journée nationale d'alerte pourraient bénéficier en priorité à cette catégorie"], risques: [], angleMort: "Aucune mesure spécifique aux établissements pour personnes âgées (Ehpad) n'est mentionnée publiquement dans l'annonce, dont le périmètre exact reste à préciser." },
         },
       },
       {
@@ -955,30 +657,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Projet détaillé publiquement par le candidat le 29 septembre 2026 (âge légal, durée de cotisation, exceptions par pénibilité ou handicap, gain chiffré à 30 milliards d'euros) et rapporté par franceinfo, LCP, Le JDD et France 24.",
         impactParClasse: {
-          populaires: {
-            score: -2,
-            avantages: ["Un départ dérogatoire entre 60 et 64 ans resterait possible pour les carrières longues et les métiers pénibles, plus représentés dans cette catégorie"],
-            risques: ["Le report à 65 ans de l'âge légal pèse statistiquement plus sur les carrières commencées tôt et les métiers physiques, majoritaires dans cette catégorie, y compris avec les dérogations prévues"],
-            angleMort: "Le barème précis déterminant qui, au sein de cette catégorie, pourra bénéficier d'un départ dérogatoire avant 65 ans n'est pas encore publié.",
-          },
-          moyennes: {
-            score: -1,
-            avantages: [],
-            risques: ["Report de deux ans par rapport à l'âge légal actuel de 64 ans (issu de la réforme de 2023) pour les carrières standards"],
-            angleMort: "Le calendrier précis de la montée en charge sur moins de dix ans n'est pas détaillé publiquement.",
-          },
-          aisees: {
-            score: 0,
-            avantages: ["Le volet capitalisation complémentaire pourrait bénéficier davantage aux ménages disposant d'une capacité d'épargne plus importante"],
-            risques: [],
-            angleMort: "Le barème et le volume de cette part de capitalisation ne sont pas chiffrés publiquement.",
-          },
-          retraites: {
-            score: 1,
-            avantages: ["Le candidat chiffre à 30 milliards d'euros en année pleine le gain budgétaire attendu, présenté comme un gage de pérennité du système par répartition dont dépendent les pensions déjà versées"],
-            risques: ["La mesure ne concerne pas directement les pensions déjà versées, mais une dégradation perçue de la soutenabilité du système pourrait peser sur le débat public autour de leur revalorisation future"],
-            angleMort: "Aucune évaluation indépendante publique (Conseil d'orientation des retraites) de ce chiffrage à 30 milliards d'euros n'est disponible à ce stade.",
-          },
+          populaires: { score: -2, avantages: ["Un départ dérogatoire entre 60 et 64 ans resterait possible pour les carrières longues et les métiers pénibles, plus représentés dans cette catégorie"], risques: ["Le report à 65 ans de l'âge légal pèse statistiquement plus sur les carrières commencées tôt et les métiers physiques, majoritaires dans cette catégorie, y compris avec les dérogations prévues"], angleMort: "Le barème précis déterminant qui, au sein de cette catégorie, pourra bénéficier d'un départ dérogatoire avant 65 ans n'est pas encore publié." },
+          moyennes: { score: -1, avantages: [], risques: ["Report de deux ans par rapport à l'âge légal actuel de 64 ans (issu de la réforme de 2023) pour les carrières standards"], angleMort: "Le calendrier précis de la montée en charge sur moins de dix ans n'est pas détaillé publiquement." },
+          aisees: { score: 0, avantages: ["Le volet capitalisation complémentaire pourrait bénéficier davantage aux ménages disposant d'une capacité d'épargne plus importante"], risques: [], angleMort: "Le barème et le volume de cette part de capitalisation ne sont pas chiffrés publiquement." },
+          retraites: { score: 1, avantages: ["Le candidat chiffre à 30 milliards d'euros en année pleine le gain budgétaire attendu, présenté comme un gage de pérennité du système par répartition dont dépendent les pensions déjà versées"], risques: ["La mesure ne concerne pas directement les pensions déjà versées, mais une dégradation perçue de la soutenabilité du système pourrait peser sur le débat public autour de leur revalorisation future"], angleMort: "Aucune évaluation indépendante publique (Conseil d'orientation des retraites) de ce chiffrage à 30 milliards d'euros n'est disponible à ce stade." },
         },
       },
       {
@@ -991,30 +673,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Déclarations faites publiquement lors d'un déplacement à Kiev le 26 mai 2026, rapportées par Le JDD et France 24 ; le format exact, les effectifs et le calendrier d'un éventuel déploiement de troupes européennes ne sont pas chiffrés publiquement, cette partie du projet restant conditionnée à un cessez-le-feu non encore intervenu.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: [],
-            risques: ["Un déploiement de troupes françaises dans le cadre d'une force européenne de réassurance comporte un risque pour les militaires engagés, population au sein de laquelle cette catégorie est proportionnellement représentée au regard de la sociologie du recrutement des armées"],
-            angleMort: "Aucun chiffrage public des effectifs français qui seraient engagés ni de leur financement n'est disponible à ce stade, la mesure restant conditionnée à un cessez-le-feu non encore intervenu.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique direct documenté pour cette catégorie à ce stade.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique direct documenté pour cette catégorie à ce stade.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet direct documenté pour cette catégorie à ce stade.",
-          },
+          populaires: { score: 0, avantages: [], risques: ["Un déploiement de troupes françaises dans le cadre d'une force européenne de réassurance comporte un risque pour les militaires engagés, population au sein de laquelle cette catégorie est proportionnellement représentée au regard de la sociologie du recrutement des armées"], angleMort: "Aucun chiffrage public des effectifs français qui seraient engagés ni de leur financement n'est disponible à ce stade, la mesure restant conditionnée à un cessez-le-feu non encore intervenu." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct documenté pour cette catégorie à ce stade." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct documenté pour cette catégorie à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet direct documenté pour cette catégorie à ce stade." },
         },
       },
       {
@@ -1027,38 +689,14 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Propositions détaillées lors du premier numéro de « L'Heure de vérité » sur France 2 le 8 octobre 2026, rapportées et chiffrées de façon concordante par franceinfo et LCP (350 euros dès le premier enfant, réduction d'impôt d'environ 3 000 euros sur trois ans, dégressivité avec l'impôt sur le revenu). Le coût budgétaire total de la réforme et le barème précis de dégressivité ne sont pas publiés à ce stade.",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["Une allocation de 350 euros versée dès le premier enfant bénéficierait aux familles modestes qui n'ont aujourd'hui droit aux allocations familiales qu'à partir du deuxième enfant"],
-            risques: ["Le candidat ne précise pas si le nouveau dispositif remplace à l'euro près l'ensemble des aides existantes (allocations familiales, complément familial) ; une refonte globale pourrait faire des perdants dans cette catégorie selon la configuration exacte du barème"],
-            angleMort: "Le barème précis de dégressivité en fonction de l'impôt sur le revenu et l'articulation avec les aides existantes ne sont pas publiés, ce qui empêche de déterminer qui gagne et qui perd par rapport au système actuel.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["La réduction d'impôt d'environ 3 000 euros sur les trois premières années de l'enfant bénéficierait aux foyers imposables de cette catégorie"],
-            risques: ["La dégressivité annoncée de l'allocation avec l'impôt sur le revenu pourrait réduire le montant perçu par une partie de cette catégorie par rapport aux familles les plus modestes"],
-            angleMort: "Le seuil exact de revenu à partir duquel la dégressivité de l'allocation s'applique n'est pas publié.",
-          },
-          aisees: {
-            score: -1,
-            avantages: [],
-            risques: ["La dégressivité de l'allocation avec l'impôt sur le revenu et le plafonnement implicite de la réduction d'impôt (à 3 000 euros d'impôt dû) désavantageraient relativement les foyers aux revenus les plus élevés par rapport au système actuel d'allocations familiales, non soumis à condition de ressources"],
-            angleMort: "Le barème précis de dégressivité n'étant pas publié, l'ampleur exacte de la perte pour cette catégorie ne peut être chiffrée.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur les familles avec de jeunes enfants, sans effet direct documenté pour les retraités sans enfant à charge.",
-          },
+          populaires: { score: 1, avantages: ["Une allocation de 350 euros versée dès le premier enfant bénéficierait aux familles modestes qui n'ont aujourd'hui droit aux allocations familiales qu'à partir du deuxième enfant"], risques: ["Le candidat ne précise pas si le nouveau dispositif remplace à l'euro près l'ensemble des aides existantes (allocations familiales, complément familial) ; une refonte globale pourrait faire des perdants dans cette catégorie selon la configuration exacte du barème"], angleMort: "Le barème précis de dégressivité en fonction de l'impôt sur le revenu et l'articulation avec les aides existantes ne sont pas publiés, ce qui empêche de déterminer qui gagne et qui perd par rapport au système actuel." },
+          moyennes: { score: 0, avantages: ["La réduction d'impôt d'environ 3 000 euros sur les trois premières années de l'enfant bénéficierait aux foyers imposables de cette catégorie"], risques: ["La dégressivité annoncée de l'allocation avec l'impôt sur le revenu pourrait réduire le montant perçu par une partie de cette catégorie par rapport aux familles les plus modestes"], angleMort: "Le seuil exact de revenu à partir duquel la dégressivité de l'allocation s'applique n'est pas publié." },
+          aisees: { score: -1, avantages: [], risques: ["La dégressivité de l'allocation avec l'impôt sur le revenu et le plafonnement implicite de la réduction d'impôt (à 3 000 euros d'impôt dû) désavantageraient relativement les foyers aux revenus les plus élevés par rapport au système actuel d'allocations familiales, non soumis à condition de ressources"], angleMort: "Le barème précis de dégressivité n'étant pas publié, l'ampleur exacte de la perte pour cette catégorie ne peut être chiffrée." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les familles avec de jeunes enfants, sans effet direct documenté pour les retraités sans enfant à charge." },
         },
       },
     ],
   },
-
-  // ============================================================
-  // BRUNO RETAILLEAU — Les Républicains
-  // ============================================================
   {
     id: "retailleau",
     nom: "Bruno Retailleau",
@@ -1068,16 +706,15 @@ const CANDIDATS = [
         id: "br-rsa",
         theme: "Pouvoir d'achat et économie",
         titre: "Conditionner plus strictement le RSA à l'acceptation d'offres d'emploi",
-        resumeOfficiel:
-          "Dans la continuité de la logique d'activité déjà introduite par la loi pour le plein emploi, le candidat souhaite durcir les conditions de maintien du RSA en cas de refus répété d'offres d'emploi jugées raisonnables.",
+        resumeOfficiel: "Dans la continuité de la loi pour le plein emploi, durcir les conditions de maintien du RSA en cas de refus répété d'offres d'emploi jugées raisonnables.",
         sourceOfficielle: "https://www.lejdd.fr/politique/presidentielle-le-peuple-de-droite-a-deja-son-programme-182934",
         niveauConfiance: "annonce",
-        noteConfiance: "Le JDD documente un consensus plus large de la droite (LR dont Bruno Retailleau) autour de la conditionnalité du RSA à une contrepartie d'activité, par opposition au RN qui refuse cette conditionnalité ; le mécanisme précis de sanction en cas de refus répété d'offres d'emploi (durée, définition d'une offre « raisonnable ») n'est pas chiffré dans cette source.",
+        noteConfiance: "Le JDD documente un consensus plus large de la droite (LR dont Bruno Retailleau) autour de la conditionnalité du RSA à une contrepartie d'activité, par opposition au RN qui refuse cette conditionnalité ; le mécanisme précis de sanction en cas de refus répété d'offres d'emploi n'est pas chiffré dans cette source.",
         impactParClasse: {
-          populaires: { score: -1, avantages: ["Objectif affiché d'insertion professionnelle plus rapide"], risques: ["Risque de sanctions (suspension de l'allocation) pour des allocataires confrontés à des freins réels à l'emploi (garde d'enfants, mobilité, santé) non résolus par la mesure elle-même", "Associations de lutte contre la pauvreté généralement critiques de ce type de conditionnalité"], angleMort: "Le programme ne détaille pas les moyens d'accompagnement (formation, garde d'enfants, mobilité) prévus en parallèle de la sanction." },
+          populaires: { score: -1, avantages: ["Objectif affiché d'insertion professionnelle plus rapide"], risques: ["Risque de sanctions pour des allocataires confrontés à des freins réels à l'emploi (garde d'enfants, mobilité, santé)", "Associations de lutte contre la pauvreté généralement critiques de ce type de conditionnalité"], angleMort: "Le programme ne détaille pas les moyens d'accompagnement prévus en parallèle de la sanction." },
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct pour cette catégorie, non bénéficiaire du RSA dans son ensemble." },
           aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans lien avec cette catégorie." },
-          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct ; ne concerne pas les retraités, mais peut concerner des inactifs non retraités selon la catégorie retenue par le comparateur." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct ; peut concerner des inactifs non retraités selon la catégorie retenue." },
         },
       },
       {
@@ -1106,30 +743,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Réforme détaillée publiquement par le candidat le 22 septembre 2026 (âge minimal, taux plein, décote de 7 % par an, capitalisation chiffrée à 25-30 % pour les jeunes actifs) et rapportée par franceinfo, LCP, Le JDD et France 24 ; cette annonce chiffrée précise une position antérieure moins détaillée (simple liaison de l'âge légal à l'espérance de vie).",
         impactParClasse: {
-          populaires: {
-            score: -2,
-            avantages: [],
-            risques: ["Un âge minimal de départ à 63 ans, avec une décote de 7 % par an avant le taux plein à 65 ans, pèse proportionnellement plus sur les carrières commencées tôt et les métiers pénibles, plus représentés dans cette catégorie"],
-            angleMort: "Le programme ne détaille pas de dispositif spécifique d'exonération de la décote pour les carrières longues ou pénibles.",
-          },
-          moyennes: {
-            score: -1,
-            avantages: [],
-            risques: ["Risque de décote de 7 % par an pour un départ entre 63 et 65 ans sans carrière complète"],
-            angleMort: "Le barème précis des trimestres requis pour échapper à la décote n'est pas publié.",
-          },
-          aisees: {
-            score: 0,
-            avantages: ["Le volet capitalisation, chiffré à 25-30 % de la pension des jeunes actifs, pourrait davantage profiter aux ménages disposant d'une capacité d'épargne ou de placement plus importante"],
-            risques: [],
-            angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié de ce volet de capitalisation selon le niveau de patrimoine.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Le candidat précise explicitement que la capitalisation n'est pas destinée aux retraités actuels, qui ne sont pas concernés par ce volet"],
-            risques: [],
-            angleMort: "Aucune évaluation indépendante publique (Conseil d'orientation des retraites) de l'effet de cette réforme sur l'équilibre financier global du système n'est disponible à ce stade.",
-          },
+          populaires: { score: -2, avantages: [], risques: ["Un âge minimal de départ à 63 ans, avec une décote de 7 % par an avant le taux plein à 65 ans, pèse proportionnellement plus sur les carrières commencées tôt et les métiers pénibles, plus représentés dans cette catégorie"], angleMort: "Le programme ne détaille pas de dispositif spécifique d'exonération de la décote pour les carrières longues ou pénibles." },
+          moyennes: { score: -1, avantages: [], risques: ["Risque de décote de 7 % par an pour un départ entre 63 et 65 ans sans carrière complète"], angleMort: "Le barème précis des trimestres requis pour échapper à la décote n'est pas publié." },
+          aisees: { score: 0, avantages: ["Le volet capitalisation, chiffré à 25-30 % de la pension des jeunes actifs, pourrait davantage profiter aux ménages disposant d'une capacité d'épargne ou de placement plus importante"], risques: [], angleMort: "Aucune donnée publique ne permet de chiffrer l'effet différencié de ce volet de capitalisation selon le niveau de patrimoine." },
+          retraites: { score: 0, avantages: ["Le candidat précise explicitement que la capitalisation n'est pas destinée aux retraités actuels, qui ne sont pas concernés par ce volet"], risques: [], angleMort: "Aucune évaluation indépendante publique (Conseil d'orientation des retraites) de l'effet de cette réforme sur l'équilibre financier global du système n'est disponible à ce stade." },
         },
       },
       {
@@ -1142,30 +759,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Chiffrage précis (40,3 milliards, 41 milliards d'économies, 700 millions pour le congé de naissance) rapporté par franceinfo et Le JDD.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Un revenu familial unique pourrait simplifier l'accès aux aides pour les familles nombreuses ou modestes"],
-            risques: ["Le financement par suppression d'aides existantes (allocations familiales) fait craindre une perte pour certains foyers selon la nouvelle formule de calcul, non détaillée publiquement"],
-            angleMort: "Le barème précis du nouveau revenu familial par rapport aux allocations familiales actuelles n'est pas public, ce qui empêche de savoir qui gagne et qui perd au change.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Prolongation du congé de naissance à 70 % du salaire pendant six mois, contre deux mois actuellement"],
-            risques: ["Incertitude sur l'effet net du remplacement des allocations familiales actuelles par le nouveau dispositif pour cette catégorie"],
-            angleMort: "Effet d'un éventuel plafonnement du nouveau revenu familial selon le niveau de revenu non précisé.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: ["Les allocations familiales actuelles n'étant pas soumises à condition de ressources, une refonte pourrait introduire une dégressivité qui désavantagerait cette catégorie, sans confirmation publique"],
-            angleMort: "Absence de barème public empêchant de vérifier si le nouveau dispositif serait ou non soumis à condition de ressources.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur les familles avec enfants, sans effet direct identifié pour cette catégorie.",
-          },
+          populaires: { score: 0, avantages: ["Un revenu familial unique pourrait simplifier l'accès aux aides pour les familles nombreuses ou modestes"], risques: ["Le financement par suppression d'aides existantes (allocations familiales) fait craindre une perte pour certains foyers selon la nouvelle formule de calcul, non détaillée publiquement"], angleMort: "Le barème précis du nouveau revenu familial par rapport aux allocations familiales actuelles n'est pas public, ce qui empêche de savoir qui gagne et qui perd au change." },
+          moyennes: { score: 0, avantages: ["Prolongation du congé de naissance à 70 % du salaire pendant six mois, contre deux mois actuellement"], risques: ["Incertitude sur l'effet net du remplacement des allocations familiales actuelles par le nouveau dispositif pour cette catégorie"], angleMort: "Effet d'un éventuel plafonnement du nouveau revenu familial selon le niveau de revenu non précisé." },
+          aisees: { score: 0, avantages: [], risques: ["Les allocations familiales actuelles n'étant pas soumises à condition de ressources, une refonte pourrait introduire une dégressivité qui désavantagerait cette catégorie, sans confirmation publique"], angleMort: "Absence de barème public empêchant de vérifier si le nouveau dispositif serait ou non soumis à condition de ressources." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur les familles avec enfants, sans effet direct identifié pour cette catégorie." },
         },
       },
       {
@@ -1178,30 +775,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Plan détaillé publiquement début septembre 2026 et rapporté par Le JDD ; a suscité une réaction publique de la présidente de l'Assemblée nationale Yaël Braun-Pivet, confirmant la réalité et la portée de la proposition.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Objectif affiché de renforcer le pouvoir des citoyens face aux décisions du Conseil constitutionnel ; un sondage Odoxa cité par Le JDD indique que 80 % des Français soutiendraient le principe d'être consultés après la censure d'une loi votée par le Parlement"],
-            risques: ["Selon ses opposants, dont la présidente de l'Assemblée nationale, une remise en cause du contrôle de constitutionnalité fragiliserait la protection des libertés individuelles, qui bénéficie à l'ensemble de la population, y compris cette catégorie"],
-            angleMort: "Une réforme constitutionnelle n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois qui seraient appliquées malgré une censure, non connues à ce stade.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Même angle mort que pour les autres catégories : l'effet dépend de lois futures non déterminées par cette seule mesure institutionnelle.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique direct identifiable à ce stade.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique direct identifiable à ce stade.",
-          },
+          populaires: { score: 0, avantages: ["Objectif affiché de renforcer le pouvoir des citoyens face aux décisions du Conseil constitutionnel ; un sondage Odoxa cité par Le JDD indique que 80 % des Français soutiendraient le principe d'être consultés après la censure d'une loi votée par le Parlement"], risques: ["Selon ses opposants, dont la présidente de l'Assemblée nationale, une remise en cause du contrôle de constitutionnalité fragiliserait la protection des libertés individuelles, qui bénéficie à l'ensemble de la population, y compris cette catégorie"], angleMort: "Une réforme constitutionnelle n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois qui seraient appliquées malgré une censure, non connues à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : l'effet dépend de lois futures non déterminées par cette seule mesure institutionnelle." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
         },
       },
       {
@@ -1286,10 +863,6 @@ const CANDIDATS = [
       },
     ],
   },
-
-  // ============================================================
-  // MARINE LE PEN — Rassemblement national
-  // ============================================================
   {
     id: "le-pen",
     nom: "Marine Le Pen",
@@ -1299,31 +872,29 @@ const CANDIDATS = [
         id: "mlp-tva",
         theme: "Pouvoir d'achat et économie",
         titre: "Suppression ou forte baisse de la TVA sur les produits de première nécessité",
-        resumeOfficiel:
-          "Baisser la TVA de 20 % à 5,5 % sur les produits énergétiques (carburant, fioul, gaz, électricité) et de 5,5 % à 0 % sur une liste d'une centaine de produits de première nécessité, sans calendrier ni chiffrage global rendus publics pour 2027 à ce stade.",
+        resumeOfficiel: "Baisser la TVA de 20 % à 5,5 % sur les produits énergétiques (carburant, fioul, gaz, électricité) et de 5,5 % à 0 % sur une liste d'une centaine de produits de première nécessité, sans calendrier ni chiffrage global rendus publics pour 2027.",
         sourceOfficielle: "https://www.lejdd.fr/Politique/credibilite-efficacite-legalite-un-economiste-evalue-les-deux-baisses-de-tva-de-marine-le-pen-4105789",
         niveauConfiance: "confirme",
         noteConfiance: "Position portée par Marine Le Pen et le RN sur plusieurs campagnes : les deux baisses de TVA (énergie et produits de première nécessité) ont été chiffrées et analysées par des économistes dans Le JDD lors de la présidentielle 2022, et réaffirmées depuis (le RN maintenait encore une TVA à taux zéro sur une centaine de produits en 2024). Aucune confirmation officielle chiffrée spécifique à 2027 à ce jour.",
         impactParClasse: {
-          populaires: { score: 2, avantages: ["Effet direct et proportionnellement plus favorable pour les ménages consacrant une part plus importante de leur revenu à ces produits de consommation courante"], risques: ["Financement du manque à gagner de TVA (recette de l'État) non détaillé publiquement"], angleMort: "Aucun chiffrage indépendant public du coût budgétaire de la mesure au moment de la rédaction." },
+          populaires: { score: 2, avantages: ["Effet direct et proportionnellement plus favorable pour les ménages consacrant une part importante de leur revenu à ces produits"], risques: ["Financement du manque à gagner de TVA non détaillé publiquement"], angleMort: "Aucun chiffrage indépendant public du coût budgétaire de la mesure." },
           moyennes: { score: 1, avantages: ["Gain de pouvoir d'achat, dans une proportion moindre du revenu que pour les classes populaires"], risques: [], angleMort: "Effet exact selon la composition du panier de consommation, non détaillé." },
-          aisees: { score: 0, avantages: ["Gain en valeur absolue possible mais représentant une part marginale du revenu"], risques: [], angleMort: "Non chiffré spécifiquement pour cette catégorie." },
-          retraites: { score: 1, avantages: ["Effet positif pour les retraités aux pensions modestes, dont la part de consommation contrainte est proportionnellement élevée"], risques: [], angleMort: "Effet différencié selon le niveau de pension non chiffré publiquement." },
+          aisees: { score: 0, avantages: ["Gain en valeur absolue possible mais marginal en proportion du revenu"], risques: [], angleMort: "Non chiffré spécifiquement pour cette catégorie." },
+          retraites: { score: 1, avantages: ["Effet positif pour les retraités aux pensions modestes, à la part de consommation contrainte proportionnellement élevée"], risques: [], angleMort: "Effet différencié selon le niveau de pension non chiffré publiquement." },
         },
       },
       {
         id: "mlp-ifi",
         theme: "Pouvoir d'achat et économie",
         titre: "Suppression de l'IFI et création d'un impôt sur la fortune financière (IFF)",
-        resumeOfficiel:
-          "Le Rassemblement national propose de remplacer l'impôt sur la fortune immobilière par un impôt ciblant les actifs financiers, présenté par le parti comme visant la « spéculation » plutôt que la détention d'un bien immobilier.",
+        resumeOfficiel: "Remplacer l'impôt sur la fortune immobilière par un impôt ciblant les actifs financiers, présenté par le parti comme visant la « spéculation » plutôt que la détention d'un bien immobilier.",
         sourceOfficielle: "https://www.franceinfo.fr/replay-radio/l-edito-politique/taxation-des-ultra-riches-le-grand-ecart-du-rn_7472092.html",
         niveauConfiance: "confirme",
-        noteConfiance: "Proposition distinctive et récurrente du RN documentée sur plusieurs campagnes (dont 2022), analysée par franceinfo ; barème précis de l'IFF non retrouvé dans une source de premier rang pour 2027.",
+        noteConfiance: "Proposition distinctive et récurrente du RN (dont 2022), analysée par franceinfo ; barème précis de l'IFF non retrouvé dans une source de premier rang pour 2027.",
         impactParClasse: {
           populaires: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct, cette catégorie n'étant concernée ni par l'IFI ni par l'IFF envisagé." },
-          moyennes: { score: 0, avantages: ["Non concernées par les seuils habituels de ce type d'impôt"], risques: [], angleMort: "Seuil exact de l'IFF non publié, ce qui empêche de vérifier l'absence totale d'effet pour le haut de cette catégorie." },
-          aisees: { score: 0, avantages: ["Allègement pour les détenteurs de patrimoine immobilier important (suppression de l'IFI)"], risques: ["Une partie de cette catégorie, si elle détient un patrimoine financier important, pourrait être visée par le nouvel IFF sans que le barème soit public"], angleMort: "Le rendement budgétaire comparé de l'IFI supprimé et de l'IFF créé n'est pas chiffré publiquement, rendant l'effet net incertain même pour cette catégorie." },
+          moyennes: { score: 0, avantages: ["Non concernées par les seuils habituels de ce type d'impôt"], risques: [], angleMort: "Seuil exact de l'IFF non publié." },
+          aisees: { score: 0, avantages: ["Allègement pour les détenteurs de patrimoine immobilier important"], risques: ["Une partie de cette catégorie, si patrimoine financier important, pourrait être visée par le nouvel IFF sans barème public"], angleMort: "Rendement budgétaire comparé IFI/IFF non chiffré publiquement, effet net incertain." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Effet marginal, sauf pour une minorité de retraités à patrimoine financier important, non quantifié." },
         },
       },
@@ -1385,38 +956,14 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Propositions détaillées publiquement par la candidate le 13 septembre 2026 lors de sa rentrée politique à Hénin-Beaumont et rapportées par franceinfo et LCP ; la présidente de la confédération des bailleurs sociaux a réagi publiquement, confirmant la réalité et la portée de la proposition. Le mécanisme légal précis (loi ordinaire ou critère de résidence) et son calendrier ne sont pas encore chiffrés publiquement.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Les 2,7 millions de personnes actuellement en attente d'un logement social pourraient, selon les défenseurs de la mesure, voir leur délai d'attente réduit si la priorité nationale limite le nombre de candidats étrangers éligibles"],
-            risques: ["La présidente de la confédération des bailleurs sociaux qualifie la mesure de discriminatoire ; des étrangers en situation régulière aujourd'hui éligibles au logement social ou à l'APL, souvent parmi les ménages les plus modestes, en perdraient le bénéfice"],
-            angleMort: "Aucun chiffrage public n'évalue le nombre de personnes qui perdraient l'accès à l'APL ou au logement social du fait du critère de nationalité, ni l'effet net sur la liste d'attente.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure centrée sur le parc social et l'APL, dont cette catégorie est statistiquement moins bénéficiaire ; effet indirect non chiffré publiquement.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure sans effet direct documenté pour cette catégorie, non concernée par le logement social ou l'APL.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: ["Les retraités étrangers en situation régulière résidant en HLM ou bénéficiant de l'APL, souvent parmi les pensions les plus modestes, perdraient ce bénéfice selon cette proposition"],
-            angleMort: "Aucune donnée publique ne chiffre le nombre de retraités concernés par cette restriction.",
-          },
+          populaires: { score: 0, avantages: ["Les 2,7 millions de personnes actuellement en attente d'un logement social pourraient, selon les défenseurs de la mesure, voir leur délai d'attente réduit si la priorité nationale limite le nombre de candidats étrangers éligibles"], risques: ["La présidente de la confédération des bailleurs sociaux qualifie la mesure de discriminatoire ; des étrangers en situation régulière aujourd'hui éligibles au logement social ou à l'APL, souvent parmi les ménages les plus modestes, en perdraient le bénéfice"], angleMort: "Aucun chiffrage public n'évalue le nombre de personnes qui perdraient l'accès à l'APL ou au logement social du fait du critère de nationalité, ni l'effet net sur la liste d'attente." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur le parc social et l'APL, dont cette catégorie est statistiquement moins bénéficiaire ; effet indirect non chiffré publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie, non concernée par le logement social ou l'APL." },
+          retraites: { score: 0, avantages: [], risques: ["Les retraités étrangers en situation régulière résidant en HLM ou bénéficiant de l'APL, souvent parmi les pensions les plus modestes, perdraient ce bénéfice selon cette proposition"], angleMort: "Aucune donnée publique ne chiffre le nombre de retraités concernés par cette restriction." },
         },
       },
     ],
   },
-
-  // ============================================================
-  // MARINE TONDELIER — Les Écologistes
-  // ============================================================
   {
     id: "tondelier",
     nom: "Marine Tondelier",
@@ -1432,30 +979,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Proposition chiffrée, formulée publiquement lors du débat Medef du 27 août 2026 et rapportée par France 24 et franceinfo.",
         impactParClasse: {
-          populaires: {
-            score: 2,
-            avantages: ["Hausse directe du salaire minimum, bénéficiant en priorité aux salariés les moins rémunérés, très représentés dans cette catégorie"],
-            risques: ["Un Smic à 2 000 € bruts représente une hausse importante par rapport au Smic actuel (1 823 € bruts début 2026) ; un plan d'aide aux PME est annoncé en contrepartie mais son financement précis n'est pas chiffré publiquement"],
-            angleMort: "Aucun chiffrage indépendant public de l'effet net sur l'emploi peu qualifié dans les petites entreprises.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Effet d'entraînement possible sur les grilles salariales proches du Smic"],
-            risques: [],
-            angleMort: "Effet sur les salariés situés juste au-dessus du nouveau Smic (tassement des grilles) non chiffré publiquement.",
-          },
-          aisees: {
-            score: -1,
-            avantages: [],
-            risques: ["Pour les employeurs et actionnaires de PME, une hausse du coût du travail au niveau du Smic sans compensation intégrale pourrait peser sur les marges"],
-            angleMort: "Le contenu exact du « plan d'aide » aux PME censé compenser le surcoût n'est pas détaillé publiquement.",
-          },
-          retraites: {
-            score: 1,
-            avantages: ["Effet indirect positif pour les retraités les plus modestes si la hausse du Smic sert de référence à une revalorisation d'autres minima sociaux"],
-            risques: [],
-            angleMort: "Aucun lien mécanique automatique entre Smic et minimum vieillesse n'est établi publiquement dans cette proposition.",
-          },
+          populaires: { score: 2, avantages: ["Hausse directe du salaire minimum, bénéficiant en priorité aux salariés les moins rémunérés, très représentés dans cette catégorie"], risques: ["Un Smic à 2 000 € bruts représente une hausse importante par rapport au Smic actuel (1 823 € bruts début 2026) ; un plan d'aide aux PME est annoncé en contrepartie mais son financement précis n'est pas chiffré publiquement"], angleMort: "Aucun chiffrage indépendant public de l'effet net sur l'emploi peu qualifié dans les petites entreprises." },
+          moyennes: { score: 0, avantages: ["Effet d'entraînement possible sur les grilles salariales proches du Smic"], risques: [], angleMort: "Effet sur les salariés situés juste au-dessus du nouveau Smic (tassement des grilles) non chiffré publiquement." },
+          aisees: { score: -1, avantages: [], risques: ["Pour les employeurs et actionnaires de PME, une hausse du coût du travail au niveau du Smic sans compensation intégrale pourrait peser sur les marges"], angleMort: "Le contenu exact du « plan d'aide » aux PME censé compenser le surcoût n'est pas détaillé publiquement." },
+          retraites: { score: 1, avantages: ["Effet indirect positif pour les retraités les plus modestes si la hausse du Smic sert de référence à une revalorisation d'autres minima sociaux"], risques: [], angleMort: "Aucun lien mécanique automatique entre Smic et minimum vieillesse n'est établi publiquement dans cette proposition." },
         },
       },
       {
@@ -1468,30 +995,10 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Chiffre (15 % sur le quinquennat) rapporté par franceinfo dans un comparatif des propositions des candidats, mais sans détail public sur le financement propre à cette proposition, à la différence du chiffrage plus détaillé fourni par d'autres candidats sur le même sujet.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Une revalorisation générale peut, selon ses défenseurs, améliorer l'attractivité du métier dans les établissements les plus en difficulté"],
-            risques: [],
-            angleMort: "Absence de financement détaillé publiquement, à la différence d'autres candidats sur le même sujet.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Hausse bénéficiant à la profession enseignante, majoritairement issue de cette catégorie"],
-            risques: [],
-            angleMort: "Calendrier de mise en œuvre sur le quinquennat non précisé.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure sans effet direct documenté pour cette catégorie.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Mesure sans effet direct documenté pour cette catégorie.",
-          },
+          populaires: { score: 0, avantages: ["Une revalorisation générale peut, selon ses défenseurs, améliorer l'attractivité du métier dans les établissements les plus en difficulté"], risques: [], angleMort: "Absence de financement détaillé publiquement, à la différence d'autres candidats sur le même sujet." },
+          moyennes: { score: 0, avantages: ["Hausse bénéficiant à la profession enseignante, majoritairement issue de cette catégorie"], risques: [], angleMort: "Calendrier de mise en œuvre sur le quinquennat non précisé." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct documenté pour cette catégorie." },
         },
       },
       {
@@ -1504,30 +1011,10 @@ const CANDIDATS = [
         niveauConfiance: "confirme",
         noteConfiance: "Mesures détaillées publiquement le 30 mai 2026 et rapportées par France 24, avec échéances et dispositifs précis (2050, fonds de transition, restriction horaire de publicité).",
         impactParClasse: {
-          populaires: {
-            score: 1,
-            avantages: ["L'interdiction des aliments ultratransformés dans les cantines scolaires bénéficie en priorité aux enfants scolarisés dans le public, où cette catégorie est proportionnellement plus représentée"],
-            risques: ["La sortie des pesticides de synthèse, si elle renchérit les coûts de production agricole, pourrait se répercuter sur les prix alimentaires, qui pèsent proportionnellement plus sur le budget de cette catégorie"],
-            angleMort: "Le fonds de transition agroécologique annoncé n'est pas chiffré publiquement, ce qui empêche d'évaluer s'il suffit à limiter une hausse des prix alimentaires.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: ["Réduction de l'exposition aux perturbateurs endocriniens et aux PFAS dans les produits du quotidien"],
-            risques: [],
-            angleMort: "Effet sur le prix des produits de consommation courante (hygiène, textile) non chiffré publiquement.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: ["Les agriculteurs et propriétaires fonciers de cette catégorie pourraient supporter une part du coût de la transition agroécologique en l'absence de compensation intégrale"],
-            angleMort: "Répartition précise du financement du fonds de transition entre État, filières et exploitants non détaillée publiquement.",
-          },
-          retraites: {
-            score: 0,
-            avantages: ["Réduction de l'exposition aux substances cancérogènes et perturbateurs endocriniens, un enjeu de santé publique à long terme"],
-            risques: [],
-            angleMort: "Effet spécifique pour cette catégorie non chiffré publiquement, la mesure visant l'ensemble de la population.",
-          },
+          populaires: { score: 1, avantages: ["L'interdiction des aliments ultratransformés dans les cantines scolaires bénéficie en priorité aux enfants scolarisés dans le public, où cette catégorie est proportionnellement plus représentée"], risques: ["La sortie des pesticides de synthèse, si elle renchérit les coûts de production agricole, pourrait se répercuter sur les prix alimentaires, qui pèsent proportionnellement plus sur le budget de cette catégorie"], angleMort: "Le fonds de transition agroécologique annoncé n'est pas chiffré publiquement, ce qui empêche d'évaluer s'il suffit à limiter une hausse des prix alimentaires." },
+          moyennes: { score: 0, avantages: ["Réduction de l'exposition aux perturbateurs endocriniens et aux PFAS dans les produits du quotidien"], risques: [], angleMort: "Effet sur le prix des produits de consommation courante (hygiène, textile) non chiffré publiquement." },
+          aisees: { score: 0, avantages: [], risques: ["Les agriculteurs et propriétaires fonciers de cette catégorie pourraient supporter une part du coût de la transition agroécologique en l'absence de compensation intégrale"], angleMort: "Répartition précise du financement du fonds de transition entre État, filières et exploitants non détaillée publiquement." },
+          retraites: { score: 0, avantages: ["Réduction de l'exposition aux substances cancérogènes et perturbateurs endocriniens, un enjeu de santé publique à long terme"], risques: [], angleMort: "Effet spécifique pour cette catégorie non chiffré publiquement, la mesure visant l'ensemble de la population." },
         },
       },
       {
@@ -1540,30 +1027,10 @@ const CANDIDATS = [
         niveauConfiance: "annonce",
         noteConfiance: "Projet institutionnel présenté publiquement le 13 juillet 2026 et rapporté par France 24 ; les modalités précises de la réforme constitutionnelle (procédure, calendrier) ne sont pas chiffrées ni détaillées à ce stade.",
         impactParClasse: {
-          populaires: {
-            score: 0,
-            avantages: ["Objectif affiché de renforcement de l'État de droit et de la participation citoyenne, potentiellement plus protecteur pour les catégories les moins bien représentées dans les instances actuelles"],
-            risques: [],
-            angleMort: "Une réforme constitutionnelle n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois adoptées ensuite, non connues à ce stade.",
-          },
-          moyennes: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Même angle mort que pour les autres catégories : effet dépendant de textes futurs non déterminés par cette seule mesure.",
-          },
-          aisees: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique direct identifiable à ce stade.",
-          },
-          retraites: {
-            score: 0,
-            avantages: [],
-            risques: [],
-            angleMort: "Aucun effet économique direct identifiable à ce stade.",
-          },
+          populaires: { score: 0, avantages: ["Objectif affiché de renforcement de l'État de droit et de la participation citoyenne, potentiellement plus protecteur pour les catégories les moins bien représentées dans les instances actuelles"], risques: [], angleMort: "Une réforme constitutionnelle n'a pas d'effet économique différencié direct par catégorie ; son impact dépendrait des lois adoptées ensuite, non connues à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort que pour les autres catégories : effet dépendant de textes futurs non déterminés par cette seule mesure." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
         },
       },
     ],

@@ -5,249 +5,33 @@
 (function () {
   const { CLASSES_SOCIALES, CANDIDATS, THEMES } = window.AGORA_DATA;
   const { classerProfil, SEUILS_NIVEAU_DE_VIE, SEUILS_CLASSIFICATION } = window.AGORA_SIMULATEUR;
-  const { NIVEAUX_PRIORITE, LABELS_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise, trierParScorePersonnalise } =
-    window.AGORA_PRIORITES;
 
   const form = document.getElementById("form-simulateur");
   const resultatEl = document.getElementById("resultat-simulateur");
   const enfantsWrap = document.getElementById("bloc-enfants");
   const patrimoineWrap = document.getElementById("bloc-patrimoine");
-  const prioritesPanelEl = document.getElementById("priorites-panel-simulateur");
 
-  let poidsThemes = poidsThemesParDefaut();
+  // Parcours unique en deux étapes : la catégorie calculée à l'étape 1 est lue par la boussole (js/boussole-ui.js).
+  // Tout reste en mémoire : rien n'est envoyé, stocké ni passé dans l'adresse.
+  const parcours = (window.AGORA_PARCOURS = { classe: null, aller });
+  const blocs = [document.getElementById("etape-1"), document.getElementById("etape-2")];
+  const pastilles = [document.getElementById("pastille-1"), document.getElementById("pastille-2")];
 
-  function scoreToWidth(score) {
-    return Math.min(Math.abs(score) / 2, 1) * 50;
-  }
-
-  function renderScorePersonnalise(resultat) {
-    if (resultat.scoreGlobal === null) {
-      return `
-        <div class="score-personnalise score-personnalise--vide">
-          Score personnalisé non calculable — aucune mesure recensée sur vos thèmes prioritaires pour ce candidat
-        </div>
-      `;
-    }
-    const { scoreGlobal, themesCouverts, themesPonderes } = resultat;
-    const width = scoreToWidth(scoreGlobal);
-    const side = scoreGlobal >= 0 ? "positif" : "negatif";
-    const avertissement =
-      themesCouverts < themesPonderes
-        ? `<div class="score-personnalise__avertissement">Estimation basée sur une partie seulement de vos priorités : à interpréter avec prudence.</div>`
-        : "";
-    return `
-      <div class="score-personnalise">
-        <div class="score-personnalise__tete"><span class="score-personnalise__label">Score personnalisé selon vos priorités</span><span class="score-personnalise__valeur">${scoreGlobal > 0 ? "+" : scoreGlobal < 0 ? "−" : ""}${Math.abs(scoreGlobal).toFixed(1)} / 2</span></div>
-        <div class="ledger__track" role="img" aria-label="Score personnalisé ${scoreGlobal.toFixed(1)} sur une échelle de -2 à 2, ${themesCouverts} sur ${themesPonderes} thèmes prioritaires couverts">
-          <div class="ledger__axis"></div>
-          <div class="ledger__fill ${side}" style="width:${width}%"></div>
-        </div>
-        <div class="score-personnalise__couverture">${themesCouverts}/${themesPonderes} thème${themesPonderes > 1 ? "s" : ""} prioritaire${themesPonderes > 1 ? "s" : ""} couvert${themesCouverts > 1 ? "s" : ""}</div>
-        ${avertissement}
-      </div>
-    `;
-  }
-
-  function initPrioritesPanel() {
-    prioritesPanelEl.innerHTML = `
-      <div class="priorites-panel__card">
-        <div class="priorites-panel__header">
-          <h3>Mes priorités</h3>
-          <button type="button" id="btn-reinitialiser-priorites-sim" class="mono priorites-panel__reset">
-            Réinitialiser mes priorités
-          </button>
-        </div>
-        <p class="priorites-panel__intro">
-          Indiquez l'importance que vous accordez à chaque thème pour que « Mon candidat »
-          calcule un score personnalisé par candidat, une fois votre catégorie sociale déterminée.
-        </p>
-        <ul class="priorites-panel__list">
-          ${THEMES.map((theme) => `
-            <li class="priorites-panel__row">
-              <span>${theme}</span>
-              <div class="priorites-panel__niveaux" role="group" aria-label="Priorité pour ${theme}">
-                ${NIVEAUX_PRIORITE.map((niveau) => `
-                  <button
-                    type="button"
-                    class="priorites-panel__niveau mono ${poidsThemes[theme] === niveau ? "active" : ""}"
-                    data-theme="${theme}"
-                    data-niveau="${niveau}"
-                    aria-pressed="${poidsThemes[theme] === niveau}"
-                  >${LABELS_PRIORITE[niveau]}</button>
-                `).join("")}
-              </div>
-            </li>
-          `).join("")}
-        </ul>
-      </div>
-    `;
-
-    prioritesPanelEl.querySelectorAll(".priorites-panel__niveau").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        poidsThemes[btn.dataset.theme] = Number(btn.dataset.niveau);
-        initPrioritesPanel();
-      });
+  function aller(n) {
+    blocs.forEach((b, i) => (b.hidden = i !== n - 1));
+    pastilles.forEach((p, i) => {
+      p.classList.toggle("actif", i === n - 1);
+      if (i === n - 1) p.setAttribute("aria-current", "step");
+      else p.removeAttribute("aria-current");
     });
-
-    document.getElementById("btn-reinitialiser-priorites-sim").addEventListener("click", () => {
-      poidsThemes = poidsThemesParDefaut();
-      initPrioritesPanel();
-    });
+    window.scrollTo({ top: 0 });
+    document.dispatchEvent(new CustomEvent("parcours:etape", { detail: n }));
   }
-
-
-  // Candidats sans mesure sur les thèmes prioritaires : regroupés dans un volet repliable mais toujours
-  // listés (aucun candidat n'est jamais retiré du classement).
-  function renderNonCalculables(liste, adjectif, ouvert) {
-    if (!liste.length) return "";
-    const n = liste.length;
-    return `
-      <details class="non-calculables"${ouvert ? " open" : ""}>
-        <summary>${n} autre${n > 1 ? "s" : ""} candidat${n > 1 ? "s" : ""} : score non calculable</summary>
-        <p>Aucune mesure n'est recensée pour ces candidats sur ${adjectif} thèmes prioritaires : aucun score ne peut être calculé, et ce n'est ni un bon ni un mauvais résultat.</p>
-        <ul>${liste.map((c) => `<li>${c.nom} <span>· ${c.parti}</span></li>`).join("")}</ul>
-      </details>
-    `;
-  }
-
-  function renderMonCandidat(classeActive) {
-    const themesPonderes = Object.values(poidsThemes).some((n) => n > 0);
-    if (!themesPonderes) {
-      return `
-        <div class="resultat" style="border-left:4px solid var(--line-strong); margin-top:24px;">
-          <p style="margin:0;">
-            Indiquez au moins une priorité ci-dessus pour voir quel candidat correspond le mieux à ce que vous
-            jugez important.
-          </p>
-        </div>
-      `;
-    }
-
-    const resultatsParId = {};
-    CANDIDATS.forEach((c) => {
-      resultatsParId[c.id] = calculerScorePersonnalise(c, classeActive, poidsThemes);
-    });
-    const classement = trierParScorePersonnalise(CANDIDATS, resultatsParId);
-    const calculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal !== null);
-    const nonCalculables = classement.filter((c) => resultatsParId[c.id].scoreGlobal === null);
-    const premier = resultatsParId[classement[0].id];
-    const aUneCorrespondance = premier && premier.scoreGlobal !== null;
-
-    return `
-      <div class="resultat" style="margin-top:24px;">
-        <div class="resultat__eyebrow">Selon vos priorités et votre catégorie sociale</div>
-        <h3>${aUneCorrespondance ? classement[0].nom : "Aucune correspondance calculable"}</h3>
-        ${aUneCorrespondance ? `<p>${classement[0].parti}</p>` : ""}
-        <p style="font-size:0.85rem; font-style:italic; color:var(--ink-soft);">
-          Le candidat dont les mesures recensées obtiennent le score le plus favorable pour vos priorités déclarées.
-          Ce n'est ni un jugement de valeur ni une recommandation de vote — voir la
-          <a href="methodologie.html#score-personnalise" style="text-decoration:underline;">méthodologie</a>.
-          Tous les candidats restent listés ci-dessous : ceux dont le score est calculable dans l'ordre de correspondance, les autres regroupés en fin de liste.
-        </p>
-        <ol style="list-style:none; padding:0; display:flex; flex-direction:column; gap:16px;">
-          ${calculables.map((candidat, i) => `
-            <li style="${i === 0 && aUneCorrespondance ? "" : "opacity:0.8;"}">
-              <div style="margin-bottom:6px;">
-                <span class="font-display">${i + 1}. ${candidat.nom}</span>
-                <span class="classement__parti">${candidat.parti}</span>
-              </div>
-              ${renderScorePersonnalise(resultatsParId[candidat.id])}
-            </li>
-          `).join("")}
-        </ol>
-        ${renderNonCalculables(nonCalculables, "vos", calculables.length === 0)}
-
-        <div class="partage" id="partage">
-          <button type="button" class="partage__btn partage__btn--primaire mono" id="btn-ouvrir-partage">
-            Partager mon résultat
-          </button>
-          <p class="partage__note">
-            Facultatif, et entièrement dans votre navigateur. Seuls votre catégorie sociale et vos priorités
-            figurent sur la carte : jamais votre revenu, votre âge ni votre patrimoine.
-          </p>
-          <div class="partage__panneau" id="partage-panneau" hidden>
-            <canvas id="partage-canvas" class="partage__canvas" role="img"
-              aria-label="Carte de résultat : ma catégorie sociale, mes priorités et le classement complet des candidats selon ces priorités"></canvas>
-            <p class="partage__note">
-              La carte montre le classement complet et précise que ce n'est pas une recommandation de vote.
-            </p>
-            <div class="partage__actions">
-              <button type="button" class="partage__btn partage__btn--primaire mono" id="btn-partage-natif" hidden>Partager</button>
-              <button type="button" class="partage__btn mono" id="btn-partage-lien">Copier le lien</button>
-              <button type="button" class="partage__btn mono" id="btn-partage-image">Télécharger l'image</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  const TEXTE_PARTAGE =
-    "Voici ce que donne le comparateur Mon Choix 2027 pour ma situation et mes priorités. À toi d'essayer :";
-
-  function lienPartage(classeActive) {
-    const base = window.location.href.split("?")[0].replace(/[^/]*$/, "");
-    return `${base}resultat.html?${window.AGORA_PARTAGE.encoderPartage(classeActive, poidsThemes)}`;
-  }
-
-  function canvasEnBlob(canvas) {
-    return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
-  }
-
-  function initPartage(classeActive) {
-    const btnOuvrir = document.getElementById("btn-ouvrir-partage");
-    if (!btnOuvrir) return; // pas de priorités indiquées : rien à partager
-
-    const panneau = document.getElementById("partage-panneau");
-    const canvas = document.getElementById("partage-canvas");
-    const btnNatif = document.getElementById("btn-partage-natif");
-    const btnLien = document.getElementById("btn-partage-lien");
-    const btnImage = document.getElementById("btn-partage-image");
-
-    btnOuvrir.addEventListener("click", async () => {
-      btnOuvrir.hidden = true;
-      panneau.hidden = false;
-      if (typeof navigator.share === "function") btnNatif.hidden = false;
-      // Les polices du site doivent être chargées avant de dessiner, sinon le texte sort en police de secours.
-      if (document.fonts && document.fonts.ready) await document.fonts.ready;
-      window.AGORA_PARTAGE.dessinerCarte(canvas, classeActive, poidsThemes);
-    });
-
-    btnLien.addEventListener("click", async () => {
-      const lien = lienPartage(classeActive);
-      try {
-        await navigator.clipboard.writeText(lien);
-        btnLien.textContent = "Lien copié ✓";
-        setTimeout(() => (btnLien.textContent = "Copier le lien"), 2500);
-      } catch (e) {
-        window.prompt("Copiez ce lien :", lien);
-      }
-    });
-
-    btnImage.addEventListener("click", async () => {
-      const blob = await canvasEnBlob(canvas);
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "mon-choix-2027.png";
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    });
-
-    btnNatif.addEventListener("click", async () => {
-      const lien = lienPartage(classeActive);
-      try {
-        const fichier = new File([await canvasEnBlob(canvas)], "mon-choix-2027.png", { type: "image/png" });
-        if (navigator.canShare && navigator.canShare({ files: [fichier] })) {
-          await navigator.share({ files: [fichier], text: `${TEXTE_PARTAGE} ${lien}` });
-          return;
-        }
-        await navigator.share({ title: "Mon Choix 2027", text: TEXTE_PARTAGE, url: lien });
-      } catch (e) {
-        // Partage annulé par le visiteur : rien à faire.
-      }
-    });
-  }
+  pastilles.forEach((p, i) => p.addEventListener("click", () => aller(i + 1)));
+  document.getElementById("passer-etape-2").addEventListener("click", () => {
+    parcours.classe = null;
+    aller(2);
+  });
 
   function euros(n) {
     return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n) + " €";
@@ -439,10 +223,20 @@
         </a>
       </div>
 
-      ${renderMonCandidat(r.classePrincipale)}
+      <div class="resultat" style="margin-top:24px;">
+        <div class="resultat__eyebrow">Étape 2 sur 2</div>
+        <h3>Vos choix sur 22 questions</h3>
+        <p>
+          Votre catégorie est déterminée. Reste à indiquer vos choix entre deux propositions : le test
+          mesure votre proximité avec les positions <strong>documentées</strong> des candidats, et affiche à part
+          l'effet économique estimé de leurs mesures sur votre catégorie.
+        </p>
+        <button type="button" class="bouton-principal" id="vers-etape-2">Passer à l'étape 2 <span aria-hidden="true">→</span></button>
+      </div>
     `;
     resultatEl.hidden = false;
-    initPartage(r.classePrincipale);
+    parcours.classe = r.classePrincipale;
+    document.getElementById("vers-etape-2").addEventListener("click", () => aller(2));
     resultatEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -478,5 +272,4 @@
   });
 
   toggleBlocsConditionnels();
-  initPrioritesPanel();
 })();

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulateur — À quelle catégorie sociale appartenez-vous ? | Mon Choix 2027</title>
-<meta name="description" content="Estimez votre niveau de vie selon la méthode INSEE et découvrez quelle catégorie sociale du comparateur correspond à votre situation.">
+<title>Le test : votre situation, puis vos choix | Mon Choix 2027</title>
+<meta name="description" content="Étape 1 : votre situation détermine votre catégorie sociale (méthode INSEE). Étape 2 : vos choix sur 22 questions, comparés aux positions documentées des candidats.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,7 +15,7 @@
   <div class="container site-header__row">
     <a href="index.html" class="logo">Mon <span>Choix 2027</span></a>
     <nav class="site-nav">
-      <a href="simulateur.html" class="active">Simulateur</a>
+      <a href="simulateur.html" class="active">Le test</a>
       <a href="candidat.html">Fiches candidats</a>
       <a href="methodologie.html">Méthodologie</a>
     </nav>
@@ -24,13 +24,14 @@
 
 <section class="hero">
   <div class="container">
-    <div class="hero__eyebrow">2 minutes, aucune donnée conservée</div>
-    <h1>À quelle catégorie appartenez-vous ?</h1>
+    <div class="hero__eyebrow">5 minutes, aucune donnée conservée</div>
+    <h1>Le test : votre situation, puis vos choix</h1>
     <p class="lede">
-      Ce simulateur calcule votre <strong>niveau de vie</strong> selon la méthode
-      officielle de l'INSEE pour déterminer votre catégorie sociale, puis vous
-      indique quel candidat penche le plus en votre faveur en fonction de
-      votre classe sociale et de vos priorités.
+      <strong>Étape 1 :</strong> votre situation détermine votre catégorie sociale (niveau de vie
+      selon la méthode officielle de l'INSEE). <strong>Étape 2 :</strong> vous choisissez, sur 22 questions,
+      entre deux propositions : le test mesure alors votre proximité avec les positions
+      <em>documentées</em> des candidats, et affiche à part l'effet économique estimé de leurs
+      mesures sur votre catégorie.
     </p>
     <div class="hero__disclaimer">
       Aucune donnée saisie ici n'est envoyée à un serveur : le calcul se fait
@@ -41,6 +42,13 @@
 
 <div class="container" style="max-width:720px; padding-top:32px; padding-bottom:80px;">
 
+  <nav class="etapes" aria-label="Étapes du test">
+    <button type="button" class="etapes__pastille actif" id="pastille-1" aria-current="step"><span>1</span> Votre situation</button>
+    <span aria-hidden="true" class="etapes__fleche">→</span>
+    <button type="button" class="etapes__pastille" id="pastille-2"><span>2</span> Vos choix</button>
+  </nav>
+
+  <div id="etape-1">
   <form id="form-simulateur" class="form-simulateur">
 
     <div class="champ">
@@ -111,12 +119,20 @@
       </p>
     </div>
 
-    <div id="priorites-panel-simulateur" style="margin-top:8px;"></div>
-
-    <button type="submit" class="bouton-principal">Mon candidat</button>
+    <button type="submit" class="bouton-principal">Calculer ma catégorie</button>
+    <p class="champ__aide" style="margin-top:14px;">
+      Vous préférez ne pas indiquer votre situation ?
+      <button type="button" class="lien-bouton" id="passer-etape-2">Passer directement à l'étape 2</button>
+      (vous obtiendrez la proximité avec les candidats, sans l'effet économique sur votre catégorie).
+    </p>
   </form>
 
   <div id="resultat-simulateur" hidden></div>
+  </div>
+
+  <div id="etape-2" hidden>
+    <div id="boussole-root"></div>
+  </div>
 
   <p style="margin-top:32px; font-size:0.82rem; color:var(--ink-soft);">
     Méthode et sources des seuils : voir la
@@ -141,7 +157,9 @@
 <script src="data/data.js"></script>
 <script src="js/priorites.js"></script>
 <script src="js/partage.js"></script>
+<script src="js/boussole.js"></script>
 <script src="js/simulateur.js"></script>
 <script src="js/simulateur-ui.js"></script>
+<script src="js/boussole-ui.js"></script>
 </body>
 </html>

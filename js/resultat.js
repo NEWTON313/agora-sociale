@@ -1,6 +1,6 @@
 /**
  * MON CHOIX 2027 — Page d'un résultat partagé (resultat.html?classe=...&p=...)
- * Affiche le classement complet, sans mise en avant d'un seul nom (garde-fous de neutralité).
+ * Affiche l'effet économique estimé pour tous les candidats, par ordre alphabétique (ce n'est pas un classement).
  */
 (function () {
   const { CLASSES_SOCIALES, THEMES } = window.AGORA_DATA;
@@ -35,7 +35,7 @@
     if (resultat.scoreGlobal === null) {
       return `
         <div class="score-personnalise score-personnalise--vide">
-          Score personnalisé non calculable — aucune mesure recensée sur ces thèmes prioritaires pour ce candidat
+          Effet économique non calculable — aucune mesure recensée sur ces thèmes prioritaires pour ce candidat
         </div>
       `;
     }
@@ -43,11 +43,11 @@
     const side = scoreGlobal >= 0 ? "positif" : "negatif";
     const avertissement =
       themesCouverts < themesPonderes
-        ? `<div class="score-personnalise__avertissement">Estimation basée sur une partie seulement de ces priorités : à interpréter avec prudence.</div>`
+        ? `<div class="score-personnalise__avertissement">Estimation basée sur une partie seulement de ces thèmes : à interpréter avec prudence.</div>`
         : "";
     return `
       <div class="score-personnalise">
-        <div class="score-personnalise__tete"><span class="score-personnalise__label">Score personnalisé selon ces priorités</span><span class="score-personnalise__valeur">${scoreGlobal > 0 ? "+" : scoreGlobal < 0 ? "−" : ""}${Math.abs(scoreGlobal).toFixed(1)} / 2</span></div>
+        <div class="score-personnalise__tete"><span class="score-personnalise__label">Effet économique estimé sur cette catégorie</span><span class="score-personnalise__valeur">${scoreGlobal > 0 ? "+" : scoreGlobal < 0 ? "−" : ""}${Math.abs(scoreGlobal).toFixed(1)} / 2</span></div>
         <div class="ledger__track" role="img" aria-label="Score personnalisé ${scoreGlobal.toFixed(1)} sur une échelle de -2 à 2, ${themesCouverts} sur ${themesPonderes} thèmes prioritaires couverts">
           <div class="ledger__axis"></div>
           <div class="ledger__fill ${side}" style="width:${scoreToWidth(scoreGlobal)}%"></div>
@@ -68,8 +68,8 @@
     const n = liste.length;
     return `
       <details class="non-calculables"${ouvert ? " open" : ""}>
-        <summary>${n} autre${n > 1 ? "s" : ""} candidat${n > 1 ? "s" : ""} : score non calculable</summary>
-        <p>Aucune mesure n'est recensée pour ces candidats sur ${adjectif} thèmes prioritaires : aucun score ne peut être calculé, et ce n'est ni un bon ni un mauvais résultat.</p>
+        <summary>${n} autre${n > 1 ? "s" : ""} candidat${n > 1 ? "s" : ""} : effet non calculable</summary>
+        <p>Aucune mesure n'est recensée pour ces candidats sur ${adjectif} thèmes prioritaires : aucun effet ne peut être calculé, et ce n'est ni un bon ni un mauvais résultat.</p>
         <ul>${liste.map((c) => `<li>${c.nom} <span>· ${c.parti}</span></li>`).join("")}</ul>
       </details>
     `;
@@ -80,7 +80,7 @@
       (candidat, i) => `
         <li>
           <div style="margin-bottom:6px;">
-            <span class="font-display">${i + 1}. ${candidat.nom}</span>
+            <span class="font-display">${candidat.nom}</span>
             <span class="classement__parti">${candidat.parti}</span>
           </div>
           ${renderScorePersonnalise(resultatsParId[candidat.id])}
