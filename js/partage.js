@@ -8,7 +8,7 @@
  */
 (function () {
   const { CLASSES_SOCIALES, CANDIDATS_ALPHABETIQUE, THEMES } = window.AGORA_DATA;
-  const { NIVEAUX_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise } = window.AGORA_PRIORITES;
+  const { NIVEAUX_PRIORITE, poidsThemesParDefaut, calculerScorePersonnalise, trierParScorePersonnalise } = window.AGORA_PRIORITES;
 
   function encoderPartage(classe, poids) {
     return `classe=${classe}&p=${THEMES.map((t) => poids[t]).join("")}`;
@@ -39,13 +39,16 @@
       .map((x) => x.t);
   }
 
-  /** Effet économique estimé par candidat, par ordre alphabétique : ce n'est pas un classement. */
+  /**
+   * Effet économique estimé par candidat, du plus favorable au moins favorable (à égalité : ordre alphabétique ;
+   * les candidats sans effet calculable ne sont jamais classés).
+   */
   function classerCandidats(classe, poids) {
     const resultatsParId = {};
     CANDIDATS_ALPHABETIQUE.forEach((c) => {
       resultatsParId[c.id] = calculerScorePersonnalise(c, classe, poids);
     });
-    return { classement: CANDIDATS_ALPHABETIQUE, resultatsParId };
+    return { classement: trierParScorePersonnalise(CANDIDATS_ALPHABETIQUE, resultatsParId), resultatsParId };
   }
 
   const COULEURS_CLASSES = { populaires: "#3d5a78", moyennes: "#566f4d", aisees: "#7a4258", retraites: "#9c7539" };
@@ -126,14 +129,14 @@
     ctx.font = `400 15px ${corps}`;
     retourALaLigne(
       ctx,
-      "Effet économique direct estimé des mesures recensées sur ma catégorie, par ordre alphabétique — ni un classement des candidats ni une recommandation de vote.",
+      "Effet économique direct estimé des mesures recensées sur ma catégorie, classé du plus favorable au moins favorable — ni un jugement sur les candidats ni une recommandation de vote.",
       xG,
       506,
       400,
       20
     );
 
-    // --- Colonne droite : effet économique estimé, par ordre alphabétique (jamais un classement)
+    // --- Colonne droite : effet économique estimé, du plus favorable au moins favorable
     const xD = xG + 400 + 52;
     const yHaut = 150;
     const hListe = 370;

@@ -1,6 +1,6 @@
 /**
  * MON CHOIX 2027 — Page d'un résultat partagé (resultat.html?classe=...&p=...)
- * Affiche l'effet économique estimé pour tous les candidats, par ordre alphabétique (ce n'est pas un classement).
+ * Affiche l'effet économique estimé pour tous les candidats, du plus favorable au moins favorable (à égalité : ordre alphabétique).
  */
 (function () {
   const { CLASSES_SOCIALES, THEMES } = window.AGORA_DATA;
