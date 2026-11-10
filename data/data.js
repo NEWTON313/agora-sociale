@@ -89,9 +89,9 @@ const THEMES = [
 ];
 
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-11-01",
+  dateMaj: "2026-11-06",
   texte:
-    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature : le trombinoscope de franceinfo (mis à jour au 22/10/2026) a permis d'identifier cinq candidatures qui manquaient encore au comparateur — Gilles Platret (maire de Chalon-sur-Saône, déclaré le 8 octobre 2026), Mira Markovic (Parti animaliste), Erwan Rohou (Mouvement écologiste indépendant), Christian Collovati et Augustin Billetdoux — désormais ajoutées. Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027) ; Dominique de Villepin, souvent cité dans la presse, n'est à ce stade que pressenti et n'a pas officiellement déclaré sa candidature, il n'est donc pas inclus. La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen reste candidate du Rassemblement national ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour (Jordan Bardella, réélu président du parti le 24 octobre 2026, n'est candidat qu'en cas de retrait de Marine Le Pen). 18 des 36 candidats disposent à ce stade d'au moins une mesure sourcée (Mélenchon, Attal, Philippe, Retailleau, Le Pen et Tondelier en ont plusieurs ; Arthaud, Asselineau, Becht, Bertrand, Bouamrane, Dupont-Aignan, Egger, Glucksmann, Lalanne, Lassalle, Lisnard et Mathieu en ont une à trois) ; les 18 autres sont enrichis progressivement, en priorité par ordre alphabétique. Chaque mesure indique sa source et son niveau de confiance.",
+    "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature : le trombinoscope de franceinfo (mis à jour au 22/10/2026) a permis d'identifier cinq candidatures qui manquaient encore au comparateur — Gilles Platret (maire de Chalon-sur-Saône, déclaré le 8 octobre 2026), Mira Markovic (Parti animaliste), Erwan Rohou (Mouvement écologiste indépendant), Christian Collovati et Augustin Billetdoux — désormais ajoutées ; aucun nouvel ajout ni retrait n'a été identifié depuis (vérification du 06/11/2026). Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027) ; Dominique de Villepin, souvent cité dans la presse, répète ne pas être encore candidat (3 novembre 2026, France Inter), il n'est donc pas inclus. La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen reste candidate du Rassemblement national ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour (Jordan Bardella, réélu président du parti le 24 octobre 2026, n'est candidat qu'en cas de retrait de Marine Le Pen). 22 des 36 candidats disposent à ce stade d'au moins une mesure sourcée (Mélenchon, Attal, Philippe, Retailleau, Le Pen, Tondelier, Batho, Bouamrane, Dupont-Aignan, Glucksmann, Lalanne, Lisnard et Platret en ont plusieurs ; Arthaud, Asselineau, Becht, Bertrand, Collovati, Egger, Lassalle, Markovic et Mathieu en ont une seule) ; les 14 autres sont enrichis progressivement, en priorité par ordre alphabétique. Chaque mesure indique sa source et son niveau de confiance.",
 };
 
 // Remapping vers la taxonomie à 9 thèmes (2026-08-29) : `br-rsa` (RSA/emploi) est classée en
@@ -133,6 +133,21 @@ const AVIS_DONNEES_REELLES = {
 // (Mathieu). Labib et Legendre ont été vérifiés mais non enrichis (aucun programme 2027 suffisamment sourcé
 // trouvé). Prochaine exécution : reprendre l'enrichissement par équité à partir de `mikolajczak`, puis les 5
 // candidats ajoutés ce jour-ci (`billetdoux`, `collovati`, `markovic`, `platret`, `rohou`), encore sans mesure.
+// Le 2026-11-06, vérification de la liste des candidats (franceinfo, LCP, France 24, Le JDD) : aucun ajout ni
+// retrait (Dominique de Villepin toujours non candidat au 03/11 ; Marine Le Pen/Jordan Bardella inchangés ;
+// pas de primaire LR, Bruno Retailleau ayant été désigné candidat direct par les adhérents le 19/04/2026).
+// Enrichissement par équité des 6 candidats restés sans mesure après Mathieu (dans l'ordre prévu) :
+// `cc-etat-urgence` (Sécurité et justice, Collovati), `mm-condition-animale` (Écologie et énergie, Markovic),
+// `gp-35-heures` et `gp-voile-frontieres` (Pouvoir d'achat et économie / Immigration et intégration, Platret).
+// Mikolajczak, Billetdoux et Rohou ont été vérifiés mais non enrichis (aucun programme 2027 suffisamment
+// sourcé trouvé dans les médias autorisés). Une mesure a aussi été ajoutée pour Batho
+// (`db-reguler-installation-medecins`, Services publics) et une pour Bouamrane (`kb-retraite-65-ans`,
+// Retraites et modèle social). Relecture humaine du 2026-11-10 : les mesures Batho sur le RIC (proposition de
+// Clara Egger, attribuée à tort) et le service national (soutien à un dispositif tiers) ont été retirées, pour rester synchronisé avec les positions de la boussole ajoutées côté
+// agora-sociale-app (lib/positions.ts, qui n'existe pas dans ce dépôt vanilla).
+// Prochaine exécution : reprendre l'enrichissement par équité à partir de `roussel`, puis `ruffin`, `zemmour`,
+// `branco`, `durif`, `kazib`, `labib`, `legendre`, `mlekuz`, `philippot`, `polony` (ordre alphabétique des id
+// restés sans mesure).
 const CANDIDATS = [
   {
     id: "melenchon",
@@ -1088,7 +1103,26 @@ const CANDIDATS = [
     id: "batho",
     nom: "Delphine Batho",
     parti: "Génération écologie",
-    mesures: [],
+    mesures: [
+      {
+        id: "db-reguler-installation-medecins",
+        theme: "Services publics",
+        titre: "Réguler l'installation des médecins dans les zones sous-dotées (autorisation délivrée par les ARS)",
+        resumeOfficiel:
+          "Delphine Batho est co-signataire d'une proposition de loi, portée notamment par le député socialiste Guillaume Garot et soutenue par environ 250 parlementaires, instaurant une autorisation d'installation des médecins délivrée par les agences régionales de santé (ARS), accordée de droit dans les zones sous-dotées en offre médicale. Elle précise qu'il ne s'agit pas de remettre en cause la liberté d'installation mais de la réguler.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/sante/deserts-medicaux-notre-proposition-de-loi-ce-n-est-pas-la-remise-en-cause-de-la-liberte-d-installation-c-est-le-fait-de-la-reguler-tempere-la-deputee-ecologiste-delphine-batho_7162353.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Position documentée par une citation directe de la députée sur franceinfo (avril 2025), dans le cadre d'une proposition de loi co-signée avec environ 250 parlementaires ; mécanisme précis (autorisation des ARS, accordée de droit dans les zones sous-dotées).",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Les zones sous-dotées en médecins concentrent souvent des catégories modestes et rurales ; une meilleure couverture médicale pourrait réduire les renoncements aux soins et les frais de déplacement"], risques: [], angleMort: "Aucune étude chiffrée publique de l'effet sur le reste à charge ou les trajets médicaux des ménages concernés n'est disponible." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Effet principalement organisationnel (où les médecins peuvent s'installer), sans effet économique direct chiffré pour cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: ["Les professionnels de santé libéraux, dont certains appartiennent à cette catégorie, verraient leur liberté d'installation restreinte dans les zones déjà bien dotées, sans chiffrage de l'effet sur leurs revenus"], angleMort: "Aucune évaluation publique de l'effet sur les revenus des professionnels de santé concernés." },
+          retraites: { score: 0, avantages: ["Les retraités, plus consommateurs de soins et parfois situés en zone sous-dotée, pourraient bénéficier d'un meilleur accès, sans chiffrage disponible"], risques: [], angleMort: "Aucune étude chiffrée publique de l'effet sur l'accès aux soins des retraités concernés." },
+        },
+      },
+    ],
   },
   {
     id: "becht",
@@ -1152,6 +1186,24 @@ const CANDIDATS = [
     parti: "Parti socialiste",
     mesures: [
       {
+        id: "kb-retraite-65-ans",
+        theme: "Retraites et modèle social",
+        titre: "Départ à la retraite à 65 ans, sauf pour les métiers pénibles",
+        resumeOfficiel:
+          "Dans son livre-programme « L'Espoir ou le Mépris » (Plon) et lors de la présentation de son projet le 4 novembre 2026 à Saint-Ouen, Karim Bouamrane propose de porter l'âge légal de départ à la retraite à 65 ans, à l'exception des métiers sans pénibilité reconnue, afin de « rééquilibrer les comptes publics ». Le nombre d'annuités de cotisation, le calendrier de montée en charge et le chiffrage budgétaire ne sont pas précisés à ce stade.",
+        sourceOfficielle:
+          "https://www.lejdd.fr/politique/nouvel-ouvrage-de-jordan-bardella-francois-ruffin-2027-les-4-infos-dont-vous-allez-entendre-parler-demain-187692",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Mesure phare annoncée lors du lancement de son livre-programme, rapportée par Le JDD (4 novembre 2026) ; aucune précision publique sur les annuités de cotisation, le calendrier ou le chiffrage budgétaire du gain attendu.",
+        impactParClasse: {
+          populaires: { score: -1, avantages: ["Les métiers reconnus pénibles, plus représentés dans cette catégorie, resteraient exemptés du report à 65 ans"], risques: ["Pour les métiers non reconnus pénibles de cette catégorie, le report de l'âge légal au-delà de 64 ans retarde directement le départ à la retraite"], angleMort: "Les critères précis de reconnaissance de la pénibilité ouvrant droit à une exemption ne sont pas publiés." },
+          moyennes: { score: -1, avantages: [], risques: ["Report d'au moins un an par rapport à l'âge légal actuel de 64 ans pour les carrières standards non reconnues pénibles"], angleMort: "Le calendrier précis de montée en charge vers 65 ans n'est pas détaillé publiquement." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Les carrières à études longues de cette catégorie atteignent souvent l'âge légal actuel avec moins d'annuités ; l'effet net du seul report d'âge, sans détail sur les annuités, n'est pas chiffré." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "L'objectif annoncé de « rééquilibrer les comptes publics » n'est accompagné d'aucun chiffrage budgétaire public permettant d'évaluer un effet sur le financement des pensions déjà versées." },
+        },
+      },
+      {
         id: "kb-fonds-souverain",
         theme: "Souveraineté et industrie",
         titre: "Fonds souverain de 100 milliards d'euros financé par un impôt sur la fortune immobilière",
@@ -1181,7 +1233,26 @@ const CANDIDATS = [
     id: "collovati",
     nom: "Christian Collovati",
     parti: "Étiquette non précisée",
-    mesures: [],
+    mesures: [
+      {
+        id: "cc-etat-urgence",
+        theme: "Sécurité et justice",
+        titre: "État d'urgence de six mois et couvre-feu contre la délinquance",
+        resumeOfficiel:
+          "Christian Collovati, candidat sans étiquette précisée, détaille sur son site de campagne un projet de « choc sécuritaire » : déclenchement de l'état d'urgence pendant six mois et instauration d'un couvre-feu pour lutter contre la délinquance. Les modalités opérationnelles (zones concernées, moyens engagés, cadre légal précis du couvre-feu) ne sont pas détaillées à ce stade.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) ; la durée de six mois est précisée mais aucun détail opérationnel (budget, zones, cadre légal du couvre-feu) n'est public à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Une baisse de la délinquance, si elle se matérialisait, bénéficierait en premier lieu aux quartiers où la petite délinquance est la plus dense, souvent plus représentés dans cette catégorie"], risques: ["Un couvre-feu généralisé restreint la liberté de circulation et peut affecter les salariés aux horaires décalés (nuit, tôt le matin), plus fréquents dans cette catégorie"], angleMort: "Aucun chiffrage du coût budgétaire de l'état d'urgence ni du couvre-feu, ni de leur effet économique, n'est publié à ce stade." },
+          moyennes: { score: 0, avantages: [], risques: ["Un couvre-feu généralisé peut affecter l'activité des commerces de proximité (restauration, loisirs nocturnes)"], angleMort: "Aucune étude d'impact économique publique sur le commerce local n'est disponible." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité sans effet économique direct identifié pour cette catégorie, faute de chiffrage public." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure de sécurité sans effet économique direct identifié pour cette catégorie, faute de chiffrage public." },
+        },
+      },
+    ],
   },
   {
     id: "dupont-aignan",
@@ -1469,7 +1540,26 @@ const CANDIDATS = [
     id: "markovic",
     nom: "Mira Markovic",
     parti: "Parti animaliste",
-    mesures: [],
+    mesures: [
+      {
+        id: "mm-condition-animale",
+        theme: "Écologie et énergie",
+        titre: "Fin de l'élevage intensif, de la chasse et de la corrida ; création d'un ministère de la Condition animale",
+        resumeOfficiel:
+          "Mira Markovic, cofondatrice du Parti animaliste, porte le programme du parti : mettre fin à l'élevage intensif, à la chasse et à la corrida, et créer un ministère indépendant de la Condition animale. Le calendrier de mise en œuvre et les modalités de transition pour les filières concernées ne sont pas précisés à ce stade.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) comme position du Parti animaliste portée par la candidate ; aucun calendrier ni chiffrage de transition pour les filières d'élevage ou de chasse n'est public.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Une interdiction de l'élevage intensif, si mise en œuvre, affecterait l'emploi dans les filières d'élevage et leurs sous-traitants, sans mesure de reconversion chiffrée à ce stade"], angleMort: "Aucun calendrier ni plan de reconversion chiffré pour les filières concernées n'est publié par le parti." },
+          moyennes: { score: 0, avantages: [], risques: ["Effet potentiel sur les exploitants agricoles et artisans liés à l'élevage ou à la chasse, non chiffré"], angleMort: "Aucune étude d'impact économique publique sur ces filières n'est disponible." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifié pour cette catégorie, faute de chiffrage public." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifié pour cette catégorie, faute de chiffrage public." },
+        },
+      },
+    ],
   },
   {
     id: "mathieu",
@@ -1518,7 +1608,44 @@ const CANDIDATS = [
     id: "platret",
     nom: "Gilles Platret",
     parti: "Divers droite",
-    mesures: [],
+    mesures: [
+      {
+        id: "gp-35-heures",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Abrogation des 35 heures",
+        resumeOfficiel:
+          "Gilles Platret, maire de Chalon-sur-Saône et candidat divers droite, propose d'abroger la durée légale du travail de 35 heures. Le cadre qui la remplacerait (seuil de déclenchement des heures supplémentaires, rémunération, accords de branche) n'est pas précisé à ce stade.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) ; aucun détail sur le cadre de remplacement des 35 heures n'est public, ce qui ne permet pas de chiffrer l'effet sur les salaires.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Si la mesure se traduisait par davantage d'heures rémunérées en heures supplémentaires, elle pourrait augmenter le revenu de certains salariés aux horaires modulables"], risques: ["Sans détail sur le cadre de remplacement (seuil de déclenchement et rémunération des heures supplémentaires), cette catégorie, plus souvent rémunérée à l'heure, est directement exposée à des conditions non encore connues"], angleMort: "Le candidat n'a pas précisé par quoi les 35 heures seraient remplacées, ce qui empêche tout chiffrage de l'effet sur le pouvoir d'achat." },
+          moyennes: { score: 0, avantages: [], risques: ["Mêmes incertitudes sur le cadre de remplacement, pouvant affecter les salariés cadres ou non-cadres selon des modalités non précisées"], angleMort: "Aucun détail public sur les modalités de remplacement du cadre légal actuel." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Cette catégorie est moins concernée par le décompte légal des heures travaillées (cadres souvent au forfait-jours) ; aucun chiffrage n'est de toute façon disponible." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure sans effet direct identifié sur les pensions déjà versées ; aucun chiffrage disponible." },
+        },
+      },
+      {
+        id: "gp-voile-frontieres",
+        theme: "Immigration et intégration",
+        titre: "Interdiction du voile dans l'espace public et rétablissement des frontières",
+        resumeOfficiel:
+          "Gilles Platret veut interdire le port du voile dans l'espace public et « rétablir les frontières ». Le contenu législatif précis et le calendrier de mise en œuvre ne sont pas détaillés à ce stade.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) : interdiction du voile dans l'espace public et rétablissement des frontières. Aucun texte de loi ni chiffrage n'est public à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Le rétablissement de contrôles aux frontières, s'il concerne des zones où résident des travailleurs frontaliers modestes, pourrait allonger les temps de trajet domicile-travail, sans chiffrage disponible"], angleMort: "Aucun chiffrage du coût de mise en œuvre des contrôles frontaliers ni de leur effet sur les travailleurs frontaliers n'est publié." },
+          moyennes: { score: 0, avantages: [], risques: ["Effet potentiel sur les échanges commerciaux et les flux transfrontaliers (tourisme, commerce de proximité), non chiffré"], angleMort: "Aucune étude d'impact économique publique sur le commerce transfrontalier n'est disponible." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifié pour cette catégorie, faute de chiffrage public." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifié pour cette catégorie, faute de chiffrage public." },
+        },
+      },
+    ],
   },
   {
     id: "polony",
