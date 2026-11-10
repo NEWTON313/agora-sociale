@@ -89,7 +89,7 @@ const THEMES = [
 ];
 
 const AVIS_DONNEES_REELLES = {
-  dateMaj: "2026-11-06",
+  dateMaj: "2026-11-10",
   texte:
     "Tous les candidats officiellement déclarés selon les médias de référence (franceinfo, LCP, France 24, Le JDD) figurent dans le comparateur, par ordre alphabétique, y compris ceux dont aucune mesure sourcée n'a encore été recensée : leur carte l'indique explicitement (« aucune mesure recensée ») plutôt que d'extrapoler. La liste évolue à chaque nouvelle déclaration ou retrait de candidature : le trombinoscope de franceinfo (mis à jour au 22/10/2026) a permis d'identifier cinq candidatures qui manquaient encore au comparateur — Gilles Platret (maire de Chalon-sur-Saône, déclaré le 8 octobre 2026), Mira Markovic (Parti animaliste), Erwan Rohou (Mouvement écologiste indépendant), Christian Collovati et Augustin Billetdoux — désormais ajoutées ; aucun nouvel ajout ni retrait n'a été identifié depuis (vérification du 06/11/2026). Aucune candidature n'est encore officiellement validée par le Conseil constitutionnel (parrainages attendus au plus tard le 12/03/2027) ; Dominique de Villepin, souvent cité dans la presse, répète ne pas être encore candidat (3 novembre 2026, France Inter), il n'est donc pas inclus. La primaire de la gauche socialiste et démocratique (PS/Place publique/GRS) a désigné Raphaël Glucksmann dès le premier tour le 11 octobre 2026 (66,17 % des voix) ; les autres candidats de cette primaire (Olivier Faure, Ségolène Royal, Emmanuel Maurel, Jérôme Guedj), qui ont annoncé soutenir le vainqueur, ont été retirés du comparateur. Marine Le Pen reste candidate du Rassemblement national ; son pourvoi en cassation est en cours, mais une décision n'est pas attendue avant le printemps/été 2027, soit après le premier tour (Jordan Bardella, réélu président du parti le 24 octobre 2026, n'est candidat qu'en cas de retrait de Marine Le Pen). 22 des 36 candidats disposent à ce stade d'au moins une mesure sourcée (Mélenchon, Attal, Philippe, Retailleau, Le Pen, Tondelier, Batho, Bouamrane, Dupont-Aignan, Glucksmann, Lalanne, Lisnard et Platret en ont plusieurs ; Arthaud, Asselineau, Becht, Bertrand, Collovati, Egger, Lassalle, Markovic et Mathieu en ont une seule) ; les 14 autres sont enrichis progressivement, en priorité par ordre alphabétique. Chaque mesure indique sa source et son niveau de confiance.",
 };
@@ -160,9 +160,9 @@ const CANDIDATS = [
         titre: "Retour de la retraite à 60 ans avec 40 annuités de cotisation",
         resumeOfficiel:
           "Mesure phare reconduite depuis les campagnes 2012, 2017 et 2022 : abroger le report de l'âge légal et revenir à un départ à 60 ans pour une carrière complète de 40 ans, avec alignement des petites pensions sur un Smic revalorisé.",
-        sourceOfficielle: "https://fr.wikipedia.org/wiki/%C3%89lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027",
+        sourceOfficielle: "https://lcp.fr/actualites/presidentielle-2027-ce-qui-change-dans-le-nouveau-programme-de-jean-luc-melenchon-444841",
         niveauConfiance: "confirme",
-        noteConfiance: "Position historique de LFI, répétée et documentée sur trois campagnes présidentielles successives.",
+        noteConfiance: "Position historique de LFI documentée sur trois campagnes, reprise dans le programme publié le 6 novembre 2026 (droit à la retraite à 60 ans à taux plein pour 40 annuités de cotisation, à rétablir « à terme ») selon LCP et France 24.",
         impactParClasse: {
           populaires: { score: 1, avantages: ["Bénéficie en priorité aux carrières commencées tôt et aux métiers pénibles, plus représentés dans cette catégorie", "Revalorisation des petites pensions au niveau du Smic"], risques: ["Financement non détaillé publiquement, donc incertitude sur qui supporte le coût à terme"], angleMort: "Le chiffrage précis du coût et de son financement n'est pas public à ce stade de la campagne." },
           moyennes: { score: 0, avantages: ["Départ plus précoce pour les carrières complètes à 40 ans"], risques: ["Si financée par la fiscalité ou les cotisations, une partie de cette catégorie pourrait contribuer sans bénéficier de la même revalorisation"], angleMort: "Aucune indication publique sur un éventuel geste fiscal ciblant spécifiquement cette catégorie." },
@@ -328,6 +328,96 @@ const CANDIDATS = [
           moyennes: { score: 0, avantages: [], risques: [], angleMort: "Mesure centrée sur la régulation du secteur médiatique, sans effet économique différencié documenté pour cette catégorie." },
           aisees: { score: -1, avantages: [], risques: ["Les actionnaires et propriétaires des groupes de médias explicitement cités par le candidat (Bolloré, Pigasse, Saadé) relèvent de cette catégorie et seraient directement visés par un démantèlement ou une cession forcée de leurs actifs"], angleMort: "Le mécanisme juridique précis du démantèlement n'étant pas arbitré publiquement, l'ampleur financière exacte de l'effet pour les propriétaires concernés ne peut être chiffrée." },
           retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet documenté pour cette catégorie, la mesure portant sur la structure de propriété des médias plutôt que sur les revenus des ménages." },
+        },
+      },
+      {
+        id: "jlm-smic-1700",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Augmenter immédiatement le Smic à 1 700 euros nets",
+        resumeOfficiel:
+          "Le programme de la France insoumise prévoit d'« augmenter immédiatement le Smic à 1700 euros nets », avec une revalorisation de 10 % du point d'indice des fonctionnaires et des APL.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-2027-ce-qui-change-dans-le-nouveau-programme-de-jean-luc-melenchon-444841",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Mesure du programme officiel de La France insoumise publié le 6 novembre 2026 (mise à jour de « L'Avenir en commun », 1 069 mesures), rapporté par LCP le 6 novembre 2026 et présenté au Bourget le 7 novembre (franceinfo). Proposition chiffrée ; le financement détaillé sera dévoilé début 2027 selon France 24.",
+        impactParClasse: {
+          populaires: { score: 2, avantages: ["Hausse directe du revenu des salariés au Smic ou proches du Smic, catégorie où ils sont surreprésentés"], risques: ["Risque de destruction d'emplois peu qualifiés évoqué par certains économistes si la hausse n'est pas accompagnée d'allègements de charges, non chiffré par LFI"], angleMort: "Le financement détaillé de la mesure n'est pas encore publié (annoncé pour début 2027) ; aucun chiffrage indépendant de l'effet net sur l'emploi." },
+          moyennes: { score: 0, avantages: ["Bénéfice direct pour les foyers dont les revenus reposent sur des salaires proches du Smic", "Effet d'entraînement possible sur les salaires juste au-dessus du Smic, non chiffré"], risques: ["Aucun effet direct pour un salarié déjà rémunéré au-dessus de 1 700 euros nets", "Si la mesure est financée par une hausse des cotisations ou de la fiscalité, cette catégorie pourrait y contribuer sans en bénéficier directement"], angleMort: "Effet très variable au sein de la catégorie selon la composition du foyer et le niveau de salaire ; financement précis non publié." },
+          aisees: { score: -1, avantages: [], risques: ["Catégorie identifiée comme contributrice probable si la hausse est financée par la fiscalité ou les cotisations patronales"], angleMort: "Le mécanisme de financement chiffré n'est pas encore publié ; l'effet sur cette catégorie dépendra de ce choix." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "La mesure porte sur le salaire minimum des actifs ; son éventuel effet indirect sur les pensions n'est pas précisé dans les sources consultées." },
+        },
+      },
+      {
+        id: "jlm-isf-flat-tax-zucman",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Rétablir l'ISF avec un volet climatique, supprimer la flat tax, conserver la taxe Zucman et plafonner l'héritage à 12 millions d'euros",
+        resumeOfficiel:
+          "Le programme de la France insoumise prévoit de supprimer la flat tax sur les revenus du capital, de rétablir l'ISF « incluant un volet climatique », de conserver la taxe Zucman, de plafonner l'héritage à 12 millions d'euros et d'élargir la cotisation sociale aux revenus du capital. Il confirme un impôt sur le revenu à 14 tranches.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-2027-ce-qui-change-dans-le-nouveau-programme-de-jean-luc-melenchon-444841",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Mesure du programme officiel de La France insoumise publié le 6 novembre 2026 (mise à jour de « L'Avenir en commun », 1 069 mesures), rapporté par LCP le 6 novembre 2026 et présenté au Bourget le 7 novembre (franceinfo). Les taux et seuils précis de l'ISF et de la taxe Zucman ne sont pas détaillés dans les sources consultées.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Catégorie non concernée par l'ISF, la flat tax ni le plafonnement de l'héritage ; l'affectation des recettes n'est pas précisée." },
+          moyennes: { score: 0, avantages: ["Non concernées par le haut de barème ni par un plafonnement de l'héritage à 12 millions d'euros"], risques: ["Un foyer détenant un patrimoine ou une épargne financière importants pourrait être concerné par l'élargissement de la cotisation sociale aux revenus du capital, sans seuil précis public"], angleMort: "Les seuils exacts de l'ISF rétabli et de la taxe Zucman ne sont pas détaillés, ce qui ne permet pas de savoir où commence la contribution." },
+          aisees: { score: -2, avantages: [], risques: ["Hausse significative de la charge fiscale sur les patrimoines et les revenus du capital", "Risque d'optimisation ou de départ de contribuables évoqué par des économistes critiques"], angleMort: "Aucun chiffrage indépendant du rendement attendu ; le financement global du programme sera dévoilé début 2027." },
+          retraites: { score: 0, avantages: ["Neutre pour la quasi-totalité des pensions"], risques: [], angleMort: "Effet possible pour une minorité de retraités disposant d'un patrimoine ou de revenus du capital importants, non quantifié." },
+        },
+      },
+      {
+        id: "jlm-proportionnelle-49-3",
+        theme: "Institutions et démocratie",
+        titre: "Proportionnelle pour l'élection de l'Assemblée nationale et suppression du 49.3",
+        resumeOfficiel:
+          "Le programme de la France insoumise prévoit l'élection de l'Assemblée nationale à la proportionnelle, la suppression de l'article 49.3 et des « votes forcés », et l'obligation de débattre à l'Assemblée des pétitions ayant recueilli plus de 500 000 signatures.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-2027-ce-qui-change-dans-le-nouveau-programme-de-jean-luc-melenchon-444841",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Mesure du programme officiel de La France insoumise publié le 6 novembre 2026 (mise à jour de « L'Avenir en commun », 1 069 mesures), rapporté par LCP le 6 novembre 2026 et présenté au Bourget le 7 novembre (franceinfo).",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Réforme institutionnelle sans effet économique direct identifiable." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Réforme institutionnelle sans effet économique direct identifiable." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Réforme institutionnelle sans effet économique direct identifiable." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Réforme institutionnelle sans effet économique direct identifiable." },
+        },
+      },
+      {
+        id: "jlm-otan-commandement-integre",
+        theme: "Europe et géopolitique",
+        titre: "Sortir immédiatement du commandement intégré de l'OTAN puis se retirer progressivement de l'organisation",
+        resumeOfficiel:
+          "Le programme de la France insoumise prévoit le retrait immédiat de la France du commandement intégré de l'OTAN, puis son retrait progressif de l'organisation, et rejette l'objectif de 5 % du PIB consacré à la défense exigé par les États-Unis.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-2027-ce-qui-change-dans-le-nouveau-programme-de-jean-luc-melenchon-444841",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Mesure du programme officiel de La France insoumise publié le 6 novembre 2026 (mise à jour de « L'Avenir en commun », 1 069 mesures), rapporté par LCP le 6 novembre 2026 et présenté au Bourget le 7 novembre (franceinfo). Le calendrier du retrait progressif et son coût ne sont pas précisés.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable ; le coût d'une éventuelle réorganisation de la défense n'est pas chiffré." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable ; le coût d'une éventuelle réorganisation de la défense n'est pas chiffré." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable ; le coût d'une éventuelle réorganisation de la défense n'est pas chiffré." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable ; le coût d'une éventuelle réorganisation de la défense n'est pas chiffré." },
+        },
+      },
+      {
+        id: "jlm-moratoire-libre-echange",
+        theme: "Souveraineté et industrie",
+        titre: "Moratoire sur la libre circulation sans limite des marchandises et des capitaux, la concurrence des services publics et les accords de libre-échange",
+        resumeOfficiel:
+          "Le programme de la France insoumise prévoit un moratoire voté par le Parlement sur la libre circulation « sans limite » des marchandises et des capitaux, sur les règles de concurrence des services publics et sur les accords de libre-échange.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-2027-ce-qui-change-dans-le-nouveau-programme-de-jean-luc-melenchon-444841",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Mesure du programme officiel de La France insoumise publié le 6 novembre 2026 (mise à jour de « L'Avenir en commun », 1 069 mesures), rapporté par LCP le 6 novembre 2026 et présenté au Bourget le 7 novembre (franceinfo). Le périmètre exact du moratoire et sa durée ne sont pas détaillés dans les sources consultées.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: ["Effet possible sur les prix de produits importés, non chiffré"], angleMort: "Aucun chiffrage public de l'effet sur les prix ou l'emploi, ni du périmètre exact du moratoire." },
+          moyennes: { score: 0, avantages: [], risques: ["Effet possible sur les prix de produits importés, non chiffré"], angleMort: "Aucun chiffrage public de l'effet sur les prix ou l'emploi, ni du périmètre exact du moratoire." },
+          aisees: { score: 0, avantages: [], risques: ["Effet possible sur les investissements et les mouvements de capitaux, non chiffré"], angleMort: "Aucun chiffrage public de l'effet sur les capitaux ou les entreprises exportatrices." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifié, faute de chiffrage public." },
         },
       },
     ],
