@@ -138,12 +138,12 @@ const AVIS_DONNEES_REELLES = {
 // pas de primaire LR, Bruno Retailleau ayant été désigné candidat direct par les adhérents le 19/04/2026).
 // Enrichissement par équité des 6 candidats restés sans mesure après Mathieu (dans l'ordre prévu) :
 // `cc-etat-urgence` (Sécurité et justice, Collovati), `mm-condition-animale` (Écologie et énergie, Markovic),
-// `gp-35-heures` et `gp-loi-assimilation` (Pouvoir d'achat et économie / Immigration et intégration, Platret).
+// `gp-35-heures` et `gp-voile-frontieres` (Pouvoir d'achat et économie / Immigration et intégration, Platret).
 // Mikolajczak, Billetdoux et Rohou ont été vérifiés mais non enrichis (aucun programme 2027 suffisamment
-// sourcé trouvé dans les médias autorisés). Trois mesures ont aussi été ajoutées pour Batho
-// (`db-reguler-installation-medecins`, Services publics ; `db-ric-pouvoir-maires`, Institutions et démocratie ;
-// `db-service-national-volontaire`, Retraites et modèle social) et une pour Bouamrane (`kb-retraite-65-ans`,
-// Retraites et modèle social), pour rester synchronisé avec les positions de la boussole ajoutées côté
+// sourcé trouvé dans les médias autorisés). Une mesure a aussi été ajoutée pour Batho
+// (`db-reguler-installation-medecins`, Services publics) et une pour Bouamrane (`kb-retraite-65-ans`,
+// Retraites et modèle social). Relecture humaine du 2026-11-10 : les mesures Batho sur le RIC (proposition de
+// Clara Egger, attribuée à tort) et le service national (soutien à un dispositif tiers) ont été retirées, pour rester synchronisé avec les positions de la boussole ajoutées côté
 // agora-sociale-app (lib/positions.ts, qui n'existe pas dans ce dépôt vanilla).
 // Prochaine exécution : reprendre l'enrichissement par équité à partir de `roussel`, puis `ruffin`, `zemmour`,
 // `branco`, `durif`, `kazib`, `labib`, `legendre`, `mlekuz`, `philippot`, `polony` (ordre alphabétique des id
@@ -1122,42 +1122,6 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: ["Les retraités, plus consommateurs de soins et parfois situés en zone sous-dotée, pourraient bénéficier d'un meilleur accès, sans chiffrage disponible"], risques: [], angleMort: "Aucune étude chiffrée publique de l'effet sur l'accès aux soins des retraités concernés." },
         },
       },
-      {
-        id: "db-ric-pouvoir-maires",
-        theme: "Institutions et démocratie",
-        titre: "Référendum d'initiative citoyenne et pouvoir accru aux maires",
-        resumeOfficiel:
-          "Dans le cadre de sa candidature à la présidentielle 2027, Delphine Batho promeut le référendum d'initiative citoyenne (RIC) et davantage de pouvoir de décision pour les maires. Les modalités précises (seuils de déclenchement du RIC, nature des nouvelles compétences municipales) ne sont pas détaillées à ce stade.",
-        sourceOfficielle:
-          "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
-        niveauConfiance: "annonce",
-        noteConfiance:
-          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) comme axe de sa candidature ; aucun détail sur les seuils du RIC ou les compétences municipales visées n'est public à ce stade.",
-        impactParClasse: {
-          populaires: { score: 0, avantages: [], risques: [], angleMort: "Réforme institutionnelle sans effet économique direct identifiable à ce stade, faute de détails sur sa mise en œuvre." },
-          moyennes: { score: 0, avantages: [], risques: [], angleMort: "L'effet économique dépendrait des décisions prises ensuite via ces nouveaux outils, non connues à ce stade." },
-          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
-          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable à ce stade." },
-        },
-      },
-      {
-        id: "db-service-national-volontaire",
-        theme: "Retraites et modèle social",
-        titre: "Soutien à un service national militaire et volontaire pour les jeunes, sans obligation",
-        resumeOfficiel:
-          "Réagissant à l'annonce par le président Emmanuel Macron d'un service national militaire et volontaire de dix mois pour les jeunes majeurs, la députée et candidate Delphine Batho a qualifié cette relance, fondée sur le volontariat, de « décision nécessaire », sans soutenir une obligation généralisée.",
-        sourceOfficielle:
-          "https://www.franceinfo.fr/economie/emploi/metiers/armee-et-securite/la-relance-du-service-national-militaire-et-volontaire-est-une-decision-necessaire-selon-la-deputee-delphine-batho_7643753.html",
-        niveauConfiance: "annonce",
-        noteConfiance:
-          "Déclaration directe rapportée par franceinfo (27 novembre 2025), en soutien explicite au caractère volontaire du dispositif annoncé par le président de la République ; il s'agit d'un soutien à un dispositif tiers, non d'une proposition personnelle chiffrée, d'où un niveau de confiance « annonce ».",
-        impactParClasse: {
-          populaires: { score: 0, avantages: [], risques: [], angleMort: "Dispositif tiers dont la candidate soutient le principe du volontariat, sans chiffrage propre ; aucun effet économique direct identifiable pour cette catégorie à ce stade." },
-          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort : aucun chiffrage propre à la candidate n'est disponible." },
-          aisees: { score: 0, avantages: [], risques: [], angleMort: "Même angle mort : aucun chiffrage propre à la candidate n'est disponible." },
-          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure concernant les jeunes majeurs, sans lien direct identifié avec cette catégorie." },
-        },
-      },
     ],
   },
   {
@@ -1664,16 +1628,16 @@ const CANDIDATS = [
         },
       },
       {
-        id: "gp-loi-assimilation",
+        id: "gp-voile-frontieres",
         theme: "Immigration et intégration",
-        titre: "Loi d'assimilation : interdiction du voile dans l'espace public et rétablissement des frontières",
+        titre: "Interdiction du voile dans l'espace public et rétablissement des frontières",
         resumeOfficiel:
-          "Gilles Platret propose une « grande loi d'assimilation » comprenant l'interdiction du port du voile dans l'espace public et le rétablissement des contrôles aux frontières pour lutter contre l'immigration irrégulière. Le contenu législatif précis et le calendrier de mise en œuvre ne sont pas détaillés à ce stade.",
+          "Gilles Platret veut interdire le port du voile dans l'espace public et « rétablir les frontières ». Le contenu législatif précis et le calendrier de mise en œuvre ne sont pas détaillés à ce stade.",
         sourceOfficielle:
           "https://www.franceinfo.fr/elections/presidentielle/portraits-qui-sont-les-candidats-declares-a-l-election-presidentielle-de-2027_8208032.html",
         niveauConfiance: "annonce",
         noteConfiance:
-          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) : interdiction du voile dans l'espace public et rétablissement des frontières contre l'immigration irrégulière. Aucun texte de loi ni chiffrage n'est public à ce stade.",
+          "Rapporté par le trombinoscope franceinfo des candidats déclarés (mis à jour au 22/10/2026) : interdiction du voile dans l'espace public et rétablissement des frontières. Aucun texte de loi ni chiffrage n'est public à ce stade.",
         impactParClasse: {
           populaires: { score: 0, avantages: [], risques: ["Le rétablissement de contrôles aux frontières, s'il concerne des zones où résident des travailleurs frontaliers modestes, pourrait allonger les temps de trajet domicile-travail, sans chiffrage disponible"], angleMort: "Aucun chiffrage du coût de mise en œuvre des contrôles frontaliers ni de leur effet sur les travailleurs frontaliers n'est publié." },
           moyennes: { score: 0, avantages: [], risques: ["Effet potentiel sur les échanges commerciaux et les flux transfrontaliers (tourisme, commerce de proximité), non chiffré"], angleMort: "Aucune étude d'impact économique publique sur le commerce transfrontalier n'est disponible." },
