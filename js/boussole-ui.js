@@ -2,7 +2,7 @@
  * MON CHOIX 2027 — Étape 2 du test : la boussole (miroir de components/BoussoleForm.tsx, version Next.js).
  * Choix entre deux propositions, importance, puis proximité avec les positions DOCUMENTÉES de chaque candidat.
  * L'ordre des options A/B est tiré au hasard à chaque visite. Rien n'est envoyé ni conservé.
- * L'effet économique estimé (si la catégorie est connue) est une information distincte : il ne sert jamais au classement.
+ * L'effet économique estimé (si la catégorie est connue) est une information distincte : il ne sert jamais au classement par proximité.
  */
 (function () {
   const { QUESTIONS, SEUIL_COUVERTURE, classerBoussole, poidsThemesDepuisBoussole } = window.AGORA_BOUSSOLE;
@@ -127,7 +127,7 @@
         ${
           classe
             ? `À côté de chaque candidat, l'<strong>effet économique estimé sur votre catégorie</strong> est une information
-               distincte (calculée avec les thèmes de vos réponses) : elle ne sert pas au classement.`
+               distincte (calculée avec les thèmes de vos réponses) : elle ne sert pas au classement par proximité.`
             : ""
         }
       </div>
@@ -206,10 +206,10 @@
         </p>
         <div class="partage__panneau" id="partage-panneau" hidden>
           <canvas id="partage-canvas" class="partage__canvas" role="img"
-            aria-label="Carte de résultat : ma catégorie sociale, mes thèmes prioritaires et l'effet économique estimé des mesures de chaque candidat sur ma catégorie, par ordre alphabétique"></canvas>
+            aria-label="Carte de résultat : ma catégorie sociale, mes thèmes prioritaires et l'effet économique estimé des mesures de chaque candidat sur ma catégorie, du plus favorable au moins favorable"></canvas>
           <p class="partage__note">
-            La carte montre l'effet économique estimé, par ordre alphabétique, et précise que ce n'est ni un classement
-            ni une recommandation de vote. Elle n'inclut ni votre revenu, ni vos réponses, ni aucune donnée personnelle.
+            La carte montre l'effet économique estimé, du plus favorable au moins favorable, et précise que ce n'est ni
+            un jugement sur les candidats ni une recommandation de vote. Elle n'inclut ni votre revenu, ni vos réponses, ni aucune donnée personnelle.
           </p>
           <div class="partage__actions">
             <button type="button" class="partage__btn partage__btn--primaire mono" id="btn-partage-natif" hidden>Partager</button>
