@@ -1477,6 +1477,60 @@ const CANDIDATS = [
           retraites: { score: 0, avantages: ["Un encadrement renforcé de la jeunesse par un service civique est présenté par le candidat comme un facteur de cohésion sociale, dont bénéficierait indirectement l'ensemble de la société, y compris les retraités"], risques: [], angleMort: "Aucun chiffrage de l'effet, même indirect, sur le modèle social ou les retraites n'est publié." },
         },
       },
+      {
+        id: "rg-ecole-enseignants",
+        theme: "Services publics",
+        titre: "Revaloriser les salaires des enseignants, renforcer l'encadrement des élèves et appliquer la mixité sociale au privé",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose de revaloriser substantiellement les salaires des enseignants, d'augmenter les personnels face aux élèves en réduisant les postes administratifs, d'appliquer des principes de mixité sociale aux établissements privés et de créer un « passeport pour l'émancipation » garantissant à chaque enfant un séjour collectif.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-raphael-glucksmann-devoile-les-premieres-lignes-de-son-possible-programme",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Propositions de son livre « Nous avons encore envie », rapportées par LCP le 26 mai 2026, avant sa déclaration de candidature (23 août) et sa désignation à la primaire de la gauche (11 octobre) ; son programme complet n'est pas encore publié et pourra les préciser ou les modifier. Aucun montant de revalorisation n'est indiqué.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Aucun montant de revalorisation, aucun effectif ni financement n'est chiffré dans les sources consultées : aucun effet économique direct ne peut être attribué à cette catégorie." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun montant de revalorisation, aucun effectif ni financement n'est chiffré dans les sources consultées : aucun effet économique direct ne peut être attribué à cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun montant de revalorisation, aucun effectif ni financement n'est chiffré dans les sources consultées : aucun effet économique direct ne peut être attribué à cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun montant de revalorisation, aucun effectif ni financement n'est chiffré dans les sources consultées : aucun effet économique direct ne peut être attribué à cette catégorie." },
+        },
+      },
+      {
+        id: "rg-convention-immigration",
+        theme: "Immigration et intégration",
+        titre: "Organiser une convention citoyenne sur l'immigration dont les propositions donneraient lieu à des lois",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose une convention citoyenne sur l'immigration, avec des citoyens tirés au sort, dont les propositions donneraient lieu à des textes votés par le Parlement : « Au lieu de fuir le débat migratoire, nous l'assumerons ».",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-raphael-glucksmann-devoile-les-premieres-lignes-de-son-possible-programme",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Propositions de son livre « Nous avons encore envie », rapportées par LCP le 26 mai 2026, avant sa déclaration de candidature (23 août) et sa désignation à la primaire de la gauche (11 octobre) ; son programme complet n'est pas encore publié et pourra les préciser ou les modifier. Le contenu des futures lois n'est pas préjugé.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Proposition de méthode sans contenu législatif défini : aucun effet économique direct ne peut être attribué à cette catégorie." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Proposition de méthode sans contenu législatif défini : aucun effet économique direct ne peut être attribué à cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Proposition de méthode sans contenu législatif défini : aucun effet économique direct ne peut être attribué à cette catégorie." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Proposition de méthode sans contenu législatif défini : aucun effet économique direct ne peut être attribué à cette catégorie." },
+        },
+      },
+      {
+        id: "rg-retraites-esperance-vie",
+        theme: "Retraites et modèle social",
+        titre: "Tenir compte de l'espérance de vie en bonne santé dans les règles de départ à la retraite",
+        resumeOfficiel:
+          "Raphaël Glucksmann propose d'intégrer l'espérance de vie en bonne santé aux règles de retraite : « ceux qui ont une espérance de vie en bonne santé plus longue - les cadres - devront en revanche partir plus tard ». Il n'indique pas d'âge ni de calendrier.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-raphael-glucksmann-devoile-les-premieres-lignes-de-son-possible-programme",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Propositions de son livre « Nous avons encore envie », rapportées par LCP le 26 mai 2026, avant sa déclaration de candidature (23 août) et sa désignation à la primaire de la gauche (11 octobre) ; son programme complet n'est pas encore publié et pourra les préciser ou les modifier. Aucun âge, durée de cotisation ni calendrier n'est précisé.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Les carrières à espérance de vie en bonne santé plus courte ne seraient pas concernées par un départ plus tardif"], risques: [], angleMort: "Aucun âge ni barème n'est précisé : l'effet pour cette catégorie ne peut pas être chiffré." },
+          moyennes: { score: 0, avantages: [], risques: ["Selon la profession exercée, un départ plus tardif pourrait s'appliquer, sans seuil précis"], angleMort: "Aucun âge ni barème n'est précisé : l'effet pour cette catégorie ne peut pas être chiffré." },
+          aisees: { score: 0, avantages: [], risques: ["Les cadres, cités par le candidat, partiraient plus tard, sans âge ni calendrier précisés"], angleMort: "Aucun âge ni barème n'est précisé : l'effet pour cette catégorie ne peut pas être chiffré." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Mesure portant sur les départs futurs ; aucun effet direct identifié sur les pensions déjà versées." },
+        },
+      },
     ],
   },
   {
@@ -1753,19 +1807,148 @@ const CANDIDATS = [
     id: "roussel",
     nom: "Fabien Roussel",
     parti: "Parti communiste français",
-    mesures: [],
+    mesures: [
+      {
+        id: "fbr-fraude-fiscale",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Combattre la fraude et l'évasion fiscales avec des peines pouvant aller jusqu'à la prison",
+        resumeOfficiel:
+          "À l'officialisation de sa candidature (6 septembre 2026), Fabien Roussel défend « le combat contre la fraude et l'évasion fiscale » et propose des sanctions pouvant inclure la prison, la privation de droits civiques ou des travaux d'intérêt général pour les fraudeurs.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/fabien-roussel-officiellement-candidat-du-pcf-a-l-election-presidentielle-de-2027-441389",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Position rapportée par LCP le 6 septembre 2026 lors de l'officialisation de la candidature ; le barème des peines, le périmètre visé et le rendement attendu ne sont pas précisés.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : le rendement budgétaire attendu et l'affectation éventuelle des recettes ne sont pas chiffrés dans les sources consultées." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : le rendement budgétaire attendu et l'affectation éventuelle des recettes ne sont pas chiffrés dans les sources consultées." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : le rendement budgétaire attendu et l'affectation éventuelle des recettes ne sont pas chiffrés dans les sources consultées." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : le rendement budgétaire attendu et l'affectation éventuelle des recettes ne sont pas chiffrés dans les sources consultées." },
+        },
+      },
+      {
+        id: "fbr-reindustrialisation-climat",
+        theme: "Souveraineté et industrie",
+        titre: "Réindustrialiser la France et mettre en œuvre un plan climat avec une trajectoire carbone",
+        resumeOfficiel:
+          "À l'officialisation de sa candidature (6 septembre 2026), Fabien Roussel défend « la réindustrialisation de la France » et affirme que le PCF a « un plan climat qui donne une trajectoire carbone », en l'articulant à une politique industrielle.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/fabien-roussel-officiellement-candidat-du-pcf-a-l-election-presidentielle-de-2027-441389",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Position rapportée par LCP le 6 septembre 2026 ; ni les secteurs visés, ni le calendrier, ni le financement, ni les objectifs chiffrés de la trajectoire carbone ne sont détaillés dans l'article.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : secteurs, calendrier et financement non précisés dans les sources consultées." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : secteurs, calendrier et financement non précisés dans les sources consultées." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : secteurs, calendrier et financement non précisés dans les sources consultées." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : secteurs, calendrier et financement non précisés dans les sources consultées." },
+        },
+      },
+    ],
   },
   {
     id: "ruffin",
     nom: "François Ruffin",
     parti: "Debout !",
-    mesures: [],
+    mesures: [
+      {
+        id: "frf-smic-1700",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Porter le Smic à 1 700 euros nets et indexer les salaires sur l'inflation",
+        resumeOfficiel:
+          "Invité du « 8h30 franceinfo » le 6 novembre 2026, François Ruffin réclame un Smic à 1 700 euros net, ce qu'il juge plus ambitieux que la hausse au-dessus de 1 500 euros net évoquée par le gouvernement, et l'indexation des salaires sur l'inflation.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-radio/8h30-fauvelle-dely/mobilisations-sociales-salaires-ses-40-chantiers-pour-remettre-la-france-debout-le-8h30-franceinfo-de-francois-ruffin_8249932.html",
+        niveauConfiance: "confirme",
+        noteConfiance:
+          "Proposition chiffrée, répétée par le candidat et rapportée par franceinfo le 6 novembre 2026 (interview à l'occasion de la sortie de son livre « Au boulot ! »). Les modalités de l'indexation ne sont pas détaillées.",
+        impactParClasse: {
+          populaires: { score: 2, avantages: ["Hausse directe du revenu des salariés au Smic ou proches du Smic, catégorie où ils sont surreprésentés"], risques: ["Risque de destruction d'emplois peu qualifiés évoqué par certains économistes si la hausse n'est pas accompagnée d'allègements de charges, non chiffré par le candidat"], angleMort: "Le financement de la mesure et les modalités de l'indexation ne sont pas détaillés dans les sources consultées ; aucun chiffrage indépendant de l'effet net sur l'emploi." },
+          moyennes: { score: 0, avantages: ["Bénéfice direct pour les foyers dont les revenus reposent sur des salaires proches du Smic", "Effet d'entraînement possible sur les salaires juste au-dessus du Smic, non chiffré"], risques: ["Aucun effet direct pour un salarié déjà rémunéré au-dessus de 1 700 euros nets", "Si la mesure est financée par une hausse des cotisations ou de la fiscalité, cette catégorie pourrait y contribuer sans en bénéficier directement"], angleMort: "Effet très variable au sein de la catégorie selon la composition du foyer et le niveau de salaire ; financement précis non publié." },
+          aisees: { score: -1, avantages: [], risques: ["Catégorie identifiée comme contributrice probable si la hausse est financée par la fiscalité ou les cotisations patronales"], angleMort: "Le mécanisme de financement chiffré n'est pas publié ; l'effet sur cette catégorie dépendra de ce choix." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "La mesure porte sur le salaire minimum des actifs ; son éventuel effet indirect sur les pensions n'est pas précisé dans les sources consultées." },
+        },
+      },
+      {
+        id: "frf-loyers-prix",
+        theme: "Pouvoir d'achat et économie",
+        titre: "Encadrer les loyers et contrôler les prix et les marges",
+        resumeOfficiel:
+          "Invité du « 8h30 franceinfo » le 2 juin 2026, François Ruffin cite trois priorités économiques : l'indexation des salaires sur l'inflation, « l'encadrement du prix des loyers » et « le contrôle des prix et des marges », en estimant que les Français qui travaillent perdent en pouvoir d'achat.",
+        sourceOfficielle:
+          "https://www.franceinfo.fr/replay-radio/8h30-fauvelle-dely/presidentielle-2027-sommet-choose-france-le-8h30-franceinfo-de-francois-ruffin_8013230.html",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Déclaration directe rapportée par franceinfo le 2 juin 2026 ; le périmètre des loyers encadrés, les produits concernés par le contrôle des prix et les modalités ne sont pas précisés.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Les locataires, nombreux dans cette catégorie, pourraient voir la hausse de leur loyer limitée", "Un contrôle des prix pourrait limiter la hausse de certaines dépenses courantes"], risques: ["Un encadrement des loyers peut, selon certains économistes, réduire l'offre de logements locatifs, sans chiffrage dans les sources"], angleMort: "Périmètre et modalités non précisés (zones, plafonds, produits concernés) : aucun effet chiffré ne peut être attribué à cette catégorie." },
+          moyennes: { score: 0, avantages: ["Les locataires pourraient voir la hausse de leur loyer limitée"], risques: ["Un contrôle des marges pourrait peser sur les commerces et les petites entreprises, sans chiffrage"], angleMort: "Périmètre et modalités non précisés : aucun effet chiffré ne peut être attribué à cette catégorie." },
+          aisees: { score: 0, avantages: [], risques: ["Les propriétaires bailleurs et les entreprises dont les marges seraient contrôlées pourraient être affectés, sans chiffrage"], angleMort: "Périmètre et modalités non précisés : aucun effet chiffré ne peut être attribué à cette catégorie." },
+          retraites: { score: 0, avantages: ["Les retraités locataires pourraient voir la hausse de leur loyer limitée"], risques: [], angleMort: "Périmètre et modalités non précisés : aucun effet chiffré ne peut être attribué à cette catégorie." },
+        },
+      },
+      {
+        id: "frf-probite",
+        theme: "Institutions et démocratie",
+        titre: "Loi de séparation de l'argent et de l'État : Haute autorité à la probité, fin du lobbying des ministres sortants, privilèges des anciens présidents supprimés",
+        resumeOfficiel:
+          "Lors d'une conférence de presse « pour une loi de séparation de l'argent et de l'État » (2 juillet 2026), François Ruffin propose de créer une « Haute autorité à la probité », d'interdire pendant dix ans aux ministres sortants le lobbying et le conseil dans le champ de leur ancien portefeuille, de supprimer les « privilèges des anciens présidents », de garantir l'indépendance du parquet et de rendre inéligibles les personnes condamnées pour manquement au devoir de probité, atteintes graves à l'ordre social, délits sexuels ou crimes.",
+        sourceOfficielle:
+          "https://lcp.fr/actualites/presidentielle-2027-apres-la-polemique-sur-sa-bd-francois-ruffin-a-la-relance-sur-le",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Propositions détaillées par le candidat lors d'une conférence de presse et rapportées par LCP le 2 juillet 2026 ; aucun texte de loi ni chiffrage n'est public à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Réforme de la probité et des institutions sans effet économique direct identifiable pour cette catégorie ; aucun chiffrage public." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Réforme de la probité et des institutions sans effet économique direct identifiable pour cette catégorie ; aucun chiffrage public." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Réforme de la probité et des institutions sans effet économique direct identifiable pour cette catégorie ; aucun chiffrage public." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Réforme de la probité et des institutions sans effet économique direct identifiable pour cette catégorie ; aucun chiffrage public." },
+        },
+      },
+    ],
   },
   {
     id: "zemmour",
     nom: "Éric Zemmour",
     parti: "Reconquête",
-    mesures: [],
+    mesures: [
+      {
+        id: "ez-expulsion-delinquants-etrangers",
+        theme: "Immigration et intégration",
+        titre: "Renvoyer tous les étrangers détenus, tous les délinquants étrangers et les personnes en situation irrégulière",
+        resumeOfficiel:
+          "Sur BFMTV le 17 septembre 2026, Éric Zemmour déclare qu'« il faut renvoyer tous les étrangers qui sont dans les prisons françaises », « tous les délinquants étrangers, même ceux qui ne sont pas en prison » (y compris sous bracelet électronique ou en travaux d'intérêt général) et « les clandestins ».",
+        sourceOfficielle:
+          "https://www.france24.com/fr/france/20260917-france-extreme-droite-eric-zemmour-confirme-candidature-pr%C3%A9sidentielle-immigration",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Propos tenus par le candidat sur BFMTV le 17 septembre 2026 et rapportés par France 24, avant sa déclaration formelle de candidature ; aucun texte ni chiffrage n'est public à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : ni le coût des expulsions, ni les économies attendues, ni les modalités juridiques ne sont chiffrés dans les sources consultées." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : ni le coût des expulsions, ni les économies attendues, ni les modalités juridiques ne sont chiffrés dans les sources consultées." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : ni le coût des expulsions, ni les économies attendues, ni les modalités juridiques ne sont chiffrés dans les sources consultées." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie : ni le coût des expulsions, ni les économies attendues, ni les modalités juridiques ne sont chiffrés dans les sources consultées." },
+        },
+      },
+      {
+        id: "ez-expulsion-chomeurs-longue-duree",
+        theme: "Immigration et intégration",
+        titre: "Renvoyer les étrangers chômeurs de longue durée ou vivant uniquement des aides sociales",
+        resumeOfficiel:
+          "Sur BFMTV le 17 septembre 2026, Éric Zemmour déclare qu'« il faut également renvoyer les chômeurs de longue durée, et tous ceux qui vivent uniquement des aides sociales », avec un seuil d'« un an » de chômage (« plus de six mois à un an, un an dirons-nous »). Il invoque une disposition du code des étrangers selon laquelle serait expulsable tout étranger qui « pèse sur les finances publiques », assertion que l'article ne vérifie pas.",
+        sourceOfficielle:
+          "https://www.france24.com/fr/france/20260917-france-extreme-droite-eric-zemmour-confirme-candidature-pr%C3%A9sidentielle-immigration",
+        niveauConfiance: "annonce",
+        noteConfiance:
+          "Propos tenus par le candidat sur BFMTV le 17 septembre 2026 et rapportés par France 24, avant sa déclaration formelle de candidature ; aucun texte ni chiffrage n'est public à ce stade.",
+        impactParClasse: {
+          populaires: { score: 0, avantages: ["Le candidat présente la mesure comme une réduction de la charge pesant sur les finances publiques, sans chiffrage"], risques: ["Concernerait des personnes en situation régulière au chômage ou aux minima sociaux ; la base juridique invoquée par le candidat n'est pas vérifiée dans la source"], angleMort: "Le nombre de personnes concernées, l'économie attendue et le cadre juridique ne sont pas chiffrés ; aucun effet économique direct ne peut être attribué à cette catégorie." },
+          moyennes: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie ; le nombre de personnes concernées et l'économie attendue ne sont pas chiffrés." },
+          aisees: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie ; le nombre de personnes concernées et l'économie attendue ne sont pas chiffrés." },
+          retraites: { score: 0, avantages: [], risques: [], angleMort: "Aucun effet économique direct identifiable pour cette catégorie ; le nombre de personnes concernées et l'économie attendue ne sont pas chiffrés." },
+        },
+      },
+    ],
   },
 ];
 
