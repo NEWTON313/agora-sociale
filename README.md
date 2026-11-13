@@ -1,5 +1,11 @@
 # Mon Choix 2027
 
+> **Dépôt archivé le 13 novembre 2026.** Ce prototype HTML/CSS/JS n'est plus maintenu et n'a jamais été
+> déployé. Le site en ligne, [monchoix2027.com](https://www.monchoix2027.com), est construit à partir du dépôt
+> [NEWTON313/agora-sociale-app](https://github.com/NEWTON313/agora-sociale-app) (Next.js), qui est désormais la
+> seule source du code et des données. Les données de ce dépôt sont figées à cette date et ne sont plus mises à
+> jour : pour les signaler ou les corriger, utilisez le dépôt `agora-sociale-app`.
+
 Outil citoyen, open source et non partisan pour comparer l'impact des programmes
 présidentiels sur quatre grandes catégories socio-économiques.
 
